@@ -412,6 +412,79 @@ const universalFormIntro =
       </section>
     </section>
 
+    <section id="reviews" class="section google-reviews">
+      <div class="container">
+        <h2 class="section-title reviews-title">{asStr(reviews?.headline)}</h2>
+        <div class="reviews-summary">
+          <div class="reviews-summary-left">
+            <p class="reviews-summary-brand">
+              <img
+                src="/Media%20(MHG)/Reviews%20(MHG)/responsive/google-icon-44.webp"
+                alt={asStr(reviewsSummary?.brandLabel)}
+                class="google-logo"
+                width="44"
+                height="44"
+                loading="lazy"
+                decoding="async"
+              />
+              <span>{asStr(reviewsSummary?.brandLabel)}</span>
+            </p>
+            <p class="reviews-summary-rating">
+              <strong>{reviewRating}</strong>
+              <img
+                src="/Media%20(MHG)/Reviews%20(MHG)/responsive/stars-236.webp"
+                alt={asStr(reviewsSummary?.starsImageAlt)}
+                class="review-stars review-stars-inline"
+                width="236"
+                height="59"
+                loading="lazy"
+                decoding="async"
+              />
+              <span>{reviewCountDisplay}</span>
+            </p>
+          </div>
+          <a href={reviewsCtaHref} class="btn btn-primary reviews-summary-cta">
+            {asStr(reviewsSummary?.ctaText)}
+          </a>
+        </div>
+        <div class="testimonials-grid">
+          {reviews?.testimonials?.map((t) => (
+            <blockquote class="testimonial">
+              <div class="review-brand review-brand-top">
+                <img src={reviewAvatarSrc(t.author, t.avatarSrc)} alt={asStr(t.author)} class="review-avatar" width="84" height="84" loading="lazy" decoding="async" />
+                <div class="review-meta">
+                  <strong>{asStr(t.author)}</strong>
+                  <span class="review-time">{asStr(t.timeAgo)}</span>
+                </div>
+              </div>
+              <img
+                src="/Media%20(MHG)/Reviews%20(MHG)/responsive/stars-236.webp"
+                alt={asStr(reviewsSummary?.starsImageAlt)}
+                class="review-stars"
+                width="236"
+                height="59"
+                loading="lazy"
+                decoding="async"
+              />
+              <p>&quot;{asStr(t.quote)}&quot;</p>
+              <div class="review-posted-on">
+                <img
+                  src="/Media%20(MHG)/Reviews%20(MHG)/responsive/google-icon-44.webp"
+                  alt={asStr(reviewsSummary?.brandLabel)}
+                  class="google-logo"
+                  width="44"
+                  height="44"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span>{asStr(reviews?.postedOnLabel)}</span>
+              </div>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <section id="projects" class="image-scroller" aria-label={lpProjectsHeadline}>
       <div class="container projects-head">
         <h2 class="section-title">{lpProjectsHeadline}</h2>
@@ -619,78 +692,6 @@ const universalFormIntro =
       </div>
     </section>
 
-    <section id="reviews" class="section google-reviews">
-      <div class="container">
-        <h2 class="section-title reviews-title">{asStr(reviews?.headline)}</h2>
-        <div class="reviews-summary">
-          <div class="reviews-summary-left">
-            <p class="reviews-summary-brand">
-              <img
-                src="/Media%20(MHG)/Reviews%20(MHG)/responsive/google-icon-44.webp"
-                alt={asStr(reviewsSummary?.brandLabel)}
-                class="google-logo"
-                width="44"
-                height="44"
-                loading="lazy"
-                decoding="async"
-              />
-              <span>{asStr(reviewsSummary?.brandLabel)}</span>
-            </p>
-            <p class="reviews-summary-rating">
-              <strong>{reviewRating}</strong>
-              <img
-                src="/Media%20(MHG)/Reviews%20(MHG)/responsive/stars-236.webp"
-                alt={asStr(reviewsSummary?.starsImageAlt)}
-                class="review-stars review-stars-inline"
-                width="236"
-                height="59"
-                loading="lazy"
-                decoding="async"
-              />
-              <span>{reviewCountDisplay}</span>
-            </p>
-          </div>
-          <a href={reviewsCtaHref} class="btn btn-primary reviews-summary-cta">
-            {asStr(reviewsSummary?.ctaText)}
-          </a>
-        </div>
-        <div class="testimonials-grid">
-          {reviews?.testimonials?.map((t) => (
-            <blockquote class="testimonial">
-              <div class="review-brand review-brand-top">
-                <img src={reviewAvatarSrc(t.author, t.avatarSrc)} alt={asStr(t.author)} class="review-avatar" width="84" height="84" loading="lazy" decoding="async" />
-                <div class="review-meta">
-                  <strong>{asStr(t.author)}</strong>
-                  <span class="review-time">{asStr(t.timeAgo)}</span>
-                </div>
-              </div>
-              <img
-                src="/Media%20(MHG)/Reviews%20(MHG)/responsive/stars-236.webp"
-                alt={asStr(reviewsSummary?.starsImageAlt)}
-                class="review-stars"
-                width="236"
-                height="59"
-                loading="lazy"
-                decoding="async"
-              />
-              <p>&quot;{asStr(t.quote)}&quot;</p>
-              <div class="review-posted-on">
-                <img
-                  src="/Media%20(MHG)/Reviews%20(MHG)/responsive/google-icon-44.webp"
-                  alt={asStr(reviewsSummary?.brandLabel)}
-                  class="google-logo"
-                  width="44"
-                  height="44"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span>{asStr(reviews?.postedOnLabel)}</span>
-              </div>
-            </blockquote>
-          ))}
-        </div>
-      </div>
-    </section>
 
     <section id="service-area" class="section service-area">
       <div class="container">
