@@ -56,12 +56,46 @@ const offerBar = header?.offerBar
 const navItems = header?.navItems
 const hero = hp.hero
 const brandsMarquee = hp.brandsMarquee
-const projects = hp.projects
-const whyChoose = hp.whyChoose
+const projects = {
+  ...hp.projects,
+  slides: [
+    {
+      imageSrc: 'lp/gutters/project-mounting-dark-gutter.png',
+      imageAlt:
+        'Installer mounting a dark bronze gutter onto fascia hangers',
+      location: 'Denver, CO',
+    },
+    {
+      imageSrc: 'lp/gutters/project-broomfield-log-cabin.png',
+      imageAlt:
+        'Terracotta gutter and offset downspout on a log-cabin home',
+      location: 'Broomfield, CO',
+    },
+    {
+      imageSrc: 'lp/gutters/project-lakewood-white-porch.png',
+      imageAlt:
+        'White gutters and downspout on a front porch with green shutters',
+      location: 'Lakewood, CO',
+    },
+  ],
+}
+const whyChoose = {
+  ...hp.whyChoose,
+  imageSrc: 'lp/gutters/why-choose-commercial-roof.png',
+  imageAlt:
+    'Mile High Gutter technician installing commercial gutters on a flat rooftop',
+}
 const whyStamp = whyChoose?.stamp
 const whyCtas = whyChoose?.ctas
 const services = hp.services
-const about = hp.about
+const about = {
+  ...hp.about,
+  video: {
+    ...(hp.about?.video || {}),
+    posterSrc: 'lp/gutters/about-securing-bracket-drill.png',
+    sourceSrc: 'poster-only',
+  },
+}
 const aboutVideo = about?.video
 const aboutVideoSource = asStr(aboutVideo?.sourceSrc).trim().toLowerCase()
 const aboutVideoPosterOnly =
@@ -128,10 +162,9 @@ const mapIframeTitle = applyTemplate(asStr(serviceArea?.mapIframeTitleTemplate),
   companyName,
 })
 
-const layoutBg = hp.layoutBackgrounds
-const heroBgSrc = asStr(layoutBg?.hero?.imageSrc)
-const servicesBgSrc = asStr(layoutBg?.services?.imageSrc)
-const uniquePointsBgSrc = asStr(layoutBg?.uniquePoints?.imageSrc)
+const heroBgSrc = 'lp/gutters/hero-tile-roof-backyard.png'
+const servicesBgSrc = 'lp/gutters/services-red-commercial-gutters.png'
+const uniquePointsBgSrc = 'lp/gutters/unique-gutter-guard-install.png'
 
 const heroBgUrl = mediaUrl(heroBgSrc)
 

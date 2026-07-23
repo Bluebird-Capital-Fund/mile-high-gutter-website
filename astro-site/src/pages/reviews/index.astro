@@ -14,6 +14,7 @@ import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { lpGutterGuardsReviews } from '../../lib/lp-gutter-guards-reviews.js'
 import { lpGutterInstallationReviews } from '../../lib/lp-gutter-installation-reviews.js'
+import { lpGutterRepairReviews } from '../../lib/lp-gutter-repair-reviews.js'
 
 let settings = {}
 let homePage = {}
@@ -93,10 +94,12 @@ function takeNewLpReviews(list) {
 
 const gutterGuardsTestimonials = takeNewLpReviews(lpGutterGuardsReviews)
 const gutterInstallationTestimonials = takeNewLpReviews(lpGutterInstallationReviews)
+const gutterRepairTestimonials = takeNewLpReviews(lpGutterRepairReviews)
 const testimonials = [
   ...existingTestimonials,
   ...gutterGuardsTestimonials,
   ...gutterInstallationTestimonials,
+  ...gutterRepairTestimonials,
 ]
 
 const universalFormFields = footerEstimateFields
