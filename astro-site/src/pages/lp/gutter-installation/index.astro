@@ -23,6 +23,7 @@ import { sanitizeCmsHtml } from '../../../lib/sanitize-cms-html.js'
 import { buildLpFaqItems } from '../../../lib/lp-faq-items.js'
 import { getLpHeroTypedPhrases } from '../../../lib/lp-hero-typed-phrases.js'
 import { capitalizeHeaderWords } from '../../../lib/capitalize-header-words.js'
+import { lpGutterInstallationReviews } from '../../../lib/lp-gutter-installation-reviews.js'
 
 const [settings, homePage] = await Promise.all([
   getSiteSettings(),
@@ -56,12 +57,46 @@ const offerBar = header?.offerBar
 const navItems = header?.navItems
 const hero = hp.hero
 const brandsMarquee = hp.brandsMarquee
-const projects = hp.projects
-const whyChoose = hp.whyChoose
+const projects = {
+  ...hp.projects,
+  slides: [
+    {
+      imageSrc: 'lp/gutter-installation/project-aurora-brown-roofline.png',
+      imageAlt:
+        'Dark bronze gutter installation along a multi-level asphalt shingle roofline',
+      location: 'Aurora, CO',
+    },
+    {
+      imageSrc: 'lp/gutter-installation/project-lakewood-red-commercial.png',
+      imageAlt:
+        'Red gutters installed on a tan commercial building with matching deck trim',
+      location: 'Lakewood, CO',
+    },
+    {
+      imageSrc: 'lp/gutter-installation/project-aurora-white-brick-home.png',
+      imageAlt:
+        'White gutter and downspout installation on a beige home with brick lower level',
+      location: 'Aurora, CO',
+    },
+  ],
+}
+const whyChoose = {
+  ...hp.whyChoose,
+  imageSrc: 'lp/gutter-installation/why-choose-commercial-roof.png',
+  imageAlt:
+    'Mile High Gutter technician installing commercial gutters on a flat rooftop',
+}
 const whyStamp = whyChoose?.stamp
 const whyCtas = whyChoose?.ctas
 const services = hp.services
-const about = hp.about
+const about = {
+  ...hp.about,
+  video: {
+    ...(hp.about?.video || {}),
+    posterSrc: 'lp/gutter-installation/about-white-gutter-install.png',
+    sourceSrc: 'poster-only',
+  },
+}
 const aboutVideo = about?.video
 const aboutVideoSource = asStr(aboutVideo?.sourceSrc).trim().toLowerCase()
 const aboutVideoPosterOnly =
@@ -69,7 +104,16 @@ const aboutVideoPosterOnly =
 const uniquePoints = hp.uniquePoints
 const statsBar = hp.statsBar
 const contactBanner = hp.contactBanner
-const reviews = settings?.reviews ?? hp.reviews
+const reviews = {
+  ...(settings?.reviews ?? hp.reviews),
+  testimonials: lpGutterInstallationReviews.map((t) => ({
+    author: t.author,
+    timeAgo: t.timeAgo,
+    avatarSrc: t.avatarSrc,
+    quote: t.quoteHtml,
+    quoteHtml: t.quoteHtml,
+  })),
+}
 const reviewsSummary = reviews?.summary
 const reviewValues = reviews?.reviewValues
 const serviceArea = hp.serviceArea
@@ -84,6 +128,11 @@ const reviewRating = statLookup(reviewValues, reviewsSummary?.ratingValueKey)
 const reviewCount = statLookup(reviewValues, reviewsSummary?.reviewCountKey)
 const reviewCountDisplay = `${asStr(reviewsSummary?.reviewCountPrefix)}${reviewCount}${asStr(reviewsSummary?.reviewCountSuffix)}`
 const reviewsCtaHref = asStr(reviewsSummary?.ctaHref) || '/reviews/'
+const reviewsPerPage = 4
+const reviewPages = []
+for (let i = 0; i < lpGutterInstallationReviews.length; i += reviewsPerPage) {
+  reviewPages.push(lpGutterInstallationReviews.slice(i, i + reviewsPerPage))
+}
 
 const callLabelNav = applyTemplate(asStr(header?.callCtaTemplate), {
   phoneDisplay,
@@ -130,10 +179,9 @@ const mapIframeTitle = applyTemplate(asStr(serviceArea?.mapIframeTitleTemplate),
   companyName,
 })
 
-const layoutBg = hp.layoutBackgrounds
-const heroBgSrc = asStr(layoutBg?.hero?.imageSrc)
-const servicesBgSrc = asStr(layoutBg?.services?.imageSrc)
-const uniquePointsBgSrc = asStr(layoutBg?.uniquePoints?.imageSrc)
+const heroBgSrc = 'lp/gutter-installation/hero-tile-roof-backyard.png'
+const servicesBgSrc = 'lp/gutter-installation/services-downspout-extension.png'
+const uniquePointsBgSrc = 'lp/gutter-installation/unique-dark-gutter-mount.png'
 
 const heroBgUrl = mediaUrl(heroBgSrc)
 
@@ -181,10 +229,20 @@ const serviceHref = (svc) => {
 
 const reviewAvatarSrc = (author, fallbackSrc) => {
   const name = asStr(author).toLowerCase()
+  const local = {
+    'aricia shaffer, mse': '/lp/gutter-installation/reviews/aricia-shaffer.png',
+    'michael mccausey': '/lp/gutter-installation/reviews/michael-mccausey.png',
+    'taggert morrow': '/lp/gutter-installation/reviews/taggert-morrow.png',
+    'karie w': '/lp/gutter-installation/reviews/karie-w.png',
+    'meghan tryon': '/lp/gutter-installation/reviews/meghan-tryon.png',
+    sam: '/lp/gutter-installation/reviews/sam.png',
+    'tom steen': '/lp/gutter-installation/reviews/tom-steen.png',
+    'lisa sorrentino': '/lp/gutter-installation/reviews/lisa-sorrentino.png',
+  }
+  if (local[name]) return local[name]
   if (name.includes('alex witkowicz')) return '/Media%20(MHG)/Reviews%20(MHG)/responsive/alex-witkowicz-84.webp'
   if (name.includes('maximilian feeney')) return '/Media%20(MHG)/Reviews%20(MHG)/responsive/maximilian-feeney-84.webp'
   if (name.includes('michael tinker')) return '/Media%20(MHG)/Reviews%20(MHG)/responsive/michael-tinker-84.webp'
-  if (name.includes('michael mccausey')) return '/Media%20(MHG)/Reviews%20(MHG)/responsive/michael-mccausey-84.webp'
   return mediaUrl(asStr(fallbackSrc))
 }
 
@@ -415,7 +473,7 @@ const universalFormIntro =
       </section>
     </section>
 
-    <section id="reviews" class="section google-reviews">
+    <section id="reviews" class="section google-reviews lp-gi-reviews">
       <div class="container">
         <h2 class="section-title reviews-title">{asStr(reviews?.headline)}</h2>
         <div class="reviews-summary">
@@ -450,40 +508,64 @@ const universalFormIntro =
             {asStr(reviewsSummary?.ctaText)}
           </a>
         </div>
-        <div class="testimonials-grid">
-          {reviews?.testimonials?.map((t) => (
-            <blockquote class="testimonial">
-              <div class="review-brand review-brand-top">
-                <img src={reviewAvatarSrc(t.author, t.avatarSrc)} alt={asStr(t.author)} class="review-avatar" width="84" height="84" loading="lazy" decoding="async" />
-                <div class="review-meta">
-                  <strong>{asStr(t.author)}</strong>
-                  <span class="review-time">{asStr(t.timeAgo)}</span>
+        <div class="lp-gi-reviews-carousel" id="lp-gi-reviews-carousel" data-page="0">
+          <div class="lp-gi-reviews-viewport">
+            <div class="lp-gi-reviews-track" id="lp-gi-reviews-track">
+              {reviewPages.map((page) => (
+                <div class="lp-gi-reviews-page testimonials-grid">
+                  {page.map((t) => (
+                    <blockquote class="testimonial">
+                      <div class="review-brand review-brand-top">
+                        <img
+                          src={reviewAvatarSrc(t.author, t.avatarSrc)}
+                          alt={asStr(t.author)}
+                          class="review-avatar"
+                          width="84"
+                          height="84"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <div class="review-meta">
+                          <strong>{asStr(t.author)}</strong>
+                          {t.timeAgo ? <span class="review-time">{asStr(t.timeAgo)}</span> : null}
+                        </div>
+                      </div>
+                      <img
+                        src="/Media%20(MHG)/Reviews%20(MHG)/responsive/stars-236.webp"
+                        alt={asStr(reviewsSummary?.starsImageAlt)}
+                        class="review-stars"
+                        width="236"
+                        height="59"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <p set:html={`&quot;${sanitizeCmsHtml(t.quoteHtml)}&quot;`} />
+                      <div class="review-posted-on">
+                        <img
+                          src="/Media%20(MHG)/Reviews%20(MHG)/responsive/google-icon-44.webp"
+                          alt={asStr(reviewsSummary?.brandLabel)}
+                          class="google-logo"
+                          width="44"
+                          height="44"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <span>{asStr(reviews?.postedOnLabel)}</span>
+                      </div>
+                    </blockquote>
+                  ))}
                 </div>
-              </div>
-              <img
-                src="/Media%20(MHG)/Reviews%20(MHG)/responsive/stars-236.webp"
-                alt={asStr(reviewsSummary?.starsImageAlt)}
-                class="review-stars"
-                width="236"
-                height="59"
-                loading="lazy"
-                decoding="async"
-              />
-              <p>&quot;{asStr(t.quote)}&quot;</p>
-              <div class="review-posted-on">
-                <img
-                  src="/Media%20(MHG)/Reviews%20(MHG)/responsive/google-icon-44.webp"
-                  alt={asStr(reviewsSummary?.brandLabel)}
-                  class="google-logo"
-                  width="44"
-                  height="44"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span>{asStr(reviews?.postedOnLabel)}</span>
-              </div>
-            </blockquote>
-          ))}
+              ))}
+            </div>
+          </div>
+          <div class="lp-gi-reviews-controls" aria-label="Review carousel controls">
+            <button type="button" class="project-nav" id="lp-gi-reviews-prev" aria-label="Previous reviews">
+              {asStr(projects?.prevLabel) || 'Prev'}
+            </button>
+            <button type="button" class="project-nav" id="lp-gi-reviews-next" aria-label="Next reviews">
+              {asStr(projects?.nextLabel) || 'Next'}
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -923,4 +1005,114 @@ const universalFormIntro =
     data-fallback-phrase={typedPhrases[0] ? typedPhrases[0] : asStr(hero?.typedFallbackPhrase)}
     set:html={JSON.stringify(typedPhrases)}
   />
+  <style is:global>
+    .lp-gi-reviews .testimonial p {
+      font-style: normal;
+      color: var(--color-text);
+    }
+    .lp-gi-reviews .testimonial p strong,
+    .lp-gi-reviews .testimonial p b {
+      color: #000;
+      font-weight: 700;
+      font-style: italic;
+    }
+    .lp-gi-reviews .testimonial p em,
+    .lp-gi-reviews .testimonial p i {
+      color: #000;
+      font-style: italic;
+      font-weight: 700;
+    }
+    .lp-gi-reviews-carousel {
+      margin-top: var(--space-xl);
+    }
+    .lp-gi-reviews-viewport {
+      overflow: hidden;
+      width: 100%;
+    }
+    .lp-gi-reviews-track {
+      display: flex;
+      width: 100%;
+      transition: transform 0.35s ease;
+      will-change: transform;
+    }
+    .lp-gi-reviews-page {
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      margin-top: 0;
+      box-sizing: border-box;
+    }
+    .lp-gi-reviews-controls {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    @media (max-width: 900px) {
+      .lp-gi-reviews .lp-gi-reviews-page.testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .lp-gi-reviews .lp-gi-reviews-page.testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <script is:inline>
+    (function () {
+      var root = document.getElementById('lp-gi-reviews-carousel');
+      var track = document.getElementById('lp-gi-reviews-track');
+      var prev = document.getElementById('lp-gi-reviews-prev');
+      var next = document.getElementById('lp-gi-reviews-next');
+      if (!root || !track || !prev || !next) return;
+      var pages = track.querySelectorAll('.lp-gi-reviews-page');
+      var pageCount = pages.length;
+      if (pageCount < 2) {
+        prev.hidden = true;
+        next.hidden = true;
+        return;
+      }
+      var index = 0;
+      function render() {
+        track.style.transform = 'translateX(-' + index * 100 + '%)';
+        root.setAttribute('data-page', String(index));
+        prev.disabled = index === 0;
+        next.disabled = index >= pageCount - 1;
+      }
+      prev.addEventListener('click', function () {
+        index = Math.max(0, index - 1);
+        render();
+      });
+      next.addEventListener('click', function () {
+        index = Math.min(pageCount - 1, index + 1);
+        render();
+      });
+      var startX = null;
+      track.addEventListener(
+        'touchstart',
+        function (e) {
+          startX = e.changedTouches[0].clientX;
+        },
+        { passive: true },
+      );
+      track.addEventListener(
+        'touchend',
+        function (e) {
+          if (startX == null) return;
+          var dx = e.changedTouches[0].clientX - startX;
+          startX = null;
+          if (dx < -40) {
+            index = Math.min(pageCount - 1, index + 1);
+            render();
+          } else if (dx > 40) {
+            index = Math.max(0, index - 1);
+            render();
+          }
+        },
+        { passive: true },
+      );
+      render();
+    })();
+  </script>
 </BaseLayout>

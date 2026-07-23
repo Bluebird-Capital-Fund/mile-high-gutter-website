@@ -11,6 +11,9 @@ import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
 import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
+import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
+import { lpGutterGuardsReviews } from '../../lib/lp-gutter-guards-reviews.js'
+import { lpGutterInstallationReviews } from '../../lib/lp-gutter-installation-reviews.js'
 
 let settings = {}
 let homePage = {}
@@ -62,7 +65,39 @@ const heroBgStyle = heroBgSrc
 
 const reviewsData = settings?.reviews ?? reviewsPage?.reviews ?? homePage?.reviews ?? {}
 const reviewSummary = reviewsData?.summary ?? {}
-const testimonials = Array.isArray(reviewsData?.testimonials) ? reviewsData.testimonials : []
+const existingTestimonials = Array.isArray(reviewsData?.testimonials) ? reviewsData.testimonials : []
+const seenAuthors = new Set(
+  existingTestimonials.map((t) => asStr(t?.author).trim().toLowerCase()).filter(Boolean),
+)
+
+function mapLpReview(t) {
+  return {
+    author: t.author,
+    timeAgo: t.timeAgo,
+    avatarSrc: t.avatarSrc,
+    quote: t.quoteHtml,
+    quoteHtml: t.quoteHtml,
+  }
+}
+
+function takeNewLpReviews(list) {
+  const out = []
+  for (const t of list) {
+    const key = asStr(t.author).trim().toLowerCase()
+    if (!key || seenAuthors.has(key)) continue
+    seenAuthors.add(key)
+    out.push(mapLpReview(t))
+  }
+  return out
+}
+
+const gutterGuardsTestimonials = takeNewLpReviews(lpGutterGuardsReviews)
+const gutterInstallationTestimonials = takeNewLpReviews(lpGutterInstallationReviews)
+const testimonials = [
+  ...existingTestimonials,
+  ...gutterGuardsTestimonials,
+  ...gutterInstallationTestimonials,
+]
 
 const universalFormFields = footerEstimateFields
 const universalFormAction = asStr(formsCfg?.submitPath) || asStr(footerEstimate?.formAction) || '#'
@@ -203,7 +238,7 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
       </div>
     </section>
 
-    <section class="section google-reviews">
+    <section class="section google-reviews reviews-page-list">
       <div class="container">
         <h2 class="section-title reviews-title">{asStr(reviewsData?.headline) || 'Customer Reviews'}</h2>
         <div class="reviews-summary">
@@ -215,19 +250,30 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
           </div>
         </div>
         <div class="testimonials-grid">
-          {(testimonials.length > 0 ? testimonials : []).map((t) => (
+          {(testimonials.length > 0 ? testimonials : []).map((t) => {
+            const quoteHtml = asStr(t.quoteHtml)
+            const quotePlain = asStr(t.quote)
+            const renderedQuote = quoteHtml
+              ? sanitizeCmsHtml(quoteHtml)
+              : quotePlain
+            return (
             <blockquote class="testimonial">
               <div class="review-brand review-brand-top">
                 <img src={mediaUrl(asStr(t.avatarSrc))} alt={asStr(t.author)} class="review-avatar" />
                 <div class="review-meta">
                   <strong>{asStr(t.author)}</strong>
-                  <span class="review-time">{asStr(t.timeAgo)}</span>
+                  {asStr(t.timeAgo) ? <span class="review-time">{asStr(t.timeAgo)}</span> : null}
                 </div>
               </div>
               <img src={mediaUrl(asStr(reviewSummary?.starsImageSrc))} alt={asStr(reviewSummary?.starsImageAlt)} class="review-stars" />
-              <p>&quot;{asStr(t.quote)}&quot;</p>
+              {quoteHtml ? (
+                <p class="review-quote" set:html={`&quot;${renderedQuote}&quot;`} />
+              ) : (
+                <p class="review-quote">&quot;{quotePlain}&quot;</p>
+              )}
             </blockquote>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
@@ -307,4 +353,22 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
   </footer>
 
   <FooterSupportBar footerSupport={footerSupport} copyrightHref={copyrightHref} companyName={companyName} />
+  <style is:global>
+    .reviews-page-list .testimonial p.review-quote {
+      font-style: normal;
+      color: var(--color-text);
+    }
+    .reviews-page-list .testimonial p.review-quote strong,
+    .reviews-page-list .testimonial p.review-quote b {
+      color: #000;
+      font-weight: 700;
+      font-style: italic;
+    }
+    .reviews-page-list .testimonial p.review-quote em,
+    .reviews-page-list .testimonial p.review-quote i {
+      color: #000;
+      font-style: italic;
+      font-weight: 700;
+    }
+  </style>
 </BaseLayout>
