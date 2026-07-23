@@ -23,6 +23,7 @@ import { sanitizeCmsHtml } from '../../../lib/sanitize-cms-html.js'
 import { buildLpFaqItems } from '../../../lib/lp-faq-items.js'
 import { getLpHeroTypedPhrases } from '../../../lib/lp-hero-typed-phrases.js'
 import { capitalizeHeaderWords } from '../../../lib/capitalize-header-words.js'
+import { lpGuttersReviews } from '../../../lib/lp-gutters-reviews.js'
 
 const [settings, homePage] = await Promise.all([
   getSiteSettings(),
@@ -103,7 +104,16 @@ const aboutVideoPosterOnly =
 const uniquePoints = hp.uniquePoints
 const statsBar = hp.statsBar
 const contactBanner = hp.contactBanner
-const reviews = settings?.reviews ?? hp.reviews
+const reviews = {
+  ...(settings?.reviews ?? hp.reviews),
+  testimonials: lpGuttersReviews.map((t) => ({
+    author: t.author,
+    timeAgo: t.timeAgo,
+    avatarSrc: t.avatarSrc,
+    quote: t.quoteHtml,
+    quoteHtml: t.quoteHtml,
+  })),
+}
 const reviewsSummary = reviews?.summary
 const reviewValues = reviews?.reviewValues
 const serviceArea = hp.serviceArea
@@ -118,6 +128,11 @@ const reviewRating = statLookup(reviewValues, reviewsSummary?.ratingValueKey)
 const reviewCount = statLookup(reviewValues, reviewsSummary?.reviewCountKey)
 const reviewCountDisplay = `${asStr(reviewsSummary?.reviewCountPrefix)}${reviewCount}${asStr(reviewsSummary?.reviewCountSuffix)}`
 const reviewsCtaHref = asStr(reviewsSummary?.ctaHref) || '/reviews/'
+const reviewsPerPage = 4
+const reviewPages = []
+for (let i = 0; i < lpGuttersReviews.length; i += reviewsPerPage) {
+  reviewPages.push(lpGuttersReviews.slice(i, i + reviewsPerPage))
+}
 
 const callLabelNav = applyTemplate(asStr(header?.callCtaTemplate), {
   phoneDisplay,
@@ -212,6 +227,17 @@ const serviceHref = (svc) => {
 
 const reviewAvatarSrc = (author, fallbackSrc) => {
   const name = asStr(author).toLowerCase()
+  const local = {
+    'april j': '/lp/gutters/reviews/april-j.png',
+    'taggert morrow': '/lp/gutters/reviews/taggert-morrow.png',
+    'blair durst': '/lp/gutters/reviews/blair-durst.png',
+    'scott baker': '/lp/gutters/reviews/scott-baker.png',
+    'judy rome': '/lp/gutters/reviews/judy-rome.png',
+    'carrie dittmer': '/lp/gutters/reviews/carrie-dittmer.png',
+    'steve loftus': '/lp/gutters/reviews/steve-loftus.png',
+    'vanessa schuelke': '/lp/gutters/reviews/vanessa-schuelke.png',
+  }
+  if (local[name]) return local[name]
   if (name.includes('alex witkowicz')) return '/Media%20(MHG)/Reviews%20(MHG)/responsive/alex-witkowicz-84.webp'
   if (name.includes('maximilian feeney')) return '/Media%20(MHG)/Reviews%20(MHG)/responsive/maximilian-feeney-84.webp'
   if (name.includes('michael tinker')) return '/Media%20(MHG)/Reviews%20(MHG)/responsive/michael-tinker-84.webp'
@@ -443,7 +469,7 @@ const universalFormIntro =
       </section>
     </section>
 
-    <section id="reviews" class="section google-reviews">
+    <section id="reviews" class="section google-reviews lp-gutters-reviews">
       <div class="container">
         <h2 class="section-title reviews-title">{asStr(reviews?.headline)}</h2>
         <div class="reviews-summary">
@@ -478,40 +504,64 @@ const universalFormIntro =
             {asStr(reviewsSummary?.ctaText)}
           </a>
         </div>
-        <div class="testimonials-grid">
-          {reviews?.testimonials?.map((t) => (
-            <blockquote class="testimonial">
-              <div class="review-brand review-brand-top">
-                <img src={reviewAvatarSrc(t.author, t.avatarSrc)} alt={asStr(t.author)} class="review-avatar" width="84" height="84" loading="lazy" decoding="async" />
-                <div class="review-meta">
-                  <strong>{asStr(t.author)}</strong>
-                  <span class="review-time">{asStr(t.timeAgo)}</span>
+        <div class="lp-gutters-reviews-carousel" id="lp-gutters-reviews-carousel" data-page="0">
+          <div class="lp-gutters-reviews-viewport">
+            <div class="lp-gutters-reviews-track" id="lp-gutters-reviews-track">
+              {reviewPages.map((page) => (
+                <div class="lp-gutters-reviews-page testimonials-grid">
+                  {page.map((t) => (
+                    <blockquote class="testimonial">
+                      <div class="review-brand review-brand-top">
+                        <img
+                          src={reviewAvatarSrc(t.author, t.avatarSrc)}
+                          alt={asStr(t.author)}
+                          class="review-avatar"
+                          width="84"
+                          height="84"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <div class="review-meta">
+                          <strong>{asStr(t.author)}</strong>
+                          {t.timeAgo ? <span class="review-time">{asStr(t.timeAgo)}</span> : null}
+                        </div>
+                      </div>
+                      <img
+                        src="/Media%20(MHG)/Reviews%20(MHG)/responsive/stars-236.webp"
+                        alt={asStr(reviewsSummary?.starsImageAlt)}
+                        class="review-stars"
+                        width="236"
+                        height="59"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <p set:html={`&quot;${sanitizeCmsHtml(t.quoteHtml)}&quot;`} />
+                      <div class="review-posted-on">
+                        <img
+                          src="/Media%20(MHG)/Reviews%20(MHG)/responsive/google-icon-44.webp"
+                          alt={asStr(reviewsSummary?.brandLabel)}
+                          class="google-logo"
+                          width="44"
+                          height="44"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <span>{asStr(reviews?.postedOnLabel)}</span>
+                      </div>
+                    </blockquote>
+                  ))}
                 </div>
-              </div>
-              <img
-                src="/Media%20(MHG)/Reviews%20(MHG)/responsive/stars-236.webp"
-                alt={asStr(reviewsSummary?.starsImageAlt)}
-                class="review-stars"
-                width="236"
-                height="59"
-                loading="lazy"
-                decoding="async"
-              />
-              <p>&quot;{asStr(t.quote)}&quot;</p>
-              <div class="review-posted-on">
-                <img
-                  src="/Media%20(MHG)/Reviews%20(MHG)/responsive/google-icon-44.webp"
-                  alt={asStr(reviewsSummary?.brandLabel)}
-                  class="google-logo"
-                  width="44"
-                  height="44"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span>{asStr(reviews?.postedOnLabel)}</span>
-              </div>
-            </blockquote>
-          ))}
+              ))}
+            </div>
+          </div>
+          <div class="lp-gutters-reviews-controls" aria-label="Review carousel controls">
+            <button type="button" class="project-nav" id="lp-gutters-reviews-prev" aria-label="Previous reviews">
+              {asStr(projects?.prevLabel) || 'Prev'}
+            </button>
+            <button type="button" class="project-nav" id="lp-gutters-reviews-next" aria-label="Next reviews">
+              {asStr(projects?.nextLabel) || 'Next'}
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -951,4 +1001,114 @@ const universalFormIntro =
     data-fallback-phrase={typedPhrases[0] ? typedPhrases[0] : asStr(hero?.typedFallbackPhrase)}
     set:html={JSON.stringify(typedPhrases)}
   />
+  <style is:global>
+    .lp-gutters-reviews .testimonial p {
+      font-style: normal;
+      color: var(--color-text);
+    }
+    .lp-gutters-reviews .testimonial p strong,
+    .lp-gutters-reviews .testimonial p b {
+      color: #000;
+      font-weight: 700;
+      font-style: italic;
+    }
+    .lp-gutters-reviews .testimonial p em,
+    .lp-gutters-reviews .testimonial p i {
+      color: #000;
+      font-style: italic;
+      font-weight: 700;
+    }
+    .lp-gutters-reviews-carousel {
+      margin-top: var(--space-xl);
+    }
+    .lp-gutters-reviews-viewport {
+      overflow: hidden;
+      width: 100%;
+    }
+    .lp-gutters-reviews-track {
+      display: flex;
+      width: 100%;
+      transition: transform 0.35s ease;
+      will-change: transform;
+    }
+    .lp-gutters-reviews-page {
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      margin-top: 0;
+      box-sizing: border-box;
+    }
+    .lp-gutters-reviews-controls {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    @media (max-width: 900px) {
+      .lp-gutters-reviews .lp-gutters-reviews-page.testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .lp-gutters-reviews .lp-gutters-reviews-page.testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <script is:inline>
+    (function () {
+      var root = document.getElementById('lp-gutters-reviews-carousel');
+      var track = document.getElementById('lp-gutters-reviews-track');
+      var prev = document.getElementById('lp-gutters-reviews-prev');
+      var next = document.getElementById('lp-gutters-reviews-next');
+      if (!root || !track || !prev || !next) return;
+      var pages = track.querySelectorAll('.lp-gutters-reviews-page');
+      var pageCount = pages.length;
+      if (pageCount < 2) {
+        prev.hidden = true;
+        next.hidden = true;
+        return;
+      }
+      var index = 0;
+      function render() {
+        track.style.transform = 'translateX(-' + index * 100 + '%)';
+        root.setAttribute('data-page', String(index));
+        prev.disabled = index === 0;
+        next.disabled = index >= pageCount - 1;
+      }
+      prev.addEventListener('click', function () {
+        index = Math.max(0, index - 1);
+        render();
+      });
+      next.addEventListener('click', function () {
+        index = Math.min(pageCount - 1, index + 1);
+        render();
+      });
+      var startX = null;
+      track.addEventListener(
+        'touchstart',
+        function (e) {
+          startX = e.changedTouches[0].clientX;
+        },
+        { passive: true },
+      );
+      track.addEventListener(
+        'touchend',
+        function (e) {
+          if (startX == null) return;
+          var dx = e.changedTouches[0].clientX - startX;
+          startX = null;
+          if (dx < -40) {
+            index = Math.min(pageCount - 1, index + 1);
+            render();
+          } else if (dx > 40) {
+            index = Math.max(0, index - 1);
+            render();
+          }
+        },
+        { passive: true },
+      );
+      render();
+    })();
+  </script>
 </BaseLayout>
