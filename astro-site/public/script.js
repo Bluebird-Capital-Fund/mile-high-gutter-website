@@ -596,39 +596,73 @@
     };
   }
 
-  /** Same UTM keys as SunLife Gutters (sgt_* cookies there); here mhg_* — 90d, survives internal navigation until submit. */
+  /**
+   * Fallback when attribution.js is unavailable: persist UTMs + click IDs in mhg_* cookies (90d).
+   * Prefer MhgAttribution when present — it owns first_page/referrer + click-ID replacement rules.
+   */
   function getPersistedUtmParams() {
-    var keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    var keys = [
+      'gclid',
+      'gbraid',
+      'wbraid',
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_id',
+      'utm_content',
+      'utm_term'
+    ];
     var qs = new URLSearchParams(window.location.search || '');
     var persisted = {
+      gclid: '',
+      gbraid: '',
+      wbraid: '',
       utm_source: '',
       utm_medium: '',
       utm_campaign: '',
-      utm_term: '',
-      utm_content: ''
+      utm_id: '',
+      utm_content: '',
+      utm_term: ''
     };
 
     keys.forEach(function (key) {
+      var maxLen = key === 'gclid' || key === 'gbraid' || key === 'wbraid' ? 500 : 200;
       var fromQuery = (qs.get(key) || '').trim();
       if (fromQuery) {
-        persisted[key] = fromQuery.slice(0, 200);
+        persisted[key] = fromQuery.slice(0, maxLen);
         setCookie('mhg_' + key, persisted[key], 90);
         return;
       }
       var fromCookie = getCookie('mhg_' + key).trim();
       if (fromCookie) {
-        persisted[key] = fromCookie.slice(0, 200);
+        persisted[key] = fromCookie.slice(0, maxLen);
       }
     });
 
     return persisted;
   }
 
-  /** Write current UTMs into hidden fields on lead forms so hero + footer (and every page) share the same values. */
+  /** Write attribution (click IDs + UTMs + first_page/referrer) into hidden fields on lead forms. */
   function applyUtmHiddenToForm(form, utm) {
     if (!form) return;
+    if (window.MhgAttribution && typeof window.MhgAttribution.applyToForm === 'function') {
+      window.MhgAttribution.applyToForm(form);
+      return;
+    }
     utm = utm || getPersistedUtmParams();
-    var keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    var keys = [
+      'gclid',
+      'gbraid',
+      'wbraid',
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_id',
+      'utm_content',
+      'utm_term',
+      'first_page',
+      'referrer',
+    ];
     keys.forEach(function (key) {
       var el = form.querySelector('input[type="hidden"][name="' + key + '"]');
       if (!el) {
@@ -637,11 +671,22 @@
         el.name = key;
         form.appendChild(el);
       }
-      el.value = String(utm[key] || '').slice(0, 200);
+      var val = utm[key] || '';
+      if (!val && (key === 'first_page' || key === 'referrer')) {
+        var ft = getPersistedFirstTouch();
+        if (key === 'first_page') val = ft.firstLandingUrl || '';
+        if (key === 'referrer') val = ft.firstReferrer || '';
+      }
+      el.value = String(val || '').slice(0, key === 'first_page' || key === 'referrer' ? 2000 : 500);
     });
   }
 
   function syncUtmToAllLeadForms() {
+    if (window.MhgAttribution && typeof window.MhgAttribution.applyToAllLeadForms === 'function') {
+      window.MhgAttribution.captureFromUrl();
+      window.MhgAttribution.applyToAllLeadForms();
+      return;
+    }
     var utm = getPersistedUtmParams();
     var forms = document.querySelectorAll('form[data-lead-form]');
     for (var i = 0; i < forms.length; i++) {
@@ -915,6 +960,9 @@
         setStatus(form, 'Sending…', null);
 
         getPersistedUtmParams();
+        if (window.MhgAttribution && typeof window.MhgAttribution.captureFromUrl === 'function') {
+          window.MhgAttribution.captureFromUrl();
+        }
         applyUtmHiddenToForm(form);
         persistFirstTouchIfNeeded();
         var firstTouch = getPersistedFirstTouch();
@@ -924,12 +972,43 @@
         var fullName = (firstName + ' ' + lastName).trim();
         var address = (fd.get('address') || fd.get('location') || '').toString().trim();
         var utm = getPersistedUtmParams();
+        var attr =
+          window.MhgAttribution && typeof window.MhgAttribution.toPayloadFields === 'function'
+            ? window.MhgAttribution.toPayloadFields()
+            : {};
         var payload = {
-          utm_source: (fd.get('utm_source') || utm.utm_source || '').toString().trim().slice(0, 200),
-          utm_medium: (fd.get('utm_medium') || utm.utm_medium || '').toString().trim().slice(0, 200),
-          utm_campaign: (fd.get('utm_campaign') || utm.utm_campaign || '').toString().trim().slice(0, 200),
-          utm_term: (fd.get('utm_term') || utm.utm_term || '').toString().trim().slice(0, 200),
-          utm_content: (fd.get('utm_content') || utm.utm_content || '').toString().trim().slice(0, 200),
+          gclid: (fd.get('gclid') || attr.gclid || '').toString().trim().slice(0, 500),
+          gbraid: (fd.get('gbraid') || attr.gbraid || '').toString().trim().slice(0, 500),
+          wbraid: (fd.get('wbraid') || attr.wbraid || '').toString().trim().slice(0, 500),
+          utm_source: (fd.get('utm_source') || attr.utm_source || utm.utm_source || '')
+            .toString()
+            .trim()
+            .slice(0, 200),
+          utm_medium: (fd.get('utm_medium') || attr.utm_medium || utm.utm_medium || '')
+            .toString()
+            .trim()
+            .slice(0, 200),
+          utm_campaign: (fd.get('utm_campaign') || attr.utm_campaign || utm.utm_campaign || '')
+            .toString()
+            .trim()
+            .slice(0, 200),
+          utm_id: (fd.get('utm_id') || attr.utm_id || '').toString().trim().slice(0, 200),
+          utm_content: (fd.get('utm_content') || attr.utm_content || utm.utm_content || '')
+            .toString()
+            .trim()
+            .slice(0, 200),
+          utm_term: (fd.get('utm_term') || attr.utm_term || utm.utm_term || '')
+            .toString()
+            .trim()
+            .slice(0, 200),
+          first_page: (fd.get('first_page') || attr.first_page || firstTouch.firstLandingUrl || '')
+            .toString()
+            .trim()
+            .slice(0, 2000),
+          referrer: (fd.get('referrer') || attr.referrer || firstTouch.firstReferrer || '')
+            .toString()
+            .trim()
+            .slice(0, 2000),
           formSource: form.getAttribute('data-lead-form') || 'unknown',
           firstName: firstName,
           lastName: lastName,
@@ -941,11 +1020,30 @@
           message: (fd.get('message') || '').toString().trim(),
           website: (fd.get('website') || '').toString().trim(),
           pageUrl: typeof window.location.href === 'string' ? window.location.href : '',
-          firstLandingUrl: firstTouch.firstLandingUrl,
-          firstReferrer: firstTouch.firstReferrer,
+          firstLandingUrl: firstTouch.firstLandingUrl || (attr.first_page || ''),
+          firstReferrer: firstTouch.firstReferrer || (attr.referrer || ''),
           firstLandingAt: firstTouch.firstLandingAt,
           smsMarketingOptIn: fd.get('smsMarketingOptIn') === 'yes'
         };
+
+        if (window.MhgAttribution && typeof window.MhgAttribution.logFormPayloadTable === 'function') {
+          window.MhgAttribution.logFormPayloadTable(payload);
+        }
+        if (window.MhgAttribution && typeof window.MhgAttribution.runDebugReport === 'function') {
+          window.MhgAttribution.runDebugReport({ apiAttributionPayload: {
+            gclid: payload.gclid,
+            gbraid: payload.gbraid,
+            wbraid: payload.wbraid,
+            utm_source: payload.utm_source,
+            utm_medium: payload.utm_medium,
+            utm_campaign: payload.utm_campaign,
+            utm_id: payload.utm_id,
+            utm_content: payload.utm_content,
+            utm_term: payload.utm_term,
+            first_page: payload.first_page,
+            referrer: payload.referrer
+          }});
+        }
 
         var runSend = function () {
           fetch(endpoint, {

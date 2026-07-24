@@ -19,10 +19,30 @@ function formatUsPhoneDashes(value) {
 }
 
 /** Zapier / CRM often expect a single `querystring`; also used when mapping UTMs from the landing URL. */
-const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id'];
+const CLICK_ID_KEYS = ['gclid', 'gbraid', 'wbraid'];
+
+/**
+ * Destination field mapping (documented — do not rename silently):
+ * gclid → gclid1 (also keep gclid)
+ * gbraid → gbraid
+ * wbraid → wbraid
+ * utm_source → utm_source
+ * utm_medium → lead_medium (also keep utm_medium)
+ * utm_campaign → lead_campaign (also keep utm_campaign)
+ * utm_term → lead_term (also keep utm_term)
+ * utm_content → utm_content
+ * utm_id → utm_id
+ * first_page → first_page
+ * referrer → referrer
+ */
+
+function trimAttr(value, max = 500) {
+  return String(value ?? '').trim().slice(0, max);
+}
 
 function trimUtm(value) {
-  return String(value ?? '').trim().slice(0, 200);
+  return trimAttr(value, 200);
 }
 
 function utmFromBody(body) {
@@ -61,10 +81,39 @@ function mergeUtm(body, pageUrl) {
   return merged;
 }
 
-function buildUtmQueryString(utm) {
+function clickIdsFromPageUrl(pageUrl) {
+  const out = { gclid: '', gbraid: '', wbraid: '' };
+  try {
+    const u = new URL(pageUrl);
+    for (const key of CLICK_ID_KEYS) {
+      const v = u.searchParams.get(key);
+      if (v) out[key] = trimAttr(v, 500);
+    }
+  } catch {
+    /* invalid URL */
+  }
+  return out;
+}
+
+function mergeClickIds(body, pageUrl, firstLandingUrl) {
+  const fromUrl = clickIdsFromPageUrl(pageUrl);
+  const fromFirst = clickIdsFromPageUrl(firstLandingUrl);
+  const out = {};
+  for (const key of CLICK_ID_KEYS) {
+    out[key] =
+      trimAttr(body[key], 500) || fromUrl[key] || fromFirst[key] || '';
+  }
+  return out;
+}
+
+function buildUtmQueryString(utm, clickIds) {
   const params = new URLSearchParams();
   for (const key of UTM_KEYS) {
     const v = utm[key];
+    if (v) params.set(key, v);
+  }
+  for (const key of CLICK_ID_KEYS) {
+    const v = clickIds[key];
     if (v) params.set(key, v);
   }
   return params.toString();
@@ -186,11 +235,18 @@ export default {
     const message = String(body.message || '').trim().slice(0, 5000);
     const formSource = String(body.formSource || 'unknown').trim().slice(0, 80);
     const pageUrl = String(body.pageUrl || '').trim().slice(0, 2000);
-    const firstLandingUrl = String(body.firstLandingUrl || '').trim().slice(0, 2000);
-    const firstReferrer = String(body.firstReferrer || '').trim().slice(0, 2000);
+    const firstLandingUrl = String(body.firstLandingUrl || body.first_page || '')
+      .trim()
+      .slice(0, 2000);
+    const firstReferrer = String(body.firstReferrer || body.referrer || '')
+      .trim()
+      .slice(0, 2000);
     const firstLandingAt = String(body.firstLandingAt || '').trim().slice(0, 40);
-    const utm = mergeUtm(body, pageUrl);
-    const querystring = buildUtmQueryString(utm);
+    const first_page = String(body.first_page || firstLandingUrl || '').trim().slice(0, 2000);
+    const referrer = String(body.referrer || firstReferrer || '').trim().slice(0, 2000);
+    const utm = mergeUtm(body, pageUrl || firstLandingUrl);
+    const clickIds = mergeClickIds(body, pageUrl, firstLandingUrl);
+    const querystring = buildUtmQueryString(utm, clickIds);
 
     const rawSms = body.smsMarketingOptIn;
     const smsMarketingOptIn =
@@ -221,14 +277,26 @@ export default {
       message,
       submittedAt: new Date().toISOString(),
       pageUrl,
-      firstLandingUrl,
-      firstReferrer,
+      firstLandingUrl: firstLandingUrl || first_page,
+      firstReferrer: firstReferrer || referrer,
       firstLandingAt,
+      // Exact attribution fields (browser names)
+      gclid: clickIds.gclid,
+      gbraid: clickIds.gbraid,
+      wbraid: clickIds.wbraid,
       utm_source: utm.utm_source,
       utm_medium: utm.utm_medium,
       utm_campaign: utm.utm_campaign,
-      utm_term: utm.utm_term,
+      utm_id: utm.utm_id,
       utm_content: utm.utm_content,
+      utm_term: utm.utm_term,
+      first_page,
+      referrer,
+      // Destination / CRM aliases (documented mappings)
+      gclid1: clickIds.gclid,
+      lead_medium: utm.utm_medium,
+      lead_campaign: utm.utm_campaign,
+      lead_term: utm.utm_term,
       querystring,
       smsMarketingOptIn: true,
     };
