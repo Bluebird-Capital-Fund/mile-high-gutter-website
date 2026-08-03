@@ -7,6 +7,7 @@ import FooterHoursRow from '../../../components/FooterHoursRow.astro'
 import LeadFormSmsConsent from '../../../components/LeadFormSmsConsent.astro'
 import OfferBarMessage from '../../../components/OfferBarMessage.astro'
 import FooterSupportBar from '../../../components/FooterSupportBar.astro'
+import LpHeroLead from '../../../components/LpHeroLead.astro'
 import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../../lib/footer-contact-heading.js'
 import { GROQ_HOME_PAGE, sanity } from '../../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../../lib/site-settings.js'
@@ -263,7 +264,6 @@ function responsiveSrc(src, width = 800) {
 
 const lpKeyword = 'gutter repair'
 const lpHeroHeadline = 'Trusted Gutter Repair Services in the Greater Denver Area'
-const lpHeroLead = `Fast scheduling, careful workmanship, and clean job sites—we focus on ${lpKeyword}: stopping leaks, restoring proper slope, and protecting your home or business.`
 const lpWhyRepairLead =
   'From seam leaks and loose hangers to storm damage—we deliver dependable gutter repair, clear communication, and fast scheduling across the Denver metro.'
 const lpWhyRepairBullets = [
@@ -427,7 +427,7 @@ const lpRepairContactP2 = `Call: ${phoneDisplay}`
           <p class="hero-typed" aria-live="polite">
             <span id="hero-typed-text"></span><span class="hero-caret" aria-hidden="true">|</span>
           </p>
-          <p class="hero-lead">{lpHeroLead}</p>
+          <LpHeroLead />
           <div class="hero-actions">
             <a href={telLink} class="btn btn-primary btn-lg cta1-primary-call">{callLabelHero}</a>
           </div>

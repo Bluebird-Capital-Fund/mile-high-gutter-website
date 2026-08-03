@@ -698,6 +698,25 @@ a.btn-primary[href^="tel:"]:hover {
   font-family: "Merriweather", Georgia, "Times New Roman", serif;
 }
 
+ul.hero-lead-list {
+  list-style: none;
+  padding: 0;
+  min-height: 0;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+ul.hero-lead-list li {
+  margin: 0;
+}
+
+ul.hero-lead-list strong {
+  color: #fff;
+  font-weight: 700;
+}
+
 .hero-typed {
   min-height: 1.8rem;
   margin: 0 0 var(--space-md);

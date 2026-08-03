@@ -7,6 +7,7 @@ import FooterHoursRow from '../../../components/FooterHoursRow.astro'
 import LeadFormSmsConsent from '../../../components/LeadFormSmsConsent.astro'
 import OfferBarMessage from '../../../components/OfferBarMessage.astro'
 import FooterSupportBar from '../../../components/FooterSupportBar.astro'
+import LpHeroLead from '../../../components/LpHeroLead.astro'
 import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../../lib/footer-contact-heading.js'
 import { GROQ_HOME_PAGE, sanity } from '../../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../../lib/site-settings.js'
@@ -267,7 +268,6 @@ function responsiveSrc(src, width = 800) {
 
 const lpKeyword = 'Denver Gutter Services'
 const lpHeroHeadline = 'Trusted Gutter Company in the Greater Denver Area'
-const lpHeroLead = `Fast scheduling, careful workmanship, and clean job sites—we focus on Denver gutters: installation, repair, cleaning, and guards that keep water moving away from your roofline and foundation.`
 const lpProjectsHeadline = capitalizeHeaderWords('Our Denver gutter projects')
 const lpWhyChooseHeadline = 'Trusted Gutter Contractor in the Greater Denver Area'
 const lpServicesHeadline = capitalizeHeaderWords('A better Denver gutter experience')
@@ -373,7 +373,7 @@ const universalFormIntro =
           <p class="hero-typed" aria-live="polite">
             <span id="hero-typed-text"></span><span class="hero-caret" aria-hidden="true">|</span>
           </p>
-          <p class="hero-lead">{lpHeroLead}</p>
+          <LpHeroLead />
           <div class="hero-actions">
             <a href={telLink} class="btn btn-primary btn-lg cta1-primary-call">{callLabelHero}</a>
           </div>
