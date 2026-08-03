@@ -91,6 +91,7 @@ const whyCtas = whyChoose?.ctas
 const services = hp.services
 const about = {
   ...hp.about,
+  headline: 'About Our Gutter Company',
   video: {
     ...(hp.about?.video || {}),
     posterSrc: 'lp/gutters/about-securing-bracket-drill.png',
@@ -101,7 +102,10 @@ const aboutVideo = about?.video
 const aboutVideoSource = asStr(aboutVideo?.sourceSrc).trim().toLowerCase()
 const aboutVideoPosterOnly =
   aboutVideoSource === 'poster-only' || aboutVideoSource === 'none'
-const uniquePoints = hp.uniquePoints
+const uniquePoints = {
+  ...hp.uniquePoints,
+  headline: 'Reliable Gutter Company in the Greater Denver Area',
+}
 const statsBar = hp.statsBar
 const contactBanner = hp.contactBanner
 const reviews = {
@@ -262,14 +266,10 @@ function responsiveSrc(src, width = 800) {
 }
 
 const lpKeyword = 'Denver Gutter Services'
-const lpHeroHeadline = capitalizeHeaderWords(
-  `Summer Special! Save Money Today On ${lpKeyword}.`,
-)
+const lpHeroHeadline = 'Trusted Gutter Company in the Greater Denver Area'
 const lpHeroLead = `Fast scheduling, careful workmanship, and clean job sites—we focus on Denver gutters: installation, repair, cleaning, and guards that keep water moving away from your roofline and foundation.`
 const lpProjectsHeadline = capitalizeHeaderWords('Our Denver gutter projects')
-const lpWhyChooseHeadline = capitalizeHeaderWords(
-  `You're #1 choice for ${lpKeyword}`,
-)
+const lpWhyChooseHeadline = 'Trusted Gutter Contractor in the Greater Denver Area'
 const lpServicesHeadline = capitalizeHeaderWords('A better Denver gutter experience')
 const universalFormHeading = capitalizeHeaderWords('Book your free consultation')
 const lpEstimateCtaLabel = capitalizeHeaderWords(`Get special pricing on ${lpKeyword}`)
