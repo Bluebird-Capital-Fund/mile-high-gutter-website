@@ -1,0 +1,30 @@
+---
+import StandardPageChrome from '../../components/StandardPageChrome.astro'
+import { sanity } from '../../lib/sanity.js'
+import { asStr } from '../../lib/sanity-strings.js'
+
+let legal = {}
+try {
+  legal = await sanity.fetch(`*[_type == "legalPage" && slug.current == "financing"][0]{title, content}`)
+} catch (err) {
+  console.warn('[financing] Sanity fetch failed.', err)
+}
+
+const legalTitle = asStr(legal?.title) || 'Financing'
+const legalContent =
+  asStr(legal?.content) ||
+  'Financing available with approved credit. Financing options, rates, terms, and promotional offers are subject to lender approval and may vary. Add complete financing details, current offers, terms, and conditions in Sanity under the Legal content type (slug: financing).'
+---
+
+<StandardPageChrome
+  title={`${legalTitle} | Mile High Gutters`}
+  description="Financing options, rates, terms, and promotional offers for Mile High Gutters."
+  navDdPrefix="financing"
+>
+  <main class="section">
+    <div class="container" style="max-width: 70ch;">
+      <h1 class="section-title section-title-secondary">{legalTitle}</h1>
+      <p style="white-space: pre-line; line-height: 1.75; margin-top: 1rem;">{legalContent}</p>
+    </div>
+  </main>
+</StandardPageChrome>
