@@ -33,8 +33,7 @@
         }
       ],
       "destination": "https://www.milehighgutter.com/$1",
-      "permanent": true,
-      "statusCode": 308
+      "permanent": true
     },
     {
       "source": "/city-service-base/",
