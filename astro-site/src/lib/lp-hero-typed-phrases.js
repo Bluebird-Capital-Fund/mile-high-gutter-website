@@ -1,6 +1,6 @@
 /**
  * Rotating hero typed lines for /lp/* pages (see public/script.js hero typewriter).
- * @param {'gutter-repair' | 'gutters' | 'gutter-installation' | 'gutter-replacement' | 'gutter-guards'} slug
+ * @param {'gutter-repair' | 'gutters' | 'gutter-installation' | 'gutter-guards'} slug
  * @returns {string[]}
  */
 export function getLpHeroTypedPhrases(slug) {
@@ -28,14 +28,6 @@ export function getLpHeroTypedPhrases(slug) {
       'Colors and profiles that match your home',
       'New builds and existing homes',
       'Professional install, minimal disruption',
-    ],
-    'gutter-replacement': [
-      'Aging sections that fail every season',
-      'Rust, cracks, and chronic overflow',
-      'Upgrade to seamless, higher-capacity runs',
-      'Storm-damaged gutter replacement',
-      'Better flow away from the foundation',
-      'Long-term protection and curb appeal',
     ],
     'gutter-guards': [
       'Gutters clogged with leaves and needles',

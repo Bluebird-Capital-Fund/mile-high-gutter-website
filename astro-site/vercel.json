@@ -41,6 +41,16 @@
       "permanent": true
     },
     {
+      "source": "/lp/gutter-replacement",
+      "destination": "/lp/gutters/",
+      "permanent": true
+    },
+    {
+      "source": "/lp/gutter-replacement/",
+      "destination": "/lp/gutters/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
