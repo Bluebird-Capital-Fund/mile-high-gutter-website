@@ -699,8 +699,8 @@ a.btn-primary[href^="tel:"]:hover {
 }
 
 ul.hero-lead-list {
-  list-style: none;
-  padding: 0;
+  list-style: disc;
+  padding-left: 1.25rem;
   min-height: 0;
   display: grid;
   gap: 0.35rem;
@@ -710,6 +710,7 @@ ul.hero-lead-list {
 
 ul.hero-lead-list li {
   margin: 0;
+  padding-left: 0.15rem;
 }
 
 ul.hero-lead-list strong {
