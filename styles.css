@@ -3627,9 +3627,14 @@ form[data-lead-form] button[type="submit"].is-busy {
   opacity: 0.92;
 }
 
-.footer-financing-disclaimer {
+.footer-disclaimers {
+  display: grid;
+  gap: 0.65rem;
+  padding-bottom: 0.9rem;
+}
+
+.footer-disclaimer {
   margin: 0;
-  padding: 0 0 0.9rem;
   max-width: 72ch;
   font-size: 0.8rem;
   line-height: 1.45;
@@ -3713,7 +3718,7 @@ form[data-lead-form] button[type="submit"].is-busy {
     padding: 0.8rem var(--space-lg);
   }
 
-  .footer-financing-disclaimer {
+  .footer-disclaimers {
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
   }
@@ -3758,7 +3763,7 @@ form[data-lead-form] button[type="submit"].is-busy {
     padding: 0.8rem var(--space-md);
   }
 
-  .footer-financing-disclaimer {
+  .footer-disclaimers {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
   }
