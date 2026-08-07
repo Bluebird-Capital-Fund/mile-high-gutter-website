@@ -2263,6 +2263,16 @@ form[data-lead-form] button[type="submit"].is-busy {
   }
 }
 
+.home-hero .hero-lead-list {
+  font-size: 1.15rem;
+}
+
+@media (max-width: 768px) {
+  .home-hero .hero-lead-list {
+    font-size: 1.05rem;
+  }
+}
+
 .hero-split-inner {
   display: grid;
   grid-template-columns: 1fr 420px;
