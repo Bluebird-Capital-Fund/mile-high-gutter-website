@@ -7,6 +7,7 @@ import FooterHoursRow from '../components/FooterHoursRow.astro'
 import LeadFormSmsConsent from '../components/LeadFormSmsConsent.astro'
 import OfferBarMessage from '../components/OfferBarMessage.astro'
 import FooterSupportBar from '../components/FooterSupportBar.astro'
+import LpHeroLead from '../components/LpHeroLead.astro'
 import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../lib/footer-contact-heading.js'
 import { GROQ_HOME_PAGE, sanity } from '../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../lib/site-settings.js'
@@ -299,7 +300,7 @@ function responsiveSrc(src, width = 800) {
           <p class="hero-typed" aria-live="polite">
             <span id="hero-typed-text"></span><span class="hero-caret" aria-hidden="true">|</span>
           </p>
-          <p class="hero-lead">{asStr(hero?.lead)}</p>
+          <LpHeroLead />
           <div class="hero-actions">
             <a href={telLink} class="btn btn-primary btn-lg cta1-primary-call">{callLabelHero}</a>
           </div>
