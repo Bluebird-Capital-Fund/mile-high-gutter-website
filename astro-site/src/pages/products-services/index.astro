@@ -19,7 +19,16 @@ try {
 
 const pageTitle = 'Products & Services | Mile High Gutters'
 const pageDescription = 'Explore gutter products and services in Denver.'
-const items = Array.isArray(pages) ? pages : []
+const SLUG_ALIASES = {
+  'seamless-gutters-denver-co': 'seamless-gutter-denver-co',
+}
+const items = (Array.isArray(pages) ? pages : []).map((item) => {
+  const raw = asStr(item?.slug)
+  return {
+    ...item,
+    slug: SLUG_ALIASES[raw] || raw,
+  }
+})
 const productsServicesIntro = asStr(settings?.productsServicesIntro)
 ---
 

@@ -51,6 +51,16 @@
       "permanent": true
     },
     {
+      "source": "/products-services/seamless-gutters-denver-co",
+      "destination": "/products-services/seamless-gutter-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/products-services/seamless-gutters-denver-co/",
+      "destination": "/products-services/seamless-gutter-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true

@@ -10,22 +10,26 @@ import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../li
 import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
 import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
-import { getCityServiceOverride } from '../../lib/city-service-overrides/index.js'
+import { getCityServiceOverride, cityServiceOverrideSlugs } from '../../lib/city-service-overrides/index.js'
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
+
+/** Old Sanity slug superseded by /seamless-gutter-denver-co/ (redirected in vercel.json). */
+const RETIRED_CITY_SERVICE_SLUGS = new Set(['seamless-gutters-denver-co'])
 
 export async function getStaticPaths() {
   try {
     const pages = await sanity.fetch(
       `*[_type == "cityServicePage" && defined(slug.current)]{"slug": slug.current}`
     )
-    return (Array.isArray(pages) ? pages : [])
+    const fromSanity = (Array.isArray(pages) ? pages : [])
       .map((p) => asStr(p?.slug))
-      .filter(Boolean)
-      .map((slug) => ({ params: { slug } }))
+      .filter((slug) => slug && !RETIRED_CITY_SERVICE_SLUGS.has(slug))
+    const slugs = [...new Set([...fromSanity, ...cityServiceOverrideSlugs])]
+    return slugs.map((slug) => ({ params: { slug } }))
   } catch (err) {
     console.warn('[products-services/[slug]] Failed to load city service slugs.', err)
-    return []
+    return cityServiceOverrideSlugs.map((slug) => ({ params: { slug } }))
   }
 }
 
