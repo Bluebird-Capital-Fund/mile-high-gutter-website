@@ -10,6 +10,7 @@ import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../li
 import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
 import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
+import { getCityServiceOverride } from '../../lib/city-service-overrides/index.js'
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 
@@ -29,7 +30,10 @@ export async function getStaticPaths() {
 }
 
 const slug = asStr(Astro.params?.slug)
-const pageDescription = 'Professional gutter services in Denver with fast scheduling and quality workmanship.'
+const pageOverride = getCityServiceOverride(slug)
+const pageDescription =
+  asStr(pageOverride?.pageDescription) ||
+  'Professional gutter services in Denver with fast scheduling and quality workmanship.'
 
 let settings = {}
 let homePage = {}
@@ -48,13 +52,14 @@ const business = settings?.business ?? {}
 const header = mergeHeaderFromSettings(settings, homePage?.header)
 const hero = homePage?.hero ?? {}
 const services = homePage?.services ?? {}
-const faq = cityPage?.faq ?? homePage?.faq ?? {}
+const faq = pageOverride?.faq ?? cityPage?.faq ?? homePage?.faq ?? {}
 const footerEstimate = settings?.footerEstimate ?? homePage?.footerEstimate ?? {}
 const footerEstimateFields = footerEstimate?.formFields ?? {}
 const formsCfg = settings?.forms ?? {}
 const footerBrand = settings?.footerBrand ?? homePage?.footerBrand ?? {}
 const footerColumns = settings?.footerColumns ?? homePage?.footerColumns ?? []
 const footerSupport = settings?.footerSupport ?? homePage?.footerSupport ?? {}
+const serviceArea = homePage?.serviceArea ?? {}
 
 const companyName = asStr(business.companyName) || 'Mile High Gutters'
 const phoneDisplay = asStr(business.phoneDisplay) || '(303) 000-0000'
@@ -88,13 +93,30 @@ const servicesBgStyle = servicesBgSrc
   ? `background-color: #143980; background-image: linear-gradient(135deg, rgba(20, 57, 128, 0.94) 0%, rgba(26, 74, 158, 0.94) 100%), url("${mediaUrl(servicesBgSrc)}"); background-size: cover; background-position: center; background-repeat: no-repeat;`
   : undefined
 const sharedReviews = settings?.reviews ?? homePage?.reviews ?? {}
-const reviewsToRender = sharedReviews
-const cityContentSections = Array.isArray(cityPage?.contentSections) ? cityPage.contentSections : []
+const reviewsToRender = {
+  ...sharedReviews,
+  ...(pageOverride?.reviewsHeadline ? { headline: pageOverride.reviewsHeadline } : {}),
+}
+const cityContentSections = Array.isArray(pageOverride?.contentSections)
+  ? pageOverride.contentSections
+  : Array.isArray(cityPage?.contentSections)
+    ? cityPage.contentSections
+    : []
 const mapEmbedUrl = asStr(cityPage?.mapEmbedUrl) || asStr(settings?.mapEmbedUrl)
 const estimateCtaText = 'Book a Consultation'
 const estimateCtaHref = '#contact'
-const pageH1 = asStr(cityPage?.headline) || asStr(hero?.headline) || 'Gutter Services in Denver, CO'
-const pageTitle = `${pageH1} | Mile High Gutters`
+const pageH1 = asStr(pageOverride?.headline) || asStr(cityPage?.headline) || asStr(hero?.headline) || 'Gutter Services in Denver, CO'
+const pageTitle = asStr(pageOverride?.pageTitle) || `${pageH1} | Mile High Gutters`
+const pageEyebrow = asStr(pageOverride?.eyebrow) || asStr(cityPage?.eyebrow) || asStr(hero?.eyebrow) || 'City Service'
+const pageLead =
+  asStr(pageOverride?.lead) ||
+  asStr(cityPage?.lead) ||
+  asStr(hero?.lead) ||
+  'City service page starter connected to Sanity content.'
+const hideServicesGrid = Boolean(pageOverride?.hideServicesGrid)
+const showServiceAreaCities = Boolean(pageOverride?.showServiceAreaCities)
+const midCta = pageOverride?.midCta || null
+const canonicalHref = `https://www.milehighgutter.com/products-services/${slug}/`
 
 const serviceHref = (svc) => {
   const explicit = asStr(svc?.href)
@@ -124,6 +146,7 @@ const serviceHref = (svc) => {
   description={pageDescription}
   theme={settings?.theme}
   forms={{ submitPath: asStr(settings?.forms?.submitPath) || '/api/lead' }}
+  canonical={canonicalHref}
 >
   <header class="header">
     <div class="offer-bar">
@@ -197,9 +220,9 @@ const serviceHref = (svc) => {
       <div class="hero-bg" style={heroBgStyle}></div>
       <div class="container hero-split-inner">
         <div class="hero-copy">
-          <div class="hero-eyebrow">{asStr(cityPage?.eyebrow) || asStr(hero?.eyebrow) || 'City Service'}</div>
+          <div class="hero-eyebrow">{pageEyebrow}</div>
           <h1>{pageH1}</h1>
-          <p class="hero-lead">{asStr(cityPage?.lead) || asStr(hero?.lead) || 'City service page starter connected to Sanity content.'}</p>
+          <p class="hero-lead">{pageLead}</p>
           <div class="hero-actions">
             <a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg cta1-primary-call">{heroCallLabel}</a>
           </div>
@@ -286,33 +309,45 @@ const serviceHref = (svc) => {
                 {
                   heading: 'City-Specific Gutter Service Content',
                   body: 'Use this section for rich local service copy. Add one or more blocks in Sanity. Images are optional per block.',
+                  showCta: true,
                 },
               ]
-          ).map((sec) => (
-            <>
-              {asStr(sec.imageSrc) ? (
-                <img
-                  src={mediaUrl(asStr(sec.imageSrc))}
-                  alt={asStr(sec.imageAlt) || asStr(sec.heading)}
-                  style="width: 100%; height: auto; border-radius: 12px; margin: 0 0 1.25rem; display: block;"
+          ).map((sec) => {
+            const showCta = sec?.showCta !== false
+            const imageSrc = asStr(sec.imageSrc)
+            return (
+              <>
+                <h2 class="section-title section-title-secondary">{asStr(sec.heading)}</h2>
+                <div
+                  class="section-lead city-service-body"
+                  style="max-width:72ch; margin-bottom: 1rem;"
+                  set:html={sanitizeCmsHtml(asStr(sec.body))}
                 />
-              ) : null}
-              <h2 class="section-title section-title-secondary">{asStr(sec.heading)}</h2>
-              <div
-                class="section-lead"
-                style="max-width:72ch; white-space: pre-line; margin-bottom: 1rem;"
-                set:html={sanitizeCmsHtml(asStr(sec.body))}
-              />
-              <div class="why-choose-actions" style="margin: 0 0 2.25rem;">
-                <a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg">{heroCallLabel}</a>
-                <a href={estimateCtaHref} class="btn btn-outline btn-lg request-estimate">{estimateCtaText}</a>
-              </div>
-            </>
-          ))}
+                {imageSrc ? (
+                  <img
+                    src={mediaUrl(imageSrc)}
+                    alt={asStr(sec.imageAlt) || asStr(sec.heading)}
+                    style="width: 100%; height: auto; border-radius: 12px; margin: 0 0 1.75rem; display: block;"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : null}
+                {showCta ? (
+                  <div class="why-choose-actions" style="margin: 0 0 2.25rem;">
+                    <a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg">{heroCallLabel}</a>
+                    <a href={estimateCtaHref} class="btn btn-outline btn-lg request-estimate">{estimateCtaText}</a>
+                  </div>
+                ) : (
+                  <div style="margin: 0 0 2.25rem;"></div>
+                )}
+              </>
+            )
+          })}
         </article>
       </div>
     </section>
 
+    {!hideServicesGrid ? (
     <section class="section services" style={servicesBgStyle}>
       <div class="container">
         <h2 class="section-title">{asStr(services?.headline) || 'Our Gutter Services in Denver'}</h2>
@@ -336,6 +371,7 @@ const serviceHref = (svc) => {
         </div>
       </div>
     </section>
+    ) : null}
 
     <section class="section faq-section" id="faq">
       <div class="container">
@@ -425,18 +461,69 @@ const serviceHref = (svc) => {
       </div>
     </section>
 
+    {midCta ? (
+      <section class="section">
+        <div class="container">
+          <article style="max-width: 72ch; margin: 0 auto;">
+            <h2 class="section-title section-title-secondary">{asStr(midCta.headline)}</h2>
+            <div
+              class="section-lead city-service-body"
+              style="max-width:72ch; margin-bottom: 1rem;"
+              set:html={sanitizeCmsHtml(asStr(midCta.body))}
+            />
+            <div class="why-choose-actions" style="margin: 0;">
+              <a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg">{heroCallLabel}</a>
+              <a href={estimateCtaHref} class="btn btn-outline btn-lg request-estimate">{estimateCtaText}</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    ) : null}
+
     <section class="section service-area" id="city-map">
-      <div class="map-wrap" style="max-width: none; border-radius: 0; box-shadow: none;">
-        <iframe
-          src={mapEmbedUrl}
-          width="100%"
-          height="440"
-          style="border:0; display:block;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title={`${companyName} service area map`}
-        ></iframe>
+      <div class="container">
+        {showServiceAreaCities ? (
+          <>
+            <div class="why-eyebrow">{asStr(serviceArea?.eyebrow) || 'Service Area'}</div>
+            <h2 class="section-title">{asStr(serviceArea?.headline) || 'Rain Gutters in the Denver Metro Area'}</h2>
+            <p class="section-lead service-area-intro">{asStr(serviceArea?.intro)}</p>
+            <div class="service-area-grid">
+              <div class="map-wrap">
+                <iframe
+                  src={mapEmbedUrl}
+                  width="600"
+                  height="400"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title={`${companyName} service area map`}
+                ></iframe>
+              </div>
+              <div class="cities-list">
+                <p class="cities-label">{asStr(serviceArea?.citiesLabel) || 'Cities We Serve'}</p>
+                <nav class="cities-nav" aria-label={asStr(serviceArea?.citiesNavAriaLabel) || 'Cities We Serve'}>
+                  {(Array.isArray(serviceArea?.cities) ? serviceArea.cities : []).map((c) => (
+                    <a href={asStr(c.href) || '#contact'}>{asStr(c.name)}</a>
+                  ))}
+                </nav>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div class="map-wrap" style="max-width: none; border-radius: 0; box-shadow: none; margin: 0 -1.5rem;">
+            <iframe
+              src={mapEmbedUrl}
+              width="100%"
+              height="440"
+              style="border:0; display:block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title={`${companyName} service area map`}
+            ></iframe>
+          </div>
+        )}
       </div>
     </section>
   </main>

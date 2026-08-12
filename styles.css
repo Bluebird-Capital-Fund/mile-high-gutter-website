@@ -1199,6 +1199,31 @@ ul.hero-lead-list strong {
   max-width: 540px;
 }
 
+.city-service-body {
+  max-width: 72ch;
+}
+
+.city-service-body p,
+.city-service-body ul,
+.city-service-body ol {
+  margin: 0 0 1rem;
+}
+
+.city-service-body ul,
+.city-service-body ol {
+  padding-left: 1.25rem;
+}
+
+.city-service-body li {
+  margin: 0 0 0.4rem;
+}
+
+.city-service-body a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* Services */
 .services {
   /* Thornton drone photo: very subtle under the brand blue (see layoutBackgrounds.services in homepage-content.json) */
