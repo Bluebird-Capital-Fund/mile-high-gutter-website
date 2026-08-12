@@ -30,7 +30,6 @@ const [settings, homePage] = await Promise.all([
 assertSanityHomepage(settings, homePage)
 
 const business = settings.business
-const meta = settings.meta
 const statsValues = settings.statsValues
 const mapEmbedUrl = asStr(settings.mapEmbedUrl)
 
@@ -45,8 +44,9 @@ const copyrightHref = asStr(business?.copyrightSiteUrl)
 const logoBlack = asStr(business?.logoHorizontalBlack)
 const logoWhite = asStr(business?.logoHorizontalWhite)
 
-const pageTitle = asStr(meta?.title)
-const pageDescription = asStr(meta?.description)
+const pageTitle = 'Best Gutter Company in Denver | Book Consultation | Mile High'
+const pageDescription =
+  'Need a reliable gutter company Denver homeowners trust? Get professional gutter installation, repair, cleaning, and more. Book a free consultation.'
 
 const hp = homePage
 const header = mergeHeaderFromSettings(settings, hp.header)
@@ -54,25 +54,52 @@ const offerBar = header?.offerBar
 const navItems = header?.navItems
 const hero = hp.hero
 const brandsMarquee = hp.brandsMarquee
-const projects = hp.projects
-const whyChoose = hp.whyChoose
+const projects = {
+  ...hp.projects,
+  headline: 'Our Denver Gutter Projects',
+}
+const whyChoose = {
+  ...hp.whyChoose,
+  headline: 'Reliable Denver Gutter Company',
+}
 const whyStamp = whyChoose?.stamp
 const whyCtas = whyChoose?.ctas
-const services = hp.services
-const about = hp.about
+const services = {
+  ...hp.services,
+  headline: 'Our Gutter Services in Denver',
+}
+const about = {
+  ...hp.about,
+  headline: 'Trusted Gutter Contractors in Denver',
+}
 const aboutVideo = about?.video
 const aboutVideoSource = asStr(aboutVideo?.sourceSrc).trim().toLowerCase()
 const aboutVideoPosterOnly =
   aboutVideoSource === 'poster-only' || aboutVideoSource === 'none'
-const uniquePoints = hp.uniquePoints
+const uniquePoints = {
+  ...hp.uniquePoints,
+  headline: 'Why Choose Our Denver Gutter Company?',
+}
 const statsBar = hp.statsBar
 const contactBanner = hp.contactBanner
-const reviews = settings?.reviews ?? hp.reviews
+const reviews = {
+  ...(settings?.reviews ?? hp.reviews),
+  headline: 'What Our Denver Customers Say',
+}
 const reviewsSummary = reviews?.summary
 const reviewValues = reviews?.reviewValues
-const serviceArea = hp.serviceArea
-const team = hp.team
-const faq = hp.faq
+const serviceArea = {
+  ...hp.serviceArea,
+  headline: 'Rain Gutters in the Denver Metro Area',
+}
+const team = {
+  ...hp.team,
+  headline: 'Our Denver Gutter Team',
+}
+const faq = {
+  ...hp.faq,
+  headline: 'Denver Gutter FAQs',
+}
 const footerEstimate = settings?.footerEstimate ?? hp.footerEstimate
 const footerEstimateFields = footerEstimate?.formFields
 const footerBrand = settings?.footerBrand ?? hp.footerBrand
@@ -296,7 +323,7 @@ function responsiveSrc(src, width = 800) {
       <div class="container hero-split-inner">
         <div class="hero-copy">
           <div class="hero-eyebrow">Start Your Free Estimate</div>
-          <h1>{asStr(hero?.headline)}</h1>
+          <h1>Best Gutter Company in Denver</h1>
           <p class="hero-typed" aria-live="polite">
             <span id="hero-typed-text"></span><span class="hero-caret" aria-hidden="true">|</span>
           </p>
