@@ -1219,9 +1219,14 @@ ul.hero-lead-list strong {
 }
 
 .city-service-body a {
-  color: var(--color-primary);
+  color: var(--color-accent);
+  font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.city-service-body a:hover {
+  color: var(--color-accent-hover);
 }
 
 /* Services */
