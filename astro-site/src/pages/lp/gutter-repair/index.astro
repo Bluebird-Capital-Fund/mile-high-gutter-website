@@ -86,6 +86,12 @@ const whyChoose = {
   imageSrc: 'lp/gutter-repair/why-choose-white-downspout-brick.png',
   imageAlt:
     'White downspout routed along brick exterior under a teal gutter',
+  stamp: {
+    ...hp.whyChoose?.stamp,
+    homesCountTemplate: '{{count}}',
+    line2: 'Projects',
+    line3: '',
+  },
 }
 const whyStamp = whyChoose?.stamp
 const whyCtas = whyChoose?.ctas
@@ -103,7 +109,16 @@ const aboutVideoSource = asStr(aboutVideo?.sourceSrc).trim().toLowerCase()
 const aboutVideoPosterOnly =
   aboutVideoSource === 'poster-only' || aboutVideoSource === 'none'
 const uniquePoints = hp.uniquePoints
-const statsBar = hp.statsBar
+const statsBar = {
+  ...hp.statsBar,
+  items: Array.isArray(hp.statsBar?.items)
+    ? hp.statsBar.items.map((row) =>
+        asStr(row?.valueKey) === 'statsJobsCompleted'
+          ? { ...row, label: 'Projects' }
+          : row,
+      )
+    : hp.statsBar?.items,
+}
 const contactBanner = hp.contactBanner
 const reviews = {
   ...(settings?.reviews ?? hp.reviews),
@@ -677,8 +692,8 @@ const lpRepairContactP2 = `Call: ${phoneDisplay}`
           })()}
           <div class="why-choose-stamp">
             <strong>{homesCountDisplay}</strong>
-            <span>{asStr(whyStamp?.line2)}</span>
-            <span>{asStr(whyStamp?.line3)}</span>
+            {asStr(whyStamp?.line2) ? <span>{asStr(whyStamp?.line2)}</span> : null}
+            {asStr(whyStamp?.line3) ? <span>{asStr(whyStamp?.line3)}</span> : null}
           </div>
         </div>
         <div class="why-choose-content">

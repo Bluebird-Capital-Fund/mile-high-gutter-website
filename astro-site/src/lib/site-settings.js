@@ -117,6 +117,15 @@ function normalizeBusiness(business) {
   }
 }
 
+function normalizeStatsValues(statsValues) {
+  if (!statsValues || typeof statsValues !== 'object') return statsValues
+  return {
+    ...statsValues,
+    statsJobsCompleted: '10,000+',
+    whyChooseHomesCount: '10,000+',
+  }
+}
+
 function hasUpdatedLinks(doc) {
   const navHref = doc?.header?.navItems?.[1]?.href
   const privacyHref = doc?.footerSupport?.links?.[0]?.href
@@ -186,6 +195,7 @@ export async function getSiteSettings() {
   siteSettingsCache = {
     ...singleton,
     business: normalizeBusiness(singleton?.business ?? linksSource?.business),
+    statsValues: normalizeStatsValues(singleton?.statsValues ?? linksSource?.statsValues),
     reviews: singleton?.reviews ?? linksSource?.reviews,
     header: normalizeHeader(mergedHeader ?? singleton?.header) ?? {},
     footerEstimate: normalizeFooterEstimate(

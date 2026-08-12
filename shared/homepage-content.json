@@ -220,10 +220,10 @@
     "imageAlt": "Close-up of metal gutter guard installed along asphalt shingles in Lakewood",
     "location": "Lakewood, CO",
     "stamp": {
-      "homesCountTemplate": "Over {{count}}",
+      "homesCountTemplate": "{{count}}",
       "homesCountKey": "whyChooseHomesCount",
-      "line2": "Denver, Colorado",
-      "line3": "Gutters Serviced Successfully."
+      "line2": "Projects",
+      "line3": ""
     },
     "eyebrow": "Why Choose Us?",
     "headline": "Dependable Gutter Service in Denver",
@@ -360,17 +360,17 @@
     "ariaLabel": "Company Stats",
     "items": [
       { "valueKey": "statsYearsExperience", "label": "Years Experience" },
-      { "valueKey": "statsJobsCompleted", "label": "Satisfied Customers" },
+      { "valueKey": "statsJobsCompleted", "label": "Projects" },
       { "valueKey": "statsAvgRating", "label": "Average Rating" },
       { "valueKey": "statsResponseTime", "label": "Typical Response" }
     ]
   },
   "statsValues": {
     "statsYearsExperience": "40+",
-    "statsJobsCompleted": "32,500+",
+    "statsJobsCompleted": "10,000+",
     "statsAvgRating": "4.8/5",
     "statsResponseTime": "5 Min",
-    "whyChooseHomesCount": "32,500+"
+    "whyChooseHomesCount": "10,000+"
   },
   "contactBanner": {
     "headline": "Start Your Free Estimate",
