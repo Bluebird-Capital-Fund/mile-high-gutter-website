@@ -143,7 +143,7 @@ const pageIdPrefix = `std-${String(navDdPrefix).replace(/[^a-z0-9-]/gi, '_')}`
               <div class="contact-form-field contact-form-field-full"><label for={`${pageIdPrefix}-contact-message`}>{asStr(footerEstimateFields?.projectDetailsLabel) || 'Project Details'}</label><textarea id={`${pageIdPrefix}-contact-message`} name="message" rows="4"></textarea></div>
             </div>
             <LeadFormSmsConsent idPrefix={`${pageIdPrefix}-footer`} variant="contact" />
-            <button type="submit" class="btn btn-primary btn-lg">{asStr(footerEstimateFields?.submitButton) || 'Request Quote'}</button>
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
           </form>
         </div>
       </div>

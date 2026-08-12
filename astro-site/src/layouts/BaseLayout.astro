@@ -14,6 +14,7 @@ const {
   homeRevealAnimations = false,
   lcpImageSrc = '',
   noIndex = false,
+  canonical = '',
 } = Astro.props
 
 const settings = await getSiteSettings()
@@ -24,6 +25,18 @@ if (!forms || typeof forms.submitPath !== 'string' || !forms.submitPath.trim()) 
 }
 
 const themeCss = buildThemeCss(theme)
+
+const siteOrigin = Astro.site?.origin || 'https://www.milehighgutter.com'
+const canonicalHref = (() => {
+  const override = typeof canonical === 'string' ? canonical.trim() : ''
+  if (override) return override
+  if (noIndex) return ''
+  try {
+    return new URL(Astro.url.pathname || '/', siteOrigin).href
+  } catch {
+    return `${siteOrigin}/`
+  }
+})()
 
 const recaptchaSiteKey =
   (import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || '').trim() ||
@@ -66,6 +79,7 @@ const formsJson = JSON.stringify(formsForClient).replace(/</g, '\\u003c')
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {canonicalHref ? <link rel="canonical" href={canonicalHref} /> : null}
     {noIndex ? <meta name="robots" content="noindex, nofollow" /> : null}
     {localBusinessJsonLd ? (
       <script type="application/ld+json" set:html={localBusinessJsonLd} />

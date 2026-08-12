@@ -182,7 +182,7 @@ const universalFormAction = asStr(formsCfg?.submitPath) || asStr(footerEstimate?
 const universalFormMethod = asStr(footerEstimate?.formMethod)
 const universalFormHeading = asStr(footerEstimate?.headline)
 const universalFormIntro = asStr(footerEstimate?.intro)
-const universalSubmitLabel = asStr(universalFormFields?.submitButton)
+const universalSubmitLabel = 'Submit'
 const universalFormKicker = asStr(formsCfg?.formKicker) || 'Free Estimate'
 const universalFormAriaLabel = asStr(formsCfg?.formAriaLabel) || 'Lead form'
 const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
@@ -238,6 +238,7 @@ function responsiveSrc(src, width = 800) {
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
+  canonical="https://www.milehighgutter.com/"
   theme={settings.theme}
   forms={{ submitPath: asStr(settings.forms?.submitPath) }}
   lcpImageSrc={heroBgUrl}
@@ -322,7 +323,7 @@ function responsiveSrc(src, width = 800) {
       </div>
       <div class="container hero-split-inner">
         <div class="hero-copy">
-          <div class="hero-eyebrow">Start Your Free Estimate</div>
+          <div class="hero-eyebrow">Book a Free Consultation Today</div>
           <h1>Best Gutter Company in Denver</h1>
           <p class="hero-typed" aria-live="polite">
             <span id="hero-typed-text"></span><span class="hero-caret" aria-hidden="true">|</span>
@@ -573,7 +574,7 @@ function responsiveSrc(src, width = 800) {
           <div class="why-choose-actions">
             <a href={telLink} class="btn btn-primary btn-lg">{whyCallLabel}</a>
             <a href={asStr(whyCtas?.estimateHref)} class="btn btn-outline btn-lg request-estimate">
-              {asStr(whyCtas?.estimate)}
+              Book a Consultation
             </a>
           </div>
         </div>
@@ -611,7 +612,7 @@ function responsiveSrc(src, width = 800) {
           <div class="about-video-actions">
             <a href={telLink} class="btn btn-primary btn-lg">{aboutCallLabel}</a>
             <a href={asStr(about?.ctas?.estimateHref)} class="btn btn-outline btn-lg request-estimate">
-              {asStr(about?.ctas?.estimate)}
+              Book a Consultation
             </a>
           </div>
         </div>

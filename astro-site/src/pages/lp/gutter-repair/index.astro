@@ -200,7 +200,7 @@ const copyrightInnerHtml = sanitizeCmsHtml(
 const universalFormFields = footerEstimateFields
 const universalFormAction = asStr(formsCfg?.submitPath) || asStr(footerEstimate?.formAction)
 const universalFormMethod = asStr(footerEstimate?.formMethod)
-const universalSubmitLabel = asStr(universalFormFields?.submitButton)
+const universalSubmitLabel = 'Submit'
 const universalFormAriaLabel = asStr(formsCfg?.formAriaLabel) || 'Lead form'
 const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
 
@@ -288,7 +288,7 @@ const lpWhyChooseHeadline = capitalizeHeaderWords(
 )
 const lpServicesHeadline = capitalizeHeaderWords(`A better ${lpKeyword} experience`)
 const universalFormHeading = capitalizeHeaderWords('Book your free consultation')
-const lpEstimateCtaLabel = 'Book Your Consultation'
+const lpEstimateCtaLabel = 'Book a Consultation'
 const lpFaqHeadingId = 'lp-faq-heading'
 const lpFaqHeadline = capitalizeHeaderWords(`Frequently asked questions about ${lpKeyword}`)
 const lpFaqItems = buildLpFaqItems(lpKeyword)
@@ -422,7 +422,7 @@ const lpRepairContactP2 = `Call: ${phoneDisplay}`
       </div>
       <div class="container hero-split-inner">
         <div class="hero-copy">
-          <div class="hero-eyebrow">Start Your Free Estimate</div>
+          <div class="hero-eyebrow">Book a Free Consultation Today</div>
           <h1>{lpHeroHeadline}</h1>
           <p class="hero-typed" aria-live="polite">
             <span id="hero-typed-text"></span><span class="hero-caret" aria-hidden="true">|</span>

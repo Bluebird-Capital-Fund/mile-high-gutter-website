@@ -91,7 +91,7 @@ const sharedReviews = settings?.reviews ?? homePage?.reviews ?? {}
 const reviewsToRender = sharedReviews
 const cityContentSections = Array.isArray(cityPage?.contentSections) ? cityPage.contentSections : []
 const mapEmbedUrl = asStr(cityPage?.mapEmbedUrl) || asStr(settings?.mapEmbedUrl)
-const estimateCtaText = 'Request Estimate'
+const estimateCtaText = 'Book a Consultation'
 const estimateCtaHref = '#contact'
 const pageH1 = asStr(cityPage?.headline) || asStr(hero?.headline) || 'Gutter Services in Denver, CO'
 const pageTitle = `${pageH1} | Mile High Gutters`
@@ -272,7 +272,7 @@ const serviceHref = (svc) => {
             </div>
           </div>
           <LeadFormSmsConsent idPrefix="city-hero" variant="hero" />
-          <button type="submit" class="btn btn-primary btn-lg">{asStr(universalFormFields?.submitButton) || 'Send'}</button>
+          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
         </form>
       </div>
     </section>
@@ -518,7 +518,7 @@ const serviceHref = (svc) => {
               </div>
             </div>
             <LeadFormSmsConsent idPrefix="city-footer" variant="contact" />
-            <button type="submit" class="btn btn-primary btn-lg">{asStr(footerEstimateFields?.submitButton) || 'Request Quote'}</button>
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
           </form>
         </div>
       </div>

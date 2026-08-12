@@ -15,7 +15,7 @@ interface Props {
 
 const { offerBar } = Astro.props
 const discount = asStr(offerBar?.discountLabel).trim()
-const cta = asStr(offerBar?.ctaText).trim()
+const cta = 'Book a Free Consultation Today'
 const href = asStr(offerBar?.ctaHref) || '#contact'
 ---
 
