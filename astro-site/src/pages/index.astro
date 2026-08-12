@@ -61,16 +61,79 @@ const projects = {
 const whyChoose = {
   ...hp.whyChoose,
   headline: 'Reliable Denver Gutter Company',
+  lead:
+    'From repairs to full gutter replacements, Mile High Gutter provides quality workmanship, honest recommendations, and clear communication across the Denver metro.',
+  bullets: [
+    {
+      title: '40+ Years of Local Experience:',
+      text: 'We understand Colorado weather and how to build gutter systems for reliable drainage and long-term protection.',
+    },
+    {
+      title: 'Complete Gutter Solutions:',
+      text: 'Denver gutter cleaning, installation, repair, guards, downspouts, and more for residential and commercial properties.',
+    },
+    {
+      title: 'Honest, Knowledgeable Service:',
+      text: 'Our experienced estimators recommend what makes sense for your property without unnecessary upselling.',
+    },
+  ],
+  note: 'Trusted Denver gutter services designed to protect your property and provide lasting value. Book a free consultation with Mile High Gutter today.',
 }
 const whyStamp = whyChoose?.stamp
 const whyCtas = whyChoose?.ctas
 const services = {
   ...hp.services,
   headline: 'Our Gutter Services in Denver',
+  items: [
+    {
+      number: '01',
+      title: 'Gutter Installation',
+      description:
+        'Quality gutter systems designed for your property to manage Colorado rain and snowmelt and direct water safely away from your home.',
+    },
+    {
+      number: '02',
+      title: 'Gutter Repair',
+      description:
+        'We identify the cause of leaks, poor drainage, and failing sections, then recommend the right repair to restore proper water flow.',
+    },
+    {
+      number: '03',
+      title: 'Gutter Cleaning',
+      description:
+        'Professional cleaning removes leaves, debris, and buildup to help prevent clogs, overflow, and unnecessary wear on your gutter system.',
+    },
+    {
+      number: '04',
+      title: 'Gutter Guards',
+      description:
+        'Keep leaves and debris out of your gutters, reduce recurring clogs, and help your system drain properly with professionally installed gutter guards.',
+    },
+    {
+      number: '05',
+      title: 'French Drains',
+      description:
+        'Improve drainage around your property with a French drain system designed to redirect excess water away from foundations, landscaping, and other problem areas.',
+      href: '/products-services/downspouts-denver-co/',
+    },
+    {
+      number: '06',
+      title: 'Soffit & Fascia',
+      description:
+        'Repair damaged or deteriorated soffit and fascia to support your gutter system and help protect vulnerable areas along your roofline.',
+    },
+  ],
 }
 const about = {
   ...hp.about,
   headline: 'Trusted Gutter Contractors in Denver',
+  lead:
+    'Our experienced gutter contractors in Denver provide reliable solutions backed by 40+ years of local experience and a focus on long-term property protection.',
+  bullets: [
+    'Honest Recommendations: Knowledgeable estimators help you choose the right solution for your property without unnecessary upselling.',
+    'Quality Workmanship: Durable gutter installation, repair, cleaning, guards, and drainage solutions built for long-term performance.',
+    'Clear Communication: Straightforward estimates and dependable communication from consultation through project completion.',
+  ],
 }
 const aboutVideo = about?.video
 const aboutVideoSource = asStr(aboutVideo?.sourceSrc).trim().toLowerCase()
@@ -78,10 +141,54 @@ const aboutVideoPosterOnly =
   aboutVideoSource === 'poster-only' || aboutVideoSource === 'none'
 const uniquePoints = {
   ...hp.uniquePoints,
-  headline: 'Why Choose Our Denver Gutter Company?',
+  headline: 'Why Choose Mile High Gutter?',
+  items: [
+    {
+      iconId: 'clock',
+      title: '40+ Years of Experience',
+      description:
+        'We have served the Denver metro since 1984. Our decades of local experience help us recommend gutter solutions suited to Colorado properties and weather.',
+    },
+    {
+      iconId: 'clipboard',
+      title: 'Honest Recommendations',
+      description:
+        'Our knowledgeable estimators focus on what your property actually needs. We explain your options clearly without pushing unnecessary work.',
+    },
+    {
+      iconId: 'shield-check',
+      title: 'Quality Workmanship',
+      description:
+        'We focus on careful installation and dependable workmanship on every project. Our goal is to provide durable gutter and drainage solutions that deliver long-term value.',
+    },
+    {
+      iconId: 'message',
+      title: 'Clear Communication',
+      description:
+        'We keep you informed throughout the estimate, scheduling, and installation process. You will know what to expect and what comes next.',
+    },
+    {
+      iconId: 'sparkle',
+      title: 'Long-Term Value',
+      description:
+        'We recommend solutions that improve drainage and help protect your property from water-related damage. The goal is to address the problem properly and help you avoid unnecessary costs over time.',
+    },
+    {
+      iconId: 'package',
+      title: 'Proven Local Experience',
+      description:
+        'Mile High Gutter has completed more than 10,000 projects across the Denver metro. Homeowners and businesses rely on our team for knowledgeable service and dependable gutter solutions.',
+    },
+  ],
 }
 const statsBar = hp.statsBar
-const contactBanner = hp.contactBanner
+const contactBanner = {
+  ...hp.contactBanner,
+  headline: 'Book Your Free Consultation',
+  paragraph1:
+    'Call Mile High Gutter or fill out the form to discuss your gutter and drainage needs. Our team will help you understand your options and recommend the right solution for your property.',
+  paragraph2: '',
+}
 const reviews = {
   ...(settings?.reviews ?? hp.reviews),
   headline: 'What Our Denver Customers Say',
@@ -91,10 +198,35 @@ const reviewValues = reviews?.reviewValues
 const serviceArea = {
   ...hp.serviceArea,
   headline: 'Rain Gutters in the Denver Metro Area',
+  intro:
+    'We serve residential and commercial properties throughout the Denver metro, including gutters in Arvada, Aurora, Denver, Golden, Parker, Boulder, Brighton, Lakewood, Morrison, Thornton, Lafayette, Littleton, Broomfield, Centennial, Louisville, Westminster, Wheat Ridge, Commerce City, Evergreen, and Highlands Ranch.',
 }
 const team = {
   ...hp.team,
   headline: 'Our Denver Gutter Team',
+  members: [
+    {
+      imageSrc: 'Media (MHG)/Team (MHG)/darren-west-general-manager.png',
+      imageAlt: 'Darren West, General Manager at Mile High Gutter',
+      location: 'Denver metro, CO',
+      name: 'Darren West',
+      bio: 'General Manager',
+    },
+    {
+      imageSrc: 'Media (MHG)/Team (MHG)/daniel-lead-installer-operations-manager.png',
+      imageAlt: 'Daniel, Lead Installer and Operations Manager at Mile High Gutter',
+      location: 'Denver metro, CO',
+      name: 'Daniel',
+      bio: 'Lead Installer-Operations Manager',
+    },
+    {
+      imageSrc: 'Media (MHG)/Team (MHG)/brittany-office-manager.png',
+      imageAlt: 'Brittany, Office Manager at Mile High Gutter',
+      location: 'Denver metro, CO',
+      name: 'Brittany',
+      bio: 'Office Manager',
+    },
+  ],
 }
 const faq = {
   ...hp.faq,
@@ -198,6 +330,7 @@ const serviceHref = (svc) => {
     'gutter cleaning': 'gutter-cleaning-denver-co',
     'gutter guards': 'gutter-guards-denver-co',
     'heated gutters': 'snow-ice-solutions-heat-tape-denver-co',
+    'french drains': 'downspouts-denver-co',
     'soffit & fascia': 'soffit-fascia-repair-denver-co',
     'soffit and fascia': 'soffit-fascia-repair-denver-co',
   }
@@ -605,9 +738,18 @@ function responsiveSrc(src, width = 800) {
           <h2 class="section-title">{asStr(about?.headline)}</h2>
           <p class="about-lead">{asStr(about?.lead)}</p>
           <ul class="about-list">
-            {asStrArray(about?.bullets).map((line) => (
-              <li>{line}</li>
-            ))}
+            {asStrArray(about?.bullets).map((line) => {
+              const colon = line.indexOf(':')
+              if (colon > 0 && colon < 40) {
+                return (
+                  <li>
+                    <strong>{line.slice(0, colon + 1)}</strong>
+                    {line.slice(colon + 1)}
+                  </li>
+                )
+              }
+              return <li>{line}</li>
+            })}
           </ul>
           <div class="about-video-actions">
             <a href={telLink} class="btn btn-primary btn-lg">{aboutCallLabel}</a>
@@ -685,8 +827,12 @@ function responsiveSrc(src, width = 800) {
       <div class="container contact-banner-grid">
         <div class="contact-banner-copy">
           <h2 class="section-title">{asStr(contactBanner?.headline)}</h2>
-          <p class="section-lead">{asStr(contactBanner?.paragraph1)}</p>
-          <p class="section-lead">{asStr(contactBanner?.paragraph2)}</p>
+          {asStr(contactBanner?.paragraph1) ? (
+            <p class="section-lead">{asStr(contactBanner?.paragraph1)}</p>
+          ) : null}
+          {asStr(contactBanner?.paragraph2) ? (
+            <p class="section-lead">{asStr(contactBanner?.paragraph2)}</p>
+          ) : null}
           <div class="contact-banner-actions">
             <a href={telLink} class="contact-banner-phone">
               <img
@@ -747,7 +893,7 @@ function responsiveSrc(src, width = 800) {
             const src = base && srcset ? `/Media%20(MHG)/Images%20(Mile%20High)/responsive/${base}-800.webp` : mediaUrl(imgSrc)
             return (
             <article class="team-card">
-              <img src={src} srcset={srcset} sizes="(max-width: 900px) 100vw, 362px" alt={asStr(m.imageAlt)} width="800" height="600" loading="lazy" decoding="async" />
+              <img src={src} srcset={srcset} sizes="(max-width: 900px) 100vw, 362px" alt={asStr(m.imageAlt)} width="720" height="900" loading="lazy" decoding="async" />
               <h3>{asStr(m.name)}</h3>
               <p>{asStr(m.bio)}</p>
             </article>

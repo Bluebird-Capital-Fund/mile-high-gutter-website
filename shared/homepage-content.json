@@ -67,7 +67,7 @@
     "addressShort": "3300 S Federal Blvd, Englewood, CO 80110",
     "addressMetro": "3300 S Federal Blvd, Englewood, CO 80110",
     "copyrightSiteUrl": "https://www.milehighgutter.com/",
-    "descriptionShort": "Family-owned. 40+ years in the Denver metro. Seamless install, repair, cleaning, and guards. Free estimates.",
+    "descriptionShort": "Family-owned and serving the Denver metro for 40+ years. Quality gutter and drainage solutions backed by honest recommendations, knowledgeable service, and a free consultation.",
     "descriptionLong": "For 40 years, Mile High Gutter Denver has installed and serviced seamless gutters across Denver and the surrounding area—residential and commercial. Family-owned, licensed and insured. Free estimates.",
     "hoursText": "24/7",
     "dateOpened": "May 11, 1985",
@@ -456,25 +456,25 @@
     "headline": "Our Team",
     "members": [
       {
-        "imageSrc": "Media (MHG)/Images (Mile High)/mile-high-gutters-denver-lohi-townhome-gutter-installation.webp",
-        "imageAlt": "Mile High Gutter crew on a Denver townhome gutter project",
-        "location": "Denver (LoHi), CO",
-        "name": "Project Lead",
-        "bio": "Planning, timeline, and execution."
+        "imageSrc": "Media (MHG)/Team (MHG)/darren-west-general-manager.png",
+        "imageAlt": "Darren West, General Manager at Mile High Gutter",
+        "location": "Denver metro, CO",
+        "name": "Darren West",
+        "bio": "General Manager"
       },
       {
-        "imageSrc": "Media (MHG)/Images (Mile High)/mile-high-gutters-highlands-ranch-co-gutter-repair-project-complete-home-exterior-clean-install.webp",
-        "imageAlt": "Gutter repair and clean exterior finish in Highlands Ranch",
-        "location": "Highlands Ranch, CO",
-        "name": "Field Supervisor",
-        "bio": "Quality and safety on site."
+        "imageSrc": "Media (MHG)/Team (MHG)/daniel-lead-installer-operations-manager.png",
+        "imageAlt": "Daniel, Lead Installer and Operations Manager at Mile High Gutter",
+        "location": "Denver metro, CO",
+        "name": "Daniel",
+        "bio": "Lead Installer-Operations Manager"
       },
       {
-        "imageSrc": "Media (MHG)/Images (Mile High)/mile-high-gutters-parker-co-modern-luxury-home-outdoor-kitchen-patio-with-extended-roof-and-hidden-drainage-on-sunny-day.webp",
-        "imageAlt": "Modern luxury home with integrated gutters and drainage in Parker",
-        "location": "Parker, CO",
-        "name": "Client Coordinator",
-        "bio": "Your point of contact for updates."
+        "imageSrc": "Media (MHG)/Team (MHG)/brittany-office-manager.png",
+        "imageAlt": "Brittany, Office Manager at Mile High Gutter",
+        "location": "Denver metro, CO",
+        "name": "Brittany",
+        "bio": "Office Manager"
       }
     ]
   },
@@ -505,8 +505,8 @@
     ]
   },
   "footerEstimate": {
-    "headline": "Get Your Free Estimate",
-    "intro": "Tell us about your project—we will respond quickly.",
+    "headline": "Protect Your Property With Better Drainage",
+    "intro": "Tell us about your gutter or drainage needs, and we will recommend a solution focused on reliable performance and long-term value.",
     "formFields": {
       "nameLabel": "Name",
       "emailLabel": "Email",

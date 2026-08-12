@@ -98,6 +98,25 @@ function normalizeFooterSupport(support) {
   return { ...support, links }
 }
 
+function normalizeFooterEstimate(footerEstimate) {
+  if (!footerEstimate || typeof footerEstimate !== 'object') return footerEstimate
+  return {
+    ...footerEstimate,
+    headline: 'Protect Your Property With Better Drainage',
+    intro:
+      'Tell us about your gutter or drainage needs, and we will recommend a solution focused on reliable performance and long-term value.',
+  }
+}
+
+function normalizeBusiness(business) {
+  if (!business || typeof business !== 'object') return business
+  return {
+    ...business,
+    descriptionShort:
+      'Family-owned and serving the Denver metro for 40+ years. Quality gutter and drainage solutions backed by honest recommendations, knowledgeable service, and a free consultation.',
+  }
+}
+
 function hasUpdatedLinks(doc) {
   const navHref = doc?.header?.navItems?.[1]?.href
   const privacyHref = doc?.footerSupport?.links?.[0]?.href
@@ -166,9 +185,12 @@ export async function getSiteSettings() {
 
   siteSettingsCache = {
     ...singleton,
+    business: normalizeBusiness(singleton?.business ?? linksSource?.business),
     reviews: singleton?.reviews ?? linksSource?.reviews,
     header: normalizeHeader(mergedHeader ?? singleton?.header) ?? {},
-    footerEstimate: linksSource?.footerEstimate ?? singleton?.footerEstimate,
+    footerEstimate: normalizeFooterEstimate(
+      linksSource?.footerEstimate ?? singleton?.footerEstimate,
+    ),
     footerBrand: linksSource?.footerBrand ?? singleton?.footerBrand,
     footerColumns: normalizeFooterColumns(footerColumnsRaw),
     footerSupport: normalizeFooterSupport(linksSource?.footerSupport ?? singleton?.footerSupport),
