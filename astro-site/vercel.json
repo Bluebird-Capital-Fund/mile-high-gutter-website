@@ -181,6 +181,16 @@
       "permanent": true
     },
     {
+      "source": "/residential-gutters-denver-co",
+      "destination": "/products-services/residential-gutters-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/residential-gutters-denver-co/",
+      "destination": "/products-services/residential-gutters-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
