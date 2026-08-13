@@ -241,6 +241,16 @@
       "permanent": true
     },
     {
+      "source": "/aluminum-gutters-denver-co",
+      "destination": "/products-services/aluminum-gutters-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/aluminum-gutters-denver-co/",
+      "destination": "/products-services/aluminum-gutters-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
