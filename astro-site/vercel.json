@@ -221,6 +221,16 @@
       "permanent": true
     },
     {
+      "source": "/heat-tape-denver-co",
+      "destination": "/products-services/snow-ice-solutions-heat-tape-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/heat-tape-denver-co/",
+      "destination": "/products-services/snow-ice-solutions-heat-tape-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
