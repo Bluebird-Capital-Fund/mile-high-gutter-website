@@ -14,6 +14,7 @@ import { gutterSnowGuardDenverCo } from './gutter-snow-guard-denver-co.js'
 import { snowIceSolutionsHeatTapeDenverCo } from './snow-ice-solutions-heat-tape-denver-co.js'
 import { copperGuttersDenverCo } from './copper-gutters-denver-co.js'
 import { aluminumGuttersDenverCo } from './aluminum-gutters-denver-co.js'
+import { steelGuttersDenverCo } from './steel-gutters-denver-co.js'
 import { gutterInstallationDenverCo } from './gutter-installation-denver-co.js'
 import { seamlessGutterDenverCo } from './seamless-gutter-denver-co.js'
 import { asStr } from '../sanity-strings.js'
@@ -35,6 +36,7 @@ const BY_SLUG = {
   [snowIceSolutionsHeatTapeDenverCo.slug]: snowIceSolutionsHeatTapeDenverCo,
   [copperGuttersDenverCo.slug]: copperGuttersDenverCo,
   [aluminumGuttersDenverCo.slug]: aluminumGuttersDenverCo,
+  [steelGuttersDenverCo.slug]: steelGuttersDenverCo,
   [gutterInstallationDenverCo.slug]: gutterInstallationDenverCo,
   [seamlessGutterDenverCo.slug]: seamlessGutterDenverCo,
 }
