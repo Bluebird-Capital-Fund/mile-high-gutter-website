@@ -211,6 +211,16 @@
       "permanent": true
     },
     {
+      "source": "/gutter-snow-guard-denver-co",
+      "destination": "/products-services/gutter-snow-guard-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-snow-guard-denver-co/",
+      "destination": "/products-services/gutter-snow-guard-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
