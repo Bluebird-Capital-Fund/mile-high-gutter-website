@@ -171,6 +171,16 @@
       "permanent": true
     },
     {
+      "source": "/french-drain-denver-co",
+      "destination": "/products-services/french-drain-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/french-drain-denver-co/",
+      "destination": "/products-services/french-drain-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
