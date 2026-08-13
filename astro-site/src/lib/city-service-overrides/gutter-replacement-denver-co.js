@@ -48,7 +48,7 @@ export const gutterReplacementDenverCo = {
 <li>Custom color options to match your property</li>
 </ul>
 <p>If only one section has been damaged, we may recommend <a href="/products-services/gutter-repair-denver-co/">gutter repair in Denver, CO</a> instead of replacing the entire system. Our estimators explain your options honestly so you can make the decision that makes the most sense for your property.</p>
-<p>If winter ice buildup has contributed to repeated gutter damage, we can also discuss solutions like <a href="/products-services/snow-ice-solutions-heat-tape-denver-co/">Denver heat tape</a> where appropriate to help reduce ice-related problems.</p>`,
+<p>If winter ice buildup has contributed to repeated gutter damage, we can also discuss <a href="/products-services/snow-ice-solutions-heat-tape-denver-co/">Denver gutter heating systems</a>, where appropriate, to help reduce ice-related problems. If you're considering upgrading your gutter system instead of repairing it, we can also discuss whether <a href="/products-services/steel-gutters-denver-co/">Denver steel gutters</a> are the right fit for your property.</p>`,
       showCta: true,
     },
     {

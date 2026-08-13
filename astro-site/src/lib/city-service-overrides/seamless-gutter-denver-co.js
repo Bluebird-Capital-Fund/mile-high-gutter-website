@@ -49,7 +49,7 @@ export const seamlessGutterDenverCo = {
 <li>Removal of existing sectional gutters</li>
 </ul>
 <p>If your property needs a completely new drainage system, we can also provide <a href="/products-services/gutter-installation-denver-co/">Denver gutter installation</a> designed around your roofline and water management needs.</p>
-<p>After installation, routine gutter maintenance in Denver helps keep the system free of debris and allows small issues to be identified before they affect long-term performance.</p>`,
+<p>After installation, routine <a href="/products-services/gutter-maintenance-denver-co/">gutter maintenance in Denver</a> helps keep the system free of debris and allows small issues to be identified before they affect long-term performance.</p>`,
       showCta: true,
     },
     {
