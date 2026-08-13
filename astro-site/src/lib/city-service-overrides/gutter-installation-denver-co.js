@@ -8,7 +8,7 @@ export const gutterInstallationDenverCo = {
   eyebrow: 'Gutter Installation in Denver',
   headline: 'Gutter Installation in Denver',
   lead:
-    "Without a properly installed gutter system, Denver's heavy thunderstorms, snowmelt, and fast roof runoff can lead to costly water damage around your property. Mile High Gutters provides professional gutter installation in Denver with systems designed to improve drainage, protect your investment, and perform through Colorado's changing seasons.",
+    "Without a properly installed gutter system, Denver's heavy thunderstorms, snowmelt, and fast roof runoff can lead to costly water damage around your property. Mile High Gutter provides professional gutter installation in Denver with systems designed to improve drainage, protect your investment, and perform through Colorado's changing seasons.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -75,8 +75,8 @@ export const gutterInstallationDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -127,7 +127,7 @@ export const gutterInstallationDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Waiting too long to install a properly designed gutter system can lead to water pooling near the foundation, fascia damage, landscape erosion, siding stains, and unnecessary drainage problems during Denver's changing seasons.</p>
-<p>As a <a href="/">gutter company in Denver, CO</a>, Mile High Gutters provides professional gutter installation in Denver with quality workmanship and honest recommendations designed to protect your property for years to come.</p>`,
+<p>As a <a href="/">gutter company in Denver, CO</a>, Mile High Gutter provides professional gutter installation in Denver with quality workmanship and honest recommendations designed to protect your property for years to come.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

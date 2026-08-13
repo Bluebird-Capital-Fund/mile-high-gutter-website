@@ -8,7 +8,7 @@ export const gutterDownspoutsDenverCo = {
   eyebrow: 'Gutter Downspouts in Denver, CO',
   headline: 'Gutter Downspouts in Denver, CO',
   lead:
-    "Your gutters can only do their job if the downspouts move water safely away from your property. Mile High Gutters provides professional gutter downspouts in Denver, CO to improve drainage, reduce water pooling, and help protect residential and commercial properties from Colorado's changing weather.",
+    "Your gutters can only do their job if the downspouts move water safely away from your property. Mile High Gutter provides professional gutter downspouts in Denver, CO to improve drainage, reduce water pooling, and help protect residential and commercial properties from Colorado's changing weather.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -74,8 +74,8 @@ export const gutterDownspoutsDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -126,7 +126,7 @@ export const gutterDownspoutsDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Poorly functioning downspouts can allow water to collect where it shouldn't, increasing the risk of erosion, foundation moisture, and drainage problems around your property. Addressing these issues early helps protect both your gutter system and your investment.</p>
-<p>Whether you need new downspouts, repairs, or drainage improvements, Mile High Gutters provides professional gutter downspouts in Denver, CO with honest recommendations and quality workmanship built for Colorado's changing weather.</p>`,
+<p>Whether you need new downspouts, repairs, or drainage improvements, Mile High Gutter provides professional gutter downspouts in Denver, CO with honest recommendations and quality workmanship built for Colorado's changing weather.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

@@ -8,7 +8,7 @@ export const gutterRepairDenverCo = {
   eyebrow: 'Gutter Repair in Denver, CO',
   headline: 'Gutter Repair in Denver, CO',
   lead:
-    "A small gutter problem can quickly become a bigger drainage issue after Denver's heavy rain, snow, or hail. Mile High Gutters provides professional gutter repair in Denver, CO to stop leaks, restore proper drainage, and help protect your home or commercial property from further water damage.",
+    "A small gutter problem can quickly become a bigger drainage issue after Denver's heavy rain, snow, or hail. Mile High Gutter provides professional gutter repair in Denver, CO to stop leaks, restore proper drainage, and help protect your home or commercial property from further water damage.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -75,8 +75,8 @@ export const gutterRepairDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -127,7 +127,7 @@ export const gutterRepairDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Ignoring small gutter problems can allow water damage to spread beyond the gutters themselves. Leaks, sagging sections, and poor drainage may eventually affect your fascia, foundation, landscaping, and exterior finishes.</p>
-<p>If your gutters aren't performing the way they should, Mile High Gutters is ready to help. As a trusted <a href="/">gutter company in Denver</a>, our experienced team provides honest recommendations and quality repairs designed to keep your gutter system working properly through Denver's changing seasons.</p>`,
+<p>If your gutters aren't performing the way they should, Mile High Gutter is ready to help. As a trusted <a href="/">gutter company in Denver</a>, our experienced team provides honest recommendations and quality repairs designed to keep your gutter system working properly through Denver's changing seasons.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

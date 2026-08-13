@@ -8,7 +8,7 @@ export const gutterMaintenanceDenverCo = {
   eyebrow: 'Gutter Maintenance in Denver',
   headline: 'Gutter Maintenance in Denver',
   lead:
-    "Denver's changing weather can take a toll on your gutter system throughout the year. Mile High Gutters provides professional gutter maintenance in Denver to help keep your gutters flowing properly, reduce unexpected repairs, and protect your home or commercial property from preventable water damage.",
+    "Denver's changing weather can take a toll on your gutter system throughout the year. Mile High Gutter provides professional gutter maintenance in Denver to help keep your gutters flowing properly, reduce unexpected repairs, and protect your home or commercial property from preventable water damage.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -75,8 +75,8 @@ export const gutterMaintenanceDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -127,7 +127,7 @@ export const gutterMaintenanceDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Routine maintenance is one of the simplest ways to help prevent overflowing gutters, drainage problems, fascia damage, and unnecessary repairs. Waiting until problems become visible often means more work is needed to restore the system.</p>
-<p>As a <a href="/">Denver gutter company</a>, Mile High Gutters provides professional gutter maintenance in Denver with honest recommendations and dependable service built for Colorado's changing weather.</p>`,
+<p>As a <a href="/">Denver gutter company</a>, Mile High Gutter provides professional gutter maintenance in Denver with honest recommendations and dependable service built for Colorado's changing weather.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

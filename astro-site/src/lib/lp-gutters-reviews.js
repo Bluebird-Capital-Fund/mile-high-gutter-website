@@ -26,7 +26,7 @@ export const lpGuttersReviews = [
     timeAgo: '',
     avatarSrc: 'lp/gutters/reviews/blair-durst.png',
     quoteHtml:
-      'Mile High Gutters came and <strong>repaired and re-routed our gutters</strong> - they are incredibly professional, did a great job, and were so nice to work with. We had them come out and do a follow up on what we thought needed a repair, and even though it was a gutter they didn\'t work on, they helped us with the issue. Cannot say enough good things about this business - don\'t hesitate to use them for your gutter needs!',
+      'Mile High Gutter came and <strong>repaired and re-routed our gutters</strong> - they are incredibly professional, did a great job, and were so nice to work with. We had them come out and do a follow up on what we thought needed a repair, and even though it was a gutter they didn\'t work on, they helped us with the issue. Cannot say enough good things about this business - don\'t hesitate to use them for your gutter needs!',
   },
   {
     author: 'Scott Baker',

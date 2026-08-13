@@ -8,7 +8,7 @@ export const gutterCleaningDenverCo = {
   eyebrow: 'Gutter Cleaning in Denver',
   headline: 'Gutter Cleaning in Denver',
   lead:
-    "Clogged gutters can quickly lead to overflowing water, ice buildup, and drainage problems during Denver's changing seasons. Mile High Gutters provides professional gutter cleaning in Denver to keep water flowing properly and help protect your home or commercial property from avoidable damage.",
+    "Clogged gutters can quickly lead to overflowing water, ice buildup, and drainage problems during Denver's changing seasons. Mile High Gutter provides professional gutter cleaning in Denver to keep water flowing properly and help protect your home or commercial property from avoidable damage.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -75,8 +75,8 @@ export const gutterCleaningDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -127,7 +127,7 @@ export const gutterCleaningDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Waiting too long to clean your gutters can lead to overflowing water, clogged downspouts, ice buildup, fascia damage, and drainage problems around your property.</p>
-<p>Need a gutter cleaner in Denver? <a href="/">Mile High Gutters</a> provides dependable gutter cleaning in Denver to help keep your drainage system working the way it should.</p>`,
+<p>Need a gutter cleaner in Denver? <a href="/">Mile High Gutter</a> provides dependable gutter cleaning in Denver to help keep your drainage system working the way it should.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

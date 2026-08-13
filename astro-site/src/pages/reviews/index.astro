@@ -39,7 +39,7 @@ const footerBrand = settings?.footerBrand ?? homePage?.footerBrand ?? {}
 const footerColumns = settings?.footerColumns ?? homePage?.footerColumns ?? []
 const footerSupport = settings?.footerSupport ?? homePage?.footerSupport ?? {}
 
-const companyName = asStr(business.companyName) || 'Mile High Gutters'
+const companyName = asStr(business.companyName) || 'Mile High Gutter'
 const phoneDisplay = asStr(business.phoneDisplay) || '(303) 000-0000'
 const phoneTel = asStr(business.phoneTel) || '3030000000'
 const email = asStr(business.email) || 'hello@example.com'
@@ -55,8 +55,8 @@ const heroCallLabel = applyTemplate(asStr(homePage?.hero?.callCtaTemplate), { ph
 const logoAriaLabel = applyTemplate(asStr(header.logoAriaLabelTemplate), { companyName }) || companyName
 const navItems = Array.isArray(header.navItems) ? header.navItems : []
 
-const pageTitle = asStr(reviewsPage?.headline) || 'Reviews | Mile High Gutters'
-const pageDescription = asStr(reviewsPage?.lead) || 'Customer reviews from Mile High Gutters.'
+const pageTitle = asStr(reviewsPage?.headline) || 'Reviews | Mile High Gutter'
+const pageDescription = asStr(reviewsPage?.lead) || 'Customer reviews from Mile High Gutter.'
 const heroEyebrow = asStr(reviewsPage?.eyebrow) || 'Reviews'
 const heroHeadline = asStr(reviewsPage?.headline) || 'Customer Reviews'
 const heroLead = asStr(reviewsPage?.lead) || 'See what homeowners and businesses say about our gutter services.'

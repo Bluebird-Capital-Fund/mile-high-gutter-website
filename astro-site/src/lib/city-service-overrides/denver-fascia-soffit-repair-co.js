@@ -8,7 +8,7 @@ export const denverFasciaSoffitRepairCo = {
   eyebrow: 'Denver Fascia and Soffit Repair',
   headline: 'Denver Fascia and Soffit Repair',
   lead:
-    "Damaged fascia or soffits can allow moisture, pests, and roof drainage problems to affect your property over time. Mile High Gutters provides professional Denver fascia and soffit repair to restore damaged exterior components and help protect your home or commercial building from Colorado's changing weather.",
+    "Damaged fascia or soffits can allow moisture, pests, and roof drainage problems to affect your property over time. Mile High Gutter provides professional Denver fascia and soffit repair to restore damaged exterior components and help protect your home or commercial building from Colorado's changing weather.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -75,8 +75,8 @@ export const denverFasciaSoffitRepairCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -127,7 +127,7 @@ export const denverFasciaSoffitRepairCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Damaged fascia and soffits can quickly lead to larger problems if moisture continues reaching the roof edge. Addressing these issues early helps protect your gutters, roofline, and exterior from additional damage.</p>
-<p>Whether you've noticed rotting wood, loose gutters, or visible roofline damage, <a href="/">Mile High Gutters</a> provides professional Denver fascia and soffit repair with honest recommendations and quality workmanship built for Colorado's changing weather.</p>`,
+<p>Whether you've noticed rotting wood, loose gutters, or visible roofline damage, <a href="/">Mile High Gutter</a> provides professional Denver fascia and soffit repair with honest recommendations and quality workmanship built for Colorado's changing weather.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

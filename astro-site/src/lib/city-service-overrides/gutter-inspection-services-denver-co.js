@@ -8,7 +8,7 @@ export const gutterInspectionServicesDenverCo = {
   eyebrow: 'Gutter Inspection Services in Denver',
   headline: 'Gutter Inspection Services in Denver',
   lead:
-    'Not every gutter problem is easy to spot from the ground. Mile High Gutters provides professional gutter inspection services in Denver to identify developing drainage issues, storm damage, and wear before they lead to costly repairs or water damage around your property.',
+    'Not every gutter problem is easy to spot from the ground. Mile High Gutter provides professional gutter inspection services in Denver to identify developing drainage issues, storm damage, and wear before they lead to costly repairs or water damage around your property.',
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -75,8 +75,8 @@ export const gutterInspectionServicesDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -128,7 +128,7 @@ export const gutterInspectionServicesDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Small gutter problems often go unnoticed until they cause leaks, overflow, or drainage issues around the property. A professional inspection can help identify developing concerns before they become more expensive to correct.</p>
-<p>If you want peace of mind about your gutter system, <a href="/">Mile High Gutters</a> provides dependable gutter inspection services in Denver with honest recommendations and practical solutions designed for Colorado's changing weather.</p>`,
+<p>If you want peace of mind about your gutter system, <a href="/">Mile High Gutter</a> provides dependable gutter inspection services in Denver with honest recommendations and practical solutions designed for Colorado's changing weather.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

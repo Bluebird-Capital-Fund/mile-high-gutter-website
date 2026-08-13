@@ -8,7 +8,7 @@ export const gutterSnowGuardDenverCo = {
   eyebrow: 'Gutter Snow Guard in Denver, CO',
   headline: 'Gutter Snow Guard in Denver, CO',
   lead:
-    "Heavy snow sliding off a roof can place significant stress on your gutter system during Denver's winters. Mile High Gutters installs professional gutter snow guards in Denver, CO to help manage snow movement, protect your gutters, and reduce the risk of damage to your property.",
+    "Heavy snow sliding off a roof can place significant stress on your gutter system during Denver's winters. Mile High Gutter installs professional gutter snow guards in Denver, CO to help manage snow movement, protect your gutters, and reduce the risk of damage to your property.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -73,8 +73,8 @@ export const gutterSnowGuardDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -125,7 +125,7 @@ export const gutterSnowGuardDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Winter weather can place significant stress on your gutter system if snow is allowed to slide off the roof all at once. Addressing the problem before the next snowfall helps protect your gutters, roof edge, and surrounding property.</p>
-<p>Whether you're upgrading an existing roof or planning a new gutter system, <a href="/">Mile High Gutters</a> provides professional gutter snow guard installation in Denver, CO with honest recommendations and quality workmanship designed for Colorado winters.</p>`,
+<p>Whether you're upgrading an existing roof or planning a new gutter system, <a href="/">Mile High Gutter</a> provides professional gutter snow guard installation in Denver, CO with honest recommendations and quality workmanship designed for Colorado winters.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

@@ -8,7 +8,7 @@ export const residentialGuttersDenverCo = {
   eyebrow: 'Residential Gutters in Denver, CO',
   headline: 'Residential Gutters in Denver, CO',
   lead:
-    "Your home's gutter system is the first line of defense against Denver's heavy rain, spring snowmelt, and changing weather. Mile High Gutters provides professional residential gutters in Denver, CO to help homeowners protect their foundations, landscaping, rooflines, and long-term property value.",
+    "Your home's gutter system is the first line of defense against Denver's heavy rain, spring snowmelt, and changing weather. Mile High Gutter provides professional residential gutters in Denver, CO to help homeowners protect their foundations, landscaping, rooflines, and long-term property value.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -76,8 +76,8 @@ export const residentialGuttersDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -123,7 +123,7 @@ export const residentialGuttersDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>A reliable residential gutter system helps protect your home from water damage throughout every season. Waiting too long to address drainage problems can lead to foundation moisture, fascia damage, landscape erosion, and costly repairs.</p>
-<p>Whether your home needs maintenance, repairs, or a completely new system, Mile High Gutters provides professional residential gutters in Denver, CO with honest recommendations and quality workmanship built for Colorado's changing weather.</p>`,
+<p>Whether your home needs maintenance, repairs, or a completely new system, Mile High Gutter provides professional residential gutters in Denver, CO with honest recommendations and quality workmanship built for Colorado's changing weather.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

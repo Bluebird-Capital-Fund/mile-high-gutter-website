@@ -8,7 +8,7 @@ export const snowIceSolutionsHeatTapeDenverCo = {
   eyebrow: 'Heat Tape in Denver',
   headline: 'Heat Tape in Denver',
   lead:
-    "Ice buildup along your roof edge can block drainage and place extra stress on your gutters during Denver's winters. Mile High Gutters provides professional heat tape in Denver to help improve water flow, reduce ice accumulation, and protect residential and commercial properties from winter-related drainage problems.",
+    "Ice buildup along your roof edge can block drainage and place extra stress on your gutters during Denver's winters. Mile High Gutter provides professional heat tape in Denver to help improve water flow, reduce ice accumulation, and protect residential and commercial properties from winter-related drainage problems.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -73,8 +73,8 @@ export const snowIceSolutionsHeatTapeDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -125,7 +125,7 @@ export const snowIceSolutionsHeatTapeDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Recurring ice buildup can place unnecessary stress on your gutters and create drainage problems throughout the winter. Addressing these issues before freezing temperatures arrive helps protect your gutter system and improve water flow when snow begins to melt.</p>
-<p>As professional <a href="/">Denver gutter contractors</a>, Mile High Gutters provides professional heat tape in Denver with honest recommendations and quality workmanship built for Colorado's winter conditions.</p>`,
+<p>As professional <a href="/">Denver gutter contractors</a>, Mile High Gutter provides professional heat tape in Denver with honest recommendations and quality workmanship built for Colorado's winter conditions.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

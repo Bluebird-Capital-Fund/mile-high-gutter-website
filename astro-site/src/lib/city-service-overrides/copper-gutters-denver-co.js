@@ -8,7 +8,7 @@ export const copperGuttersDenverCo = {
   eyebrow: 'Copper Gutters in Denver',
   headline: 'Copper Gutters in Denver',
   lead:
-    "If you're looking for a gutter system that combines long-term performance with timeless curb appeal, copper gutters in Denver are an excellent choice. Mile High Gutters installs custom copper gutter systems designed to improve drainage while complementing the character of residential and commercial properties throughout the Denver metro.",
+    "If you're looking for a gutter system that combines long-term performance with timeless curb appeal, copper gutters in Denver are an excellent choice. Mile High Gutter installs custom copper gutter systems designed to improve drainage while complementing the character of residential and commercial properties throughout the Denver metro.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -75,8 +75,8 @@ export const copperGuttersDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -127,7 +127,7 @@ export const copperGuttersDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Choosing the right gutter material is an important investment in your property's appearance and long-term drainage performance. A professionally installed copper gutter system can provide lasting protection while enhancing the character of your home or commercial building.</p>
-<p>If you're considering copper gutters, <a href="/">Mile High Gutters</a> provides expert installation, honest recommendations, and quality workmanship designed for Denver's climate and your property's unique needs.</p>`,
+<p>If you're considering copper gutters, <a href="/">Mile High Gutter</a> provides expert installation, honest recommendations, and quality workmanship designed for Denver's climate and your property's unique needs.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

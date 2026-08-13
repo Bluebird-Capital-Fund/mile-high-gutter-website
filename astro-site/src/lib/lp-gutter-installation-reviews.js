@@ -48,7 +48,7 @@ export const lpGutterInstallationReviews = [
     timeAgo: '',
     avatarSrc: 'lp/gutter-installation/reviews/sam.png',
     quoteHtml:
-      'From beginning to end, Mile High Gutters was amazing! They took the time to listen to our concerns, answer questions and showed up for our scheduled appointment. More importantly, I didn\'t feel pressured at all to buy anything I didn\'t want or need. As planned, the <strong>installation</strong> took about half a day and the crew did a great job cleaning up after themselves. I highly recommend going with Mile High Gutters!',
+      'From beginning to end, Mile High Gutter was amazing! They took the time to listen to our concerns, answer questions and showed up for our scheduled appointment. More importantly, I didn\'t feel pressured at all to buy anything I didn\'t want or need. As planned, the <strong>installation</strong> took about half a day and the crew did a great job cleaning up after themselves. I highly recommend going with Mile High Gutter!',
   },
   {
     author: 'Tom Steen',

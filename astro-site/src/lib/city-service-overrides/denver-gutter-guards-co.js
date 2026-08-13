@@ -8,7 +8,7 @@ export const denverGutterGuardsCo = {
   eyebrow: 'Denver Gutter Guards',
   headline: 'Denver Gutter Guards',
   lead:
-    "Leaves, pine needles, roof grit, and other debris can quickly clog gutters throughout the year, especially after Denver's storms and changing seasons. Mile High Gutters installs professional Denver gutter guards that help reduce debris buildup, improve water flow, and make routine maintenance easier for residential and commercial properties.",
+    "Leaves, pine needles, roof grit, and other debris can quickly clog gutters throughout the year, especially after Denver's storms and changing seasons. Mile High Gutter installs professional Denver gutter guards that help reduce debris buildup, improve water flow, and make routine maintenance easier for residential and commercial properties.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -73,8 +73,8 @@ export const denverGutterGuardsCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -125,7 +125,7 @@ export const denverGutterGuardsCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, CO',
     body: `<p>If you're tired of cleaning clogged gutters or dealing with recurring overflow after every storm, gutter guards may be the right long-term solution. Installing the right system now can help reduce maintenance while improving drainage throughout the year.</p>
-<p>As a <a href="/">reliable Denver gutter company</a>, Mile High Gutters provides professional Denver gutter guards with honest recommendations, quality workmanship, and solutions designed for Colorado's changing weather.</p>`,
+<p>As a <a href="/">reliable Denver gutter company</a>, Mile High Gutter provides professional Denver gutter guards with honest recommendations, quality workmanship, and solutions designed for Colorado's changing weather.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

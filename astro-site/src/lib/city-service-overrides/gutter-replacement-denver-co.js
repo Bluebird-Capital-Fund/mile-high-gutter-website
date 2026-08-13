@@ -8,7 +8,7 @@ export const gutterReplacementDenverCo = {
   eyebrow: 'Gutter Replacement in Denver',
   headline: 'Gutter Replacement in Denver',
   lead:
-    "If your gutters are constantly leaking, pulling away from the roof, or overflowing during Denver's heavy storms and snowmelt, it may be time for a full replacement. Mile High Gutters provides professional gutter replacement in Denver with durable systems designed to improve drainage, protect your property, and perform through Colorado's changing seasons.",
+    "If your gutters are constantly leaking, pulling away from the roof, or overflowing during Denver's heavy storms and snowmelt, it may be time for a full replacement. Mile High Gutter provides professional gutter replacement in Denver with durable systems designed to improve drainage, protect your property, and perform through Colorado's changing seasons.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -73,7 +73,7 @@ export const gutterReplacementDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
+      heading: 'Why Choose Mile High Gutter?',
       body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
@@ -125,7 +125,7 @@ export const gutterReplacementDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, CO',
     body: `<p>Waiting too long to replace failing gutters can lead to larger problems, including fascia damage, foundation moisture, landscape erosion, siding stains, and worsening leaks around your property.</p>
-<p>If your Denver gutters have reached the end of their service life, <a href="/">Mile High Gutters</a> is ready to help. Our experienced team provides honest recommendations, quality workmanship, and replacement solutions designed for Denver's weather and your property's long-term protection.</p>`,
+<p>If your Denver gutters have reached the end of their service life, <a href="/">Mile High Gutter</a> is ready to help. Our experienced team provides honest recommendations, quality workmanship, and replacement solutions designed for Denver's weather and your property's long-term protection.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

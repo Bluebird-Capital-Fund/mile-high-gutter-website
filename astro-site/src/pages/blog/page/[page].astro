@@ -39,7 +39,7 @@ const footerBrand = settings?.footerBrand ?? homePage?.footerBrand ?? {}
 const footerColumns = settings?.footerColumns ?? homePage?.footerColumns ?? []
 const footerSupport = settings?.footerSupport ?? homePage?.footerSupport ?? {}
 
-const companyName = asStr(business.companyName) || 'Mile High Gutters'
+const companyName = asStr(business.companyName) || 'Mile High Gutter'
 const phoneDisplay = asStr(business.phoneDisplay) || '(303) 000-0000'
 const phoneTel = asStr(business.phoneTel) || '3030000000'
 const email = asStr(business.email) || 'hello@example.com'
@@ -85,7 +85,7 @@ if (currentPage > totalPages || currentPage < 2) {
 
 const posts = sliceBlogPage(allPosts, currentPage, BLOG_POSTS_PER_PAGE)
 
-const pageTitle = `Gutter blog — page ${currentPage} | Mile High Gutters`
+const pageTitle = `Gutter blog — page ${currentPage} | Mile High Gutter`
 const pageDescription = `Browse gutter articles (page ${currentPage} of ${totalPages}). Tips and guides for Denver homeowners.`
 
 const introText =

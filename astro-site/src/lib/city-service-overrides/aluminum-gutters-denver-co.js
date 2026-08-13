@@ -8,7 +8,7 @@ export const aluminumGuttersDenverCo = {
   eyebrow: 'Aluminum Gutters in Denver',
   headline: 'Aluminum Gutters in Denver',
   lead:
-    "If you're looking for a durable, cost-effective gutter system that performs well in Colorado's changing weather, aluminum gutters in Denver are a popular choice. Mile High Gutters installs custom aluminum gutter systems designed to improve drainage, protect your property, and complement both residential and commercial buildings.",
+    "If you're looking for a durable, cost-effective gutter system that performs well in Colorado's changing weather, aluminum gutters in Denver are a popular choice. Mile High Gutter installs custom aluminum gutter systems designed to improve drainage, protect your property, and complement both residential and commercial buildings.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -75,8 +75,8 @@ export const aluminumGuttersDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -127,7 +127,7 @@ export const aluminumGuttersDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Choosing the right gutter material can make a lasting difference in how your property handles Colorado's changing weather. A professionally installed aluminum gutter system helps protect your foundation, landscaping, and exterior while providing dependable long-term drainage.</p>
-<p>As professional <a href="/">gutter contractors in Denver, CO</a>, Mile High Gutters provides professional aluminum gutters with honest recommendations and quality workmanship tailored to your property's needs.</p>`,
+<p>As professional <a href="/">gutter contractors in Denver, CO</a>, Mile High Gutter provides professional aluminum gutters with honest recommendations and quality workmanship tailored to your property's needs.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

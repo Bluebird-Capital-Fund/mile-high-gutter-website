@@ -8,7 +8,7 @@ export const steelGuttersDenverCo = {
   eyebrow: 'Steel Gutters in Denver',
   headline: 'Steel Gutters in Denver',
   lead:
-    "When your property needs a gutter system built for strength and long-term durability, steel gutters in Denver are an excellent option. Mile High Gutters installs professionally fitted steel gutter systems designed to manage Colorado's changing weather while protecting residential and commercial properties from water damage.",
+    "When your property needs a gutter system built for strength and long-term durability, steel gutters in Denver are an excellent option. Mile High Gutter installs professionally fitted steel gutter systems designed to manage Colorado's changing weather while protecting residential and commercial properties from water damage.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -73,8 +73,8 @@ export const steelGuttersDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -125,7 +125,7 @@ export const steelGuttersDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Choosing the right gutter material helps protect your property from Denver's changing weather for years to come. A professionally installed steel gutter system provides dependable drainage while helping reduce the risk of water damage around your home or commercial building.</p>
-<p>If you're considering steel gutters, <a href="/">Mile High Gutters</a> provides honest recommendations, quality workmanship, and custom solutions designed to fit your property's drainage needs.</p>`,
+<p>If you're considering steel gutters, <a href="/">Mile High Gutter</a> provides honest recommendations, quality workmanship, and custom solutions designed to fit your property's drainage needs.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

@@ -8,7 +8,7 @@ export const seamlessGutterDenverCo = {
   eyebrow: 'Seamless Gutter in Denver',
   headline: 'Seamless Gutter in Denver',
   lead:
-    "Leaking seams are one of the most common causes of gutter problems, especially after Denver's heavy storms, snow, and freeze-thaw cycles. Mile High Gutters installs professional seamless gutters in Denver that help improve drainage, reduce leaks, and provide long-lasting protection for residential and commercial properties.",
+    "Leaking seams are one of the most common causes of gutter problems, especially after Denver's heavy storms, snow, and freeze-thaw cycles. Mile High Gutter installs professional seamless gutters in Denver that help improve drainage, reduce leaks, and provide long-lasting protection for residential and commercial properties.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -75,8 +75,8 @@ export const seamlessGutterDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -127,7 +127,7 @@ export const seamlessGutterDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>If your current gutters constantly leak at the seams or require frequent repairs, upgrading to seamless gutters may provide a more dependable long-term solution. Waiting too long can lead to continued overflow, fascia damage, soil erosion, and moisture problems around your property.</p>
-<p><a href="/">Mile High Gutters</a> provides professionally installed seamless gutters in Denver with honest recommendations, quality workmanship, and systems designed to perform through Colorado's changing weather.</p>`,
+<p><a href="/">Mile High Gutter</a> provides professionally installed seamless gutters in Denver with honest recommendations, quality workmanship, and systems designed to perform through Colorado's changing weather.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

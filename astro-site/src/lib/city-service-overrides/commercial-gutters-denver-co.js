@@ -8,7 +8,7 @@ export const commercialGuttersDenverCo = {
   eyebrow: 'Commercial Gutters in Denver',
   headline: 'Commercial Gutters in Denver',
   lead:
-    "A commercial property depends on a reliable drainage system to handle Denver's heavy rain, snowmelt, and changing weather. Mile High Gutters provides professional commercial gutters in Denver to help businesses protect their buildings, entrances, landscaping, and long-term property investment.",
+    "A commercial property depends on a reliable drainage system to handle Denver's heavy rain, snowmelt, and changing weather. Mile High Gutter provides professional commercial gutters in Denver to help businesses protect their buildings, entrances, landscaping, and long-term property investment.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -74,8 +74,8 @@ export const commercialGuttersDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -126,7 +126,7 @@ export const commercialGuttersDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>A properly functioning commercial gutter system helps protect your building, your property, and everyone who uses it. Waiting too long to address drainage problems can lead to costly water damage, erosion, and ongoing maintenance issues.</p>
-<p>Whether you manage an office building, retail center, warehouse, or multifamily property, <a href="/">Mile High Gutters</a> provides professional commercial gutters in Denver with honest recommendations and quality workmanship built for Colorado's changing weather.</p>`,
+<p>Whether you manage an office building, retail center, warehouse, or multifamily property, <a href="/">Mile High Gutter</a> provides professional commercial gutters in Denver with honest recommendations and quality workmanship built for Colorado's changing weather.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

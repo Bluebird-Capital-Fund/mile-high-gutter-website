@@ -8,7 +8,7 @@ export const customGuttersDenverCo = {
   eyebrow: 'Custom Gutters in Denver',
   headline: 'Custom Gutters in Denver',
   lead:
-    "Every property drains water differently, which is why a one-size-fits-all gutter system isn't always the best solution. Mile High Gutters provides professional custom gutters in Denver designed to fit your roofline, improve drainage, and perform through Colorado's changing weather.",
+    "Every property drains water differently, which is why a one-size-fits-all gutter system isn't always the best solution. Mile High Gutter provides professional custom gutters in Denver designed to fit your roofline, improve drainage, and perform through Colorado's changing weather.",
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -75,8 +75,8 @@ export const customGuttersDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -127,7 +127,7 @@ export const customGuttersDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>A gutter system that fits your property properly can make a significant difference in how water is managed during Denver's heavy rain, snowmelt, and seasonal weather. Waiting too long to address drainage issues can lead to foundation moisture, fascia damage, and landscape erosion.</p>
-<p>As trusted <a href="/">gutter contractors in Denver</a>, Mile High Gutters provides professional custom gutters in Denver with honest recommendations and quality workmanship designed for long-term performance.</p>`,
+<p>As trusted <a href="/">gutter contractors in Denver</a>, Mile High Gutter provides professional custom gutters in Denver with honest recommendations and quality workmanship designed for long-term performance.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

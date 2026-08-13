@@ -8,7 +8,7 @@ export const frenchDrainDenverCo = {
   eyebrow: 'French Drain in Denver',
   headline: 'French Drain in Denver',
   lead:
-    'If water continues pooling around your property even after it leaves the gutters, you may need more than a roof drainage system. Mile High Gutters provides professional Denver French drain solutions to help redirect excess water, improve drainage, and protect residential and commercial properties from long-term moisture problems.',
+    'If water continues pooling around your property even after it leaves the gutters, you may need more than a roof drainage system. Mile High Gutter provides professional Denver French drain solutions to help redirect excess water, improve drainage, and protect residential and commercial properties from long-term moisture problems.',
   hideServicesGrid: true,
   showServiceAreaCities: true,
   contentSections: [
@@ -74,8 +74,8 @@ export const frenchDrainDenverCo = {
       showCta: false,
     },
     {
-      heading: 'Why Choose Mile High Gutters?',
-      body: `<p>With decades of experience in the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      heading: 'Why Choose Mile High Gutter?',
+      body: `<p>With decades of experience in the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed gutter projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>
@@ -126,7 +126,7 @@ export const frenchDrainDenverCo = {
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
     body: `<p>Standing water rarely goes away on its own. Left untreated, it can contribute to foundation moisture, landscape erosion, soggy lawns, and ongoing drainage problems around your property.</p>
-<p>If you're dealing with persistent drainage issues, <a href="/">Mile High Gutters</a> provides professional French Drain services in Denver with honest recommendations, quality workmanship, and practical solutions designed for Colorado's changing weather.</p>`,
+<p>If you're dealing with persistent drainage issues, <a href="/">Mile High Gutter</a> provides professional French Drain services in Denver with honest recommendations, quality workmanship, and practical solutions designed for Colorado's changing weather.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
 }

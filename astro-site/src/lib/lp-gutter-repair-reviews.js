@@ -13,7 +13,7 @@ export const lpGutterRepairReviews = [
     timeAgo: '',
     avatarSrc: 'lp/gutter-repair/reviews/blair-durst.png',
     quoteHtml:
-      'Mile High Gutters came and <strong>repaired and re-routed our gutters</strong> - they are incredibly professional, did a great job, and were so nice to work with. We had them come out and do a follow up on what we thought needed a repair, and even though it was a gutter they didn\'t work on, they helped us with the issue. Cannot say enough good things about this business!',
+      'Mile High Gutter came and <strong>repaired and re-routed our gutters</strong> - they are incredibly professional, did a great job, and were so nice to work with. We had them come out and do a follow up on what we thought needed a repair, and even though it was a gutter they didn\'t work on, they helped us with the issue. Cannot say enough good things about this business!',
   },
   {
     author: 'Joelle Wedel',
@@ -62,6 +62,6 @@ export const lpGutterRepairReviews = [
     timeAgo: '',
     avatarSrc: 'lp/gutter-repair/reviews/kathleen-masters.png',
     quoteHtml:
-      'We had an excellent experience with installation of new gutters by Mile High last summer. Big rain this spring revealed a small problem with one downspout. Dan came out <strong>within a day and repaired it.</strong> We really appreciated their follow up service. Happy to recommend Mile High Gutters!',
+      'We had an excellent experience with installation of new gutters by Mile High last summer. Big rain this spring revealed a small problem with one downspout. Dan came out <strong>within a day and repaired it.</strong> We really appreciated their follow up service. Happy to recommend Mile High Gutter!',
   },
 ]
