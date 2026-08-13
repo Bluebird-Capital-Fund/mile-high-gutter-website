@@ -71,6 +71,16 @@
       "permanent": true
     },
     {
+      "source": "/gutter-inspection-services-denver-co",
+      "destination": "/products-services/gutter-inspection-services-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-inspection-services-denver-co/",
+      "destination": "/products-services/gutter-inspection-services-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
