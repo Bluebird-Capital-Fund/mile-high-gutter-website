@@ -191,6 +191,16 @@
       "permanent": true
     },
     {
+      "source": "/commercial-gutters-denver-co",
+      "destination": "/products-services/commercial-gutters-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/commercial-gutters-denver-co/",
+      "destination": "/products-services/commercial-gutters-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
