@@ -38,6 +38,7 @@ const formsCfg = settings?.forms ?? {}
 const footerBrand = settings?.footerBrand ?? homePage?.footerBrand ?? {}
 const footerColumns = settings?.footerColumns ?? homePage?.footerColumns ?? []
 const footerSupport = settings?.footerSupport ?? homePage?.footerSupport ?? {}
+const serviceArea = homePage?.serviceArea ?? {}
 
 const companyName = asStr(business.companyName) || 'Mile High Gutter'
 const phoneDisplay = asStr(business.phoneDisplay) || '(303) 000-0000'
@@ -72,8 +73,10 @@ const reviewsToRender = {
   ...(pageOverride?.reviewsHeadline ? { headline: pageOverride.reviewsHeadline } : {}),
 }
 const cityContentSections = Array.isArray(pageOverride?.contentSections) ? pageOverride.contentSections : []
-const mapEmbedUrl = asStr(pageOverride?.mapEmbedUrl) || asStr(settings?.mapEmbedUrl)
-const mapTitle = asStr(pageOverride?.mapTitle) || `${companyName} Colorado Springs map`
+const locationMapEmbedUrl = asStr(pageOverride?.mapEmbedUrl)
+const locationMapTitle = asStr(pageOverride?.mapTitle) || `${companyName} Colorado Springs map`
+const gbpMapEmbedUrl = asStr(settings?.mapEmbedUrl)
+const gbpMapTitle = applyTemplate(asStr(serviceArea?.mapIframeTitleTemplate), { companyName }) || `${companyName} service area map`
 const estimateCtaText = 'Book a Consultation'
 const estimateCtaHref = '#contact'
 const pageH1 = asStr(pageOverride?.headline) || 'Gutters in Colorado Springs'
@@ -269,35 +272,35 @@ const canonicalHref = `https://www.milehighgutter.com/${slug}/`
                   style="max-width:72ch; margin-bottom: 1rem;"
                   set:html={sanitizeCmsHtml(asStr(sec.body))}
                 />
-                {imageSrc ? (
-                  <img
-                    src={mediaUrl(imageSrc)}
-                    alt={asStr(sec.imageAlt) || asStr(sec.heading)}
-                    style="width: 100%; height: auto; border-radius: 12px; margin: 0 0 1.75rem; display: block;"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                ) : null}
                 {showCta ? (
-                  <div class="why-choose-actions" style={`margin: 0 0 ${showMap ? '1.75rem' : '2.25rem'};`}>
+                  <div class="why-choose-actions" style={`margin: 0 0 ${imageSrc || showMap ? '1.75rem' : '2.25rem'};`}>
                     <a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg">{heroCallLabel}</a>
                     <a href={estimateCtaHref} class="btn btn-outline btn-lg request-estimate">{estimateCtaText}</a>
                   </div>
                 ) : null}
-                {showMap && mapEmbedUrl ? (
+                {imageSrc ? (
+                  <img
+                    src={mediaUrl(imageSrc)}
+                    alt={asStr(sec.imageAlt) || asStr(sec.heading)}
+                    style={`width: 100%; height: auto; border-radius: 12px; margin: 0 0 ${showMap ? '1.75rem' : '2.25rem'}; display: block;`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : null}
+                {showMap && locationMapEmbedUrl ? (
                   <div class="map-wrap" style="margin: 0 0 2.25rem;">
                     <iframe
-                      src={mapEmbedUrl}
+                      src={locationMapEmbedUrl}
                       width="600"
                       height="400"
                       style="border:0;"
                       allowfullscreen=""
                       loading="lazy"
                       referrerpolicy="no-referrer-when-downgrade"
-                      title={mapTitle}
+                      title={locationMapTitle}
                     ></iframe>
                   </div>
-                ) : !showCta ? (
+                ) : !showCta && !imageSrc ? (
                   <div style="margin: 0 0 2.25rem;"></div>
                 ) : null}
               </>
@@ -416,17 +419,30 @@ const canonicalHref = `https://www.milehighgutter.com/${slug}/`
 
     <section class="section service-area" id="location-map">
       <div class="container">
-        <div class="map-wrap" style="max-width: none; border-radius: 0; box-shadow: none; margin: 0 -1.5rem;">
-          <iframe
-            src={mapEmbedUrl}
-            width="100%"
-            height="440"
-            style="border:0; display:block;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title={mapTitle}
-          ></iframe>
+        <div class="why-eyebrow">{asStr(serviceArea?.eyebrow) || 'Service Area'}</div>
+        <h2 class="section-title">{asStr(serviceArea?.headline) || 'Rain Gutters in the Denver Metro Area'}</h2>
+        <p class="section-lead service-area-intro">{asStr(serviceArea?.intro)}</p>
+        <div class="service-area-grid">
+          <div class="map-wrap">
+            <iframe
+              src={gbpMapEmbedUrl}
+              width="600"
+              height="400"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title={gbpMapTitle}
+            ></iframe>
+          </div>
+          <div class="cities-list">
+            <p class="cities-label">{asStr(serviceArea?.citiesLabel) || 'Cities We Serve'}</p>
+            <nav class="cities-nav" aria-label={asStr(serviceArea?.citiesNavAriaLabel) || 'Cities We Serve'}>
+              {(Array.isArray(serviceArea?.cities) ? serviceArea.cities : []).map((c) => (
+                <a href={asStr(c.href) || '#contact'}>{asStr(c.name)}</a>
+              ))}
+            </nav>
+          </div>
         </div>
       </div>
     </section>
