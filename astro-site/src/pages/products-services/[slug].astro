@@ -14,8 +14,11 @@ import { getCityServiceOverride, cityServiceOverrideSlugs } from '../../lib/city
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 
-/** Old Sanity slug superseded by /seamless-gutter-denver-co/ (redirected in vercel.json). */
-const RETIRED_CITY_SERVICE_SLUGS = new Set(['seamless-gutters-denver-co'])
+/** Old Sanity slugs superseded by newer URLs (redirected in vercel.json). */
+const RETIRED_CITY_SERVICE_SLUGS = new Set([
+  'seamless-gutters-denver-co',
+  'gutter-guards-denver-co',
+])
 
 export async function getStaticPaths() {
   try {
@@ -134,7 +137,8 @@ const serviceHref = (svc) => {
     'gutter maintenance': 'gutter-maintenance-denver-co',
     'gutter inspection': 'gutter-inspection-services-denver-co',
     'gutter inspection services': 'gutter-inspection-services-denver-co',
-    'gutter guards': 'gutter-guards-denver-co',
+    'gutter guards': 'denver-gutter-guards-co',
+    'denver gutter guards': 'denver-gutter-guards-co',
     'heated gutters': 'snow-ice-solutions-heat-tape-denver-co',
     'soffit & fascia': 'soffit-fascia-repair-denver-co',
     'soffit and fascia': 'soffit-fascia-repair-denver-co',

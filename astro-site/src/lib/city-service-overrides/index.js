@@ -3,6 +3,7 @@ import { gutterRepairDenverCo } from './gutter-repair-denver-co.js'
 import { gutterCleaningDenverCo } from './gutter-cleaning-denver-co.js'
 import { gutterMaintenanceDenverCo } from './gutter-maintenance-denver-co.js'
 import { gutterInspectionServicesDenverCo } from './gutter-inspection-services-denver-co.js'
+import { denverGutterGuardsCo } from './denver-gutter-guards-co.js'
 import { gutterInstallationDenverCo } from './gutter-installation-denver-co.js'
 import { seamlessGutterDenverCo } from './seamless-gutter-denver-co.js'
 import { asStr } from '../sanity-strings.js'
@@ -13,6 +14,7 @@ const BY_SLUG = {
   [gutterCleaningDenverCo.slug]: gutterCleaningDenverCo,
   [gutterMaintenanceDenverCo.slug]: gutterMaintenanceDenverCo,
   [gutterInspectionServicesDenverCo.slug]: gutterInspectionServicesDenverCo,
+  [denverGutterGuardsCo.slug]: denverGutterGuardsCo,
   [gutterInstallationDenverCo.slug]: gutterInstallationDenverCo,
   [seamlessGutterDenverCo.slug]: seamlessGutterDenverCo,
 }

@@ -81,6 +81,36 @@
       "permanent": true
     },
     {
+      "source": "/products-services/gutter-guards-denver-co",
+      "destination": "/products-services/denver-gutter-guards-co/",
+      "permanent": true
+    },
+    {
+      "source": "/products-services/gutter-guards-denver-co/",
+      "destination": "/products-services/denver-gutter-guards-co/",
+      "permanent": true
+    },
+    {
+      "source": "/denver-gutter-guards-co",
+      "destination": "/products-services/denver-gutter-guards-co/",
+      "permanent": true
+    },
+    {
+      "source": "/denver-gutter-guards-co/",
+      "destination": "/products-services/denver-gutter-guards-co/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-guards-denver-co",
+      "destination": "/products-services/denver-gutter-guards-co/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-guards-denver-co/",
+      "destination": "/products-services/denver-gutter-guards-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
