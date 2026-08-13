@@ -3,6 +3,7 @@ import StandardPageChrome from '../../components/StandardPageChrome.astro'
 import { sanity } from '../../lib/sanity.js'
 import { getSiteSettings } from '../../lib/site-settings.js'
 import { asStr } from '../../lib/sanity-strings.js'
+import { cityServiceOverrideSlugs, getCityServiceOverride } from '../../lib/city-service-overrides/index.js'
 
 let settings = {}
 let pages = []
@@ -22,13 +23,28 @@ const pageDescription = 'Explore gutter products and services in Denver.'
 const SLUG_ALIASES = {
   'seamless-gutters-denver-co': 'seamless-gutter-denver-co',
 }
-const items = (Array.isArray(pages) ? pages : []).map((item) => {
+const fromSanity = (Array.isArray(pages) ? pages : []).map((item) => {
   const raw = asStr(item?.slug)
   return {
     ...item,
     slug: SLUG_ALIASES[raw] || raw,
   }
 })
+const sanitySlugs = new Set(fromSanity.map((item) => asStr(item.slug)))
+const fromOverrides = cityServiceOverrideSlugs
+  .filter((slug) => !sanitySlugs.has(slug))
+  .map((slug) => {
+    const override = getCityServiceOverride(slug)
+    return {
+      slug,
+      title: asStr(override?.headline) || slug,
+      headline: asStr(override?.headline),
+      lead: asStr(override?.lead),
+    }
+  })
+const items = [...fromSanity, ...fromOverrides].sort((a, b) =>
+  asStr(a.title || a.headline).localeCompare(asStr(b.title || b.headline)),
+)
 const productsServicesIntro = asStr(settings?.productsServicesIntro)
 ---
 

@@ -61,6 +61,16 @@
       "permanent": true
     },
     {
+      "source": "/gutter-maintenance-denver-co",
+      "destination": "/products-services/gutter-maintenance-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-maintenance-denver-co/",
+      "destination": "/products-services/gutter-maintenance-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
