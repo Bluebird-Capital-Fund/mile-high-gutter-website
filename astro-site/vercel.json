@@ -231,6 +231,16 @@
       "permanent": true
     },
     {
+      "source": "/copper-gutters-denver-co",
+      "destination": "/products-services/copper-gutters-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/copper-gutters-denver-co/",
+      "destination": "/products-services/copper-gutters-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
