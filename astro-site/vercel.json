@@ -141,6 +141,36 @@
       "permanent": true
     },
     {
+      "source": "/products-services/downspouts-denver-co",
+      "destination": "/products-services/gutter-downspouts-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/products-services/downspouts-denver-co/",
+      "destination": "/products-services/gutter-downspouts-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-downspouts-denver-co",
+      "destination": "/products-services/gutter-downspouts-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-downspouts-denver-co/",
+      "destination": "/products-services/gutter-downspouts-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/downspouts-denver-co",
+      "destination": "/products-services/gutter-downspouts-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/downspouts-denver-co/",
+      "destination": "/products-services/gutter-downspouts-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
