@@ -111,6 +111,36 @@
       "permanent": true
     },
     {
+      "source": "/products-services/soffit-fascia-repair-denver-co",
+      "destination": "/products-services/denver-fascia-soffit-repair-co/",
+      "permanent": true
+    },
+    {
+      "source": "/products-services/soffit-fascia-repair-denver-co/",
+      "destination": "/products-services/denver-fascia-soffit-repair-co/",
+      "permanent": true
+    },
+    {
+      "source": "/denver-fascia-soffit-repair-co",
+      "destination": "/products-services/denver-fascia-soffit-repair-co/",
+      "permanent": true
+    },
+    {
+      "source": "/denver-fascia-soffit-repair-co/",
+      "destination": "/products-services/denver-fascia-soffit-repair-co/",
+      "permanent": true
+    },
+    {
+      "source": "/soffit-fascia-repair-denver-co",
+      "destination": "/products-services/denver-fascia-soffit-repair-co/",
+      "permanent": true
+    },
+    {
+      "source": "/soffit-fascia-repair-denver-co/",
+      "destination": "/products-services/denver-fascia-soffit-repair-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
