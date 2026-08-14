@@ -70,7 +70,7 @@ const whyChoose = {
     },
     {
       title: 'Complete Gutter Solutions:',
-      text: 'Denver gutter cleaning, installation, repair, guards, downspouts, and more for residential and commercial properties.',
+      text: '<a href="/products-services/gutter-cleaning-denver-co/">Denver gutter cleaning</a>, installation, repair, guards, downspouts, and more for residential and commercial properties.',
     },
     {
       title: 'Honest, Knowledgeable Service:',
@@ -214,7 +214,7 @@ const serviceArea = {
   ...hp.serviceArea,
   headline: 'Rain Gutters in the Denver Metro Area',
   intro:
-    'We serve residential and commercial properties throughout the Denver metro, including gutters in Arvada, Aurora, Denver, Golden, Parker, Boulder, Brighton, Lakewood, Morrison, Thornton, Lafayette, Littleton, Broomfield, Centennial, Louisville, Westminster, Wheat Ridge, Commerce City, Evergreen, and Highlands Ranch.',
+    'We serve residential and commercial properties throughout the Denver metro, including gutters in Colorado Springs, Fort Collins, Boulder, Centennial, Thornton, Littleton, Arvada, Highlands Ranch, Castle Rock, Broomfield, Lafayette, Brighton, Westminster, Englewood, Aurora, and Lakewood.',
 }
 const team = {
   ...hp.team,
@@ -733,7 +733,8 @@ function responsiveSrc(src, width = 800) {
           <ul class="why-choose-list">
             {whyChoose?.bullets?.map((b) => (
               <li>
-                <strong>{asStr(b.title)}</strong> {asStr(b.text)}
+                <strong>{asStr(b.title)}</strong>{' '}
+                <Fragment set:html={sanitizeCmsHtml(asStr(b.text))} />
               </li>
             ))}
           </ul>
