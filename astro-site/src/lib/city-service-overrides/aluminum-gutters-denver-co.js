@@ -49,7 +49,7 @@ export const aluminumGuttersDenverCo = {
 <li>A variety of color options to complement your property</li>
 </ul>
 <p>For homeowners or businesses looking for a premium architectural finish, we also install <a href="/products-services/copper-gutters-denver-co/">Denver copper gutters</a> designed to provide long-lasting performance and timeless curb appeal.</p>
-<p>If your property requires a heavier-duty material for specific applications, we also offer steel gutters in Denver as another durable gutter solution.</p>`,
+<p>If your property requires a heavier-duty material for specific applications, we also offer <a href="/products-services/steel-gutters-denver-co/">steel gutters in Denver</a> as another durable gutter solution.</p>`,
       showCta: true,
     },
     {
