@@ -47,7 +47,7 @@ export const snowIceSolutionsHeatTapeDenverCo = {
 <li>Denver heating cable installation</li>
 </ul>
 <p>Many properties also benefit from a <a href="/products-services/gutter-snow-guard-denver-co/">Denver gutter snow guard</a>, which helps control the movement of snow while heat tape improves drainage as snow begins to melt.</p>
-<p>For homeowners or businesses interested in a premium gutter system, we also install copper gutters in Denver, which can be paired with winter protection solutions when appropriate.</p>`,
+<p>For homeowners or businesses interested in a premium gutter system, we also install <a href="/products-services/copper-gutters-denver-co/">copper gutters in Denver</a>, which can be paired with winter protection solutions when appropriate.</p>`,
       showCta: true,
     },
     {
