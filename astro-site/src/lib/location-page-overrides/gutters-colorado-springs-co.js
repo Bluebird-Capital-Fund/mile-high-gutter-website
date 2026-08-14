@@ -79,7 +79,7 @@ export const guttersColoradoSpringsCo = {
       heading: 'Helping Colorado Springs Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Colorado Springs, including Briargate, Rockrimmon, Northgate, Flying Horse, Wolf Ranch, Broadmoor, Stetson Hills, Old Colorado City, and surrounding communities. Our crews regularly travel throughout the city using Interstate 25, Powers Boulevard, Woodmen Road, Academy Boulevard, and Highway 24, allowing us to respond efficiently across the area.</p>
 <p>Whether your home sits against the foothills with mature pine trees or in one of the city's newer developments with wide open exposure to wind, we understand the local drainage challenges that affect your Colorado Springs property.</p>
-<p>Homeowners looking beyond Colorado Springs can also learn about our work installing gutters in Lakewood, CO or explore our services for Fort Collins gutters.</p>`,
+<p>Homeowners looking beyond Colorado Springs can also learn about our work installing <a href="/gutters-lakewood-co/">gutters in Lakewood, CO</a> or explore our services for <a href="/gutters-fort-collins-co/">Fort Collins gutters</a>.</p>`,
       showCta: true,
       showMap: true,
     },
