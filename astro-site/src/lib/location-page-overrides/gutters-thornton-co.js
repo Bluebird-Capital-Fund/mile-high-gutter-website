@@ -79,7 +79,7 @@ export const guttersThorntonCo = {
       heading: 'Helping Thornton Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Thornton, including Hunters Glen, Eastlake, North Creek Farms, Signal Creek, Cherrywood Park, Trailside, The Haven at York Street, and surrounding communities. Our crews regularly travel along I-25, E-470, Washington Street, Colorado Boulevard, and 136th Avenue, making it easy to serve homes across the city.</p>
 <p>Whether your home is in one of Thornton's established neighborhoods or a newer subdivision, we understand the drainage challenges that come with Colorado's changing weather.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-centennial-co/">gutters in Centennial, CO</a> or explore our Littleton gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-centennial-co/">gutters in Centennial, CO</a> or explore our <a href="/gutters-littleton-co/">Littleton gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
