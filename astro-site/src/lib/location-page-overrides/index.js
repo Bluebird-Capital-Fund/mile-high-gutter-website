@@ -13,6 +13,7 @@ import { guttersBrightonCo } from './gutters-brighton-co.js'
 import { guttersWestminsterCo } from './gutters-westminster-co.js'
 import { guttersEnglewoodCo } from './gutters-englewood-co.js'
 import { guttersAuroraCo } from './gutters-aurora-co.js'
+import { guttersLakewoodCo } from './gutters-lakewood-co.js'
 import { asStr } from '../sanity-strings.js'
 
 const BY_SLUG = {
@@ -31,6 +32,7 @@ const BY_SLUG = {
   [guttersWestminsterCo.slug]: guttersWestminsterCo,
   [guttersEnglewoodCo.slug]: guttersEnglewoodCo,
   [guttersAuroraCo.slug]: guttersAuroraCo,
+  [guttersLakewoodCo.slug]: guttersLakewoodCo,
 }
 
 /** Slugs that should always be available even if missing in Sanity. */
