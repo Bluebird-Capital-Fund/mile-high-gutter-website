@@ -2291,6 +2291,46 @@ form[data-lead-form] button[type="submit"].is-busy {
   .lp-hero .hero-actions {
     margin-top: 0;
   }
+
+  /* Service + location pages: tighter gap under nav so the call CTA stays above the fold */
+  .hero-split:has([data-lead-form="city-hero"]),
+  .hero-split:has([data-lead-form="location-hero"]) {
+    padding-top: var(--space-md);
+  }
+
+  .hero-split:has([data-lead-form="city-hero"]) h1,
+  .hero-split:has([data-lead-form="location-hero"]) h1 {
+    font-size: clamp(1.7rem, 6.2vw, 2.05rem);
+    line-height: 1.2;
+    margin: 0 0 var(--space-sm);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-split:has([data-lead-form="city-hero"]) .hero-eyebrow,
+  .hero-split:has([data-lead-form="location-hero"]) .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    margin: 0 0 0.35rem;
+    gap: 0.4rem;
+  }
+
+  .hero-split:has([data-lead-form="city-hero"]) .hero-eyebrow::before,
+  .hero-split:has([data-lead-form="location-hero"]) .hero-eyebrow::before {
+    width: 18px;
+  }
+
+  .hero-split:has([data-lead-form="city-hero"]) .hero-lead,
+  .hero-split:has([data-lead-form="location-hero"]) .hero-lead {
+    font-size: 1.05rem;
+    line-height: 1.4;
+    min-height: 0;
+    margin: 0 0 var(--space-md);
+  }
+
+  .hero-split:has([data-lead-form="city-hero"]) .hero-actions,
+  .hero-split:has([data-lead-form="location-hero"]) .hero-actions {
+    margin-top: 0;
+  }
 }
 
 .home-hero .hero-lead-list {
