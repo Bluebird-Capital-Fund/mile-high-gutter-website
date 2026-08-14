@@ -261,6 +261,46 @@
       "permanent": true
     },
     {
+      "source": "/products/soffit-fascia-siding",
+      "destination": "/products-services/denver-fascia-soffit-repair-co/",
+      "permanent": true
+    },
+    {
+      "source": "/products/soffit-fascia-siding/",
+      "destination": "/products-services/denver-fascia-soffit-repair-co/",
+      "permanent": true
+    },
+    {
+      "source": "/products-services/commercial-gutters",
+      "destination": "/products-services/commercial-gutters-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/products-services/commercial-gutters/",
+      "destination": "/products-services/commercial-gutters-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/products-services/mile-high-gutter-cleaning",
+      "destination": "/products-services/gutter-cleaning-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/products-services/mile-high-gutter-cleaning/",
+      "destination": "/products-services/gutter-cleaning-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/products-services/gutter-cleaning",
+      "destination": "/products-services/gutter-cleaning-denver-co/",
+      "permanent": true
+    },
+    {
+      "source": "/products-services/gutter-cleaning/",
+      "destination": "/products-services/gutter-cleaning-denver-co/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
