@@ -49,7 +49,7 @@ export const customGuttersDenverCo = {
 <li>A variety of color options to complement your property</li>
 </ul>
 <p>We customize every gutter system to fit your roof's dimensions, drainage needs, and architectural style. Our goal is to provide a solution that performs reliably in Colorado's climate while giving your property a finished look that blends naturally with the rest of the exterior.</p>
-<p>Many larger buildings also benefit from our <a href="/products-services/commercial-gutters-denver-co/">Denver commercial gutters</a>, which are designed to manage greater volumes of roof runoff. For homes in areas that experience significant snow accumulation, we may also recommend a gutter snow guard in Denver, CO to help manage snow movement and reduce stress on the gutter system during winter.</p>`,
+<p>Many larger buildings also benefit from our <a href="/products-services/commercial-gutters-denver-co/">Denver commercial gutters</a>, which are designed to manage greater volumes of roof runoff. For homes in areas that experience significant snow accumulation, we may also recommend a <a href="/products-services/gutter-snow-guard-denver-co/">gutter snow guard in Denver, CO</a> to help manage snow movement and reduce stress on the gutter system during winter.</p>`,
       showCta: true,
     },
     {
