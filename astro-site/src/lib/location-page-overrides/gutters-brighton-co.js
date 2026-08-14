@@ -79,7 +79,7 @@ export const guttersBrightonCo = {
       heading: 'Helping Brighton Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Brighton, including Bromley Park, Brighton East Farms, Indigo Trails, Sugar Creek, The Preserve, Pheasant Ridge, and surrounding communities. Our crews regularly travel along US 85, Bromley Lane, Bridge Street, 144th Avenue, and I-76, making it easy to serve homes across the area.</p>
 <p>Whether your home is in one of Brighton's established neighborhoods or a newer community on the edge of town, we understand the drainage challenges created by Colorado's changing weather and open landscapes.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-lafayette-co/">gutters in Lafayette, CO</a> or explore our Westminster gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-lafayette-co/">gutters in Lafayette, CO</a> or explore our <a href="/gutters-westminster-co/">Westminster gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
