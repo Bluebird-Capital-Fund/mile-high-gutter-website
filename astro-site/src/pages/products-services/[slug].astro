@@ -13,6 +13,7 @@ import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { getCityServiceOverride, cityServiceOverrideSlugs } from '../../lib/city-service-overrides/index.js'
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
+import { withServiceAreaCities } from '../../lib/service-area-cities.js'
 
 /** Old Sanity slugs superseded by newer URLs (redirected in vercel.json). */
 const RETIRED_CITY_SERVICE_SLUGS = new Set([
@@ -68,7 +69,7 @@ const formsCfg = settings?.forms ?? {}
 const footerBrand = settings?.footerBrand ?? homePage?.footerBrand ?? {}
 const footerColumns = settings?.footerColumns ?? homePage?.footerColumns ?? []
 const footerSupport = settings?.footerSupport ?? homePage?.footerSupport ?? {}
-const serviceArea = homePage?.serviceArea ?? {}
+const serviceArea = withServiceAreaCities(homePage?.serviceArea)
 
 const companyName = asStr(business.companyName) || 'Mile High Gutter'
 const phoneDisplay = asStr(business.phoneDisplay) || '(303) 000-0000'
@@ -111,7 +112,7 @@ const cityContentSections = Array.isArray(pageOverride?.contentSections)
   : Array.isArray(cityPage?.contentSections)
     ? cityPage.contentSections
     : []
-const mapEmbedUrl = asStr(cityPage?.mapEmbedUrl) || asStr(settings?.mapEmbedUrl)
+const mapEmbedUrl = asStr(settings?.mapEmbedUrl) || asStr(cityPage?.mapEmbedUrl)
 const estimateCtaText = 'Book a Consultation'
 const estimateCtaHref = '#contact'
 const pageH1 = asStr(pageOverride?.headline) || asStr(cityPage?.headline) || asStr(hero?.headline) || 'Gutter Services in Denver, CO'

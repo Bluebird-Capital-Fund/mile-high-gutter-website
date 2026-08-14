@@ -21,6 +21,7 @@ import {
 } from '../lib/sanity-strings.js'
 import { assertSanityHomepage } from '../lib/assert-sanity-homepage.js'
 import { sanitizeCmsHtml } from '../lib/sanitize-cms-html.js'
+import { SERVICE_AREA_CITIES } from '../lib/service-area-cities.js'
 
 const [settings, homePage] = await Promise.all([
   getSiteSettings(),
@@ -215,6 +216,7 @@ const serviceArea = {
   headline: 'Rain Gutters in the Denver Metro Area',
   intro:
     'We serve residential and commercial properties throughout the Denver metro, including gutters in Colorado Springs, Fort Collins, Boulder, Centennial, Thornton, Littleton, Arvada, Highlands Ranch, Castle Rock, Broomfield, Lafayette, Brighton, Westminster, Englewood, Aurora, and Lakewood.',
+  cities: SERVICE_AREA_CITIES,
 }
 const team = {
   ...hp.team,

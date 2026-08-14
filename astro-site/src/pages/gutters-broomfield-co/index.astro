@@ -13,6 +13,7 @@ import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { getLocationPageOverride } from '../../lib/location-page-overrides/index.js'
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
+import { withServiceAreaCities } from '../../lib/service-area-cities.js'
 
 const slug = 'gutters-broomfield-co'
 const pageOverride = getLocationPageOverride(slug)
@@ -38,7 +39,7 @@ const formsCfg = settings?.forms ?? {}
 const footerBrand = settings?.footerBrand ?? homePage?.footerBrand ?? {}
 const footerColumns = settings?.footerColumns ?? homePage?.footerColumns ?? []
 const footerSupport = settings?.footerSupport ?? homePage?.footerSupport ?? {}
-const serviceArea = homePage?.serviceArea ?? {}
+const serviceArea = withServiceAreaCities(homePage?.serviceArea)
 
 const companyName = asStr(business.companyName) || 'Mile High Gutter'
 const phoneDisplay = asStr(business.phoneDisplay) || '(303) 000-0000'

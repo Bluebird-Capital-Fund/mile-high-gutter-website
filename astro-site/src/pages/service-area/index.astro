@@ -10,6 +10,7 @@ import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../li
 import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
+import { withServiceAreaCities } from '../../lib/service-area-cities.js'
 
 let settings = {}
 let homePage = {}
@@ -46,7 +47,7 @@ const universalFormAction = asStr(formsCfg?.submitPath) || asStr(footerEstimate?
 const universalFormMethod = asStr(footerEstimate?.formMethod) || 'post'
 const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
 
-const serviceArea = homePage?.serviceArea ?? {}
+const serviceArea = withServiceAreaCities(homePage?.serviceArea)
 const pageTitle = 'Service Area | Mile High Gutter'
 const pageDescription = asStr(serviceArea?.intro) || 'Cities and counties we serve across the Denver metro.'
 const mapEmbedUrl =
