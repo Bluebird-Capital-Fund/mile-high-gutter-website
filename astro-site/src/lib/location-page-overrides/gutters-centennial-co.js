@@ -79,7 +79,7 @@ export const guttersCentennialCo = {
       heading: 'Helping Centennial Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Centennial, including Willow Creek, Piney Creek, Homestead Farm, Foxridge, Southglenn, Cherry Knolls, Heritage Greens, and surrounding communities. Our crews regularly travel along I-25, E-470, Arapahoe Road, Dry Creek Road, University Boulevard, and Parker Road, making it easy to serve homes throughout the area.</p>
 <p>Whether your home is surrounded by mature shade trees or located in one of Centennial's growing neighborhoods, we understand the drainage challenges that come with Colorado's changing seasons.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-boulder-co/">gutters in Boulder, CO</a> or explore our Thornton gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-boulder-co/">gutters in Boulder, CO</a> or explore our <a href="/gutters-thornton-co/">Thornton gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
