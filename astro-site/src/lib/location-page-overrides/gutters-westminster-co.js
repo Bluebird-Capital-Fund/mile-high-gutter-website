@@ -79,7 +79,7 @@ export const guttersWestminsterCo = {
       heading: 'Helping Westminster Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Westminster, including Legacy Ridge, Bradburn Village, The Ranch, Sheridan Green, Walnut Grove, Hyland Greens, and surrounding communities. Our crews regularly travel along US 36, Sheridan Boulevard, Wadsworth Parkway, 120th Avenue, and Federal Boulevard, allowing us to efficiently serve homes throughout the area.</p>
 <p>Whether your home is in one of Westminster's established neighborhoods or a newer community, we understand the drainage challenges that come with Colorado's changing weather.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-brighton-co/">gutters in Brighton, CO</a> or explore our Englewood gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-brighton-co/">gutters in Brighton, CO</a> or explore our <a href="/gutters-englewood-co/">Englewood gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
