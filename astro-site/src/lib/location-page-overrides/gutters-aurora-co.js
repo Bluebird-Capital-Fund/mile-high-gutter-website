@@ -78,7 +78,7 @@ export const guttersAuroraCo = {
       heading: 'Helping Aurora Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Aurora, including Saddle Rock, Tallyn's Reach, Murphy Creek, Southshore, Mission Viejo, Seven Hills, Meadow Hills, and surrounding communities. Our crews regularly travel along E-470, Parker Road, Smoky Hill Road, Alameda Parkway, Mississippi Avenue, and I-225, allowing us to efficiently serve homes throughout the area.</p>
 <p>Whether your home is in one of Aurora's established neighborhoods or a newer community on the eastern side of the city, we understand the drainage challenges created by Colorado's changing weather.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-englewood-co/">gutters in Englewood, CO</a> or explore our Lakewood gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-englewood-co/">gutters in Englewood, CO</a> or explore our <a href="/gutters-lakewood-co/">Lakewood gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
