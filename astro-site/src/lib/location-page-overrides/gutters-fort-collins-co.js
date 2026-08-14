@@ -79,7 +79,7 @@ export const guttersFortCollinsCo = {
       heading: 'Helping Fort Collins Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Fort Collins, including Harmony Corridor, Fossil Lake Ranch, Rigden Farm, Old Town, Maple Hill, Trail Head, Observatory Village, and surrounding communities. Our crews regularly travel along Interstate 25, Harmony Road, Timberline Road, College Avenue, and Mulberry Street, allowing us to efficiently reach homes throughout the area.</p>
 <p>Whether your property is shaded by mature cottonwoods or located in one of Fort Collins' growing residential developments, we understand the local drainage conditions that affect your home.</p>
-<p>If you're looking for gutter services in other parts of Colorado, you can also learn more about our <a href="/gutters-colorado-springs-co/">gutters in Colorado Springs</a> or explore our Boulder gutters services.</p>`,
+<p>If you're looking for gutter services in other parts of Colorado, you can also learn more about our <a href="/gutters-colorado-springs-co/">gutters in Colorado Springs</a> or explore our <a href="/gutters-boulder-co/">Boulder gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
