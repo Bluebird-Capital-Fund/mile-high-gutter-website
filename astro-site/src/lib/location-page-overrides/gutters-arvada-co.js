@@ -79,7 +79,7 @@ export const guttersArvadaCo = {
       heading: 'Helping Arvada Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Arvada, including Scenic Heights, Ralston Valley, Leyden Rock, Candelas, Allendale, Alta Vista, West Woods, and surrounding communities. Our crews regularly travel along Wadsworth Boulevard, Indiana Street, Highway 93, I-70, and Ralston Road, allowing us to efficiently reach homes across the area.</p>
 <p>Whether your property is surrounded by mature trees or located in one of Arvada's newer developments, we understand the drainage challenges that come with living along Colorado's Front Range.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-littleton-co/">gutters in Littleton</a> or explore our Highlands Ranch gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-littleton-co/">gutters in Littleton</a> or explore our <a href="/gutters-highlands-ranch-co/">Highlands Ranch gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
