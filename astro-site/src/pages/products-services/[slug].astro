@@ -13,7 +13,7 @@ import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { getCityServiceOverride, cityServiceOverrideSlugs } from '../../lib/city-service-overrides/index.js'
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
-import { withServiceAreaCities } from '../../lib/service-area-cities.js'
+import ServiceAreaBlock from '../../components/ServiceAreaBlock.astro'
 
 /** Old Sanity slugs superseded by newer URLs (redirected in vercel.json). */
 const RETIRED_CITY_SERVICE_SLUGS = new Set([
@@ -69,7 +69,7 @@ const formsCfg = settings?.forms ?? {}
 const footerBrand = settings?.footerBrand ?? homePage?.footerBrand ?? {}
 const footerColumns = settings?.footerColumns ?? homePage?.footerColumns ?? []
 const footerSupport = settings?.footerSupport ?? homePage?.footerSupport ?? {}
-const serviceArea = withServiceAreaCities(homePage?.serviceArea)
+const serviceArea = homePage?.serviceArea ?? {}
 
 const companyName = asStr(business.companyName) || 'Mile High Gutter'
 const phoneDisplay = asStr(business.phoneDisplay) || '(303) 000-0000'
@@ -510,37 +510,18 @@ const serviceHref = (svc) => {
       </section>
     ) : null}
 
+    {showServiceAreaCities ? (
+      <ServiceAreaBlock
+        id="city-map"
+        eyebrow={asStr(serviceArea?.eyebrow) || 'Service Area'}
+        headline="Rain Gutters in the Denver Metro Area"
+        mapEmbedUrl={mapEmbedUrl}
+        mapTitle={`${companyName} service area map`}
+        citiesLabel={asStr(serviceArea?.citiesLabel) || 'Cities We Serve'}
+      />
+    ) : (
     <section class="section service-area" id="city-map">
       <div class="container">
-        {showServiceAreaCities ? (
-          <>
-            <div class="why-eyebrow">{asStr(serviceArea?.eyebrow) || 'Service Area'}</div>
-            <h2 class="section-title">{asStr(serviceArea?.headline) || 'Rain Gutters in the Denver Metro Area'}</h2>
-            <p class="section-lead service-area-intro">{asStr(serviceArea?.intro)}</p>
-            <div class="service-area-grid">
-              <div class="map-wrap">
-                <iframe
-                  src={mapEmbedUrl}
-                  width="600"
-                  height="400"
-                  style="border:0;"
-                  allowfullscreen=""
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  title={`${companyName} service area map`}
-                ></iframe>
-              </div>
-              <div class="cities-list">
-                <p class="cities-label">{asStr(serviceArea?.citiesLabel) || 'Cities We Serve'}</p>
-                <nav class="cities-nav" aria-label={asStr(serviceArea?.citiesNavAriaLabel) || 'Cities We Serve'}>
-                  {(Array.isArray(serviceArea?.cities) ? serviceArea.cities : []).map((c) => (
-                    <a href={asStr(c.href) || '#contact'}>{asStr(c.name)}</a>
-                  ))}
-                </nav>
-              </div>
-            </div>
-          </>
-        ) : (
           <div class="map-wrap" style="max-width: none; border-radius: 0; box-shadow: none; margin: 0 -1.5rem;">
             <iframe
               src={mapEmbedUrl}
@@ -553,9 +534,9 @@ const serviceHref = (svc) => {
               title={`${companyName} service area map`}
             ></iframe>
           </div>
-        )}
       </div>
     </section>
+    )}
   </main>
 
   <footer class="footer">

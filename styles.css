@@ -1113,7 +1113,8 @@ ul.hero-lead-list strong {
   padding: 0;
 }
 
-.cities-nav a {
+.cities-nav a,
+.cities-nav span {
   color: var(--color-text);
   font-size: 0.8125rem;
   line-height: 1.3;
@@ -1121,6 +1122,42 @@ ul.hero-lead-list strong {
 
 .cities-nav a:hover {
   color: var(--color-accent);
+}
+
+.service-area-city-box {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.service-area-city-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.6rem;
+}
+
+.service-area-city-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius);
+  background: #7ed9b0;
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.service-area-city-btn:hover {
+  background: #63c89a;
+  color: var(--color-dark);
 }
 
 /* Dedicated Service Area page only (homepage .service-area keeps column nav) */

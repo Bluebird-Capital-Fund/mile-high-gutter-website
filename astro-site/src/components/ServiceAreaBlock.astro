@@ -1,0 +1,66 @@
+---
+import { asStr } from '../lib/sanity-strings.js'
+import { SERVICE_AREA_CITIES, SERVICE_AREA_INTRO } from '../lib/service-area-cities.js'
+
+interface Props {
+  id?: string
+  eyebrow?: string
+  headline?: string
+  intro?: string
+  mapEmbedUrl?: string
+  mapTitle?: string
+  citiesLabel?: string
+  headingLevel?: 'h1' | 'h2'
+}
+
+const {
+  id = 'service-area',
+  eyebrow = 'Service Area',
+  headline = 'Rain Gutters in the Denver Metro Area',
+  intro = SERVICE_AREA_INTRO,
+  mapEmbedUrl = '',
+  mapTitle = 'Service area map',
+  citiesLabel = 'Cities We Serve',
+  headingLevel = 'h2',
+} = Astro.props
+const Heading = headingLevel === 'h1' ? 'h1' : 'h2'
+---
+
+<section class="section service-area" id={id}>
+  <div class="container">
+    {asStr(eyebrow) ? <div class="why-eyebrow">{asStr(eyebrow)}</div> : null}
+    <Heading class="section-title">{asStr(headline)}</Heading>
+    <p class="section-lead service-area-intro">{asStr(intro) || SERVICE_AREA_INTRO}</p>
+    <div class="service-area-grid">
+      <div class="map-wrap">
+        {asStr(mapEmbedUrl) ? (
+          <iframe
+            src={asStr(mapEmbedUrl)}
+            width="600"
+            height="400"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={asStr(mapTitle) || 'Service area map'}
+          ></iframe>
+        ) : null}
+      </div>
+      <div class="cities-list">
+        <p class="cities-label">{asStr(citiesLabel)}</p>
+        <div class="cities-nav" aria-label={asStr(citiesLabel)}>
+          {SERVICE_AREA_CITIES.map((city) => (
+            <span>{city.name}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="service-area-city-box">
+      <nav class="service-area-city-buttons" aria-label="Gutter services by city">
+        {SERVICE_AREA_CITIES.map((city) => (
+          <a href={city.href} class="service-area-city-btn">{city.name}</a>
+        ))}
+      </nav>
+    </div>
+  </div>
+</section>

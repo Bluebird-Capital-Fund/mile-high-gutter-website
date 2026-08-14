@@ -13,7 +13,7 @@ import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { getLocationPageOverride } from '../../lib/location-page-overrides/index.js'
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
-import { withServiceAreaCities } from '../../lib/service-area-cities.js'
+import ServiceAreaBlock from '../../components/ServiceAreaBlock.astro'
 
 const slug = 'gutters-highlands-ranch-co'
 const pageOverride = getLocationPageOverride(slug)
@@ -39,7 +39,7 @@ const formsCfg = settings?.forms ?? {}
 const footerBrand = settings?.footerBrand ?? homePage?.footerBrand ?? {}
 const footerColumns = settings?.footerColumns ?? homePage?.footerColumns ?? []
 const footerSupport = settings?.footerSupport ?? homePage?.footerSupport ?? {}
-const serviceArea = withServiceAreaCities(homePage?.serviceArea)
+const serviceArea = homePage?.serviceArea ?? {}
 
 const companyName = asStr(business.companyName) || 'Mile High Gutter'
 const phoneDisplay = asStr(business.phoneDisplay) || '(303) 000-0000'
@@ -418,35 +418,14 @@ const canonicalHref = `https://www.milehighgutter.com/${slug}/`
       </section>
     ) : null}
 
-    <section class="section service-area" id="location-map">
-      <div class="container">
-        <div class="why-eyebrow">{asStr(serviceArea?.eyebrow) || 'Service Area'}</div>
-        <h2 class="section-title">{asStr(serviceArea?.headline) || 'Rain Gutters in the Denver Metro Area'}</h2>
-        <p class="section-lead service-area-intro">{asStr(serviceArea?.intro)}</p>
-        <div class="service-area-grid">
-          <div class="map-wrap">
-            <iframe
-              src={gbpMapEmbedUrl}
-              width="600"
-              height="400"
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title={gbpMapTitle}
-            ></iframe>
-          </div>
-          <div class="cities-list">
-            <p class="cities-label">{asStr(serviceArea?.citiesLabel) || 'Cities We Serve'}</p>
-            <nav class="cities-nav" aria-label={asStr(serviceArea?.citiesNavAriaLabel) || 'Cities We Serve'}>
-              {(Array.isArray(serviceArea?.cities) ? serviceArea.cities : []).map((c) => (
-                <a href={asStr(c.href) || '#contact'}>{asStr(c.name)}</a>
-              ))}
-            </nav>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ServiceAreaBlock
+      id="location-map"
+      eyebrow={asStr(serviceArea?.eyebrow) || 'Service Area'}
+      headline="Rain Gutters in the Denver Metro Area"
+      mapEmbedUrl={gbpMapEmbedUrl}
+      mapTitle={gbpMapTitle}
+      citiesLabel={asStr(serviceArea?.citiesLabel) || 'Cities We Serve'}
+    />
   </main>
 
   <footer class="footer">

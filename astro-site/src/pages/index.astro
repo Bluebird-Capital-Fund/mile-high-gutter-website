@@ -21,7 +21,7 @@ import {
 } from '../lib/sanity-strings.js'
 import { assertSanityHomepage } from '../lib/assert-sanity-homepage.js'
 import { sanitizeCmsHtml } from '../lib/sanitize-cms-html.js'
-import { SERVICE_AREA_CITIES } from '../lib/service-area-cities.js'
+import ServiceAreaBlock from '../components/ServiceAreaBlock.astro'
 
 const [settings, homePage] = await Promise.all([
   getSiteSettings(),
@@ -214,9 +214,6 @@ const reviewValues = reviews?.reviewValues
 const serviceArea = {
   ...hp.serviceArea,
   headline: 'Rain Gutters in the Denver Metro Area',
-  intro:
-    'We serve residential and commercial properties throughout the Denver metro, including gutters in Colorado Springs, Fort Collins, Boulder, Centennial, Thornton, Littleton, Arvada, Highlands Ranch, Castle Rock, Broomfield, Lafayette, Brighton, Westminster, Englewood, Aurora, and Lakewood.',
-  cities: SERVICE_AREA_CITIES,
 }
 const team = {
   ...hp.team,
@@ -889,35 +886,14 @@ function responsiveSrc(src, width = 800) {
     </section>
 
 
-    <section id="service-area" class="section service-area">
-      <div class="container">
-        <div class="why-eyebrow">{asStr(serviceArea?.eyebrow)}</div>
-        <h2 class="section-title">{asStr(serviceArea?.headline)}</h2>
-        <p class="section-lead service-area-intro">{asStr(serviceArea?.intro)}</p>
-        <div class="service-area-grid">
-          <div class="map-wrap">
-            <iframe
-              src={mapEmbedUrl}
-              width="600"
-              height="400"
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title={mapIframeTitle}
-            ></iframe>
-          </div>
-          <div class="cities-list">
-            <p class="cities-label">{asStr(serviceArea?.citiesLabel)}</p>
-            <nav class="cities-nav" aria-label={asStr(serviceArea?.citiesNavAriaLabel)}>
-              {serviceArea?.cities?.map((c) => (
-                <a href={asStr(c.href)}>{asStr(c.name)}</a>
-              ))}
-            </nav>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ServiceAreaBlock
+      id="service-area"
+      eyebrow={asStr(serviceArea?.eyebrow)}
+      headline={asStr(serviceArea?.headline)}
+      mapEmbedUrl={mapEmbedUrl}
+      mapTitle={mapIframeTitle}
+      citiesLabel={asStr(serviceArea?.citiesLabel)}
+    />
 
     <section id="team" class="section our-team">
       <div class="container">

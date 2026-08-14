@@ -1,4 +1,7 @@
-/** Cities We Serve list — used on homepage, service pages, and location pages. */
+/** Cities We Serve — used on homepage, service pages, and location pages. */
+export const SERVICE_AREA_INTRO =
+  'We serve residential and commercial properties throughout the Denver metro, including gutters in Colorado Springs, Fort Collins, Boulder, Centennial, Thornton, Littleton, Arvada, Highlands Ranch, Castle Rock, Broomfield, Lafayette, Brighton, Westminster, Englewood, Aurora, and Lakewood.'
+
 export const SERVICE_AREA_CITIES = [
   { name: 'Colorado Springs', href: '/gutters-colorado-springs-co/' },
   { name: 'Fort Collins', href: '/gutters-fort-collins-co/' },
@@ -17,13 +20,3 @@ export const SERVICE_AREA_CITIES = [
   { name: 'Aurora', href: '/gutters-aurora-co/' },
   { name: 'Lakewood', href: '/gutters-lakewood-co/' },
 ]
-
-/**
- * @param {Record<string, unknown> | null | undefined} serviceArea
- */
-export function withServiceAreaCities(serviceArea) {
-  return {
-    ...(serviceArea || {}),
-    cities: SERVICE_AREA_CITIES,
-  }
-}

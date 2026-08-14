@@ -10,7 +10,8 @@ import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../li
 import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
-import { withServiceAreaCities } from '../../lib/service-area-cities.js'
+import { SERVICE_AREA_INTRO } from '../../lib/service-area-cities.js'
+import ServiceAreaBlock from '../../components/ServiceAreaBlock.astro'
 
 let settings = {}
 let homePage = {}
@@ -47,65 +48,14 @@ const universalFormAction = asStr(formsCfg?.submitPath) || asStr(footerEstimate?
 const universalFormMethod = asStr(footerEstimate?.formMethod) || 'post'
 const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
 
-const serviceArea = withServiceAreaCities(homePage?.serviceArea)
+const serviceArea = homePage?.serviceArea ?? {}
 const pageTitle = 'Service Area | Mile High Gutter'
-const pageDescription = asStr(serviceArea?.intro) || 'Cities and counties we serve across the Denver metro.'
+const pageDescription = SERVICE_AREA_INTRO
 const mapEmbedUrl =
   asStr(settings?.mapEmbedUrl) ||
   'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d393176.63622688083!2d-105.63456111093751!3d39.6566351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b8636aaaaaaab%3A0x82de48ab5054a084!2sMile%20High%20Gutter%20LLC!5e0!3m2!1sen!2sus!4v1774033385651!5m2!1sen!2sus'
 const mapIframeTitle =
   applyTemplate(asStr(serviceArea?.mapIframeTitleTemplate), { companyName }) || `${companyName} service area map`
-
-const counties = [
-  'Adams County',
-  'Arapahoe County',
-  'Boulder County',
-  'Broomfield County',
-  'Clear Creek County',
-  'Denver County',
-  'Douglas County',
-  'Gilpin County',
-  'Jefferson County',
-  'Weld County',
-]
-
-const cities = [
-  'Denver',
-  'Aurora',
-  'Lakewood',
-  'Arvada',
-  'Westminster',
-  'Thornton',
-  'Northglenn',
-  'Commerce City',
-  'Brighton',
-  'Broomfield',
-  'Golden',
-  'Wheat Ridge',
-  'Edgewater',
-  'Morrison',
-  'Littleton',
-  'Englewood',
-  'Sheridan',
-  'Centennial',
-  'Greenwood Village',
-  'Cherry Hills Village',
-  'Highlands Ranch',
-  'Lone Tree',
-  'Parker',
-  'Castle Rock',
-  'Boulder',
-  'Lafayette',
-  'Louisville',
-  'Erie',
-  'Longmont',
-  'Idaho Springs',
-  'Black Hawk',
-  'Central City',
-  'Greeley',
-  'Evans',
-  'Windsor',
-]
 ---
 
 <BaseLayout
@@ -182,39 +132,15 @@ const cities = [
   </header>
 
   <main>
-    <section class="section service-area service-area-page" id="service-area">
-      <div class="container">
-        <div class="why-eyebrow">{asStr(serviceArea?.eyebrow) || 'Service Area'}</div>
-        <h1 class="section-title">{asStr(serviceArea?.headline) || 'Areas We Serve'}</h1>
-        <p class="section-lead service-area-intro">
-          {asStr(serviceArea?.intro) || 'We serve homeowners and businesses throughout the Denver metro area.'}
-        </p>
-        <div class="cities-list">
-          <p class="cities-label">Counties We Serve</p>
-          <nav class="cities-nav" aria-label="Counties we serve">
-            {counties.map((county) => (
-              <span>{county}</span>
-            ))}
-          </nav>
-          <p class="cities-label" style="margin-top:1rem;">Cities We Serve</p>
-          <nav class="cities-nav" aria-label={asStr(serviceArea?.citiesNavAriaLabel) || 'Cities we serve'}>
-            {cities.map((city) => <span>{city}</span>)}
-          </nav>
-        </div>
-        <div class="map-wrap" style="margin-top:1.5rem;">
-          <iframe
-            src={mapEmbedUrl}
-            width="600"
-            height="420"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title={mapIframeTitle}
-          ></iframe>
-        </div>
-      </div>
-    </section>
+    <ServiceAreaBlock
+      id="service-area"
+      headingLevel="h1"
+      eyebrow={asStr(serviceArea?.eyebrow) || 'Service Area'}
+      headline="Rain Gutters in the Denver Metro Area"
+      mapEmbedUrl={mapEmbedUrl}
+      mapTitle={mapIframeTitle}
+      citiesLabel={asStr(serviceArea?.citiesLabel) || 'Cities We Serve'}
+    />
   </main>
 
   <footer class="footer">
