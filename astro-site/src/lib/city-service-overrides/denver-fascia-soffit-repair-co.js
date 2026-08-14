@@ -49,7 +49,7 @@ export const denverFasciaSoffitRepairCo = {
 <li>Commercial fascia and soffit repair</li>
 </ul>
 <p>If recurring debris buildup is contributing to gutter overflow, installing <a href="/products-services/denver-gutter-guards-co/">Denver gutter guards</a> may help reduce future maintenance and protect the repaired fascia and soffits.</p>
-<p>We also evaluate the condition of your gutter downspouts in Denver, CO, since properly functioning downspouts help move water away from the roof edge and reduce unnecessary moisture around the fascia.</p>`,
+<p>We also evaluate the condition of your <a href="/products-services/gutter-downspouts-denver-co/">gutter downspouts in Denver, CO</a>, since properly functioning downspouts help move water away from the roof edge and reduce unnecessary moisture around the fascia.</p>`,
       showCta: true,
     },
     {
