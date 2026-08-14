@@ -49,7 +49,7 @@ export const gutterInspectionServicesDenverCo = {
 <li>Maintenance recommendations</li>
 </ul>
 <p>Many inspections result in simple maintenance instead of major repairs. If routine service is all that's needed, we may recommend <a href="/products-services/gutter-maintenance-denver-co/">Denver gutter maintenance</a> to keep the system performing properly throughout the year.</p>
-<p>If debris regularly causes drainage problems, we can also discuss whether gutter guards in Denver may help reduce buildup and simplify future maintenance.</p>`,
+<p>If debris regularly causes drainage problems, we can also discuss whether <a href="/products-services/denver-gutter-guards-co/">gutter guards in Denver</a> may help reduce buildup and simplify future maintenance.</p>`,
       showCta: true,
     },
     {
