@@ -79,7 +79,7 @@ export const guttersCastleRockCo = {
       heading: 'Helping Castle Rock Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Castle Rock, including The Meadows, Founders Village, Crystal Valley Ranch, Castle Pines Village, Terrain, Red Hawk, Plum Creek, and surrounding communities. Our crews regularly travel along I-25, Founders Parkway, Meadows Parkway, Plum Creek Parkway, and Wolfensberger Road, making it easy to reach homes throughout the area.</p>
 <p>Whether your property backs up to open space or sits on one of Castle Rock's sloped lots, we understand the drainage challenges that come with the area's terrain and changing weather.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-highlands-ranch-co/">gutters in Highlands Ranch</a> or explore our Broomfield gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-highlands-ranch-co/">gutters in Highlands Ranch</a> or explore our <a href="/gutters-broomfield-co/">Broomfield gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
