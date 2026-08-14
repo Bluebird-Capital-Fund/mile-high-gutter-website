@@ -55,7 +55,7 @@ export const snowIceSolutionsHeatTapeDenverCo = {
       body: `<p>Heat tape is most effective when it is installed as part of a complete drainage strategy.</p>
 <p>Simply adding heating cables in Denver without considering roof drainage, gutter condition, and snow accumulation patterns may not solve recurring winter problems. Proper placement is essential for allowing melting snow to drain instead of refreezing along the roof edge.</p>
 <p>Professional installation begins with evaluating how snow and ice affect your property throughout the winter. We determine where heat tape can provide the greatest benefit while ensuring the gutter system continues to drain properly.</p>
-<p>The goal is to improve winter drainage while helping reduce unnecessary stress on your gutters during Denver's coldest months.</p>`,
+<p>The goal is to improve winter drainage while helping reduce unnecessary stress on your gutters during Denver's coldest months. Depending on the property and roofline, we can also discuss heated gutter guards and other heated gutter systems that help manage snow, ice, and debris while keeping water moving.</p>`,
       showCta: false,
     },
     {
