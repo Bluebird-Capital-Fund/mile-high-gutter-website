@@ -79,7 +79,7 @@ export const guttersBroomfieldCo = {
       heading: 'Helping Broomfield Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Broomfield, including Broadlands, Anthem Highlands, Brandywine, Country Estates, Lac Amora, McKay Landing, Skyestone, and surrounding communities. Our crews regularly travel along US 36, Sheridan Parkway, 120th Avenue, Wadsworth Parkway, and Main Street, making it easy to reach homes across the area.</p>
 <p>Whether your home sits in a neighborhood with mature trees or one of Broomfield's growing communities, we understand the drainage challenges that come with Colorado's changing weather.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-castle-rock-co/">gutters in Castle Rock</a> or explore our Lafayette gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-castle-rock-co/">gutters in Castle Rock</a> or explore our <a href="/gutters-lafayette-co/">Lafayette gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
