@@ -79,7 +79,7 @@ export const guttersEnglewoodCo = {
       heading: 'Helping Englewood Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Englewood, including Cherry Hills Village, Belleview Park, Arapahoe Acres, South Broadway, Mansfield Heights, and surrounding communities. Our crews regularly travel along Santa Fe Drive, Broadway, Hampden Avenue, Belleview Avenue, and Oxford Avenue, making it easy to serve homes across the area.</p>
 <p>Whether your home is one of Englewood's classic brick houses or a newly renovated property, we understand the drainage challenges that come with maintaining homes in this part of the Denver metro.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-westminster-co/">gutters in Westminster, CO</a> or explore our Aurora gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-westminster-co/">gutters in Westminster, CO</a> or explore our <a href="/gutters-aurora-co/">Aurora gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
