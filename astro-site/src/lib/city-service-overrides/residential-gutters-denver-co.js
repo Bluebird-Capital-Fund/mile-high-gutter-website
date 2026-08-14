@@ -50,7 +50,7 @@ export const residentialGuttersDenverCo = {
 <li>Residential Drainage Improvements</li>
 </ul>
 <p>Some homes also benefit from a <a href="/products-services/french-drain-denver-co/">Denver French drain</a> when roof runoff continues to collect near the foundation after leaving the gutter system.</p>
-<p>In addition to serving homeowners, we also install and maintain commercial gutters in Denver for offices, retail buildings, multifamily properties, and other commercial facilities throughout the metro area.</p>`,
+<p>In addition to serving homeowners, we also install and maintain <a href="/products-services/commercial-gutters-denver-co/">commercial gutters in Denver</a> for offices, retail buildings, multifamily properties, and other commercial facilities throughout the metro area.</p>`,
       showCta: true,
     },
     {
