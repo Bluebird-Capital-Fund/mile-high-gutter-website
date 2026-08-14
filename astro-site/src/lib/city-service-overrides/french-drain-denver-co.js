@@ -48,7 +48,7 @@ export const frenchDrainDenverCo = {
 <li>Drainage solutions for foundation protection</li>
 </ul>
 <p>A French drain often works alongside <a href="/products-services/gutter-downspouts-denver-co/">Denver gutter downspouts</a> to move roof runoff farther away from the foundation and improve overall drainage around the property.</p>
-<p>We also evaluate how your drainage system works with your residential gutters in Denver, CO, helping ensure water is managed effectively from the roof all the way to the discharge area.</p>`,
+<p>We also evaluate how your drainage system works with your <a href="/products-services/residential-gutters-denver-co/">residential gutters in Denver, CO</a>, helping ensure water is managed effectively from the roof all the way to the discharge area.</p>`,
       showCta: true,
     },
     {
