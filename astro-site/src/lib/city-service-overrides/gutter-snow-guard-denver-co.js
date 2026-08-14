@@ -48,7 +48,7 @@ export const gutterSnowGuardDenverCo = {
 <li>Gutter protection from sliding snow</li>
 <li>Snow guard installation for new and existing roofs</li>
 </ul>
-<p>Depending on your roof and winter conditions, we may also recommend heat tape in Denver to help manage ice buildup along the roof edge and support proper drainage during freezing temperatures. Many properties also benefit from <a href="/products-services/custom-gutters-denver-co/">Denver custom gutters</a>, which can be designed around the roofline and drainage needs to better withstand Colorado's changing weather.</p>`,
+<p>Depending on your roof and winter conditions, we may also recommend <a href="/products-services/snow-ice-solutions-heat-tape-denver-co/">heat tape in Denver</a> to help manage ice buildup along the roof edge and support proper drainage during freezing temperatures. Many properties also benefit from <a href="/products-services/custom-gutters-denver-co/">Denver custom gutters</a>, which can be designed around the roofline and drainage needs to better withstand Colorado's changing weather.</p>`,
       showCta: true,
     },
     {
