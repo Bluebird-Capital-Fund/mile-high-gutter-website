@@ -79,7 +79,7 @@ export const guttersLittletonCo = {
       heading: 'Helping Littleton Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Littleton, including Columbine Valley, Ken Caryl, Roxborough Park, Grant Ranch, Bow Mar, Sterling Ranch, Historic Downtown Littleton, and surrounding communities. Our crews regularly travel along C-470, Santa Fe Drive, Bowles Avenue, Wadsworth Boulevard, and Broadway, allowing us to efficiently reach homes across the area.</p>
 <p>Whether your home sits beneath mature shade trees or overlooks the foothills, we understand the drainage challenges that Littleton homeowners face throughout the year.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-thornton-co/">gutters in Thornton, CO</a> or explore our Arvada gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-thornton-co/">gutters in Thornton, CO</a> or explore our <a href="/gutters-arvada-co/">Arvada gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
