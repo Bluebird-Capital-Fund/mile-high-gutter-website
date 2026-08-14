@@ -79,7 +79,7 @@ export const guttersHighlandsRanchCo = {
       heading: 'Helping Highlands Ranch Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Highlands Ranch, including Westridge, Eastridge, Northridge, Southridge, BackCountry, Firelight, The Hearth, and surrounding communities. Our crews regularly travel along C-470, Highlands Ranch Parkway, University Boulevard, Quebec Street, and Broadway, allowing us to efficiently serve homes throughout the area.</p>
 <p>Whether your home backs up to open space or sits in one of Highlands Ranch's established neighborhoods, we understand the drainage challenges that come with Colorado's changing seasons.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-arvada-co/">gutters in Arvada</a> or explore our Castle Rock gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-arvada-co/">gutters in Arvada</a> or explore our <a href="/gutters-castle-rock-co/">Castle Rock gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
