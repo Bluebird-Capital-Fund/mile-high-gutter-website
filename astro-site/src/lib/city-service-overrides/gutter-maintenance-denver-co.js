@@ -49,7 +49,7 @@ export const gutterMaintenanceDenverCo = {
 <li>Commercial gutter maintenance</li>
 </ul>
 <p>If your property has a newer <a href="/products-services/seamless-gutter-denver-co/">Denver seamless gutter</a> system, regular maintenance still plays an important role in preventing clogs and identifying small issues before they affect drainage performance.</p>
-<p>As part of our maintenance service, we may also recommend gutter inspection services in Denver if we notice signs of storm damage, developing leaks, or other conditions that require a more detailed evaluation.</p>`,
+<p>As part of our maintenance service, we may also recommend <a href="/products-services/gutter-inspection-services-denver-co/">gutter inspection services in Denver</a> if we notice signs of storm damage, developing leaks, or other conditions that require a more detailed evaluation.</p>`,
       showCta: true,
     },
     {
