@@ -48,7 +48,7 @@ export const commercialGuttersDenverCo = {
 <li>Custom drainage solutions for large roof systems</li>
 </ul>
 <p>We also provide <a href="/products-services/residential-gutters-denver-co/">Denver residential gutters</a> for homeowners looking to improve drainage and protect their homes from Colorado's changing weather.</p>
-<p>For buildings with unique rooflines or specialized drainage requirements, we can also recommend custom gutters in Denver designed to fit the property's specific needs.</p>`,
+<p>For buildings with unique rooflines or specialized drainage requirements, we can also recommend <a href="/products-services/custom-gutters-denver-co/">custom gutters in Denver</a> designed to fit the property's specific needs.</p>`,
       showCta: true,
     },
     {
