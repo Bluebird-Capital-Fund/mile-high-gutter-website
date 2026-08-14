@@ -1074,10 +1074,8 @@ ul.hero-lead-list strong {
   background: var(--color-bg-alt);
 }
 
-.service-area .service-area-intro,
-.service-area .map-wrap,
-.service-area-city-box {
-  max-width: 72ch;
+.service-area .service-area-intro {
+  max-width: none;
 }
 
 .service-area-grid {
@@ -1140,8 +1138,8 @@ ul.hero-lead-list strong {
 
 .service-area-city-buttons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 0.45rem;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.55rem;
 }
 
 .service-area-city-btn {
@@ -1149,7 +1147,7 @@ ul.hero-lead-list strong {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.28rem 0.5rem;
+  padding: 0.5rem 0.8rem;
   border-radius: var(--radius);
   background: #7ed9b0;
   color: var(--color-dark);
