@@ -49,7 +49,7 @@ export const copperGuttersDenverCo = {
 <li>Copper gutter system upgrades</li>
 </ul>
 <p>For properties exposed to significant winter ice buildup, we may also recommend <a href="/products-services/snow-ice-solutions-heat-tape-denver-co/">Denver heat tape</a> where appropriate to help improve drainage during freezing conditions.</p>
-<p>If you're looking for a more economical gutter material while maintaining dependable performance, we also install aluminum gutters in Denver for residential and commercial properties.</p>`,
+<p>If you're looking for a more economical gutter material while maintaining dependable performance, we also install <a href="/products-services/aluminum-gutters-denver-co/">aluminum gutters in Denver</a> for residential and commercial properties.</p>`,
       showCta: true,
     },
     {
