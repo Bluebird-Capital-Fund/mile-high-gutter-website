@@ -47,7 +47,7 @@ export const denverGutterGuardsCo = {
 <li>Evaluation of existing gutter performance before installation</li>
 </ul>
 <p>Before recommending gutter screens in Denver, CO, we first make sure the existing gutter system is functioning correctly. If we find drainage concerns, we may suggest a <a href="/products-services/gutter-inspection-services-denver-co/">Denver gutter inspection</a> to identify underlying problems before guards are installed.</p>
-<p>If overflowing gutters have already caused exterior damage, we may also recommend fascia and soffit repair in Denver before completing the installation.</p>`,
+<p>If overflowing gutters have already caused exterior damage, we may also recommend <a href="/products-services/denver-fascia-soffit-repair-co/">fascia and soffit repair in Denver</a> before completing the installation.</p>`,
       showCta: true,
     },
     {
