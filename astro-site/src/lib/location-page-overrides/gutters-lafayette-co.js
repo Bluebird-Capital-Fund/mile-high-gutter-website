@@ -79,7 +79,7 @@ export const guttersLafayetteCo = {
       heading: 'Helping Lafayette Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Lafayette, including Indian Peaks, Anna's Farm, Coal Creek Village, Centaur Village, Waneka Landing, Lafayette Park, and surrounding communities. Our crews regularly travel along US 287, South Boulder Road, Baseline Road, Arapahoe Road, and Dillon Road, allowing us to efficiently serve homes across the area.</p>
 <p>Whether your property is surrounded by mature trees or located in one of Lafayette's newer neighborhoods, we understand the drainage challenges that come with Colorado's changing weather.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-broomfield-co/">gutters in Broomfield, CO</a> or explore our Brighton gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-broomfield-co/">gutters in Broomfield, CO</a> or explore our <a href="/gutters-brighton-co/">Brighton gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
