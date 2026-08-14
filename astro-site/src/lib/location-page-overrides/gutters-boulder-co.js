@@ -79,7 +79,7 @@ export const guttersBoulderCo = {
       heading: 'Helping Boulder Neighborhoods Stay Protected Year-Round',
       body: `<p>We proudly serve homeowners throughout Boulder, including Mapleton Hill, Newlands, Table Mesa, Gunbarrel, Wonderland Lake, North Boulder, South Boulder, and surrounding communities. Our crews regularly travel along US 36, Foothills Parkway, Baseline Road, Broadway, and Arapahoe Avenue, allowing us to efficiently reach homes across the city.</p>
 <p>Whether your property sits beneath mature cottonwoods, backs up to open space, or overlooks the Flatirons, we understand the drainage challenges Boulder homeowners face throughout the year.</p>
-<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-fort-collins-co/">gutters in Fort Collins</a> or explore our Centennial gutters services.</p>`,
+<p>If you're looking for gutter services in nearby communities, you can also learn more about our <a href="/gutters-fort-collins-co/">gutters in Fort Collins</a> or explore our <a href="/gutters-centennial-co/">Centennial gutters</a> services.</p>`,
       showCta: true,
       showMap: true,
     },
