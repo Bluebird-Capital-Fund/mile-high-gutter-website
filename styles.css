@@ -1074,8 +1074,10 @@ ul.hero-lead-list strong {
   background: var(--color-bg-alt);
 }
 
-.service-area .service-area-intro {
-  max-width: 72ch; /* wider intro paragraph under the section title */
+.service-area .service-area-intro,
+.service-area .map-wrap,
+.service-area-city-box {
+  max-width: 72ch;
 }
 
 .service-area-grid {
