@@ -70,13 +70,14 @@ function utmFromPageUrl(pageUrl) {
   return out;
 }
 
-/** Prefer JSON body from the browser; fall back to `pageUrl` query (e.g. if cookies/JS missed). */
-function mergeUtm(body, pageUrl) {
+/** Prefer JSON body from the browser; fall back to current page URL, then original landing URL. */
+function mergeUtm(body, pageUrl, firstLandingUrl) {
   const fromBody = utmFromBody(body);
   const fromUrl = utmFromPageUrl(pageUrl);
+  const fromFirst = utmFromPageUrl(firstLandingUrl);
   const merged = {};
   for (const key of UTM_KEYS) {
-    merged[key] = fromBody[key] || fromUrl[key] || '';
+    merged[key] = fromBody[key] || fromUrl[key] || fromFirst[key] || '';
   }
   return merged;
 }
@@ -244,8 +245,8 @@ export default {
     const firstLandingAt = String(body.firstLandingAt || '').trim().slice(0, 40);
     const first_page = String(body.first_page || firstLandingUrl || '').trim().slice(0, 2000);
     const referrer = String(body.referrer || firstReferrer || '').trim().slice(0, 2000);
-    const utm = mergeUtm(body, pageUrl || firstLandingUrl);
-    const clickIds = mergeClickIds(body, pageUrl, firstLandingUrl);
+    const utm = mergeUtm(body, pageUrl, firstLandingUrl || first_page);
+    const clickIds = mergeClickIds(body, pageUrl, firstLandingUrl || first_page);
     const querystring = buildUtmQueryString(utm, clickIds);
 
     const rawSms = body.smsMarketingOptIn;

@@ -552,8 +552,14 @@
       if (!seg) return;
       var eq = seg.indexOf('=');
       if (eq <= 0) return;
-      var key = decodeURIComponent(seg.slice(0, eq).trim());
-      var val = decodeURIComponent(seg.slice(eq + 1).trim());
+      var key = seg.slice(0, eq).trim();
+      var val = seg.slice(eq + 1).trim();
+      try {
+        key = decodeURIComponent(key);
+      } catch (e) {}
+      try {
+        val = decodeURIComponent(val);
+      } catch (e) {}
       out[key] = val;
     });
     return out;
@@ -562,13 +568,21 @@
   function setCookie(name, value, days) {
     if (!name) return;
     var maxAge = Math.max(0, Math.floor(Number(days || 90) * 24 * 60 * 60));
+    var host = String(window.location.hostname || '');
+    var domain =
+      host === 'milehighgutter.com' || host.slice(-19) === '.milehighgutter.com'
+        ? '; domain=.milehighgutter.com'
+        : '';
+    var secure = window.location.protocol === 'https:' ? '; secure' : '';
     document.cookie =
       encodeURIComponent(name) +
       '=' +
       encodeURIComponent(String(value || '')) +
       '; path=/; max-age=' +
       String(maxAge) +
-      '; samesite=lax';
+      '; samesite=lax' +
+      domain +
+      secure;
   }
 
   function getCookie(name) {
@@ -578,8 +592,17 @@
 
   /** First page in a 90d window: full URL, referrer at that moment, ISO time — first-party signal for Zapier/CRM. */
   function persistFirstTouchIfNeeded() {
-    var existing = getCookie('mhg_first_landing_url').trim();
-    if (existing) return;
+    var existing = getCookie('mhg_first_landing_url').trim() || getCookie('mhg_first_page').trim();
+    if (!existing) {
+      try {
+        var blob = JSON.parse(localStorage.getItem('mhg_attr_v1') || '{}') || {};
+        existing = String(blob.first_page || '').trim();
+      } catch (e) {}
+    }
+    if (existing) {
+      if (!getCookie('mhg_first_landing_url').trim()) setCookie('mhg_first_landing_url', existing.slice(0, 2000), 90);
+      return;
+    }
     var href = typeof window.location.href === 'string' ? window.location.href : '';
     if (!href) return;
     setCookie('mhg_first_landing_url', href.slice(0, 2000), 90);
@@ -636,7 +659,13 @@
       var fromCookie = getCookie('mhg_' + key).trim();
       if (fromCookie) {
         persisted[key] = fromCookie.slice(0, maxLen);
+        return;
       }
+      try {
+        var blob = JSON.parse(localStorage.getItem('mhg_attr_v1') || '{}') || {};
+        var fromLs = blob && blob[key] ? String(blob[key]).trim() : '';
+        if (fromLs) persisted[key] = fromLs.slice(0, maxLen);
+      } catch (e) {}
     });
 
     return persisted;
@@ -973,42 +1002,31 @@
         var address = (fd.get('address') || fd.get('location') || '').toString().trim();
         var utm = getPersistedUtmParams();
         var attr =
-          window.MhgAttribution && typeof window.MhgAttribution.toPayloadFields === 'function'
-            ? window.MhgAttribution.toPayloadFields()
-            : {};
+          window.MhgAttribution && typeof window.MhgAttribution.mergeForSubmit === 'function'
+            ? window.MhgAttribution.mergeForSubmit(form)
+            : window.MhgAttribution && typeof window.MhgAttribution.toPayloadFields === 'function'
+              ? window.MhgAttribution.toPayloadFields()
+              : {};
+        function attrVal(key, fallback) {
+          var fromAttr = attr && attr[key] ? String(attr[key]).trim() : '';
+          if (fromAttr) return fromAttr;
+          var fromFd = fd.get(key);
+          if (fromFd && String(fromFd).trim()) return String(fromFd).trim();
+          if (utm && utm[key]) return String(utm[key]).trim();
+          return fallback || '';
+        }
         var payload = {
-          gclid: (fd.get('gclid') || attr.gclid || '').toString().trim().slice(0, 500),
-          gbraid: (fd.get('gbraid') || attr.gbraid || '').toString().trim().slice(0, 500),
-          wbraid: (fd.get('wbraid') || attr.wbraid || '').toString().trim().slice(0, 500),
-          utm_source: (fd.get('utm_source') || attr.utm_source || utm.utm_source || '')
-            .toString()
-            .trim()
-            .slice(0, 200),
-          utm_medium: (fd.get('utm_medium') || attr.utm_medium || utm.utm_medium || '')
-            .toString()
-            .trim()
-            .slice(0, 200),
-          utm_campaign: (fd.get('utm_campaign') || attr.utm_campaign || utm.utm_campaign || '')
-            .toString()
-            .trim()
-            .slice(0, 200),
-          utm_id: (fd.get('utm_id') || attr.utm_id || '').toString().trim().slice(0, 200),
-          utm_content: (fd.get('utm_content') || attr.utm_content || utm.utm_content || '')
-            .toString()
-            .trim()
-            .slice(0, 200),
-          utm_term: (fd.get('utm_term') || attr.utm_term || utm.utm_term || '')
-            .toString()
-            .trim()
-            .slice(0, 200),
-          first_page: (fd.get('first_page') || attr.first_page || firstTouch.firstLandingUrl || '')
-            .toString()
-            .trim()
-            .slice(0, 2000),
-          referrer: (fd.get('referrer') || attr.referrer || firstTouch.firstReferrer || '')
-            .toString()
-            .trim()
-            .slice(0, 2000),
+          gclid: attrVal('gclid', '').slice(0, 500),
+          gbraid: attrVal('gbraid', '').slice(0, 500),
+          wbraid: attrVal('wbraid', '').slice(0, 500),
+          utm_source: attrVal('utm_source', '').slice(0, 200),
+          utm_medium: attrVal('utm_medium', '').slice(0, 200),
+          utm_campaign: attrVal('utm_campaign', '').slice(0, 200),
+          utm_id: attrVal('utm_id', '').slice(0, 200),
+          utm_content: attrVal('utm_content', '').slice(0, 200),
+          utm_term: attrVal('utm_term', '').slice(0, 200),
+          first_page: attrVal('first_page', firstTouch.firstLandingUrl || '').slice(0, 2000),
+          referrer: attrVal('referrer', firstTouch.firstReferrer || '').slice(0, 2000),
           formSource: form.getAttribute('data-lead-form') || 'unknown',
           firstName: firstName,
           lastName: lastName,
@@ -1020,11 +1038,13 @@
           message: (fd.get('message') || '').toString().trim(),
           website: (fd.get('website') || '').toString().trim(),
           pageUrl: typeof window.location.href === 'string' ? window.location.href : '',
-          firstLandingUrl: firstTouch.firstLandingUrl || (attr.first_page || ''),
-          firstReferrer: firstTouch.firstReferrer || (attr.referrer || ''),
-          firstLandingAt: firstTouch.firstLandingAt,
+          firstLandingUrl: (attr.firstLandingUrl || attr.first_page || firstTouch.firstLandingUrl || '').slice(0, 2000),
+          firstReferrer: (attr.firstReferrer || attr.referrer || firstTouch.firstReferrer || '').slice(0, 2000),
+          firstLandingAt: (attr.firstLandingAt || firstTouch.firstLandingAt || '').slice(0, 40),
           smsMarketingOptIn: fd.get('smsMarketingOptIn') === 'yes'
         };
+        if (!payload.firstLandingUrl) payload.firstLandingUrl = payload.first_page;
+        if (!payload.firstReferrer) payload.firstReferrer = payload.referrer;
 
         if (window.MhgAttribution && typeof window.MhgAttribution.logFormPayloadTable === 'function') {
           window.MhgAttribution.logFormPayloadTable(payload);

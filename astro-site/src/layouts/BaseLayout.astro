@@ -51,6 +51,92 @@ const formsJson = JSON.stringify(formsForClient).replace(/</g, '\\u003c')
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script is:inline>
+      (function () {
+        try {
+          var KEYS = [
+            'gclid',
+            'gbraid',
+            'wbraid',
+            'utm_source',
+            'utm_medium',
+            'utm_campaign',
+            'utm_id',
+            'utm_content',
+            'utm_term',
+          ]
+          var qs = new URLSearchParams(window.location.search || '')
+          var host = String(window.location.hostname || '')
+          var domain =
+            host === 'milehighgutter.com' || host.slice(-19) === '.milehighgutter.com'
+              ? '; domain=.milehighgutter.com'
+              : ''
+          var secure = window.location.protocol === 'https:' ? '; secure' : ''
+          var maxAge = '; max-age=' + String(90 * 24 * 60 * 60)
+          function readCookie(name) {
+            var parts = String(document.cookie || '').split(';')
+            for (var i = 0; i < parts.length; i++) {
+              var p = parts[i].trim()
+              var eq = p.indexOf('=')
+              if (eq < 0) continue
+              if (decodeURIComponent(p.slice(0, eq)) === name) {
+                try {
+                  return decodeURIComponent(p.slice(eq + 1))
+                } catch (e) {
+                  return p.slice(eq + 1)
+                }
+              }
+            }
+            return ''
+          }
+          function writeCookie(name, value) {
+            if (!value) return
+            document.cookie =
+              name +
+              '=' +
+              encodeURIComponent(String(value).slice(0, name.indexOf('gclid') >= 0 || name.indexOf('braid') >= 0 ? 500 : 2000)) +
+              '; path=/; samesite=lax' +
+              maxAge +
+              domain +
+              secure
+          }
+          var blob = {}
+          try {
+            blob = JSON.parse(localStorage.getItem('mhg_attr_v1') || '{}') || {}
+          } catch (e) {
+            blob = {}
+          }
+          KEYS.forEach(function (key) {
+            var fromUrl = String(qs.get(key) || '').trim()
+            var next = fromUrl || String(blob[key] || '').trim() || String(readCookie('mhg_' + key) || '').trim()
+            if (next) {
+              blob[key] = next
+              writeCookie('mhg_' + key, next)
+            }
+          })
+          if (!blob.first_page && !readCookie('mhg_first_page')) {
+            blob.first_page = String(window.location.href || '').slice(0, 2000)
+            writeCookie('mhg_first_page', blob.first_page)
+            writeCookie('mhg_first_landing_url', blob.first_page)
+          } else {
+            blob.first_page = blob.first_page || readCookie('mhg_first_page') || readCookie('mhg_first_landing_url')
+          }
+          if (!blob.referrer && !readCookie('mhg_referrer')) {
+            blob.referrer = String(document.referrer || '').slice(0, 2000)
+            writeCookie('mhg_referrer', blob.referrer)
+            writeCookie('mhg_first_referrer', blob.referrer)
+          } else {
+            blob.referrer = blob.referrer || readCookie('mhg_referrer') || readCookie('mhg_first_referrer')
+          }
+          if (!blob.first_landing_at) {
+            blob.first_landing_at = new Date().toISOString()
+            writeCookie('mhg_first_landing_at', blob.first_landing_at)
+          }
+          localStorage.setItem('mhg_attr_v1', JSON.stringify(blob))
+          sessionStorage.setItem('mhg_attr_v1', JSON.stringify(blob))
+        } catch (e) {}
+      })()
+    </script>
     <script is:inline src="https://t.contentsquare.net/uxa/df176fa84f7a9.js"></script>
     <script is:inline type="text/javascript">
       (function (c, l, a, r, i, t, y) {
@@ -92,7 +178,7 @@ const formsJson = JSON.stringify(formsForClient).replace(/</g, '\\u003c')
     <link rel="preconnect" href="https://services.leadconnectorhq.com" crossorigin />
     <link rel="preconnect" href="https://backend.leadconnectorhq.com" crossorigin />
     <link rel="preconnect" href="https://cdn.callrail.com" />
-    <script src="/attribution.js" defer></script>
+    <script src="/attribution.js"></script>
     {lcpImageSrc ? <link rel="preload" as="image" href={lcpImageSrc} fetchpriority="high" /> : null}
     <link
       rel="preload"

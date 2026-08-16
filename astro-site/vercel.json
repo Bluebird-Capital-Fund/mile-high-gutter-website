@@ -12,11 +12,11 @@
     },
     {
       "source": "/script.js",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=60, must-revalidate" }]
     },
     {
       "source": "/attribution.js",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=60, must-revalidate" }]
     },
     {
       "source": "/lp/:path*",
