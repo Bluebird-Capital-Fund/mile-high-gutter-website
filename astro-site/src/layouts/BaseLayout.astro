@@ -178,7 +178,7 @@ const formsJson = JSON.stringify(formsForClient).replace(/</g, '\\u003c')
     <link rel="preconnect" href="https://services.leadconnectorhq.com" crossorigin />
     <link rel="preconnect" href="https://backend.leadconnectorhq.com" crossorigin />
     <link rel="preconnect" href="https://cdn.callrail.com" />
-    <script src="/attribution.js"></script>
+    <script is:inline src="/attribution.js"></script>
     {lcpImageSrc ? <link rel="preload" as="image" href={lcpImageSrc} fetchpriority="high" /> : null}
     <link
       rel="preload"
@@ -235,6 +235,6 @@ const formsJson = JSON.stringify(formsForClient).replace(/</g, '\\u003c')
     <style id="site-theme-vars" set:html={themeCss}></style>
     <Analytics />
     <SpeedInsights />
-    <script src="/script.js" defer></script>
+    <script is:inline src="/script.js" defer></script>
   </body>
 </html>
