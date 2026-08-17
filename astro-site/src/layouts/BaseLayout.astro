@@ -129,7 +129,7 @@ const formsJson = JSON.stringify(formsForClient).replace(/</g, '\\u003c')
             blob.referrer = blob.referrer || readCookie('mhg_referrer') || readCookie('mhg_first_referrer')
           }
           if (!blob.first_landing_at) {
-            blob.first_landing_at = new Date().toISOString()
+            blob.first_landing_at = readCookie('mhg_first_landing_at') || new Date().toISOString()
             writeCookie('mhg_first_landing_at', blob.first_landing_at)
           }
           localStorage.setItem('mhg_attr_v1', JSON.stringify(blob))

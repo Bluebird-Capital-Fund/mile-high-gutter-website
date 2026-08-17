@@ -1,7 +1,10 @@
 /**
- * Mile High Gutter — first-touch + last-click Ads attribution.
- * Captures gclid/gbraid/wbraid + UTMs on the landing URL, persists 90 days
- * (cookie + localStorage + sessionStorage), copies onto every lead form.
+ * Mile High Gutter — Ads attribution (gclid / gbraid / wbraid / UTMs).
+ * Capture on first landing URL, persist 90 days (cookie + localStorage),
+ * copy onto every lead form. Never invent a GCLID.
+ *
+ * First-touch wins for gclid unless a new gclid appears (then update — new click).
+ * landing_page / signup_page = first full URL including query string.
  * Debug: add ?tracking_debug=1
  */
 (function (global) {
@@ -23,10 +26,27 @@
   ];
   var META_KEYS = ['first_page', 'referrer'];
   var ALL_KEYS = ATTR_KEYS.concat(META_KEYS);
+  var FORM_FIELD_ALIASES = {
+    landing_page: 'first_page',
+    signup_page: 'first_page',
+    firstLandingUrl: 'first_page',
+    first_landing_at: 'first_landing_at',
+    firstLandingAt: 'first_landing_at',
+    firstReferrer: 'referrer',
+  };
 
   function maxLenFor(key) {
-    if (key === 'first_page' || key === 'referrer') return 2000;
+    if (
+      key === 'first_page' ||
+      key === 'referrer' ||
+      key === 'landing_page' ||
+      key === 'signup_page' ||
+      key === 'firstLandingUrl'
+    ) {
+      return 2000;
+    }
     if (key === 'gclid' || key === 'gbraid' || key === 'wbraid') return 500;
+    if (key === 'first_landing_at' || key === 'firstLandingAt') return 40;
     return 200;
   }
 
@@ -178,7 +198,7 @@
     return out;
   }
 
-  /** Fill empty click IDs / UTMs from the stored first landing URL. */
+  /** Fill empty click IDs / UTMs from the stored first landing URL. Never invent values. */
   function hydrateFromFirstPage(stored) {
     if (!stored || !stored.first_page) return stored;
     var fromFirst = paramsFromUrlString(stored.first_page);
@@ -208,8 +228,8 @@
 
   /**
    * Capture from URL → storage. Never overwrite a stored value with empty.
-   * New non-empty click IDs / UTMs from the URL win (last paid click).
-   * first_page / referrer are first-touch only.
+   * New non-empty click IDs from the URL win (new Google Ads click).
+   * first_page / referrer / first_landing_at are first-touch only.
    */
   function captureFromUrl() {
     var fromUrl = readQueryParams();
@@ -235,6 +255,7 @@
 
     hydrateFromFirstPage(stored);
     persistObject(stored);
+    passToCallRail(stored);
     return stored;
   }
 
@@ -242,46 +263,130 @@
     return hydrateFromFirstPage(readStoredRaw());
   }
 
+  function formFieldMap(attr) {
+    var landing = attr.first_page || '';
+    var at = attr.first_landing_at || '';
+    var map = {};
+    ATTR_KEYS.forEach(function (key) {
+      map[key] = attr[key] || '';
+    });
+    map.first_page = landing;
+    map.referrer = attr.referrer || '';
+    map.landing_page = landing;
+    map.signup_page = landing;
+    map.firstLandingUrl = landing;
+    map.first_landing_at = at;
+    map.firstLandingAt = at;
+    map.firstReferrer = attr.referrer || '';
+    return map;
+  }
+
   function ensureHiddenInput(form, name, value) {
     if (!form) return null;
-    var el = form.querySelector('input[type="hidden"][name="' + name + '"]');
+    var el = form.querySelector('input[name="' + name + '"]');
     if (!el) {
       el = document.createElement('input');
       el.type = 'hidden';
       el.name = name;
+      el.setAttribute('autocomplete', 'off');
       form.appendChild(el);
     }
     el.value = String(value == null ? '' : value);
     return el;
   }
 
-  function applyToForm(form) {
+  function setFieldValue(form, name, value) {
+    if (!form) return;
+    var els = form.querySelectorAll(
+      'input[name="' + name + '"], textarea[name="' + name + '"], select[name="' + name + '"]',
+    );
+    var v = String(value == null ? '' : value);
+    var wrote = false;
+    for (var i = 0; i < els.length; i++) {
+      var t = String(els[i].type || '').toLowerCase();
+      if (t === 'file' || t === 'checkbox' || t === 'radio' || t === 'submit' || t === 'button') continue;
+      els[i].value = v;
+      wrote = true;
+    }
+    if (!wrote) ensureHiddenInput(form, name, v);
+  }
+
+  function isSkippableForm(form) {
+    if (!form) return true;
+    if (form.getAttribute('data-mhg-skip-attr') === '1') return true;
+    var role = String(form.getAttribute('role') || '').toLowerCase();
+    if (role === 'search') return true;
+    var id = String(form.id || '').toLowerCase();
+    if (id.indexOf('search') >= 0) return true;
+    return false;
+  }
+
+  function isLeadForm(form) {
+    if (isSkippableForm(form)) return false;
+    if (form.hasAttribute('data-lead-form')) return true;
+    if (form.classList && (form.classList.contains('hero-form') || form.classList.contains('contact-form'))) {
+      return true;
+    }
+    return false;
+  }
+
+  function hasNativeAttributionFields(form) {
+    if (!form || !form.querySelector) return false;
+    var names = [
+      'gclid',
+      'gbraid',
+      'wbraid',
+      'landing_page',
+      'signup_page',
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+    ];
+    for (var i = 0; i < names.length; i++) {
+      if (form.querySelector('[name="' + names[i] + '"]')) return true;
+    }
+    return false;
+  }
+
+  function applyToForm(form, injectMissing) {
     var attr = getAttribution();
     if (!form) return attr;
-    ALL_KEYS.forEach(function (key) {
-      ensureHiddenInput(form, key, attr[key] || '');
+    var fields = formFieldMap(attr);
+    var inject = injectMissing !== false;
+    Object.keys(fields).forEach(function (name) {
+      var existing = form.querySelector('[name="' + name + '"]');
+      if (existing || inject) setFieldValue(form, name, fields[name]);
     });
-    ensureHiddenInput(form, 'firstLandingUrl', attr.first_page || '');
-    ensureHiddenInput(form, 'firstReferrer', attr.referrer || '');
-    ensureHiddenInput(form, 'firstLandingAt', attr.first_landing_at || '');
     return attr;
   }
 
   function applyToAllLeadForms() {
-    var forms = document.querySelectorAll('form[data-lead-form]');
-    for (var i = 0; i < forms.length; i++) applyToForm(forms[i]);
+    var forms = document.querySelectorAll('form');
+    for (var i = 0; i < forms.length; i++) {
+      var form = forms[i];
+      if (isLeadForm(form)) {
+        applyToForm(form, true);
+      } else if (hasNativeAttributionFields(form)) {
+        applyToForm(form, false);
+      }
+    }
+    passToCallRail(getAttribution());
     return getAttribution();
   }
 
   function toPayloadFields() {
     var attr = getAttribution();
+    var fields = formFieldMap(attr);
     var out = {};
     ALL_KEYS.forEach(function (key) {
       out[key] = attr[key] || '';
     });
-    out.firstLandingUrl = attr.first_page || '';
-    out.firstReferrer = attr.referrer || '';
-    out.firstLandingAt = attr.first_landing_at || '';
+    out.landing_page = fields.landing_page;
+    out.signup_page = fields.signup_page;
+    out.firstLandingUrl = fields.firstLandingUrl;
+    out.firstReferrer = fields.firstReferrer;
+    out.first_landing_at = fields.first_landing_at;
+    out.firstLandingAt = fields.firstLandingAt;
     return out;
   }
 
@@ -299,6 +404,7 @@
   function mergeForSubmit(form) {
     var fromUrl = readQueryParams();
     var stored = captureFromUrl();
+    if (form) applyToForm(form, true);
     var fd = form ? new FormData(form) : null;
     function fromForm(key) {
       if (!fd) return '';
@@ -307,25 +413,31 @@
     }
     var out = {};
     ATTR_KEYS.forEach(function (key) {
-      out[key] = trimVal(
-        pickNonEmpty(fromUrl[key], stored[key], fromForm(key)),
-        maxLenFor(key),
-      );
+      out[key] = trimVal(pickNonEmpty(fromUrl[key], stored[key], fromForm(key)), maxLenFor(key));
     });
     out.first_page = trimVal(
-      pickNonEmpty(stored.first_page, fromForm('first_page'), fromForm('firstLandingUrl')),
+      pickNonEmpty(
+        stored.first_page,
+        fromForm('first_page'),
+        fromForm('landing_page'),
+        fromForm('signup_page'),
+        fromForm('firstLandingUrl'),
+      ),
       2000,
     );
     out.referrer = trimVal(
       pickNonEmpty(stored.referrer, fromForm('referrer'), fromForm('firstReferrer')),
       2000,
     );
+    out.landing_page = out.first_page;
+    out.signup_page = out.first_page;
     out.firstLandingUrl = out.first_page;
     out.firstReferrer = out.referrer;
-    out.firstLandingAt = trimVal(
-      pickNonEmpty(stored.first_landing_at, fromForm('firstLandingAt')),
+    out.first_landing_at = trimVal(
+      pickNonEmpty(stored.first_landing_at, fromForm('first_landing_at'), fromForm('firstLandingAt')),
       40,
     );
+    out.firstLandingAt = out.first_landing_at;
     var fromFirst = paramsFromUrlString(out.first_page);
     ATTR_KEYS.forEach(function (key) {
       if (!out[key] && fromFirst[key]) out[key] = fromFirst[key];
@@ -340,6 +452,41 @@
       if (src.indexOf('cdn.callrail.com') !== -1 && src.indexOf('swap.js') !== -1) return true;
     }
     return typeof global.CallTrk !== 'undefined' || typeof global.CallRail !== 'undefined';
+  }
+
+  /**
+   * Pass stored gclid/UTMs into CallRail when a supported hook exists.
+   * CallRail DNI already captures gclid from the first landing URL via its own
+   * cookies. There is no supported public API to attach a stored GCLID to a
+   * later inbound call if CallRail never saw the landing URL. Form GCLID is
+   * still required and is always written to hidden fields (CallRail form
+   * capturing can read those if enabled in the CallRail account).
+   */
+  function passToCallRail(attr) {
+    if (!attr) attr = getAttribution();
+    var payload = {
+      gclid: attr.gclid || '',
+      gbraid: attr.gbraid || '',
+      wbraid: attr.wbraid || '',
+      utm_source: attr.utm_source || '',
+      utm_medium: attr.utm_medium || '',
+      utm_campaign: attr.utm_campaign || '',
+      utm_term: attr.utm_term || '',
+      utm_content: attr.utm_content || '',
+      landing_page: attr.first_page || '',
+      first_landing_at: attr.first_landing_at || '',
+    };
+    try {
+      global.__mhgAttribution = payload;
+      global.CallRailCustomParams = payload;
+      var cr = global.CallTrk || global.CallRail;
+      if (cr && typeof cr === 'object') {
+        if (typeof cr.setCustomData === 'function') cr.setCustomData(payload);
+        else if (typeof cr.set === 'function') cr.set('custom_data', payload);
+        else if (typeof cr.capture === 'function') cr.capture();
+      }
+    } catch (e) {}
+    return payload;
   }
 
   function findPrimaryTel() {
@@ -383,11 +530,10 @@
       originalLandingPage: stored.first_page || '',
       originalReferrer: stored.referrer || '',
       callRailScriptLoaded: callRailScriptLoaded() ? 'yes' : 'no',
+      callRailCustomParams: global.CallRailCustomParams || null,
       originalPhoneNumberFound: tel.found ? 'yes' : 'no',
       phoneAfterCallRail: tel.href || tel.text || '',
-      formFieldsPopulated: document.querySelectorAll('form[data-lead-form] input[name="gclid"]').length
-        ? 'yes'
-        : 'no',
+      formFieldsPopulated: document.querySelectorAll('form input[name="gclid"]').length ? 'yes' : 'no',
       formAttributionPayload: toPayloadFields(),
     };
     if (extra) {
@@ -406,22 +552,61 @@
     ALL_KEYS.forEach(function (key) {
       slice[key] = (payload && payload[key]) || '';
     });
+    slice.landing_page = (payload && payload.landing_page) || '';
+    slice.signup_page = (payload && payload.signup_page) || '';
+    slice.first_landing_at = (payload && (payload.first_landing_at || payload.firstLandingAt)) || '';
     debugLog('Exact form attribution payload (no PII)');
     if (console.table) console.table(slice);
     else console.log(slice);
   }
 
-  function boot() {
-    var attribution = captureFromUrl();
+  function recapture() {
+    captureFromUrl();
     applyToAllLeadForms();
+  }
+
+  function hookClientNavigation() {
+    function afterNav() {
+      recapture();
+    }
+    global.addEventListener('popstate', afterNav);
+    global.addEventListener('hashchange', afterNav);
+    document.addEventListener('astro:page-load', afterNav);
+    document.addEventListener('astro:after-swap', afterNav);
+    try {
+      var hist = global.history;
+      if (!hist || hist.__mhgAttrHooked) return;
+      hist.__mhgAttrHooked = true;
+      var origPush = hist.pushState;
+      var origReplace = hist.replaceState;
+      if (typeof origPush === 'function') {
+        hist.pushState = function () {
+          var r = origPush.apply(this, arguments);
+          afterNav();
+          return r;
+        };
+      }
+      if (typeof origReplace === 'function') {
+        hist.replaceState = function () {
+          var r = origReplace.apply(this, arguments);
+          afterNav();
+          return r;
+        };
+      }
+    } catch (e) {}
+  }
+
+  function boot() {
+    recapture();
+    hookClientNavigation();
     if (isDebug()) {
       debugLog('boot', {
         url: global.location.href,
-        stored: attribution,
+        stored: getAttribution(),
         callRail: callRailScriptLoaded() ? 'yes' : 'no',
       });
       setTimeout(function () {
-        applyToAllLeadForms();
+        recapture();
         runDebugReport();
       }, 1500);
     }
@@ -434,8 +619,7 @@
   }
 
   global.addEventListener('pageshow', function () {
-    captureFromUrl();
-    applyToAllLeadForms();
+    recapture();
   });
 
   if (global.MutationObserver && document.documentElement) {
@@ -453,12 +637,14 @@
 
   global.MhgAttribution = {
     keys: ALL_KEYS.slice(),
+    aliases: FORM_FIELD_ALIASES,
     captureFromUrl: captureFromUrl,
     get: getAttribution,
     applyToForm: applyToForm,
     applyToAllLeadForms: applyToAllLeadForms,
     toPayloadFields: toPayloadFields,
     mergeForSubmit: mergeForSubmit,
+    passToCallRail: passToCallRail,
     isDebug: isDebug,
     runDebugReport: runDebugReport,
     logFormPayloadTable: logFormPayloadTable,

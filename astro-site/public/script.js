@@ -690,23 +690,30 @@
       'utm_content',
       'utm_term',
       'first_page',
+      'landing_page',
+      'signup_page',
       'referrer',
+      'first_landing_at',
+      'firstLandingAt',
     ];
+    var ft = getPersistedFirstTouch();
     keys.forEach(function (key) {
-      var el = form.querySelector('input[type="hidden"][name="' + key + '"]');
+      var el = form.querySelector('input[name="' + key + '"]');
       if (!el) {
         el = document.createElement('input');
         el.type = 'hidden';
         el.name = key;
+        el.setAttribute('autocomplete', 'off');
         form.appendChild(el);
       }
       var val = utm[key] || '';
-      if (!val && (key === 'first_page' || key === 'referrer')) {
-        var ft = getPersistedFirstTouch();
-        if (key === 'first_page') val = ft.firstLandingUrl || '';
-        if (key === 'referrer') val = ft.firstReferrer || '';
+      if (!val && (key === 'first_page' || key === 'landing_page' || key === 'signup_page')) {
+        val = ft.firstLandingUrl || '';
       }
-      el.value = String(val || '').slice(0, key === 'first_page' || key === 'referrer' ? 2000 : 500);
+      if (!val && key === 'referrer') val = ft.firstReferrer || '';
+      if (!val && (key === 'first_landing_at' || key === 'firstLandingAt')) val = ft.firstLandingAt || '';
+      var max = key === 'first_page' || key === 'landing_page' || key === 'signup_page' || key === 'referrer' ? 2000 : 500;
+      el.value = String(val || '').slice(0, max);
     });
   }
 
@@ -717,7 +724,7 @@
       return;
     }
     var utm = getPersistedUtmParams();
-    var forms = document.querySelectorAll('form[data-lead-form]');
+    var forms = document.querySelectorAll('form[data-lead-form], form.hero-form, form.contact-form');
     for (var i = 0; i < forms.length; i++) {
       applyUtmHiddenToForm(forms[i], utm);
     }
@@ -1015,6 +1022,12 @@
           if (utm && utm[key]) return String(utm[key]).trim();
           return fallback || '';
         }
+        var landingPage = (
+          attrVal('landing_page', '') ||
+          attrVal('signup_page', '') ||
+          attrVal('first_page', firstTouch.firstLandingUrl || '') ||
+          (attr.firstLandingUrl || '')
+        ).slice(0, 2000);
         var payload = {
           gclid: attrVal('gclid', '').slice(0, 500),
           gbraid: attrVal('gbraid', '').slice(0, 500),
@@ -1025,7 +1038,9 @@
           utm_id: attrVal('utm_id', '').slice(0, 200),
           utm_content: attrVal('utm_content', '').slice(0, 200),
           utm_term: attrVal('utm_term', '').slice(0, 200),
-          first_page: attrVal('first_page', firstTouch.firstLandingUrl || '').slice(0, 2000),
+          first_page: landingPage,
+          landing_page: landingPage,
+          signup_page: landingPage,
           referrer: attrVal('referrer', firstTouch.firstReferrer || '').slice(0, 2000),
           formSource: form.getAttribute('data-lead-form') || 'unknown',
           firstName: firstName,
@@ -1038,13 +1053,16 @@
           message: (fd.get('message') || '').toString().trim(),
           website: (fd.get('website') || '').toString().trim(),
           pageUrl: typeof window.location.href === 'string' ? window.location.href : '',
-          firstLandingUrl: (attr.firstLandingUrl || attr.first_page || firstTouch.firstLandingUrl || '').slice(0, 2000),
+          firstLandingUrl: landingPage,
           firstReferrer: (attr.firstReferrer || attr.referrer || firstTouch.firstReferrer || '').slice(0, 2000),
-          firstLandingAt: (attr.firstLandingAt || firstTouch.firstLandingAt || '').slice(0, 40),
+          first_landing_at: (attr.first_landing_at || attr.firstLandingAt || firstTouch.firstLandingAt || '').slice(0, 40),
+          firstLandingAt: (attr.firstLandingAt || attr.first_landing_at || firstTouch.firstLandingAt || '').slice(0, 40),
           smsMarketingOptIn: fd.get('smsMarketingOptIn') === 'yes'
         };
         if (!payload.firstLandingUrl) payload.firstLandingUrl = payload.first_page;
         if (!payload.firstReferrer) payload.firstReferrer = payload.referrer;
+        if (!payload.landing_page) payload.landing_page = payload.firstLandingUrl;
+        if (!payload.signup_page) payload.signup_page = payload.firstLandingUrl;
 
         if (window.MhgAttribution && typeof window.MhgAttribution.logFormPayloadTable === 'function') {
           window.MhgAttribution.logFormPayloadTable(payload);
@@ -1061,6 +1079,9 @@
             utm_content: payload.utm_content,
             utm_term: payload.utm_term,
             first_page: payload.first_page,
+            landing_page: payload.landing_page,
+            signup_page: payload.signup_page,
+            first_landing_at: payload.first_landing_at,
             referrer: payload.referrer
           }});
         }
@@ -1181,4 +1202,15 @@
       loadRecaptchaApi(cfg.recaptchaSiteKey);
     }
   });
+
+  function recaptureOnClientNav() {
+    getPersistedUtmParams();
+    syncUtmToAllLeadForms();
+    persistFirstTouchIfNeeded();
+    bindLeadForms();
+  }
+  window.addEventListener('popstate', recaptureOnClientNav);
+  window.addEventListener('hashchange', recaptureOnClientNav);
+  document.addEventListener('astro:page-load', recaptureOnClientNav);
+  document.addEventListener('astro:after-swap', recaptureOnClientNav);
 })();

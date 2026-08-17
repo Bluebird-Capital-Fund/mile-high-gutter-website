@@ -3,6 +3,8 @@
  * TCPA-style SMS marketing consent — include on every lead form.
  * Props: unique idPrefix per form (for input id / label for).
  */
+import LeadFormAttributionFields from './LeadFormAttributionFields.astro'
+
 interface Props {
   idPrefix: string
   variant?: 'hero' | 'contact'
@@ -15,6 +17,7 @@ const wrapClass =
 const cbId = `${idPrefix}-sms-marketing-opt-in`
 ---
 
+<LeadFormAttributionFields />
 <div class={wrapClass}>
   <label for={cbId} class="lead-form-sms-consent-label">
     <input

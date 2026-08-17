@@ -34,6 +34,9 @@ const CLICK_ID_KEYS = ['gclid', 'gbraid', 'wbraid'];
  * utm_content → utm_content
  * utm_id → utm_id
  * first_page → first_page
+ * landing_page → landing_page (alias of first landing URL)
+ * signup_page → signup_page (alias of first landing URL)
+ * first_landing_at → first_landing_at
  * referrer → referrer
  */
 
@@ -236,14 +239,26 @@ export default {
     const message = String(body.message || '').trim().slice(0, 5000);
     const formSource = String(body.formSource || 'unknown').trim().slice(0, 80);
     const pageUrl = String(body.pageUrl || '').trim().slice(0, 2000);
-    const firstLandingUrl = String(body.firstLandingUrl || body.first_page || '')
+    const firstLandingUrl = String(
+      body.firstLandingUrl || body.landing_page || body.signup_page || body.first_page || '',
+    )
       .trim()
       .slice(0, 2000);
     const firstReferrer = String(body.firstReferrer || body.referrer || '')
       .trim()
       .slice(0, 2000);
-    const firstLandingAt = String(body.firstLandingAt || '').trim().slice(0, 40);
-    const first_page = String(body.first_page || firstLandingUrl || '').trim().slice(0, 2000);
+    const firstLandingAt = String(body.firstLandingAt || body.first_landing_at || '')
+      .trim()
+      .slice(0, 40);
+    const first_page = String(body.first_page || firstLandingUrl || '')
+      .trim()
+      .slice(0, 2000);
+    const landing_page = String(body.landing_page || firstLandingUrl || first_page || '')
+      .trim()
+      .slice(0, 2000);
+    const signup_page = String(body.signup_page || landing_page || '')
+      .trim()
+      .slice(0, 2000);
     const referrer = String(body.referrer || firstReferrer || '').trim().slice(0, 2000);
     const utm = mergeUtm(body, pageUrl, firstLandingUrl || first_page);
     const clickIds = mergeClickIds(body, pageUrl, firstLandingUrl || first_page);
@@ -281,6 +296,7 @@ export default {
       firstLandingUrl: firstLandingUrl || first_page,
       firstReferrer: firstReferrer || referrer,
       firstLandingAt,
+      first_landing_at: firstLandingAt,
       // Exact attribution fields (browser names)
       gclid: clickIds.gclid,
       gbraid: clickIds.gbraid,
@@ -292,6 +308,8 @@ export default {
       utm_content: utm.utm_content,
       utm_term: utm.utm_term,
       first_page,
+      landing_page: landing_page || first_page,
+      signup_page: signup_page || landing_page || first_page,
       referrer,
       // Destination / CRM aliases (documented mappings)
       gclid1: clickIds.gclid,
