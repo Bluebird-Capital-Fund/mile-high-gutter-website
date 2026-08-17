@@ -7,6 +7,7 @@ interface Props {
   eyebrow?: string
   headline?: string
   intro?: string
+  introHtml?: string
   mapEmbedUrl?: string
   mapTitle?: string
   citiesLabel?: string
@@ -18,19 +19,25 @@ const {
   eyebrow = 'Service Area',
   headline = 'Rain Gutters in the Denver Metro Area',
   intro = SERVICE_AREA_INTRO,
+  introHtml = '',
   mapEmbedUrl = '',
   mapTitle = 'Service area map',
   citiesLabel = 'Cities We Serve',
   headingLevel = 'h2',
 } = Astro.props
 const Heading = headingLevel === 'h1' ? 'h1' : 'h2'
+const introMarkup = asStr(introHtml)
 ---
 
 <section class="section service-area" id={id}>
   <div class="container">
     {asStr(eyebrow) ? <div class="why-eyebrow">{asStr(eyebrow)}</div> : null}
     <Heading class="section-title">{asStr(headline)}</Heading>
-    <p class="section-lead service-area-intro">{asStr(intro) || SERVICE_AREA_INTRO}</p>
+    {introMarkup ? (
+      <p class="section-lead service-area-intro" set:html={introMarkup} />
+    ) : (
+      <p class="section-lead service-area-intro">{asStr(intro) || SERVICE_AREA_INTRO}</p>
+    )}
     <div class="map-wrap">
       {asStr(mapEmbedUrl) ? (
         <iframe

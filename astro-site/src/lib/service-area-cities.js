@@ -2,6 +2,12 @@
 export const SERVICE_AREA_INTRO =
   'We serve residential and commercial properties throughout the Denver metro, including gutters in Colorado Springs, Fort Collins, Boulder, Centennial, Thornton, Littleton, Arvada, Highlands Ranch, Castle Rock, Broomfield, Lafayette, Brighton, Westminster, Englewood, Aurora, and Lakewood.'
 
+/** Homepage-only: same intro with an internal link on "gutters in Colorado Springs". */
+export const SERVICE_AREA_INTRO_HOME_HTML = SERVICE_AREA_INTRO.replace(
+  'gutters in Colorado Springs',
+  '<a href="/gutters-colorado-springs-co/">gutters in Colorado Springs</a>',
+)
+
 export const SERVICE_AREA_CITIES = [
   { name: 'Colorado Springs', href: '/gutters-colorado-springs-co/' },
   { name: 'Fort Collins', href: '/gutters-fort-collins-co/' },

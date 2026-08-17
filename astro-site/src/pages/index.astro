@@ -22,6 +22,7 @@ import {
 import { assertSanityHomepage } from '../lib/assert-sanity-homepage.js'
 import { sanitizeCmsHtml } from '../lib/sanitize-cms-html.js'
 import ServiceAreaBlock from '../components/ServiceAreaBlock.astro'
+import { SERVICE_AREA_INTRO_HOME_HTML } from '../lib/service-area-cities.js'
 
 const [settings, homePage] = await Promise.all([
   getSiteSettings(),
@@ -890,6 +891,7 @@ function responsiveSrc(src, width = 800) {
       id="service-area"
       eyebrow={asStr(serviceArea?.eyebrow)}
       headline={asStr(serviceArea?.headline)}
+      introHtml={SERVICE_AREA_INTRO_HOME_HTML}
       mapEmbedUrl={mapEmbedUrl}
       mapTitle={mapIframeTitle}
       citiesLabel={asStr(serviceArea?.citiesLabel)}
