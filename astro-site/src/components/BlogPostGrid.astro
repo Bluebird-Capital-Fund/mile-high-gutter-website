@@ -4,6 +4,7 @@
  */
 import { asStr, mediaUrl } from '../lib/sanity-strings.js'
 import { excerpt, formatBlogDate } from '../lib/blog-list.js'
+import { heroBackgroundFor } from '../lib/hero-backgrounds.js'
 
 const { posts = [], currentPage = 1, totalPages = 1 } = Astro.props
 
@@ -27,8 +28,8 @@ function hrefForPage(n) {
       const slug = asStr(post?.slug)
       const href = slug ? `/${slug}/` : '#'
       const title = asStr(post?.headline) || 'Article'
-      const lead = excerpt(asStr(post?.lead), 180)
-      const thumb = asStr(post?.thumb)
+      const lead = excerpt(asStr(post?.lead), 320)
+      const thumb = asStr(post?.thumb) || heroBackgroundFor(slug)
       const thumbAlt = asStr(post?.thumbAlt) || title
       const dateLabel = formatBlogDate(post?.publishedAt)
       return (

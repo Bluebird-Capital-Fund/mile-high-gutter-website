@@ -38,8 +38,11 @@ export function sliceBlogPage(allPosts, page, perPage = BLOG_POSTS_PER_PAGE) {
 
 export function excerpt(text, maxLen = 160) {
   const t = String(text || '').replace(/\s+/g, ' ').trim()
-  if (t.length <= maxLen) return t
-  return `${t.slice(0, maxLen - 1).trim()}…`
+  if (!t || t.length <= maxLen) return t
+  const sliced = t.slice(0, maxLen + 1)
+  const lastSpace = sliced.lastIndexOf(' ')
+  const cut = lastSpace > 80 ? sliced.slice(0, lastSpace) : t.slice(0, maxLen)
+  return `${cut.replace(/[,;:.!?–—-]+$/g, '').trim()}…`
 }
 
 export function formatBlogDate(iso) {
