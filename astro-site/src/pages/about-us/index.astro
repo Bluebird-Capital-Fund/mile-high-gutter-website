@@ -9,7 +9,6 @@ import FooterSupportBar from '../../components/FooterSupportBar.astro'
 import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../lib/footer-contact-heading.js'
 import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
-import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { asStr, applyTemplate, asStrArray, mediaUrl } from '../../lib/sanity-strings.js'
 
 let settings = {}
@@ -46,16 +45,9 @@ const logoAriaLabel = applyTemplate(asStr(header.logoAriaLabelTemplate), { compa
 const navItems = Array.isArray(header.navItems) ? header.navItems : []
 
 const about = homePage?.about ?? {}
-const heroBgSrc = heroBackgroundFor('about-us')
-const heroBgStyle = heroBgSrc
-  ? `background-image: linear-gradient(135deg, rgba(56, 69, 85, 0.88) 0%, rgba(56, 69, 85, 0.84) 50%, rgba(56, 69, 85, 0.88) 100%), url("${mediaUrl(heroBgSrc)}"); background-size: cover; background-position: center; background-repeat: no-repeat;`
-  : undefined
 
 const pageTitle = 'About Us | Mile High Gutter'
 const pageDescription = asStr(about?.lead) || 'Learn more about Mile High Gutter.'
-const heroEyebrow = asStr(about?.eyebrow) || 'About Us'
-const heroHeadline = asStr(about?.headline) || 'Built on Quality and Service'
-const heroLead = asStr(about?.lead) || 'Serving Denver-area homes and businesses with reliable gutter solutions.'
 
 const universalFormFields = footerEstimateFields
 const universalFormAction = asStr(formsCfg?.submitPath) || asStr(footerEstimate?.formAction) || '#'
@@ -126,17 +118,11 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
   </header>
 
   <main>
-    <section class="page-heading">
-      <div class="container">
-        <h1>{heroHeadline}</h1>
-      </div>
-    </section>
-
     <section class="section about about-video">
       <div class="container about-grid">
         <div class="about-content">
           <div class="about-eyebrow">{asStr(about?.eyebrow)}</div>
-          <h2 class="section-title">{asStr(about?.headline)}</h2>
+          <h1 class="section-title">{asStr(about?.headline)}</h1>
           <p class="about-lead">{asStr(about?.lead)}</p>
           <ul class="about-list">
             {asStrArray(about?.bullets).map((line) => (

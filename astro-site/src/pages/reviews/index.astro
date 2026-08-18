@@ -9,7 +9,6 @@ import FooterSupportBar from '../../components/FooterSupportBar.astro'
 import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../lib/footer-contact-heading.js'
 import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
-import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { lpGutterGuardsReviews } from '../../lib/lp-gutter-guards-reviews.js'
@@ -57,13 +56,6 @@ const navItems = Array.isArray(header.navItems) ? header.navItems : []
 
 const pageTitle = asStr(reviewsPage?.headline) || 'Reviews | Mile High Gutter'
 const pageDescription = asStr(reviewsPage?.lead) || 'Customer reviews from Mile High Gutter.'
-const heroEyebrow = asStr(reviewsPage?.eyebrow) || 'Reviews'
-const heroHeadline = asStr(reviewsPage?.headline) || 'Customer Reviews'
-const heroLead = asStr(reviewsPage?.lead) || 'See what homeowners and businesses say about our gutter services.'
-const heroBgSrc = heroBackgroundFor('reviews')
-const heroBgStyle = heroBgSrc
-  ? `background-image: linear-gradient(135deg, rgba(56, 69, 85, 0.88) 0%, rgba(56, 69, 85, 0.84) 50%, rgba(56, 69, 85, 0.88) 100%), url("${mediaUrl(heroBgSrc)}"); background-size: cover; background-position: center; background-repeat: no-repeat;`
-  : undefined
 
 const reviewsData = settings?.reviews ?? reviewsPage?.reviews ?? homePage?.reviews ?? {}
 const reviewSummary = reviewsData?.summary ?? {}
@@ -172,15 +164,9 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
   </header>
 
   <main>
-    <section class="page-heading">
-      <div class="container">
-        <h1>{heroHeadline}</h1>
-      </div>
-    </section>
-
     <section class="section google-reviews reviews-page-list">
       <div class="container">
-        <h2 class="section-title reviews-title">{asStr(reviewsData?.headline) || 'Customer Reviews'}</h2>
+        <h1 class="section-title reviews-title">{asStr(reviewsData?.headline) || 'Customer Reviews'}</h1>
         <div class="reviews-summary">
           <div class="reviews-summary-left">
             <p class="reviews-summary-brand">

@@ -9,7 +9,6 @@ import FooterSupportBar from '../../components/FooterSupportBar.astro'
 import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../lib/footer-contact-heading.js'
 import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
-import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 
 let settings = {}
@@ -52,13 +51,6 @@ const navItems = Array.isArray(header.navItems) ? header.navItems : []
 
 const pageTitle = asStr(contactPage?.headline) || 'Contact Us | Mile High Gutter'
 const pageDescription = asStr(contactPage?.lead) || 'Contact Mile High Gutter for estimates and service.'
-const heroEyebrow = asStr(contactPage?.eyebrow) || 'Contact'
-const heroHeadline = asStr(contactPage?.headline) || 'Contact Us'
-const heroLead = asStr(contactPage?.lead) || 'Get in touch for a fast, free estimate.'
-const heroBgSrc = heroBackgroundFor('contact-us')
-const heroBgStyle = heroBgSrc
-  ? `background-image: linear-gradient(135deg, rgba(56, 69, 85, 0.88) 0%, rgba(56, 69, 85, 0.84) 50%, rgba(56, 69, 85, 0.88) 100%), url("${mediaUrl(heroBgSrc)}"); background-size: cover; background-position: center; background-repeat: no-repeat;`
-  : undefined
 
 const universalFormFields = footerEstimateFields
 const universalFormAction = asStr(formsCfg?.submitPath) || asStr(footerEstimate?.formAction) || '#'
@@ -129,21 +121,13 @@ const universalFormIntro = asStr(footerEstimate?.intro) || 'Short placeholder fo
   </header>
 
   <main>
-    <section class="page-heading">
-      <div class="container">
-        <h1>{heroHeadline}</h1>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
     <section id="contact" class="section contact footer-estimate" aria-labelledby="contact-footer-estimate-heading">
       <div class="container">
         <div class="contact-wrapper">
           <div class="contact-info">
-            <h2 class="section-title" id="contact-footer-estimate-heading">
+            <h1 class="section-title" id="contact-footer-estimate-heading">
               {asStr(footerEstimate?.headline) || 'Need Gutter Help in Denver?'}
-            </h2>
+            </h1>
             <p>{asStr(footerEstimate?.intro) || 'Contact us for fast service and straightforward estimates.'}</p>
             <FooterContactInfo variant="estimate" phoneTel={phoneTel} phoneDisplay={phoneDisplay} email={email} address={address} addressHref={addressHref} />
           </div>
@@ -221,6 +205,9 @@ const universalFormIntro = asStr(footerEstimate?.intro) || 'Short placeholder fo
         </div>
       </div>
     </section>
+  </main>
+
+  <footer class="footer">
     <div class="container"><div class="footer-inner"><div class="footer-brand-block footer-col">{logoWhite ? <img src={mediaUrl(logoWhite)} alt={companyName} class="footer-logo" /> : null}<p class="footer-address">{descriptionShort}</p><div class="footer-social" aria-label={asStr(footerBrand?.socialAriaLabel)}>{footerBrand?.socialLinks?.map((s) => (<a href={asStr(s.href)} aria-label={asStr(s.ariaLabel)}><FooterSocialIcon platform={asStr(s.platform)} /></a>))}</div></div>{footerColumns?.map((col) => (<div class="footer-col"><p class="footer-heading">{asStr(col.heading)}</p>{col.links?.length ? (<nav class="footer-links" aria-label={asStr(col.ariaLabel)}>{col.links.map((link) => (<a href={asStr(link.href)}>{asStr(link.label)}</a>))}</nav>) : null}{isContactFooterColumnHeading(col.heading) ? <FooterContactInfo variant="footer-column" phoneTel={phoneTel} phoneDisplay={phoneDisplay} email={email} address={address} addressHref={addressHref} /> : null}{col.hoursHeading ? <p class="footer-heading footer-hours-heading">{asStr(col.hoursHeading)}</p> : null}{col.hoursText ? <FooterHoursRow hoursText={col.hoursText} /> : null}</div>))}</div></div>
   </footer>
 

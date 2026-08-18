@@ -9,7 +9,6 @@ import FooterHoursRow from '../../components/FooterHoursRow.astro'
 import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../lib/footer-contact-heading.js'
 import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
-import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 
@@ -62,14 +61,7 @@ const universalFormAriaLabel = asStr(formsCfg?.formAriaLabel) || 'FAQ lead form'
 const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
 const universalFormHeading = asStr(footerEstimate?.headline) || 'Get Started Today'
 const universalFormIntro = asStr(footerEstimate?.intro) || 'Short placeholder form for layout testing.'
-const heroBgSrc = heroBackgroundFor('faqs')
-const heroBgStyle = heroBgSrc
-  ? `background-image: linear-gradient(135deg, rgba(56, 69, 85, 0.88) 0%, rgba(56, 69, 85, 0.84) 50%, rgba(56, 69, 85, 0.88) 100%), url("${mediaUrl(heroBgSrc)}"); background-size: cover; background-position: center; background-repeat: no-repeat;`
-  : undefined
 
-const heroEyebrow = asStr(faqPage?.eyebrow) || 'FAQ'
-const heroHeadline = asStr(faqPage?.headline) || 'Gutter FAQs'
-const heroLead = asStr(faqPage?.lead) || 'Simple answers to the most common gutter questions.'
 const faqData = faqPage?.faq ?? {}
 const faqHeading = asStr(faqData?.headline) || 'Frequently Asked Questions'
 const faqHeadingId = asStr(faqData?.headingId) || 'faq-page-heading'
@@ -158,16 +150,10 @@ const faqItems = Array.isArray(faqData?.items)
   </header>
 
   <main>
-    <section class="page-heading">
-      <div class="container">
-        <h1>{heroHeadline}</h1>
-      </div>
-    </section>
-
     <section class="section faq-section" id="faq">
       <div class="container">
         <div class="faq-panel">
-          <h2 class="section-title section-title-secondary" id={faqHeadingId}>{faqHeading}</h2>
+          <h1 class="section-title section-title-secondary" id={faqHeadingId}>{faqHeading}</h1>
           <div class="faq-list" data-faq-accordion>
             {faqItems.map((item, idx) => {
               const n = idx + 1
