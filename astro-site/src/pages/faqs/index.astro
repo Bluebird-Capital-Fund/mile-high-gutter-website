@@ -12,6 +12,7 @@ import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-setting
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
+import { FAQ_PAGE_GROUPS, FAQ_PAGE_INTRO } from '../../lib/faqs-page-content.js'
 
 let settings = {}
 let homePage = {}
@@ -47,7 +48,8 @@ const logoBlack = asStr(business.logoHorizontalBlack)
 const copyrightHref = asStr(business.copyrightSiteUrl) || '#'
 
 const pageTitle = 'Gutter FAQs Denver | Mile High Gutter'
-const pageDescription = 'Simple answers to common gutter pricing, repairs, and service questions.'
+const pageDescription =
+  "Have questions about your gutters? Browse answers about gutter installation, repairs, maintenance, gutter guards, and drainage for Denver homes and businesses."
 
 const callLabelNav = applyTemplate(asStr(header.callCtaTemplate), { phoneDisplay }) || phoneDisplay
 const heroCallLabel = applyTemplate(asStr(homePage?.hero?.callCtaTemplate), { phoneDisplay }) || `Call: ${phoneDisplay}`
@@ -66,15 +68,7 @@ const universalFormIntro = asStr(footerEstimate?.intro) || 'Short placeholder fo
 const faqData = faqPage?.faq ?? {}
 const faqHeading = asStr(faqData?.headline) || 'Frequently Asked Questions'
 const faqHeadingId = asStr(faqData?.headingId) || 'faq-page-heading'
-const faqItems = Array.isArray(faqData?.items)
-  ? faqData.items
-  : [
-      {
-        question: 'How often should gutters be cleaned?',
-        answerHtml:
-          '<p>Most homes should have gutters cleaned at least twice per year (spring and fall).</p>',
-      },
-    ]
+let faqItemIndex = 0
 ---
 
 <BaseLayout
@@ -151,37 +145,49 @@ const faqItems = Array.isArray(faqData?.items)
   <main>
     <section class="section faq-section" id="faq">
       <div class="container">
-        <div class="faq-panel">
+        <div class="faq-panel faq-page-panel">
           <h1 class="section-title section-title-secondary" id={faqHeadingId}>{faqHeading}</h1>
-          <div class="faq-list" data-faq-accordion>
-            {faqItems.map((item, idx) => {
-              const n = idx + 1
-              const btnId = `faq-page-btn-${n}`
-              const panelId = `faq-page-panel-${n}`
-              return (
-                <div class="faq-item">
-                  <button
-                    type="button"
-                    class="faq-summary"
-                    id={btnId}
-                    aria-expanded="false"
-                    aria-controls={panelId}
-                  >
-                    <span class="faq-question">{item.question}</span>
-                    <span class="faq-chevron" aria-hidden="true"></span>
-                  </button>
-                  <div
-                    class="faq-answer-outer"
-                    id={panelId}
-                    role="region"
-                    aria-labelledby={btnId}
-                    aria-hidden="true"
-                  >
-                    <div class="faq-answer" set:html={sanitizeCmsHtml(asStr(item.answerHtml))} />
-                  </div>
+          <div class="faq-page-intro">
+            {FAQ_PAGE_INTRO.map((para) => (
+              <p>{para}</p>
+            ))}
+          </div>
+          <div class="faq-page-groups" data-faq-accordion>
+            {FAQ_PAGE_GROUPS.map((group) => (
+              <section class="faq-group">
+                <h2 class="faq-group-title">{group.title}</h2>
+                <div class="faq-list">
+                  {group.items.map((item) => {
+                    const n = ++faqItemIndex
+                    const btnId = `faq-page-btn-${n}`
+                    const panelId = `faq-page-panel-${n}`
+                    return (
+                      <div class="faq-item">
+                        <button
+                          type="button"
+                          class="faq-summary"
+                          id={btnId}
+                          aria-expanded="false"
+                          aria-controls={panelId}
+                        >
+                          <span class="faq-question">{item.question}</span>
+                          <span class="faq-chevron" aria-hidden="true"></span>
+                        </button>
+                        <div
+                          class="faq-answer-outer"
+                          id={panelId}
+                          role="region"
+                          aria-labelledby={btnId}
+                          aria-hidden="true"
+                        >
+                          <div class="faq-answer" set:html={sanitizeCmsHtml(asStr(item.answerHtml))} />
+                        </div>
+                      </div>
+                    )
+                  })}
                 </div>
-              )
-            })}
+              </section>
+            ))}
           </div>
         </div>
       </div>
