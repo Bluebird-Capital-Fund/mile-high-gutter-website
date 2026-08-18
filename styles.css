@@ -3841,15 +3841,24 @@ form[data-lead-form] button[type="submit"].is-busy {
 
 .footer-disclaimers {
   display: grid;
-  gap: 0.65rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-lg);
+  align-items: start;
   padding-top: 0.9rem;
   padding-bottom: 0.9rem;
 }
 
+.footer-disclaimer-heading {
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+  opacity: 0.95;
+}
+
 .footer-disclaimer {
   margin: 0;
-  max-width: 72ch;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   line-height: 1.45;
   opacity: 0.88;
 }
@@ -3933,6 +3942,7 @@ form[data-lead-form] button[type="submit"].is-busy {
   }
 
   .footer-disclaimers {
+    grid-template-columns: 1fr;
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
   }
