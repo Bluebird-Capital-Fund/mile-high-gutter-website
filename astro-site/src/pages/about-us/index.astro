@@ -126,57 +126,9 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
   </header>
 
   <main>
-    <section class="hero hero-split">
-      <div class="hero-bg" style={heroBgStyle}></div>
-      <div class="container hero-split-inner">
-        <div class="hero-copy">
-          <div class="hero-eyebrow">{heroEyebrow}</div>
-          <h1>{heroHeadline}</h1>
-          <p class="hero-lead">{heroLead}</p>
-          <div class="hero-actions"><a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg cta1-primary-call">{heroCallLabel}</a></div>
-        </div>
-        <form class="hero-form" data-lead-form="about-hero" action={universalFormAction} method={universalFormMethod} aria-label={universalFormAriaLabel}>
-          <div class="hero-form-heading"><div class="hero-form-kicker">{universalFormKicker}</div><h2>{universalFormHeading}</h2></div>
-          <p class="hero-form-sub">{universalFormIntro}</p>
-          <div class="hero-form-grid">
-            <div class="hero-form-field">
-              <label for="about-first-name">First Name <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span></label>
-              <input id="about-first-name" name="firstName" type="text" required autocomplete="given-name" />
-            </div>
-            <div class="hero-form-field">
-              <label for="about-last-name">Last Name <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span></label>
-              <input id="about-last-name" name="lastName" type="text" required autocomplete="family-name" />
-            </div>
-            <div class="hero-form-field">
-              <label for="about-email">{asStr(universalFormFields?.emailLabel) || 'Email'} <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span></label>
-              <input id="about-email" name="email" type="email" required autocomplete="email" />
-            </div>
-            <div class="hero-form-field">
-              <label for="about-phone">{asStr(universalFormFields?.phoneLabel) || 'Phone'} <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span></label>
-              <input
-                id="about-phone"
-                name="phone"
-                type="tel"
-                required
-                autocomplete="tel"
-                maxlength="12"
-                inputmode="numeric"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                title="10-digit phone, e.g. 303-762-9841"
-              />
-            </div>
-            <div class="hero-form-field hero-form-field-full">
-              <label for="about-address">Address</label>
-              <input id="about-address" name="address" type="text" autocomplete="street-address" spellcheck="false" />
-            </div>
-            <div class="hero-form-field hero-form-field-full">
-              <label for="about-message">{asStr(universalFormFields?.projectDetailsLabel) || 'Project Details'}</label>
-              <textarea id="about-message" name="message" rows="3"></textarea>
-            </div>
-          </div>
-          <LeadFormSmsConsent idPrefix="about" variant="hero" />
-          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-        </form>
+    <section class="page-heading">
+      <div class="container">
+        <h1>{heroHeadline}</h1>
       </div>
     </section>
 
