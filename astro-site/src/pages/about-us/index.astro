@@ -118,7 +118,7 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
   </header>
 
   <main>
-    <section class="section about about-video">
+    <section class="section about about-us-page">
       <div class="container about-grid">
         <div class="about-content">
           <div class="about-eyebrow">{asStr(about?.eyebrow)}</div>
@@ -129,17 +129,22 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
             experience and over 10,000 completed projects, we focus on quality workmanship, honest recommendations,
             and long-term value.
           </p>
-          <p class="about-lead">
-            Our knowledgeable estimators take the time to understand your property's needs and recommend solutions
-            that improve drainage and help prevent costly water damage. From seamless gutter installation and repairs
-            to gutter guards and maintenance, we're committed to clear communication, reliable service, and
-            craftsmanship you can count on from start to finish.
-          </p>
           <ul class="about-list">
             {asStrArray(about?.bullets).map((line) => (
               <li>{line}</li>
             ))}
           </ul>
+        </div>
+        <div class="about-visual">
+          <img
+            class="about-img"
+            src="/lp/gutter-repair/hero-white-gutter-brick-siding.png"
+            alt="White gutters and downspout installed on a Denver-area brick and siding home"
+            width="768"
+            height="1024"
+            loading="eager"
+            decoding="async"
+          />
         </div>
       </div>
     </section>

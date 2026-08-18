@@ -1657,6 +1657,19 @@ ul.hero-lead-list strong {
   object-fit: cover;
 }
 
+.about-us-page .about-grid {
+  align-items: start;
+}
+
+.about-us-page .about-visual {
+  justify-content: center;
+}
+
+.about-us-page .about-img {
+  max-width: 420px;
+  display: block;
+}
+
 /* Testimonials */
 .testimonials {
   background: var(--color-surface);
@@ -2312,8 +2325,17 @@ form[data-lead-form] button[type="submit"].is-busy {
     order: -1;
   }
 
+  .about-us-page .about-visual {
+    order: 0;
+  }
+
   .about-img {
     max-width: 100%;
+  }
+
+  .about-us-page .about-img {
+    max-width: 360px;
+    margin-inline: auto;
   }
 
   .video-grid {
