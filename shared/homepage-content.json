@@ -120,6 +120,14 @@
           { "label": "Soffit & Fascia", "href": "/soffit-fascia.html" }
         ]
       },
+      {
+        "label": "Materials",
+        "dropdown": [
+          { "label": "Copper Gutters", "href": "/products-services/copper-gutters-denver-co/" },
+          { "label": "Aluminum Gutters", "href": "/products-services/aluminum-gutters-denver-co/" },
+          { "label": "Steel Gutters", "href": "/products-services/steel-gutters-denver-co/" }
+        ]
+      },
       { "label": "Projects", "href": "/projects.html" },
       { "label": "Reviews", "href": "/reviews.html" },
       {

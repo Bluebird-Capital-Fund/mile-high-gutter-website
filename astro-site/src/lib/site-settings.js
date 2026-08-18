@@ -41,27 +41,57 @@ function normalizeAboutHref(label, href) {
   return href
 }
 
+const MATERIALS_NAV_ITEM = {
+  label: 'Materials',
+  dropdown: [
+    { label: 'Copper Gutters', href: '/products-services/copper-gutters-denver-co/' },
+    { label: 'Aluminum Gutters', href: '/products-services/aluminum-gutters-denver-co/' },
+    { label: 'Steel Gutters', href: '/products-services/steel-gutters-denver-co/' },
+  ],
+}
+
+function ensureMaterialsNav(navItems) {
+  if (!Array.isArray(navItems)) return navItems
+  const materialsIdx = navItems.findIndex(
+    (item) => typeof item?.label === 'string' && item.label.trim().toLowerCase() === 'materials',
+  )
+  if (materialsIdx >= 0) {
+    const next = navItems.slice()
+    next[materialsIdx] = { ...next[materialsIdx], ...MATERIALS_NAV_ITEM }
+    return next
+  }
+  const servicesIdx = navItems.findIndex(
+    (item) => typeof item?.label === 'string' && item.label.trim().toLowerCase() === 'services',
+  )
+  const insertAt = servicesIdx >= 0 ? servicesIdx + 1 : Math.min(1, navItems.length)
+  const next = navItems.slice()
+  next.splice(insertAt, 0, MATERIALS_NAV_ITEM)
+  return next
+}
+
 function normalizeHeader(header) {
   if (!header || typeof header !== 'object') return header
   const navItems = Array.isArray(header.navItems)
-    ? header.navItems.map((item) => ({
-        ...item,
-        label: normalizeLabel(item?.label),
-        href: normalizeAboutHref(
-          item?.label,
-          normalizeReviewHref(item?.label, normalizeProjectsHref(item?.label, normalizeHref(item?.href)))
-        ),
-        dropdown: Array.isArray(item?.dropdown)
-          ? item.dropdown.map((link) => ({
-              ...link,
-              label: normalizeLabel(link?.label),
-              href: normalizeAboutHref(
-                link?.label,
-                normalizeReviewHref(link?.label, normalizeProjectsHref(link?.label, normalizeHref(link?.href)))
-              ),
-            }))
-          : item?.dropdown,
-      }))
+    ? ensureMaterialsNav(
+        header.navItems.map((item) => ({
+          ...item,
+          label: normalizeLabel(item?.label),
+          href: normalizeAboutHref(
+            item?.label,
+            normalizeReviewHref(item?.label, normalizeProjectsHref(item?.label, normalizeHref(item?.href)))
+          ),
+          dropdown: Array.isArray(item?.dropdown)
+            ? item.dropdown.map((link) => ({
+                ...link,
+                label: normalizeLabel(link?.label),
+                href: normalizeAboutHref(
+                  link?.label,
+                  normalizeReviewHref(link?.label, normalizeProjectsHref(link?.label, normalizeHref(link?.href)))
+                ),
+              }))
+            : item?.dropdown,
+        })),
+      )
     : header.navItems
   return { ...header, navItems }
 }
