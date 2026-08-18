@@ -65,9 +65,8 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
 const universalFormHeading = asStr(footerEstimate?.headline) || 'Get Started Today'
 const universalFormIntro = asStr(footerEstimate?.intro) || 'Short placeholder form for layout testing.'
 
-const faqData = faqPage?.faq ?? {}
-const faqHeading = asStr(faqData?.headline) || 'Frequently Asked Questions'
-const faqHeadingId = asStr(faqData?.headingId) || 'faq-page-heading'
+const faqHeading = 'Denver Gutter FAQs'
+const faqHeadingId = 'faq-page-heading'
 let faqItemIndex = 0
 ---
 
@@ -143,15 +142,17 @@ let faqItemIndex = 0
   </header>
 
   <main>
-    <section class="section faq-section" id="faq">
+    <section class="section faq-section" id="faq" aria-labelledby={faqHeadingId}>
       <div class="container">
-        <div class="faq-panel faq-page-panel">
-          <h1 class="section-title section-title-secondary" id={faqHeadingId}>{faqHeading}</h1>
+        <header class="faq-page-heading">
+          <h1 class="section-title" id={faqHeadingId}>{faqHeading}</h1>
           <div class="faq-page-intro">
             {FAQ_PAGE_INTRO.map((para) => (
               <p>{para}</p>
             ))}
           </div>
+        </header>
+        <div class="faq-panel faq-page-panel">
           <div class="faq-page-groups" data-faq-accordion>
             {FAQ_PAGE_GROUPS.map((group) => (
               <section class="faq-group">

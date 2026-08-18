@@ -3759,11 +3759,24 @@ form[data-lead-form] button[type="submit"].is-busy {
   margin-bottom: var(--space-lg);
 }
 
+.faq-page-heading {
+  width: 100%;
+  margin: 0 0 var(--space-xl);
+}
+
+.faq-page-heading .section-title {
+  margin-bottom: var(--space-lg);
+}
+
 .faq-page-intro,
 .faq-page-groups,
 .faq-group {
   width: 100%;
   max-width: min(46rem, 100%);
+}
+
+.faq-page-heading .faq-page-intro {
+  max-width: 72ch;
 }
 
 .faq-page-intro {
