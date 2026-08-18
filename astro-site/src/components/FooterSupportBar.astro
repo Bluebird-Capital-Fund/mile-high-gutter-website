@@ -2,7 +2,8 @@
 import { asStr } from '../lib/sanity-strings.js'
 
 /**
- * Bottom bar: disclaimers, legal/SMS copy, then copyright + privacy.
+ * Bottom bar: warranty/financing/SMS disclaimers, then copyright + legal links
+ * (Privacy Policy, Terms of Service, Brightbeam SEO) like the NTG footer.
  * @param {object} props
  * @param {object} [props.footerSupport] — from site settings / home page
  * @param {string} props.copyrightHref
@@ -12,22 +13,52 @@ import { asStr } from '../lib/sanity-strings.js'
 const { footerSupport = {}, copyrightHref, companyName, copyrightInnerHtml } = Astro.props
 
 const rawLinks = Array.isArray(footerSupport?.links) ? footerSupport.links : []
-const skipFromCopyrightRow = new Set(['terms of service', 'terms of use', 'brightbeam seo'])
-const copyrightLinks = rawLinks
-  .map((link) => {
-    const label = asStr(link.label)
-    const href = asStr(link.href)
-    if (label.trim().toLowerCase() === 'privacy policy' && (!href || href === '#')) {
-      return { ...link, href: '/privacy-policy/' }
+
+function linkKey(label) {
+  return asStr(label).trim().toLowerCase()
+}
+
+const byKey = new Map()
+for (const link of rawLinks) {
+  const k = linkKey(link.label)
+  if (k) byKey.set(k, link)
+}
+
+const requiredLinks = [
+  { label: 'Privacy Policy', href: '/privacy-policy/' },
+  { label: 'Terms of Service', href: '/terms-of-service/' },
+  { label: 'Brightbeam SEO', href: 'https://brightbeamseo.com/', target: '_blank', rel: 'noopener noreferrer' },
+]
+
+const usedKeys = new Set()
+const links = requiredLinks.map((fallback) => {
+  const existing =
+    byKey.get(linkKey(fallback.label)) ||
+    (fallback.label === 'Terms of Service' ? byKey.get('terms of use') : undefined)
+  const key = linkKey(existing?.label || fallback.label)
+  usedKeys.add(key)
+  if (existing) {
+    const href = asStr(existing.href)
+    return {
+      ...fallback,
+      ...existing,
+      label: asStr(existing.label) || fallback.label,
+      href: href && href !== '#' ? href : fallback.href,
+      target: asStr(existing.target) || fallback.target,
+      rel: asStr(existing.rel) || fallback.rel,
     }
-    return link
-  })
-  .filter((link) => !skipFromCopyrightRow.has(asStr(link.label).trim().toLowerCase()))
-const hasPrivacy = copyrightLinks.some((link) => asStr(link.label).trim().toLowerCase() === 'privacy policy')
-const links = hasPrivacy
-  ? copyrightLinks
-  : [...copyrightLinks, { label: 'Privacy Policy', href: '/privacy-policy/' }]
-const aria = asStr(footerSupport?.ariaLabel)
+  }
+  return fallback
+})
+
+for (const link of rawLinks) {
+  const k = linkKey(link.label)
+  if (!k || usedKeys.has(k)) continue
+  usedKeys.add(k)
+  links.push(link)
+}
+
+const aria = asStr(footerSupport?.ariaLabel) || 'Footer legal links'
 const license = asStr(footerSupport?.licenseNumber).trim() || '016436'
 const useTemplate = typeof copyrightInnerHtml === 'string' && copyrightInnerHtml.length > 0
 ---
@@ -45,44 +76,37 @@ const useTemplate = typeof copyrightInnerHtml === 'string' && copyrightInnerHtml
       to lender approval and may vary. See our <a href="/financing/">Financing page</a> for complete details,
       current offers, terms, and conditions.
     </p>
+    <p class="footer-disclaimer">
+      By providing your phone number, you agree to receive SMS messages from Mile High Gutter (Bluebird Denver LLC).
+      Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out. We do not sell or share your
+      information with third parties for marketing purposes.
+    </p>
   </div>
-  <div class="container footer-legal-extra">
-    <nav class="footer-legal-links" aria-label="Terms and credits">
-      <a href="/terms-of-service/">Terms of Service</a>
-      <a href="https://brightbeamseo.com/" target="_blank" rel="noopener noreferrer">Brightbeam SEO</a>
-    </nav>
-    <div class="footer-sms-disclosure">
-      <p class="footer-sms-heading">Text messaging (SMS)</p>
-      <p>
-        By providing your phone number, you agree to receive SMS messages from Mile High Gutter (Bluebird Denver LLC).
-        Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out.
-      </p>
-      <p>We do not sell or share your information with third parties for marketing purposes.</p>
+  <div class="footer-support-bar">
+    <div class="container footer-support-inner">
+      <div class="footer-support-lead">
+        {
+          useTemplate ? (
+            <p>
+              <a href={copyrightHref} set:html={copyrightInnerHtml} />
+            </p>
+          ) : (
+            <p>
+              © <span id="year"></span> — <a href={copyrightHref}>{companyName}</a>
+            </p>
+          )
+        }
+        <p class="footer-license">License Number — {license}</p>
+      </div>
+      <nav aria-label={aria}>
+        {
+          links.map((link) => (
+            <a href={asStr(link.href)} target={asStr(link.target) || undefined} rel={asStr(link.rel) || undefined}>
+              {asStr(link.label)}
+            </a>
+          ))
+        }
+      </nav>
     </div>
-  </div>
-  <div class="container footer-support-inner">
-    <div class="footer-support-lead">
-      {
-        useTemplate ? (
-          <p>
-            <a href={copyrightHref} set:html={copyrightInnerHtml} />
-          </p>
-        ) : (
-          <p>
-            © <span id="year"></span> — <a href={copyrightHref}>{companyName}</a>
-          </p>
-        )
-      }
-      <p class="footer-license">License Number — {license}</p>
-    </div>
-    <nav aria-label={aria}>
-      {
-        links.map((link) => (
-          <a href={asStr(link.href)} target={asStr(link.target) || undefined} rel={asStr(link.rel) || undefined}>
-            {asStr(link.label)}
-          </a>
-        ))
-      }
-    </nav>
   </div>
 </div>
