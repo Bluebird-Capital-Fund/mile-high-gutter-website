@@ -3759,6 +3759,17 @@ form[data-lead-form] button[type="submit"].is-busy {
   margin-bottom: var(--space-lg);
 }
 
+.faq-page-header {
+  width: 100%;
+  max-width: min(46rem, 100%);
+  margin: 0 auto var(--space-xl);
+  text-align: left;
+}
+
+.faq-page-header .section-title {
+  margin-bottom: var(--space-lg);
+}
+
 .faq-page-intro,
 .faq-page-groups,
 .faq-group {
@@ -3767,7 +3778,7 @@ form[data-lead-form] button[type="submit"].is-busy {
 }
 
 .faq-page-intro {
-  margin: 0 0 var(--space-xl);
+  margin: 0;
   color: var(--color-text-muted);
   font-size: 1.0625rem;
   line-height: 1.65;
@@ -3936,6 +3947,7 @@ form[data-lead-form] button[type="submit"].is-busy {
 }
 
 @media (max-width: 768px) {
+  .faq-page-header,
   .faq-panel .section-title,
   .faq-panel .faq-list {
     max-width: 100%;
