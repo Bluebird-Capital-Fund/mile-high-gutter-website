@@ -20,10 +20,21 @@ function normalizeLabel(label) {
 }
 
 function normalizeProjectsHref(label, href) {
-  if (typeof href === 'string' && href.trim().toLowerCase() === '/gallery/') return '/projects/'
+  if (typeof href === 'string') {
+    const h = href.trim().toLowerCase()
+    if (
+      h === '/gallery/' ||
+      h === '/gallery' ||
+      h === '/projects/' ||
+      h === '/projects' ||
+      h === '/projects.html'
+    ) {
+      return '/gallery/'
+    }
+  }
   if (typeof label !== 'string') return href
   const v = label.trim().toLowerCase()
-  if (v === 'projects' || v === 'our projects' || v === 'gallery') return '/projects/'
+  if (v === 'projects' || v === 'our projects' || v === 'gallery') return '/gallery/'
   return href
 }
 

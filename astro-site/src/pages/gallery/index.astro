@@ -50,23 +50,30 @@ const heroCallLabel = applyTemplate(asStr(homePage?.hero?.callCtaTemplate), { ph
 const logoAriaLabel = applyTemplate(asStr(header.logoAriaLabelTemplate), { companyName }) || companyName
 const navItems = Array.isArray(header.navItems) ? header.navItems : []
 
-const heroBgSrc = heroBackgroundFor('gallery')
+const heroBgSrc = heroBackgroundFor('projects')
 const heroBgStyle = heroBgSrc
   ? `background-image: linear-gradient(135deg, rgba(56, 69, 85, 0.88) 0%, rgba(56, 69, 85, 0.84) 50%, rgba(56, 69, 85, 0.88) 100%), url("${mediaUrl(heroBgSrc)}"); background-size: cover; background-position: center; background-repeat: no-repeat;`
   : undefined
 
-const pageTitle = asStr(galleryPage?.headline) || 'Gallery | Mile High Gutter'
+const pageTitle = asStr(galleryPage?.headline) || 'Projects | Mile High Gutter'
 const pageDescription = asStr(galleryPage?.lead) || 'Project gallery from Mile High Gutter.'
-const heroEyebrow = asStr(galleryPage?.eyebrow) || 'Gallery'
+const heroEyebrow = 'Projects'
 const heroHeadline = asStr(galleryPage?.headline) || 'Recent Jobs'
 const heroLead = asStr(galleryPage?.lead) || 'Simple gallery of completed gutter work.'
 const images = Array.isArray(galleryPage?.images) ? galleryPage.images : []
+
+/** Client-side lightbox (serialized in page script) */
+const galleryItems = images.map((img) => ({
+  src: mediaUrl(asStr(img.imageSrc)),
+  alt: asStr(img.imageAlt) || 'Project photo',
+  caption: asStr(img.location) || 'Denver Metro',
+}))
 
 const universalFormFields = footerEstimateFields
 const universalFormAction = asStr(formsCfg?.submitPath) || asStr(footerEstimate?.formAction) || '#'
 const universalFormMethod = asStr(footerEstimate?.formMethod) || 'post'
 const universalFormKicker = asStr(formsCfg?.formKicker) || 'Free Estimate'
-const universalFormAriaLabel = asStr(formsCfg?.formAriaLabel) || 'Gallery lead form'
+const universalFormAriaLabel = asStr(formsCfg?.formAriaLabel) || 'Projects lead form'
 const universalFormHeading = asStr(footerEstimate?.headline) || 'Get Started Today'
 const universalFormIntro = asStr(footerEstimate?.intro) || 'Short placeholder form for layout testing.'
 const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
@@ -93,7 +100,7 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
               const href = asStr(item.href)
               const dropdown = item.dropdown
               if (Array.isArray(dropdown) && dropdown.length > 0) {
-                const ddId = `gallery-nav-dd-${i}`
+                const ddId = `projects-nav-dd-${i}`
                 return (
                   <div class="nav-dropdown" data-nav-dropdown>
                     <button
@@ -143,38 +150,38 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
           <p class="hero-lead">{heroLead}</p>
           <div class="hero-actions"><a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg cta1-primary-call">{heroCallLabel}</a></div>
         </div>
-        <form class="hero-form" data-lead-form="gallery-hero" action={universalFormAction} method={universalFormMethod} aria-label={universalFormAriaLabel}>
+        <form class="hero-form" data-lead-form="projects-hero" action={universalFormAction} method={universalFormMethod} aria-label={universalFormAriaLabel}>
           <div class="hero-form-heading"><div class="hero-form-kicker">{universalFormKicker}</div><h2>{universalFormHeading}</h2></div>
           <p class="hero-form-sub">{universalFormIntro}</p>
           <div class="hero-form-grid">
             <div class="hero-form-field">
-              <label for="gallery-first-name">
+              <label for="projects-first-name">
                 First Name{' '}
                 <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
               </label>
-              <input id="gallery-first-name" name="firstName" type="text" required autocomplete="given-name" />
+              <input id="projects-first-name" name="firstName" type="text" required autocomplete="given-name" />
             </div>
             <div class="hero-form-field">
-              <label for="gallery-last-name">
+              <label for="projects-last-name">
                 Last Name{' '}
                 <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
               </label>
-              <input id="gallery-last-name" name="lastName" type="text" required autocomplete="family-name" />
+              <input id="projects-last-name" name="lastName" type="text" required autocomplete="family-name" />
             </div>
             <div class="hero-form-field">
-              <label for="gallery-email">
+              <label for="projects-email">
                 {asStr(universalFormFields?.emailLabel) || 'Email'}{' '}
                 <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
               </label>
-              <input id="gallery-email" name="email" type="email" required autocomplete="email" />
+              <input id="projects-email" name="email" type="email" required autocomplete="email" />
             </div>
             <div class="hero-form-field">
-              <label for="gallery-phone">
+              <label for="projects-phone">
                 {asStr(universalFormFields?.phoneLabel) || 'Phone'}{' '}
                 <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
               </label>
               <input
-                id="gallery-phone"
+                id="projects-phone"
                 name="phone"
                 type="tel"
                 required
@@ -186,9 +193,9 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
               />
             </div>
             <div class="hero-form-field hero-form-field-full">
-              <label for="gallery-address">Address</label>
+              <label for="projects-address">Address</label>
               <input
-                id="gallery-address"
+                id="projects-address"
                 name="address"
                 type="text"
                 autocomplete="street-address"
@@ -196,30 +203,80 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
               />
             </div>
             <div class="hero-form-field hero-form-field-full">
-              <label for="gallery-message">{asStr(universalFormFields?.projectDetailsLabel) || 'Project Details'}</label>
-              <textarea id="gallery-message" name="message" rows="3"></textarea>
+              <label for="projects-message">{asStr(universalFormFields?.projectDetailsLabel) || 'Project Details'}</label>
+              <textarea id="projects-message" name="message" rows="3"></textarea>
             </div>
           </div>
-          <LeadFormSmsConsent idPrefix="gallery" variant="hero" />
+          <LeadFormSmsConsent idPrefix="projects" variant="hero" />
           <button type="submit" class="btn btn-primary btn-lg">Submit</button>
         </form>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section projects-gallery-section">
       <div class="container">
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
-          {images.length > 0 ? (
-            images.map((img) => (
-              <article style="background:#fff; border-radius:12px; overflow:hidden; box-shadow: var(--shadow);">
-                <img src={mediaUrl(asStr(img.imageSrc))} alt={asStr(img.imageAlt) || 'Project photo'} style="width:100%; display:block; aspect-ratio: 4 / 3; object-fit: cover;" />
-                <p style="margin: .75rem 1rem 1rem; color: var(--color-text-muted);">{asStr(img.location) || 'Denver Metro'}</p>
-              </article>
-            ))
-          ) : (
-            <p>No gallery images added yet.</p>
-          )}
-        </div>
+        {images.length > 0 ? (
+          <>
+            <p class="projects-gallery-hint">Click a photo to view larger. Use arrows or keyboard to browse.</p>
+            <div class="projects-gallery-grid">
+              {images.map((img, i) => (
+                <button
+                  type="button"
+                  class="projects-gallery-thumb"
+                  data-photo-index={i}
+                  aria-label={`Open project photo ${i + 1} of ${images.length} in gallery viewer`}
+                >
+                  <span class="projects-gallery-thumb-img-wrap">
+                    <img
+                      src={mediaUrl(asStr(img.imageSrc))}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      width="640"
+                      height="480"
+                    />
+                  </span>
+                  <span class="projects-gallery-thumb-caption">{asStr(img.location) || 'Denver Metro'}</span>
+                </button>
+              ))}
+            </div>
+
+            <div
+              id="projects-lightbox"
+              class="projects-lightbox"
+              hidden
+              role="dialog"
+              aria-modal="true"
+              aria-label="Project photo gallery"
+            >
+              <button
+                type="button"
+                class="projects-lightbox-backdrop"
+                data-lightbox-close
+                tabindex="-1"
+                aria-label="Close gallery"
+              />
+              <div class="projects-lightbox-panel">
+                <button type="button" class="projects-lightbox-close" data-lightbox-close aria-label="Close gallery">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <p class="projects-lightbox-index" aria-live="polite" />
+                <button type="button" class="projects-lightbox-nav projects-lightbox-prev" aria-label="Previous photo">
+                  <span aria-hidden="true">‹</span>
+                </button>
+                <figure class="projects-lightbox-figure">
+                  <img class="projects-lightbox-img" src="" alt="" />
+                  <figcaption class="projects-lightbox-caption" />
+                </figure>
+                <button type="button" class="projects-lightbox-nav projects-lightbox-next" aria-label="Next photo">
+                  <span aria-hidden="true">›</span>
+                </button>
+              </div>
+            </div>
+          </>
+        ) : (
+          <p>No project images added yet.</p>
+        )}
       </div>
     </section>
   </main>
@@ -231,38 +288,38 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
           <div class="contact-info">
             <h2 class="section-title">{asStr(footerEstimate?.headline) || 'Need Gutter Help in Denver?'}</h2>
             <p>{asStr(footerEstimate?.intro) || 'Contact us for fast service and straightforward estimates.'}</p>
-            <FooterContactInfo variant="estimate" phoneTel={phoneTel} phoneDisplay={phoneDisplay} email={email} address={address} addressHref={addressHref} />
+            <FooterContactInfo variant="estimate" phoneTel={phoneTel} phoneDisplay={phoneDisplay} email={email} address={address} />
           </div>
-          <form class="contact-form" data-lead-form="gallery-footer" action={universalFormAction} method={universalFormMethod}>
+          <form class="contact-form" data-lead-form="projects-footer" action={universalFormAction} method={universalFormMethod}>
             <div class="contact-form-grid">
               <div class="contact-form-field">
-                <label for="gallery-contact-first-name">
+                <label for="projects-contact-first-name">
                   First Name{' '}
                   <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
                 </label>
-                <input id="gallery-contact-first-name" name="firstName" type="text" required autocomplete="given-name" />
+                <input id="projects-contact-first-name" name="firstName" type="text" required autocomplete="given-name" />
               </div>
               <div class="contact-form-field">
-                <label for="gallery-contact-last-name">
+                <label for="projects-contact-last-name">
                   Last Name{' '}
                   <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
                 </label>
-                <input id="gallery-contact-last-name" name="lastName" type="text" required autocomplete="family-name" />
+                <input id="projects-contact-last-name" name="lastName" type="text" required autocomplete="family-name" />
               </div>
               <div class="contact-form-field">
-                <label for="gallery-contact-email">
+                <label for="projects-contact-email">
                   {asStr(universalFormFields?.emailLabel) || 'Email'}{' '}
                   <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
                 </label>
-                <input id="gallery-contact-email" name="email" type="email" required autocomplete="email" />
+                <input id="projects-contact-email" name="email" type="email" required autocomplete="email" />
               </div>
               <div class="contact-form-field">
-                <label for="gallery-contact-phone">
+                <label for="projects-contact-phone">
                   {asStr(universalFormFields?.phoneLabel) || 'Phone'}{' '}
                   <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
                 </label>
                 <input
-                  id="gallery-contact-phone"
+                  id="projects-contact-phone"
                   name="phone"
                   type="tel"
                   required
@@ -274,9 +331,9 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
                 />
               </div>
               <div class="contact-form-field contact-form-field-full">
-                <label for="gallery-contact-address">Address</label>
+                <label for="projects-contact-address">Address</label>
                 <input
-                  id="gallery-contact-address"
+                  id="projects-contact-address"
                   name="address"
                   type="text"
                   autocomplete="street-address"
@@ -284,11 +341,11 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
                 />
               </div>
               <div class="contact-form-field contact-form-field-full">
-                <label for="gallery-contact-message">{asStr(universalFormFields?.projectDetailsLabel) || 'Project Details'}</label>
-                <textarea id="gallery-contact-message" name="message" rows="4"></textarea>
+                <label for="projects-contact-message">{asStr(universalFormFields?.projectDetailsLabel) || 'Project Details'}</label>
+                <textarea id="projects-contact-message" name="message" rows="4"></textarea>
               </div>
             </div>
-            <LeadFormSmsConsent idPrefix="gallery-footer" variant="contact" />
+            <LeadFormSmsConsent idPrefix="projects-footer" variant="contact" />
             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
           </form>
         </div>
@@ -298,4 +355,84 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
   </footer>
 
   <FooterSupportBar footerSupport={footerSupport} copyrightHref={copyrightHref} companyName={companyName} />
+
+  {galleryItems.length > 0 ? (
+    <script define:vars={{ galleryItems }}>
+      (function () {
+        var items = galleryItems
+        if (!items || !items.length) return
+
+        var root = document.getElementById('projects-lightbox')
+        if (!root) return
+
+        var imgEl = root.querySelector('.projects-lightbox-img')
+        var capEl = root.querySelector('.projects-lightbox-caption')
+        var idxEl = root.querySelector('.projects-lightbox-index')
+        var btnPrev = root.querySelector('.projects-lightbox-prev')
+        var btnNext = root.querySelector('.projects-lightbox-next')
+        var closeBtns = root.querySelectorAll('[data-lightbox-close]')
+
+        var current = 0
+
+        function show(i) {
+          var n = items.length
+          if (n === 0) return
+          current = ((i % n) + n) % n
+          var item = items[current]
+          imgEl.src = item.src
+          imgEl.alt = item.alt
+          capEl.textContent = item.caption || ''
+          if (idxEl) idxEl.textContent = String(current + 1) + ' / ' + n
+        }
+
+        function open(at) {
+          show(at)
+          root.hidden = false
+          document.body.style.overflow = 'hidden'
+          var closeBtn = root.querySelector('.projects-lightbox-close')
+          if (closeBtn) closeBtn.focus()
+        }
+
+        function close() {
+          root.hidden = true
+          document.body.style.overflow = ''
+        }
+
+        document.querySelectorAll('.projects-gallery-thumb').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var i = parseInt(btn.getAttribute('data-photo-index'), 10)
+            open(isNaN(i) ? 0 : i)
+          })
+        })
+
+        btnPrev.addEventListener('click', function (e) {
+          e.stopPropagation()
+          show(current - 1)
+        })
+        btnNext.addEventListener('click', function (e) {
+          e.stopPropagation()
+          show(current + 1)
+        })
+        closeBtns.forEach(function (b) {
+          b.addEventListener('click', function () {
+            close()
+          })
+        })
+
+        document.addEventListener('keydown', function (e) {
+          if (root.hidden) return
+          if (e.key === 'Escape') {
+            e.preventDefault()
+            close()
+          } else if (e.key === 'ArrowLeft') {
+            e.preventDefault()
+            show(current - 1)
+          } else if (e.key === 'ArrowRight') {
+            e.preventDefault()
+            show(current + 1)
+          }
+        })
+      })()
+    </script>
+  ) : null}
 </BaseLayout>

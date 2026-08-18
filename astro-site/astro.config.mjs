@@ -9,6 +9,10 @@ const site = 'https://www.milehighgutter.com';
 export default defineConfig({
   site,
   trailingSlash: 'always',
+  redirects: {
+    '/projects': '/gallery/',
+    '/projects/': '/gallery/',
+  },
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/lp/'),
