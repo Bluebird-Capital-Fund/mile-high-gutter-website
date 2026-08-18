@@ -67,7 +67,7 @@ export const guttersFortCollinsCo = {
 <li>Residential and commercial gutter expertise</li>
 <li>Clear communication from estimate through completion</li>
 <li>Lifetime warranty options available*</li>
-<li>Flexible financing available**</li>
+<li>Financing available for qualifying projects</li>
 </ul>
 <p>To help keep your gutter system performing at its best, we also offer our Gutter Club Plan and Free Flow Plan. Both include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive maintenance discounts.</p>`,
       imageSrc:

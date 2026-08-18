@@ -1,0 +1,62 @@
+---
+import { getSiteSettings } from '../lib/site-settings.js'
+import { asStr } from '../lib/sanity-strings.js'
+import {
+  BANNER_COPY,
+  BANNER_OFFERS,
+  FINANCING_GROUP,
+  FINANCING_PAGE_URL,
+  FINANCING_TERMS_HASH,
+  GREENSKY_MERCHANT_ID,
+} from '../lib/financing.js'
+
+const settings = await getSiteSettings()
+const phoneTel = asStr(settings?.business?.phoneTel)
+const telHref = phoneTel ? `tel:${phoneTel}` : FINANCING_PAGE_URL
+const ctaLabel = BANNER_COPY.ctaText
+---
+
+<section
+  class="financing-banner"
+  aria-label="Financing available"
+  data-financing-group={FINANCING_GROUP}
+  data-greensky-merchant-id={GREENSKY_MERCHANT_ID}
+>
+  <div class="container financing-banner-inner">
+    <header class="financing-banner-head">
+      <p class="financing-banner-eyebrow">{BANNER_COPY.eyebrow}</p>
+      <p class="financing-banner-tagline">{BANNER_COPY.supportingLine}</p>
+    </header>
+
+    <div class="financing-banner-offers">
+      {
+        BANNER_OFFERS.map((offer, index) => (
+          <article class={`financing-banner-offer${index === 0 ? ' financing-banner-offer-first' : ''}`}>
+            <h3 class="financing-banner-offer-headline">{offer.headline}</h3>
+            <p class="financing-banner-offer-subhead">{offer.subhead}</p>
+            {offer.supporting ? <p class="financing-banner-offer-supporting">{offer.supporting}</p> : null}
+            {offer.nearby ? <p class="financing-banner-offer-nearby">{offer.nearby}</p> : null}
+            {offer.small ? <p class="financing-banner-offer-small">{offer.small}</p> : null}
+            <a class="financing-banner-terms-link" href={FINANCING_TERMS_HASH}>
+              {BANNER_COPY.termsLinkLabel}
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="financing-banner-cta">
+      <p class="financing-banner-cta-heading">{BANNER_COPY.ctaHeading}</p>
+      <a class="btn btn-primary btn-lg financing-banner-cta-btn" href={telHref}>
+        {ctaLabel}
+      </a>
+      <p class="financing-banner-cta-fine">
+        {BANNER_COPY.ctaFinePrintPrefix}
+        <a href={FINANCING_TERMS_HASH}>{BANNER_COPY.ctaFinePrintLink}</a>.
+      </p>
+      <a class="financing-banner-view-all" href={FINANCING_PAGE_URL}>
+        {BANNER_COPY.viewAllLabel} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>

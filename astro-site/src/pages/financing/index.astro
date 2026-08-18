@@ -1,30 +1,40 @@
 ---
 import StandardPageChrome from '../../components/StandardPageChrome.astro'
-import { sanity } from '../../lib/sanity.js'
-import { asStr } from '../../lib/sanity-strings.js'
+import FinancingPageOffers from '../../components/FinancingPageOffers.astro'
+import { getSiteSettings } from '../../lib/site-settings.js'
+import { asStr, mediaUrl } from '../../lib/sanity-strings.js'
+import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
+import { PAGE_COPY } from '../../lib/financing.js'
 
-let legal = {}
-try {
-  legal = await sanity.fetch(`*[_type == "legalPage" && slug.current == "financing"][0]{title, content}`)
-} catch (err) {
-  console.warn('[financing] Sanity fetch failed.', err)
-}
-
-const legalTitle = asStr(legal?.title) || 'Financing'
-const legalContent =
-  asStr(legal?.content) ||
-  'Financing available with approved credit. Financing options, rates, terms, and promotional offers are subject to lender approval and may vary. Add complete financing details, current offers, terms, and conditions in Sanity under the Legal content type (slug: financing).'
+const settings = await getSiteSettings()
+const phoneTel = asStr(settings?.business?.phoneTel)
+const telHref = phoneTel ? `tel:${phoneTel}` : '#contact'
+const heroBgSrc = heroBackgroundFor('financing')
+const heroBgStyle = heroBgSrc
+  ? `background-image: linear-gradient(135deg, rgba(56, 69, 85, 0.88) 0%, rgba(56, 69, 85, 0.84) 50%, rgba(56, 69, 85, 0.88) 100%), url("${mediaUrl(heroBgSrc)}"); background-size: cover; background-position: center; background-repeat: no-repeat;`
+  : undefined
 ---
 
 <StandardPageChrome
-  title={`${legalTitle} | Mile High Gutter`}
-  description="Financing options, rates, terms, and promotional offers for Mile High Gutter."
+  title={PAGE_COPY.metaTitle}
+  description={PAGE_COPY.metaDescription}
   navDdPrefix="financing"
 >
-  <main class="section">
-    <div class="container" style="max-width: 70ch;">
-      <h1 class="section-title section-title-secondary">{legalTitle}</h1>
-      <p style="white-space: pre-line; line-height: 1.75; margin-top: 1rem;">{legalContent}</p>
-    </div>
+  <main>
+    <section class="hero hero-split financing-page-hero">
+      <div class="hero-bg" style={heroBgStyle}></div>
+      <div class="container hero-split-inner">
+        <div class="hero-copy financing-page-hero-copy">
+          <div class="hero-eyebrow">{PAGE_COPY.heroEyebrow}</div>
+          <h1>{PAGE_COPY.heroHeadline}</h1>
+          <p class="hero-lead">{PAGE_COPY.heroLead}</p>
+          <div class="hero-actions">
+            <a href={telHref} class="btn btn-primary btn-lg cta1-primary-call">{PAGE_COPY.ctaText}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FinancingPageOffers />
   </main>
 </StandardPageChrome>

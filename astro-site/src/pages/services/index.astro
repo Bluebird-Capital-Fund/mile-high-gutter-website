@@ -13,6 +13,7 @@ import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
+import FinancingBanner from '../../components/FinancingBanner.astro'
 import ServiceAreaBlock from '../../components/ServiceAreaBlock.astro'
 import { SERVICE_AREA_INTRO_HOME_HTML } from '../../lib/service-area-cities.js'
 import {
@@ -245,6 +246,8 @@ const canonicalHref = 'https://www.milehighgutter.com/services/'
         </form>
       </div>
     </section>
+
+    <FinancingBanner />
 
     <section class="section services-hub">
       <div class="container">

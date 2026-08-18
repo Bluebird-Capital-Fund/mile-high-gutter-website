@@ -67,7 +67,7 @@ export const guttersThorntonCo = {
 <li>Residential and commercial gutter expertise</li>
 <li>Clear communication from estimate through completion</li>
 <li>Lifetime warranty options available*</li>
-<li>Flexible financing available**</li>
+<li>Financing available for qualifying projects</li>
 </ul>
 <p>If you'd rather stay ahead of maintenance than wait for problems to appear, our Gutter Club Plan and Free Flow Plan include two professional cleanings each year, annual inspections, tune-ups, priority scheduling, and discounts on additional services.</p>`,
       imageSrc:

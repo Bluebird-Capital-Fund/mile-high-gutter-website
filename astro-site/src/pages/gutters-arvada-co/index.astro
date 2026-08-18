@@ -16,6 +16,7 @@ import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 import ServiceAreaBlock from '../../components/ServiceAreaBlock.astro'
 import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
+import FinancingBanner from '../../components/FinancingBanner.astro'
 
 const slug = 'gutters-arvada-co'
 const pageOverride = getLocationPageOverride(slug)
@@ -250,6 +251,8 @@ const canonicalHref = `https://www.milehighgutter.com/${slug}/`
         </form>
       </div>
     </section>
+
+    <FinancingBanner />
 
     <section class="section">
       <div class="container">

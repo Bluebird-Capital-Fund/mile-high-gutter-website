@@ -32,7 +32,7 @@ export const FAQ_PAGE_GROUPS = [
       {
         question: 'Do you offer financing for gutter projects?',
         answerHtml: p(
-          "Yes. Mile High Gutter offers financing options to help make Denver gutter projects more manageable. Financing may be available for qualifying gutter installation and replacement projects, allowing homeowners to protect their property without delaying necessary work. During your consultation, we'll review your project, explain the available financing options, and answer any questions so you can make an informed decision."
+          'Yes. Mile High Gutter offers financing options for qualifying gutter projects, subject to credit approval. During your consultation, we can review available financing options. See our <a href="/financing/">Financing page</a> and <a href="#financing-terms">Important Financing Terms</a> for complete details.'
         ),
       },
     ],

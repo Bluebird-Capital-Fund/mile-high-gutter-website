@@ -24,6 +24,7 @@ import { sanitizeCmsHtml } from '../lib/sanitize-cms-html.js'
 import ServiceAreaBlock from '../components/ServiceAreaBlock.astro'
 import { SERVICE_AREA_INTRO_HOME_HTML } from '../lib/service-area-cities.js'
 import HeaderMobileActions from '../components/HeaderMobileActions.astro'
+import FinancingBanner from '../components/FinancingBanner.astro'
 
 const [settings, homePage] = await Promise.all([
   getSiteSettings(),
@@ -622,6 +623,8 @@ function responsiveSrc(src, width = 800) {
         </div>
       </section>
     </section>
+
+    <FinancingBanner />
 
     <section id="reviews" class="section google-reviews">
       <div class="container">

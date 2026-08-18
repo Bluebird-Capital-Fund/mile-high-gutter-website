@@ -67,7 +67,7 @@ export const guttersArvadaCo = {
 <li>Residential and commercial gutter expertise</li>
 <li>Clear communication from estimate through completion</li>
 <li>Lifetime warranty options available*</li>
-<li>Flexible financing available**</li>
+<li>Financing available for qualifying projects</li>
 </ul>
 <p>To help homeowners stay ahead of future issues, we also offer our Gutter Club Plan and Free Flow Plan, with professional cleanings, annual inspections, tune-ups, priority service, and savings on additional maintenance.</p>`,
       imageSrc:

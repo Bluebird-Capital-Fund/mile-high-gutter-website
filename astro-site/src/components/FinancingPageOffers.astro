@@ -1,0 +1,49 @@
+---
+import {
+  ADDITIONAL_OPTION,
+  BANNER_COPY,
+  FINANCING_TERMS_HASH,
+  PAGE_OFFERS,
+} from '../lib/financing.js'
+---
+
+<section class="section financing-page-offers" aria-label="Financing offers">
+  <div class="container">
+    <div class="financing-page-offer-grid">
+      {
+        PAGE_OFFERS.map((offer) => (
+          <article class="financing-page-offer">
+            <p class="financing-page-offer-kicker">
+              {offer.optionLabel}
+              <span class="financing-page-offer-kicker-sep"> — </span>
+              {offer.kicker}
+            </p>
+            <h2 class="financing-page-offer-headline">{offer.headline}</h2>
+            <p class="financing-page-offer-subhead">{offer.subhead}</p>
+            <ul class="financing-page-offer-details">
+              {offer.details.map((line) => (
+                <li>{line}</li>
+              ))}
+            </ul>
+            <a class="financing-banner-terms-link" href={FINANCING_TERMS_HASH}>
+              {BANNER_COPY.termsLinkLabel}
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <aside class="financing-page-additional" aria-label={ADDITIONAL_OPTION.heading}>
+      <h2 class="financing-page-additional-heading">{ADDITIONAL_OPTION.heading}</h2>
+      <p class="financing-page-additional-title">{ADDITIONAL_OPTION.title}</p>
+      {
+        ADDITIONAL_OPTION.details.map((line) => (
+          <p class="financing-page-additional-body">{line}</p>
+        ))
+      }
+      <a class="financing-banner-terms-link" href={FINANCING_TERMS_HASH}>
+        {BANNER_COPY.termsLinkLabel}
+      </a>
+    </aside>
+  </div>
+</section>

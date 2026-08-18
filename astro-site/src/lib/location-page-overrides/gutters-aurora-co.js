@@ -66,7 +66,7 @@ export const guttersAuroraCo = {
 <li>Residential and commercial gutter expertise</li>
 <li>Clear communication from estimate through completion</li>
 <li>Lifetime warranty options available*</li>
-<li>Flexible financing available**</li>
+<li>Financing available for qualifying projects</li>
 </ul>
 <p>If you'd rather stay ahead of maintenance, our Gutter Club Plan and Free Flow Plan include two professional cleanings each year, annual inspections, tune-ups, priority service, and discounts on additional maintenance.</p>`,
       imageSrc:

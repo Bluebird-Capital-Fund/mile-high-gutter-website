@@ -1,0 +1,34 @@
+---
+import {
+  FINANCING_TERMS_ID,
+  GREENSKY_MAIN_DISCLOSURE_PARTS,
+  PLAN_DISCLOSURES,
+} from '../lib/financing.js'
+---
+
+<section class="footer-financing-terms" id={FINANCING_TERMS_ID} aria-labelledby="financing-terms-heading">
+  <h2 class="footer-disclaimer-heading" id="financing-terms-heading">IMPORTANT FINANCING TERMS</h2>
+  {
+    PLAN_DISCLOSURES.map((plan) => (
+      <p class="footer-disclaimer footer-financing-plan">
+        <strong>
+          {plan.marker} {plan.heading}
+        </strong>{' '}
+        {plan.text}
+      </p>
+    ))
+  }
+  <p class="footer-disclaimer footer-financing-main">
+    {
+      GREENSKY_MAIN_DISCLOSURE_PARTS.map((part) =>
+        typeof part === 'string' ? (
+          part
+        ) : (
+          <a href={part.href} target="_blank" rel="noopener noreferrer">
+            {part.label}
+          </a>
+        ),
+      )
+    }
+  </p>
+</section>

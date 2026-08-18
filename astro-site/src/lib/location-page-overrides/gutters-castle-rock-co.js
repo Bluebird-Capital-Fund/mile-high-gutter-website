@@ -67,7 +67,7 @@ export const guttersCastleRockCo = {
 <li>Residential and commercial gutter expertise</li>
 <li>Clear communication from estimate through completion</li>
 <li>Lifetime warranty options available*</li>
-<li>Flexible financing available**</li>
+<li>Financing available for qualifying projects</li>
 </ul>
 <p>For homeowners who prefer a proactive approach, our Gutter Club Plan and Free Flow Plan include scheduled cleanings, annual inspections, tune-ups, priority service, and discounts on future maintenance.</p>`,
       imageSrc:

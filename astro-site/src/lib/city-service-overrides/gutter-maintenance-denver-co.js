@@ -87,7 +87,7 @@ export const gutterMaintenanceDenverCo = {
 <li>Residential and commercial gutter expertise</li>
 <li>Clear communication from estimate through completion</li>
 <li>Lifetime warranty options available*</li>
-<li>Flexible financing available**</li>
+<li>Financing available for qualifying projects</li>
 </ul>
 <p>Our Gutter Club Plan and Free Flow Plan make ongoing maintenance easy by including two professional cleanings each year, annual inspections and tune-ups, priority service, plus exclusive discounts on additional maintenance.</p>`,
       showCta: true,

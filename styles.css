@@ -4723,3 +4723,285 @@ form[data-lead-form] button[type="submit"].is-busy {
   left: max(10px, env(safe-area-inset-left, 0px)) !important;
 }
 
+/* --------------------------------------------------------------------------
+   GreenSky financing banner + page + footer terms
+   -------------------------------------------------------------------------- */
+.financing-banner {
+  background: var(--color-dark);
+  color: #fff;
+  padding: 1.15rem 0 1.35rem;
+}
+
+.financing-banner-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.financing-banner-head {
+  text-align: center;
+}
+
+.financing-banner-eyebrow {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #c5d6f2;
+}
+
+.financing-banner-tagline {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.financing-banner-offers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.financing-banner-offer {
+  text-align: center;
+  padding: 0.15rem 0.25rem;
+}
+
+.financing-banner-offer-headline {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.financing-banner-offer-subhead {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: #e8eef8;
+}
+
+.financing-banner-offer-supporting {
+  margin: 0.4rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.financing-banner-offer-nearby,
+.financing-banner-offer-small,
+.financing-banner-cta-fine {
+  margin: 0.35rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.financing-banner-terms-link {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.financing-banner-terms-link:hover {
+  color: #c5d6f2;
+}
+
+.financing-banner-cta {
+  text-align: center;
+  padding-top: 0.15rem;
+}
+
+.financing-banner-cta-heading {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #c5d6f2;
+}
+
+.financing-banner-cta-btn {
+  display: inline-flex;
+}
+
+.financing-banner-view-all {
+  display: inline-block;
+  margin-top: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.financing-banner-view-all:hover {
+  color: #fff;
+}
+
+.footer-financing-terms {
+  grid-column: 1 / -1;
+  scroll-margin-top: 130px;
+}
+
+.footer-financing-terms .footer-disclaimer-heading {
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.55rem;
+}
+
+.footer-financing-terms .footer-disclaimer {
+  margin-bottom: 0.65rem;
+}
+
+.footer-financing-terms .footer-disclaimer:last-child {
+  margin-bottom: 0;
+}
+
+.footer-financing-plan strong {
+  font-weight: 700;
+}
+
+.financing-page-hero-copy {
+  max-width: 40rem;
+}
+
+.financing-page-hero .hero-split-inner {
+  grid-template-columns: minmax(0, 1fr);
+  padding-bottom: var(--space-3xl);
+}
+
+.financing-page-hero {
+  min-height: 0;
+}
+
+.financing-page-offers {
+  background: var(--color-bg-alt);
+}
+
+.financing-page-offer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.financing-page-offer {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.4rem 1.45rem;
+  box-shadow: var(--shadow);
+}
+
+.financing-page-offer-kicker {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+}
+
+.financing-page-offer-headline {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-dark);
+}
+
+.financing-page-offer-subhead {
+  margin: 0.25rem 0 0.8rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.financing-page-offer-details {
+  margin: 0 0 0.35rem;
+  padding-left: 1.1rem;
+}
+
+.financing-page-offer-details li + li {
+  margin-top: 0.45rem;
+}
+
+.financing-page-offer .financing-banner-terms-link {
+  color: var(--color-dark);
+}
+
+.financing-page-offer .financing-banner-terms-link:hover {
+  color: var(--color-accent);
+}
+
+.financing-page-additional {
+  margin-top: 1.5rem;
+  max-width: 46rem;
+  padding: 1rem 1.15rem 1.1rem;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface);
+}
+
+.financing-page-additional-heading {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.financing-page-additional-title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.financing-page-additional-body {
+  margin: 0 0 0.4rem;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+.financing-page-additional .financing-banner-terms-link {
+  color: var(--color-dark);
+}
+
+@media (min-width: 768px) {
+  .financing-banner-offers {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: start;
+  }
+
+  .financing-banner-offer {
+    padding: 0.15rem 1.35rem;
+  }
+
+  .financing-banner-offer-first {
+    border-right: 1px solid rgba(255, 255, 255, 0.28);
+  }
+
+  .financing-page-offer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .footer-disclaimers {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+

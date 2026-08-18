@@ -16,6 +16,7 @@ import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 import ServiceAreaBlock from '../../components/ServiceAreaBlock.astro'
 import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
+import FinancingBanner from '../../components/FinancingBanner.astro'
 
 /** Old Sanity slugs superseded by newer URLs (redirected in vercel.json). */
 const RETIRED_CITY_SERVICE_SLUGS = new Set([
@@ -331,6 +332,8 @@ const serviceHref = (svc) => {
         </form>
       </div>
     </section>
+
+    <FinancingBanner />
 
     <section class="section">
       <div class="container">

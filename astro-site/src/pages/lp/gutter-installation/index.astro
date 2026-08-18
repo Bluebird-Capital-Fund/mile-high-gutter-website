@@ -27,6 +27,7 @@ import { capitalizeHeaderWords } from '../../../lib/capitalize-header-words.js'
 import { lpGutterInstallationReviews } from '../../../lib/lp-gutter-installation-reviews.js'
 import HeaderMobileActions from '../../../components/HeaderMobileActions.astro'
 import Breadcrumbs from '../../../components/Breadcrumbs.astro'
+import FinancingBanner from '../../../components/FinancingBanner.astro'
 
 const [settings, homePage] = await Promise.all([
   getSiteSettings(),
@@ -487,6 +488,8 @@ const universalFormIntro =
         </div>
       </section>
     </section>
+
+    <FinancingBanner />
 
     <section id="reviews" class="section google-reviews lp-gi-reviews">
       <div class="container">

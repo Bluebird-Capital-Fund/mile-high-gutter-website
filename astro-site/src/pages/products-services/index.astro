@@ -1,5 +1,6 @@
 ---
 import StandardPageChrome from '../../components/StandardPageChrome.astro'
+import FinancingBanner from '../../components/FinancingBanner.astro'
 import { sanity } from '../../lib/sanity.js'
 import { getSiteSettings } from '../../lib/site-settings.js'
 import { asStr } from '../../lib/sanity-strings.js'
@@ -56,26 +57,35 @@ const productsServicesIntro = asStr(settings?.productsServicesIntro)
   description={pageDescription}
   navDdPrefix="products"
 >
-  <main class="section">
-    <div class="container">
-      <h1 class="section-title section-title-secondary">Products & Services</h1>
-      {productsServicesIntro ? <p class="section-lead" style="max-width: 70ch;">{productsServicesIntro}</p> : null}
-      <div style="display:grid; gap:1rem; margin-top:1.5rem;">
-        {items.length > 0 ? (
-          items.map((item) => (
-            <article style="padding:1rem 1.25rem; border:1px solid rgba(0,0,0,0.08); border-radius:12px;">
-              <h2 style="margin:0 0 .5rem;">
-                <a href={`/products-services/${asStr(item.slug)}/`}>
-                  {asStr(item.title) || asStr(item.headline) || asStr(item.slug)}
-                </a>
-              </h2>
-              <p style="margin:0; color:#4b5563;">{asStr(item.lead) || 'Content placeholder page. Update in Sanity.'}</p>
-            </article>
-          ))
-        ) : (
-          <p>No city service pages found yet in Sanity.</p>
-        )}
+  <main>
+    <section class="page-heading">
+      <div class="container">
+        <h1>Products & Services</h1>
+        {productsServicesIntro ? <p class="section-lead">{productsServicesIntro}</p> : null}
       </div>
-    </div>
+    </section>
+
+    <FinancingBanner />
+
+    <section class="section">
+      <div class="container">
+        <div style="display:grid; gap:1rem;">
+          {items.length > 0 ? (
+            items.map((item) => (
+              <article style="padding:1rem 1.25rem; border:1px solid rgba(0,0,0,0.08); border-radius:12px;">
+                <h2 style="margin:0 0 .5rem;">
+                  <a href={`/products-services/${asStr(item.slug)}/`}>
+                    {asStr(item.title) || asStr(item.headline) || asStr(item.slug)}
+                  </a>
+                </h2>
+                <p style="margin:0; color:#4b5563;">{asStr(item.lead) || 'Content placeholder page. Update in Sanity.'}</p>
+              </article>
+            ))
+          ) : (
+            <p>No city service pages found yet in Sanity.</p>
+          )}
+        </div>
+      </div>
+    </section>
   </main>
 </StandardPageChrome>

@@ -14,6 +14,7 @@ import { SERVICE_AREA_INTRO } from '../../lib/service-area-cities.js'
 import ServiceAreaBlock from '../../components/ServiceAreaBlock.astro'
 import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
 import Breadcrumbs from '../../components/Breadcrumbs.astro'
+import FinancingBanner from '../../components/FinancingBanner.astro'
 
 let settings = {}
 let homePage = {}
@@ -144,6 +145,7 @@ const mapIframeTitle =
       citiesLabel={asStr(serviceArea?.citiesLabel) || 'Cities We Serve'}
       showCounties={true}
     />
+    <FinancingBanner />
   </main>
 
   <footer class="footer">

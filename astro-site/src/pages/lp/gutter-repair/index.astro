@@ -27,6 +27,7 @@ import { capitalizeHeaderWords } from '../../../lib/capitalize-header-words.js'
 import { lpGutterRepairReviews } from '../../../lib/lp-gutter-repair-reviews.js'
 import HeaderMobileActions from '../../../components/HeaderMobileActions.astro'
 import Breadcrumbs from '../../../components/Breadcrumbs.astro'
+import FinancingBanner from '../../../components/FinancingBanner.astro'
 
 const [settings, homePage] = await Promise.all([
   getSiteSettings(),
@@ -539,6 +540,8 @@ const lpRepairContactP2 = `Call: ${phoneDisplay}`
         </div>
       </section>
     </section>
+
+    <FinancingBanner />
 
     <section id="reviews" class="section google-reviews lp-gr-reviews">
       <div class="container">

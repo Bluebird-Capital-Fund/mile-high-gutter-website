@@ -67,7 +67,7 @@ export const guttersLittletonCo = {
 <li>Residential and commercial gutter expertise</li>
 <li>Clear communication from estimate through completion</li>
 <li>Lifetime warranty options available*</li>
-<li>Flexible financing available**</li>
+<li>Financing available for qualifying projects</li>
 </ul>
 <p>If you'd like extra peace of mind, our Gutter Club Plan and Free Flow Plan make it easier to stay ahead of maintenance with scheduled cleanings, annual inspections, priority service, and savings on additional work.</p>`,
       imageSrc:

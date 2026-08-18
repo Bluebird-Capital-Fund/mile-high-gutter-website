@@ -26,7 +26,7 @@ export const SERVICES_PAGE_WHY_POINTS = [
   'Residential and commercial gutter expertise',
   'Clear communication from estimate through completion',
   'Lifetime warranty options available*',
-  'Flexible financing available**',
+  'Financing available for qualifying projects',
 ]
 
 export const SERVICES_HUB_GROUPS = [
