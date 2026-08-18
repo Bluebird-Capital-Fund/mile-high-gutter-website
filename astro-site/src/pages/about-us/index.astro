@@ -46,6 +46,26 @@ const logoAriaLabel = applyTemplate(asStr(header.logoAriaLabelTemplate), { compa
 const navItems = Array.isArray(header.navItems) ? header.navItems : []
 
 const about = homePage?.about ?? {}
+const teamMembers = [
+  {
+    imageSrc: 'Media (MHG)/Team (MHG)/darren-west-general-manager.png',
+    imageAlt: 'Darren West, General Manager at Mile High Gutter',
+    name: 'Darren West',
+    role: 'General Manager',
+  },
+  {
+    imageSrc: 'Media (MHG)/Team (MHG)/daniel-lead-installer-operations-manager.png',
+    imageAlt: 'Daniel Rayo, Lead Installer and Operations Manager at Mile High Gutter',
+    name: 'Daniel Rayo',
+    role: 'Lead Installer-Operations Manager',
+  },
+  {
+    imageSrc: 'Media (MHG)/Team (MHG)/brittany-office-manager.png',
+    imageAlt: 'Brittany Rayo, Office Manager at Mile High Gutter',
+    name: 'Brittany Rayo',
+    role: 'Office Manager',
+  },
+]
 
 const pageTitle = 'About Us | Mile High Gutter'
 const pageDescription =
@@ -145,6 +165,28 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
             loading="eager"
             decoding="async"
           />
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="section our-team">
+      <div class="container">
+        <h2 class="section-title">Our Denver Gutter Team</h2>
+        <div class="team-grid">
+          {teamMembers.map((m) => (
+            <article class="team-card">
+              <img
+                src={mediaUrl(m.imageSrc)}
+                alt={m.imageAlt}
+                width="720"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3>{m.name}</h3>
+              <p>{m.role}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
