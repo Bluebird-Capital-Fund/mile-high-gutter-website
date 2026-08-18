@@ -17,6 +17,7 @@ import { heroBackgroundFor } from '../lib/hero-backgrounds.js'
 import { sanitizeCmsHtml } from '../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../lib/sanity-strings.js'
 import HeaderMobileActions from '../components/HeaderMobileActions.astro'
+import Breadcrumbs from '../components/Breadcrumbs.astro'
 
 export async function getStaticPaths() {
   try {
@@ -178,6 +179,8 @@ const idPrefix = `blog-${slug.replace(/[^a-z0-9-]/gi, '_')}`
       </div>
     </div>
   </header>
+
+  <Breadcrumbs />
 
   <main>
     <section class="hero hero-split blog-post-hero" aria-label="Article">

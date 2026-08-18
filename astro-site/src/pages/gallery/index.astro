@@ -12,6 +12,7 @@ import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-setting
 import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
+import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
 let settings = {}
 let homePage = {}
@@ -138,6 +139,8 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
       </div>
     </div>
   </header>
+
+  <Breadcrumbs />
 
   <main>
     <section class="page-heading">

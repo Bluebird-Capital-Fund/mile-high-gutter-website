@@ -11,6 +11,7 @@ import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
 import { asStr, applyTemplate, asStrArray, mediaUrl } from '../../lib/sanity-strings.js'
 import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
+import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
 let settings = {}
 let homePage = {}
@@ -160,6 +161,8 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
       </div>
     </div>
   </header>
+
+  <Breadcrumbs />
 
   <main>
     <section class="section about about-us-page">

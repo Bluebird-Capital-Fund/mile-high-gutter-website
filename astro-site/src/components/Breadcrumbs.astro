@@ -1,0 +1,29 @@
+---
+import { breadcrumbJsonLd, buildBreadcrumbItems } from '../lib/breadcrumbs.js'
+
+const items = buildBreadcrumbItems(Astro.url.pathname)
+const origin = Astro.site?.origin || 'https://www.milehighgutter.com'
+const jsonLd = items.length ? breadcrumbJsonLd(items, origin) : ''
+---
+
+{items.length > 0 ? (
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="breadcrumbs-inner">
+      <ol>
+        {items.map((item, index) => {
+          const isCurrent = index === items.length - 1
+          return (
+            <li>
+              {isCurrent ? (
+                <span aria-current="page">{item.label}</span>
+              ) : (
+                <a href={item.href}>{item.label}</a>
+              )}
+            </li>
+          )
+        })}
+      </ol>
+    </div>
+    {jsonLd ? <script type="application/ld+json" set:html={jsonLd} /> : null}
+  </nav>
+) : null}

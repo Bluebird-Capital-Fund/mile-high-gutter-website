@@ -11,6 +11,7 @@ import { GROQ_HOME_PAGE, sanity } from '../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../lib/site-settings.js'
 import { asStr, applyTemplate, mediaUrl } from '../lib/sanity-strings.js'
 import HeaderMobileActions from './HeaderMobileActions.astro'
+import Breadcrumbs from './Breadcrumbs.astro'
 
 const { title, description, navDdPrefix = 'page' } = Astro.props
 
@@ -104,6 +105,8 @@ const pageIdPrefix = `std-${String(navDdPrefix).replace(/[^a-z0-9-]/gi, '_')}`
       </div>
     </div>
   </header>
+
+  <Breadcrumbs />
 
   <slot />
 

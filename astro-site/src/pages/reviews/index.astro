@@ -16,6 +16,7 @@ import { lpGutterInstallationReviews } from '../../lib/lp-gutter-installation-re
 import { lpGutterRepairReviews } from '../../lib/lp-gutter-repair-reviews.js'
 import { lpGuttersReviews } from '../../lib/lp-gutters-reviews.js'
 import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
+import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
 let settings = {}
 let homePage = {}
@@ -161,6 +162,8 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
       </div>
     </div>
   </header>
+
+  <Breadcrumbs />
 
   <main>
     <section class="section google-reviews reviews-page-list">

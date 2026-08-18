@@ -12,6 +12,7 @@ import FooterSupportBar from './FooterSupportBar.astro'
 import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../lib/footer-contact-heading.js'
 import { asStr, mediaUrl } from '../lib/sanity-strings.js'
 import HeaderMobileActions from './HeaderMobileActions.astro'
+import Breadcrumbs from './Breadcrumbs.astro'
 
 const {
   pageTitle,
@@ -121,6 +122,8 @@ const {
       </div>
     </div>
   </header>
+
+  <Breadcrumbs />
 
   <main>
     <section class="page-heading">

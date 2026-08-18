@@ -13,6 +13,7 @@ import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 import { SERVICE_AREA_INTRO } from '../../lib/service-area-cities.js'
 import ServiceAreaBlock from '../../components/ServiceAreaBlock.astro'
 import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
+import Breadcrumbs from '../../components/Breadcrumbs.astro'
 
 let settings = {}
 let homePage = {}
@@ -129,6 +130,8 @@ const mapIframeTitle =
       </div>
     </div>
   </header>
+
+  <Breadcrumbs />
 
   <main>
     <ServiceAreaBlock

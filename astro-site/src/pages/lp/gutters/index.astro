@@ -26,6 +26,7 @@ import { getLpHeroTypedPhrases } from '../../../lib/lp-hero-typed-phrases.js'
 import { capitalizeHeaderWords } from '../../../lib/capitalize-header-words.js'
 import { lpGuttersReviews } from '../../../lib/lp-gutters-reviews.js'
 import HeaderMobileActions from '../../../components/HeaderMobileActions.astro'
+import Breadcrumbs from '../../../components/Breadcrumbs.astro'
 
 const [settings, homePage] = await Promise.all([
   getSiteSettings(),
@@ -374,6 +375,8 @@ const universalFormIntro =
     </div>
   </header>
   <div id="header-nav-spacer" class="header-nav-spacer" aria-hidden="true"></div>
+
+  <Breadcrumbs />
 
   <main>
     <section class="hero hero-split lp-hero">

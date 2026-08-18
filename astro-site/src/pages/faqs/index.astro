@@ -12,6 +12,7 @@ import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-setting
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
+import Breadcrumbs from '../../components/Breadcrumbs.astro'
 import { FAQ_PAGE_GROUPS, FAQ_PAGE_INTRO } from '../../lib/faqs-page-content.js'
 
 let settings = {}
@@ -140,6 +141,8 @@ let faqItemIndex = 0
       </div>
     </div>
   </header>
+
+  <Breadcrumbs />
 
   <main>
     <section class="section faq-section" id="faq" aria-labelledby={faqHeadingId}>
