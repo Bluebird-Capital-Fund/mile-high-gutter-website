@@ -1286,6 +1286,11 @@ ul.hero-lead-list strong {
   line-height: 1.2;
 }
 
+.projects-gallery-intro {
+  margin: var(--space-md) 0 0;
+  max-width: 72ch;
+}
+
 .blog-post-hero .hero-split-inner {
   grid-template-columns: minmax(0, 1fr);
 }
