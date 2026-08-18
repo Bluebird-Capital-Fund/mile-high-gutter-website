@@ -58,11 +58,7 @@ const introMarkup = asStr(introHtml)
       {showCounties ? (
         <>
           <p class="service-area-group-label">Counties</p>
-          <ul class="service-area-county-list">
-            {SERVICE_AREA_COUNTIES.map((county) => (
-              <li>{county}</li>
-            ))}
-          </ul>
+          <p class="service-area-county-list">{SERVICE_AREA_COUNTIES.join(' - ')}</p>
           <p class="service-area-group-label">Communities We Serve</p>
         </>
       ) : null}
