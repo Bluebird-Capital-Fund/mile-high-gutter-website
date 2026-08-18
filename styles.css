@@ -1329,7 +1329,8 @@ ul.hero-lead-list strong {
   max-width: 540px;
 }
 
-.page-heading .projects-gallery-intro {
+.page-heading .projects-gallery-intro,
+.page-heading .blog-index-lead {
   margin: var(--space-lg) 0 0;
   max-width: 72ch;
 }
@@ -4289,7 +4290,7 @@ form[data-lead-form] button[type="submit"].is-busy {
    Blog index (/blog/) — card grid, scrollable list region, pagination
    -------------------------------------------------------------------------- */
 .blog-index-section {
-  padding-top: var(--space-3xl);
+  padding-top: var(--space-lg);
   padding-bottom: var(--space-4xl);
 }
 

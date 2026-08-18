@@ -71,7 +71,8 @@ const heroBgStyle = heroBgSrc
 
 const heroEyebrow = 'Blog'
 const heroHeadline = 'Gutter tips & guides'
-const heroLead = 'Articles on gutter care, repairs, and protecting your Denver home.'
+const heroLead =
+  'Explore expert gutter tips, seasonal maintenance advice, and practical information from the Mile High Gutter team. Our blog covers common drainage issues, gutter care, and solutions to help homeowners and businesses across the Denver metro area protect their properties and make informed decisions with confidence.'
 
 const pageParam = asStr(Astro.params?.page)
 const currentPage = Math.max(2, parseInt(pageParam, 10) || 2)
@@ -87,11 +88,6 @@ const posts = sliceBlogPage(allPosts, currentPage, BLOG_POSTS_PER_PAGE)
 
 const pageTitle = `Gutter blog — page ${currentPage} | Mile High Gutter`
 const pageDescription = `Browse gutter articles (page ${currentPage} of ${totalPages}). Tips and guides for Denver homeowners.`
-
-const introText =
-  totalPages > 1
-    ? `Browse every post (${allPosts.length} total). Use Previous / Next or the numbered links below — ${BLOG_POSTS_PER_PAGE} articles per page.`
-    : 'Browse every article below.'
 ---
 
 <BlogListLayout
@@ -136,8 +132,6 @@ const introText =
 >
   <section class="section blog-index-section" id="articles">
     <div class="container">
-      <h2 class="section-title section-title-secondary blog-index-heading">All articles</h2>
-      <p class="blog-index-intro">{introText}</p>
       <BlogPostGrid posts={posts} currentPage={currentPage} totalPages={totalPages} />
     </div>
   </section>
