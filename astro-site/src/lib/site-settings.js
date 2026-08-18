@@ -47,14 +47,21 @@ const SERVICES_NAV_ITEM = {
     { label: 'Gutter Cleaning', href: '/products-services/gutter-cleaning-denver-co/' },
     { label: 'Gutter Installation', href: '/products-services/gutter-installation-denver-co/' },
     { label: 'Gutter Repair', href: '/products-services/gutter-repair-denver-co/' },
-    { label: 'Seamless Gutters', href: '/products-services/seamless-gutter-denver-co/' },
     { label: 'Gutter Guards', href: '/products-services/denver-gutter-guards-co/' },
     { label: 'Downspouts', href: '/products-services/gutter-downspouts-denver-co/' },
     { label: 'Heat Tape', href: '/products-services/snow-ice-solutions-heat-tape-denver-co/' },
   ],
 }
 
-const MATERIALS_NAV_ITEM = {
+const FOOTER_SERVICE_LINKS = [
+  { label: 'Gutter Cleaning', href: '/products-services/gutter-cleaning-denver-co/' },
+  { label: 'Gutter Installation', href: '/products-services/gutter-installation-denver-co/' },
+  { label: 'Gutter Repair', href: '/products-services/gutter-repair-denver-co/' },
+  { label: 'Seamless Gutters', href: '/products-services/seamless-gutter-denver-co/' },
+  { label: 'Gutter Guards', href: '/products-services/denver-gutter-guards-co/' },
+  { label: 'Downspouts', href: '/products-services/gutter-downspouts-denver-co/' },
+  { label: 'Heat Tape', href: '/products-services/snow-ice-solutions-heat-tape-denver-co/' },
+]
   label: 'Materials',
   dropdown: [
     { label: 'Copper Gutters', href: '/products-services/copper-gutters-denver-co/' },
@@ -123,7 +130,7 @@ function isServicesColumn(col) {
 
 function normalizeFooterColumns(columns) {
   if (!Array.isArray(columns)) return columns
-  const serviceLinks = SERVICES_NAV_ITEM.dropdown.map((link) => ({ ...link }))
+  const serviceLinks = FOOTER_SERVICE_LINKS.map((link) => ({ ...link }))
   let foundServices = false
   const mapped = columns.map((col) => {
     const servicesCol = isServicesColumn(col)
