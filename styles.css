@@ -1348,18 +1348,6 @@ ul.hero-lead-list strong {
   margin: 0 0 var(--space-2xl);
 }
 
-.services-hub .why-choose-actions a.btn-primary {
-  background: #527bbd;
-  border-color: #527bbd;
-  color: #fff;
-}
-
-.services-hub .why-choose-actions a.btn-primary:hover {
-  background: #4369a8;
-  border-color: #4369a8;
-  color: #fff;
-}
-
 .services-hub-block {
   margin: 0 0 var(--space-2xl);
 }
