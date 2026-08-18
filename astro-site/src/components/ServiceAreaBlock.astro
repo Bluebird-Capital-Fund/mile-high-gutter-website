@@ -1,6 +1,6 @@
 ---
 import { asStr } from '../lib/sanity-strings.js'
-import { SERVICE_AREA_CITIES, SERVICE_AREA_INTRO } from '../lib/service-area-cities.js'
+import { SERVICE_AREA_CITIES, SERVICE_AREA_COUNTIES, SERVICE_AREA_INTRO } from '../lib/service-area-cities.js'
 
 interface Props {
   id?: string
@@ -11,7 +11,7 @@ interface Props {
   mapEmbedUrl?: string
   mapTitle?: string
   citiesLabel?: string
-  countiesIntro?: string
+  showCounties?: boolean
   headingLevel?: 'h1' | 'h2'
 }
 
@@ -24,7 +24,7 @@ const {
   mapEmbedUrl = '',
   mapTitle = 'Service area map',
   citiesLabel = 'Cities We Serve',
-  countiesIntro = '',
+  showCounties = false,
   headingLevel = 'h2',
 } = Astro.props
 const Heading = headingLevel === 'h1' ? 'h1' : 'h2'
@@ -55,7 +55,17 @@ const introMarkup = asStr(introHtml)
       ) : null}
     </div>
     <div class="service-area-city-box">
-      {asStr(countiesIntro) ? <p class="service-area-counties">{asStr(countiesIntro)}</p> : null}
+      {showCounties ? (
+        <>
+          <p class="service-area-group-label">Counties</p>
+          <ul class="service-area-county-list">
+            {SERVICE_AREA_COUNTIES.map((county) => (
+              <li>{county}</li>
+            ))}
+          </ul>
+          <p class="service-area-group-label">Communities We Serve</p>
+        </>
+      ) : null}
       <nav class="service-area-city-buttons" aria-label="Gutter services by city">
         {SERVICE_AREA_CITIES.map((city) => (
           <a href={city.href} class="service-area-city-btn">{city.name}</a>

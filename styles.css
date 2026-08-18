@@ -1144,11 +1144,23 @@ ul.hero-lead-list strong {
   border-radius: var(--radius-lg);
 }
 
-.service-area-counties {
-  margin: 0 0 var(--space-md);
+.service-area-group-label {
+  font-weight: 600;
+  color: var(--color-dark);
+  margin: 0 0 var(--space-sm);
   font-size: 0.9375rem;
-  line-height: 1.5;
+}
+
+.service-area-county-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  margin: 0 0 var(--space-lg);
+  padding: 0;
+  list-style: none;
   color: var(--color-text);
+  font-size: 0.9375rem;
+  line-height: 1.4;
 }
 
 .service-area-city-buttons {
