@@ -116,21 +116,44 @@ function normalizeHeader(header) {
   return { ...header, navItems }
 }
 
+function isServicesColumn(col) {
+  const h = String(col?.heading || '').trim().toLowerCase()
+  return h === 'services' || h === 'our services'
+}
+
 function normalizeFooterColumns(columns) {
   if (!Array.isArray(columns)) return columns
-  return columns.map((col) => ({
-    ...col,
-    links: Array.isArray(col?.links)
-      ? col.links.map((link) => ({
-          ...link,
-          label: normalizeLabel(link?.label),
-          href: normalizeAboutHref(
-            link?.label,
-            normalizeReviewHref(link?.label, normalizeProjectsHref(link?.label, normalizeHref(link?.href)))
-          ),
-        }))
-      : col?.links,
-  }))
+  const serviceLinks = SERVICES_NAV_ITEM.dropdown.map((link) => ({ ...link }))
+  let foundServices = false
+  const mapped = columns.map((col) => {
+    const servicesCol = isServicesColumn(col)
+    if (servicesCol) foundServices = true
+    return {
+      ...col,
+      heading: servicesCol ? 'Services' : col.heading,
+      ariaLabel: servicesCol ? col?.ariaLabel || 'Footer Services' : col.ariaLabel,
+      links: servicesCol
+        ? serviceLinks
+        : Array.isArray(col?.links)
+          ? col.links.map((link) => ({
+              ...link,
+              label: normalizeLabel(link?.label),
+              href: normalizeAboutHref(
+                link?.label,
+                normalizeReviewHref(link?.label, normalizeProjectsHref(link?.label, normalizeHref(link?.href)))
+              ),
+            }))
+          : col?.links,
+    }
+  })
+  if (!foundServices) {
+    mapped.unshift({
+      heading: 'Services',
+      ariaLabel: 'Footer Services',
+      links: serviceLinks,
+    })
+  }
+  return mapped
 }
 
 function normalizeFooterSupport(support) {
