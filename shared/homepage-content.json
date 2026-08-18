@@ -128,7 +128,7 @@
           { "label": "Steel Gutters", "href": "/products-services/steel-gutters-denver-co/" }
         ]
       },
-      { "label": "Projects", "href": "/gallery/" },
+      { "label": "Gallery", "href": "/gallery/" },
       { "label": "Reviews", "href": "/reviews.html" },
       {
         "label": "About Us",
@@ -587,7 +587,7 @@
       "heading": "Company",
       "ariaLabel": "Footer Company Links",
       "links": [
-        { "label": "Our Projects", "href": "#projects" },
+        { "label": "Gallery", "href": "/gallery/" },
         { "label": "Google Reviews", "href": "#reviews" },
         { "label": "Service Area", "href": "#service-area" },
         { "label": "FAQ", "href": "#faq" },

@@ -13,7 +13,7 @@ function normalizeHref(href) {
 function normalizeLabel(label) {
   if (typeof label !== 'string') return label
   const v = label.trim().toLowerCase()
-  if (v === 'gallery' || v === 'our projects') return 'Projects'
+  if (v === 'projects' || v === 'our projects' || v === 'gallery') return 'Gallery'
   if (v === 'google reviews') return 'Reviews'
   if (v === 'our team') return 'About Us'
   return label
