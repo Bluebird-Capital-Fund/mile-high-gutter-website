@@ -8,6 +8,10 @@ export const SERVICE_AREA_INTRO_HOME_HTML = SERVICE_AREA_INTRO.replace(
   '<a href="/gutters-colorado-springs-co/">gutters in Colorado Springs</a>',
 )
 
+/** Dedicated Service Area page: counties listed above the city links. */
+export const SERVICE_AREA_COUNTIES_INTRO =
+  'We cover the Denver metro and nearby counties—including Adams, Arapahoe, Boulder, Broomfield, Clear Creek, Denver, Douglas, Gilpin, Jefferson, and Weld.'
+
 export const SERVICE_AREA_CITIES = [
   { name: 'Colorado Springs', href: '/gutters-colorado-springs-co/' },
   { name: 'Fort Collins', href: '/gutters-fort-collins-co/' },

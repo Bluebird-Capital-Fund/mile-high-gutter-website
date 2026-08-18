@@ -1144,6 +1144,13 @@ ul.hero-lead-list strong {
   border-radius: var(--radius-lg);
 }
 
+.service-area-counties {
+  margin: 0 0 var(--space-md);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
 .service-area-city-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));

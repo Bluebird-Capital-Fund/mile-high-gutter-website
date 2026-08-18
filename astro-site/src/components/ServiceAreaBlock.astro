@@ -11,6 +11,7 @@ interface Props {
   mapEmbedUrl?: string
   mapTitle?: string
   citiesLabel?: string
+  countiesIntro?: string
   headingLevel?: 'h1' | 'h2'
 }
 
@@ -23,6 +24,7 @@ const {
   mapEmbedUrl = '',
   mapTitle = 'Service area map',
   citiesLabel = 'Cities We Serve',
+  countiesIntro = '',
   headingLevel = 'h2',
 } = Astro.props
 const Heading = headingLevel === 'h1' ? 'h1' : 'h2'
@@ -53,6 +55,7 @@ const introMarkup = asStr(introHtml)
       ) : null}
     </div>
     <div class="service-area-city-box">
+      {asStr(countiesIntro) ? <p class="service-area-counties">{asStr(countiesIntro)}</p> : null}
       <nav class="service-area-city-buttons" aria-label="Gutter services by city">
         {SERVICE_AREA_CITIES.map((city) => (
           <a href={city.href} class="service-area-city-btn">{city.name}</a>

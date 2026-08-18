@@ -10,7 +10,7 @@ import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../li
 import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
-import { SERVICE_AREA_INTRO } from '../../lib/service-area-cities.js'
+import { SERVICE_AREA_COUNTIES_INTRO, SERVICE_AREA_INTRO } from '../../lib/service-area-cities.js'
 import ServiceAreaBlock from '../../components/ServiceAreaBlock.astro'
 
 let settings = {}
@@ -140,6 +140,7 @@ const mapIframeTitle =
       mapEmbedUrl={mapEmbedUrl}
       mapTitle={mapIframeTitle}
       citiesLabel={asStr(serviceArea?.citiesLabel) || 'Cities We Serve'}
+      countiesIntro={SERVICE_AREA_COUNTIES_INTRO}
     />
   </main>
 
