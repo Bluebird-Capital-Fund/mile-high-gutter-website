@@ -25,6 +25,7 @@ import { buildLpFaqItems } from '../../../lib/lp-faq-items.js'
 import { getLpHeroTypedPhrases } from '../../../lib/lp-hero-typed-phrases.js'
 import { capitalizeHeaderWords } from '../../../lib/capitalize-header-words.js'
 import { lpGutterGuardsReviews } from '../../../lib/lp-gutter-guards-reviews.js'
+import HeaderMobileActions from '../../../components/HeaderMobileActions.astro'
 
 const [settings, homePage] = await Promise.all([
   getSiteSettings(),
@@ -336,9 +337,7 @@ const universalFormIntro =
             <img src={logoBlackUrl} alt={companyName} class="logo-img" width="1000" height="242" fetchpriority="high" decoding="async" />
           )}
         </a>
-        <button class="nav-toggle" aria-label="Open Menu">
-          <span></span><span></span><span></span>
-        </button>
+        <HeaderMobileActions phoneTel={tel} phoneDisplay={phoneDisplay} />
         <nav class="nav">
           {navItems?.map((item, i) => {
             const label = asStr(item.label)

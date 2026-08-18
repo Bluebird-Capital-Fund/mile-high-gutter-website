@@ -11,6 +11,7 @@ import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
 import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
 import { sanitizeCmsHtml } from '../../lib/sanitize-cms-html.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
+import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
 
 let settings = {}
 let homePage = {}
@@ -99,9 +100,7 @@ const faqItems = Array.isArray(faqData?.items)
             <span class="section-title" style="margin:0; font-size: 1.25rem;">{companyName}</span>
           )}
         </a>
-        <button class="nav-toggle" aria-label="Open Menu">
-          <span></span><span></span><span></span>
-        </button>
+        <HeaderMobileActions phoneTel={phoneTel} phoneDisplay={phoneDisplay} />
         <nav class="nav">
           {navItems.length > 0 ? (
             navItems.map((item, i) => {

@@ -15,6 +15,7 @@ import { lpGutterGuardsReviews } from '../../lib/lp-gutter-guards-reviews.js'
 import { lpGutterInstallationReviews } from '../../lib/lp-gutter-installation-reviews.js'
 import { lpGutterRepairReviews } from '../../lib/lp-gutter-repair-reviews.js'
 import { lpGuttersReviews } from '../../lib/lp-gutters-reviews.js'
+import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
 
 let settings = {}
 let homePage = {}
@@ -113,9 +114,7 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
     <div class="header-nav">
       <div class="header-inner">
         <a href="/" class="logo" aria-label={logoAriaLabel}>{logoBlack ? <img src={mediaUrl(logoBlack)} alt={companyName} class="logo-img" /> : <span class="section-title" style="margin:0; font-size: 1.25rem;">{companyName}</span>}</a>
-        <button class="nav-toggle" aria-label="Open Menu">
-          <span></span><span></span><span></span>
-        </button>
+        <HeaderMobileActions phoneTel={phoneTel} phoneDisplay={phoneDisplay} />
         <nav class="nav">
           {navItems.length > 0 ? (
             navItems.map((item, i) => {

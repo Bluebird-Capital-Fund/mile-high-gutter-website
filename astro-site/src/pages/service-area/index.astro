@@ -12,6 +12,7 @@ import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-setting
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 import { SERVICE_AREA_INTRO } from '../../lib/service-area-cities.js'
 import ServiceAreaBlock from '../../components/ServiceAreaBlock.astro'
+import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
 
 let settings = {}
 let homePage = {}
@@ -81,9 +82,7 @@ const mapIframeTitle =
             <span class="section-title" style="margin:0; font-size: 1.25rem;">{companyName}</span>
           )}
         </a>
-        <button class="nav-toggle" aria-label="Open Menu">
-          <span></span><span></span><span></span>
-        </button>
+        <HeaderMobileActions phoneTel={phoneTel} phoneDisplay={phoneDisplay} />
         <nav class="nav">
           {navItems.length > 0 ? (
             navItems.map((item, i) => {

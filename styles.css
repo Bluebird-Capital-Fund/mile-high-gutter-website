@@ -377,7 +377,7 @@ a:hover {
 
   .logo-img {
     height: 56px;
-    max-width: calc(100vw - 120px);
+    max-width: calc(100vw - 168px);
     width: auto;
   }
 
@@ -385,10 +385,19 @@ a:hover {
     display: none !important;
   }
 
+  .header-mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+    margin-left: var(--space-sm);
+    z-index: 2;
+  }
+
   .nav-toggle {
     display: flex !important;
     flex-shrink: 0;
-    margin-left: var(--space-sm);
+    margin-left: 0;
     z-index: 2;
   }
 
@@ -499,6 +508,37 @@ a:hover {
   background: var(--color-dark);
   border-radius: 1px;
   transition: background-color var(--transition), transform 0.25s ease, opacity 0.25s ease;
+}
+
+.header-mobile-actions {
+  display: none;
+}
+
+.header-call-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  background: var(--color-accent);
+  color: var(--color-primary-cta-text);
+  border: 2px solid var(--color-accent);
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.header-call-btn:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: var(--color-primary-cta-text);
+}
+
+.header-call-btn-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
 
 /* Buttons */
@@ -2149,7 +2189,7 @@ form[data-lead-form] button[type="submit"].is-busy {
 
   .logo-img {
     height: 56px;
-    max-width: calc(100vw - 120px);
+    max-width: calc(100vw - 168px);
     width: auto;
   }
 
@@ -2171,10 +2211,19 @@ form[data-lead-form] button[type="submit"].is-busy {
     display: none;
   }
 
+  .header-mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+    margin-left: var(--space-sm);
+    z-index: 2;
+  }
+
   .nav-toggle {
     display: flex;
     flex-shrink: 0;
-    margin-left: var(--space-sm);
+    margin-left: 0;
     z-index: 2;
   }
 
@@ -2283,7 +2332,7 @@ form[data-lead-form] button[type="submit"].is-busy {
 @media (max-width: 480px) {
   .logo-img {
     height: 48px;
-    max-width: calc(100vw - 96px);
+    max-width: calc(100vw - 148px);
   }
 
   .section {
