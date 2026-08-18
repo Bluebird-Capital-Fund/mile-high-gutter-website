@@ -62,6 +62,8 @@ const FOOTER_SERVICE_LINKS = [
   { label: 'Downspouts', href: '/products-services/gutter-downspouts-denver-co/' },
   { label: 'Heat Tape', href: '/products-services/snow-ice-solutions-heat-tape-denver-co/' },
 ]
+
+const MATERIALS_NAV_ITEM = {
   label: 'Materials',
   dropdown: [
     { label: 'Copper Gutters', href: '/products-services/copper-gutters-denver-co/' },
