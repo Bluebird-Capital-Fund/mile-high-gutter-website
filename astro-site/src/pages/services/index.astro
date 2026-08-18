@@ -12,6 +12,8 @@ import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-setting
 import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
 import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
 import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
+import ServiceAreaBlock from '../../components/ServiceAreaBlock.astro'
+import { SERVICE_AREA_INTRO_HOME_HTML } from '../../lib/service-area-cities.js'
 import {
   SERVICES_HUB_GROUPS,
   SERVICES_PAGE_BODY,
@@ -41,6 +43,10 @@ const formsCfg = settings?.forms ?? {}
 const footerBrand = settings?.footerBrand ?? homePage?.footerBrand ?? {}
 const footerColumns = settings?.footerColumns ?? homePage?.footerColumns ?? []
 const footerSupport = settings?.footerSupport ?? homePage?.footerSupport ?? {}
+const serviceArea = {
+  ...(homePage?.serviceArea ?? {}),
+  headline: 'Rain Gutters in the Denver Metro Area',
+}
 
 const companyName = asStr(business.companyName) || 'Mile High Gutter'
 const phoneDisplay = asStr(business.phoneDisplay) || '(303) 000-0000'
@@ -71,12 +77,13 @@ const heroBgStyle = heroBgSrc
   : undefined
 const reviewsToRender = settings?.reviews ?? homePage?.reviews ?? {}
 const mapEmbedUrl = asStr(settings?.mapEmbedUrl)
+const mapIframeTitle =
+  applyTemplate(asStr(serviceArea?.mapIframeTitleTemplate), { companyName }) || `${companyName} service area map`
 const estimateCtaText = 'Book a Consultation'
 const estimateCtaHref = '#contact'
 const pageTitle = 'Gutter Services in Denver | Mile High Gutter'
 const pageDescription = SERVICES_PAGE_HERO_LEAD
 const canonicalHref = 'https://www.milehighgutter.com/services/'
-const lastGroupIndex = SERVICES_HUB_GROUPS.length - 1
 ---
 
 <BaseLayout
@@ -255,7 +262,7 @@ const lastGroupIndex = SERVICES_HUB_GROUPS.length - 1
                   </div>
                 </div>
               </section>
-              {idx === 0 || idx === lastGroupIndex ? (
+              {idx === 0 ? (
                 <div class="why-choose-actions services-hub-ctas">
                   <a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg">{heroCallLabel}</a>
                   <a href={estimateCtaHref} class="btn btn-outline btn-lg request-estimate">{estimateCtaText}</a>
@@ -277,6 +284,10 @@ const lastGroupIndex = SERVICES_HUB_GROUPS.length - 1
                 <li>{line}</li>
               ))}
             </ul>
+            <div class="why-choose-actions">
+              <a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg">{heroCallLabel}</a>
+              <a href={estimateCtaHref} class="btn btn-outline btn-lg request-estimate">{estimateCtaText}</a>
+            </div>
           </section>
         </article>
       </div>
@@ -284,7 +295,7 @@ const lastGroupIndex = SERVICES_HUB_GROUPS.length - 1
 
     <section class="section google-reviews">
       <div class="container">
-        <h2 class="section-title reviews-title">{asStr(reviewsToRender?.headline) || 'Customer Reviews'}</h2>
+        <h2 class="section-title reviews-title">What Our Denver Customers Say</h2>
         <div class="reviews-summary">
           <div class="reviews-summary-left">
             <p class="reviews-summary-brand">
@@ -322,24 +333,15 @@ const lastGroupIndex = SERVICES_HUB_GROUPS.length - 1
       </div>
     </section>
 
-    {mapEmbedUrl ? (
-      <section class="section service-area" id="services-map">
-        <div class="container">
-          <div class="map-wrap" style="max-width: none; border-radius: 0; box-shadow: none; margin: 0 -1.5rem;">
-            <iframe
-              src={mapEmbedUrl}
-              width="100%"
-              height="440"
-              style="border:0; display:block;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title={`${companyName} service area map`}
-            ></iframe>
-          </div>
-        </div>
-      </section>
-    ) : null}
+    <ServiceAreaBlock
+      id="services-map"
+      eyebrow={asStr(serviceArea?.eyebrow)}
+      headline={asStr(serviceArea?.headline)}
+      introHtml={SERVICE_AREA_INTRO_HOME_HTML}
+      mapEmbedUrl={mapEmbedUrl}
+      mapTitle={mapIframeTitle}
+      citiesLabel={asStr(serviceArea?.citiesLabel)}
+    />
   </main>
 
   <footer class="footer">

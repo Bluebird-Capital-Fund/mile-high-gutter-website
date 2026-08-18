@@ -1271,7 +1271,7 @@ ul.hero-lead-list strong {
   text-align: center;
   padding: 0.55rem 0.95rem;
   border-radius: var(--radius);
-  background: var(--color-dark);
+  background: var(--color-accent);
   color: #fff;
   font-family: var(--font-heading);
   font-size: 0.875rem;
@@ -1282,7 +1282,7 @@ ul.hero-lead-list strong {
 }
 
 .services-hub-btn:hover {
-  background: #102f6d;
+  background: var(--color-accent-hover);
   color: #fff;
 }
 
