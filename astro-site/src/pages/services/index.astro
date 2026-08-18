@@ -1,0 +1,469 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import FooterSocialIcon from '../../components/FooterSocialIcon.astro'
+import FooterContactInfo from '../../components/FooterContactInfo.astro'
+import LeadFormSmsConsent from '../../components/LeadFormSmsConsent.astro'
+import OfferBarMessage from '../../components/OfferBarMessage.astro'
+import FooterSupportBar from '../../components/FooterSupportBar.astro'
+import FooterHoursRow from '../../components/FooterHoursRow.astro'
+import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../lib/footer-contact-heading.js'
+import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
+import { getSiteSettings, mergeHeaderFromSettings } from '../../lib/site-settings.js'
+import { heroBackgroundFor } from '../../lib/hero-backgrounds.js'
+import { asStr, applyTemplate, mediaUrl } from '../../lib/sanity-strings.js'
+import HeaderMobileActions from '../../components/HeaderMobileActions.astro'
+import {
+  SERVICES_HUB_GROUPS,
+  SERVICES_PAGE_BODY,
+  SERVICES_PAGE_H1,
+  SERVICES_PAGE_HERO_LEAD,
+  SERVICES_PAGE_NOT_SURE_BODY,
+  SERVICES_PAGE_NOT_SURE_HEADING,
+  SERVICES_PAGE_WHY_HEADING,
+  SERVICES_PAGE_WHY_INTRO,
+  SERVICES_PAGE_WHY_POINTS,
+} from '../../lib/services-page-content.js'
+
+let settings = {}
+let homePage = {}
+try {
+  ;[settings, homePage] = await Promise.all([getSiteSettings(), sanity.fetch(GROQ_HOME_PAGE)])
+} catch (err) {
+  console.warn('[services] Sanity fetch failed; using fallback placeholders.', err)
+}
+
+const business = settings?.business ?? {}
+const header = mergeHeaderFromSettings(settings, homePage?.header)
+const hero = homePage?.hero ?? {}
+const footerEstimate = settings?.footerEstimate ?? homePage?.footerEstimate ?? {}
+const footerEstimateFields = footerEstimate?.formFields ?? {}
+const formsCfg = settings?.forms ?? {}
+const footerBrand = settings?.footerBrand ?? homePage?.footerBrand ?? {}
+const footerColumns = settings?.footerColumns ?? homePage?.footerColumns ?? []
+const footerSupport = settings?.footerSupport ?? homePage?.footerSupport ?? {}
+
+const companyName = asStr(business.companyName) || 'Mile High Gutter'
+const phoneDisplay = asStr(business.phoneDisplay) || '(303) 000-0000'
+const phoneTel = asStr(business.phoneTel) || '3030000000'
+const email = asStr(business.email) || 'hello@example.com'
+const address = asStr(business.addressShort) || 'Denver, Colorado'
+const addressHref = googleBusinessProfileUrl(settings)
+const descriptionShort = asStr(business.descriptionShort)
+const logoWhite = asStr(business.logoHorizontalWhite)
+const copyrightHref = asStr(business.copyrightSiteUrl) || '#'
+const logoBlack = asStr(business.logoHorizontalBlack)
+
+const callLabelNav = applyTemplate(asStr(header.callCtaTemplate), { phoneDisplay }) || phoneDisplay
+const logoAriaLabel = applyTemplate(asStr(header.logoAriaLabelTemplate), { companyName }) || companyName
+const navItems = Array.isArray(header.navItems) ? header.navItems : []
+const heroCallLabel = applyTemplate(asStr(hero?.callCtaTemplate), { phoneDisplay }) || `Call ${phoneDisplay}`
+const universalFormFields = footerEstimateFields
+const universalFormAction = asStr(formsCfg?.submitPath) || asStr(footerEstimate?.formAction) || '#'
+const universalFormMethod = asStr(footerEstimate?.formMethod) || 'post'
+const universalFormKicker = asStr(formsCfg?.formKicker) || 'Free Estimate'
+const universalFormAriaLabel = asStr(formsCfg?.formAriaLabel) || 'Services lead form'
+const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
+const universalFormHeading = asStr(footerEstimate?.headline) || 'Get Started Today'
+const universalFormIntro = asStr(footerEstimate?.intro) || 'Short placeholder form for layout testing.'
+const heroBgSrc = heroBackgroundFor('services')
+const heroBgStyle = heroBgSrc
+  ? `background-image: linear-gradient(135deg, rgba(56, 69, 85, 0.88) 0%, rgba(56, 69, 85, 0.84) 50%, rgba(56, 69, 85, 0.88) 100%), url("${mediaUrl(heroBgSrc)}"); background-size: cover; background-position: center; background-repeat: no-repeat;`
+  : undefined
+const reviewsToRender = settings?.reviews ?? homePage?.reviews ?? {}
+const mapEmbedUrl = asStr(settings?.mapEmbedUrl)
+const estimateCtaText = 'Book a Consultation'
+const estimateCtaHref = '#contact'
+const pageTitle = 'Gutter Services in Denver | Mile High Gutter'
+const pageDescription = SERVICES_PAGE_HERO_LEAD
+const canonicalHref = 'https://www.milehighgutter.com/services/'
+const lastGroupIndex = SERVICES_HUB_GROUPS.length - 1
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  theme={settings?.theme}
+  forms={{ submitPath: asStr(settings?.forms?.submitPath) || '/api/lead' }}
+  canonical={canonicalHref}
+>
+  <header class="header">
+    <div class="offer-bar">
+      <div class="offer-bar-inner">
+        <p class="offer-message">
+          <OfferBarMessage offerBar={header?.offerBar} />
+        </p>
+      </div>
+    </div>
+    <div class="header-nav">
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label={logoAriaLabel}>
+          {logoBlack ? (
+            <img src={mediaUrl(logoBlack)} alt={companyName} class="logo-img" />
+          ) : (
+            <span class="section-title" style="margin:0; font-size: 1.25rem;">{companyName}</span>
+          )}
+        </a>
+        <HeaderMobileActions phoneTel={phoneTel} phoneDisplay={phoneDisplay} />
+        <nav class="nav">
+          {navItems.length > 0 ? (
+            navItems.map((item, i) => {
+              const label = asStr(item.label)
+              const href = asStr(item.href)
+              const dropdown = item.dropdown
+              if (Array.isArray(dropdown) && dropdown.length > 0) {
+                const ddId = `services-nav-dd-${i}`
+                return (
+                  <div class="nav-dropdown" data-nav-dropdown>
+                    <button
+                      type="button"
+                      class="nav-dropdown-toggle"
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                      aria-controls={ddId}
+                      id={`${ddId}-btn`}
+                    >
+                      {label}
+                      <span class="nav-dropdown-chevron" aria-hidden="true"></span>
+                    </button>
+                    <ul class="nav-dropdown-menu" id={ddId} role="menu">
+                      {dropdown.map((link) => (
+                        <li role="none">
+                          <a href={asStr(link.href)} role="menuitem">
+                            {asStr(link.label)}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              }
+              return <a href={href || '#'}>{label}</a>
+            })
+          ) : (
+            <>
+              <a href="/">Home</a>
+              <a href="/products-services/">Products & Services</a>
+            </>
+          )}
+          <a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg">{callLabelNav}</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-split">
+      <div class="hero-bg" style={heroBgStyle}></div>
+      <div class="container hero-split-inner">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">Gutter Services</div>
+          <h1>{SERVICES_PAGE_H1}</h1>
+          <p class="hero-lead">{SERVICES_PAGE_HERO_LEAD}</p>
+          <div class="hero-actions">
+            <a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg cta1-primary-call">{heroCallLabel}</a>
+          </div>
+        </div>
+
+        <form
+          class="hero-form"
+          data-lead-form="services-hero"
+          action={universalFormAction}
+          method={universalFormMethod}
+          aria-label={universalFormAriaLabel}
+        >
+          <div class="hero-form-heading">
+            <div class="hero-form-kicker">{universalFormKicker}</div>
+            <h2>{universalFormHeading}</h2>
+          </div>
+          <p class="hero-form-sub">{universalFormIntro}</p>
+          <div class="hero-form-grid">
+            <div class="hero-form-field">
+              <label for="services-hero-first-name">
+                First Name{' '}
+                <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+              </label>
+              <input id="services-hero-first-name" name="firstName" type="text" required autocomplete="given-name" />
+            </div>
+            <div class="hero-form-field">
+              <label for="services-hero-last-name">
+                Last Name{' '}
+                <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+              </label>
+              <input id="services-hero-last-name" name="lastName" type="text" required autocomplete="family-name" />
+            </div>
+            <div class="hero-form-field">
+              <label for="services-hero-email">
+                {asStr(universalFormFields?.emailLabel) || 'Email'}{' '}
+                <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+              </label>
+              <input id="services-hero-email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="hero-form-field">
+              <label for="services-hero-phone">
+                {asStr(universalFormFields?.phoneLabel) || 'Phone'}{' '}
+                <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+              </label>
+              <input
+                id="services-hero-phone"
+                name="phone"
+                type="tel"
+                required
+                autocomplete="tel"
+                maxlength="12"
+                inputmode="numeric"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                title="10-digit phone, e.g. 303-762-9841"
+              />
+            </div>
+            <div class="hero-form-field hero-form-field-full">
+              <label for="services-hero-address">Address</label>
+              <input
+                id="services-hero-address"
+                name="address"
+                type="text"
+                autocomplete="street-address"
+                spellcheck="false"
+              />
+            </div>
+            <div class="hero-form-field hero-form-field-full">
+              <label for="services-hero-message">{asStr(universalFormFields?.projectDetailsLabel) || 'Project Details'}</label>
+              <textarea id="services-hero-message" name="message" rows="3"></textarea>
+            </div>
+          </div>
+          <LeadFormSmsConsent idPrefix="services-hero" variant="hero" />
+          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section services-hub">
+      <div class="container">
+        <article class="services-hub-body">
+          <p class="services-hub-lead">{SERVICES_PAGE_BODY}</p>
+
+          {SERVICES_HUB_GROUPS.map((group, idx) => (
+            <>
+              <section class="services-hub-group">
+                <h2 class="section-title section-title-secondary">{group.title}</h2>
+                <div class="services-hub-box">
+                  <div class="services-hub-buttons">
+                    {group.links.map((link) => (
+                      <a class="services-hub-btn" href={link.href}>
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </section>
+              {idx === 0 || idx === lastGroupIndex ? (
+                <div class="why-choose-actions services-hub-ctas">
+                  <a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg">{heroCallLabel}</a>
+                  <a href={estimateCtaHref} class="btn btn-outline btn-lg request-estimate">{estimateCtaText}</a>
+                </div>
+              ) : null}
+            </>
+          ))}
+
+          <section class="services-hub-block">
+            <h2 class="section-title section-title-secondary">{SERVICES_PAGE_NOT_SURE_HEADING}</h2>
+            <p class="section-lead city-service-body">{SERVICES_PAGE_NOT_SURE_BODY}</p>
+          </section>
+
+          <section class="services-hub-block">
+            <h2 class="section-title section-title-secondary">{SERVICES_PAGE_WHY_HEADING}</h2>
+            <p class="section-lead city-service-body">{SERVICES_PAGE_WHY_INTRO}</p>
+            <ul class="about-list">
+              {SERVICES_PAGE_WHY_POINTS.map((line) => (
+                <li>{line}</li>
+              ))}
+            </ul>
+          </section>
+        </article>
+      </div>
+    </section>
+
+    <section class="section google-reviews">
+      <div class="container">
+        <h2 class="section-title reviews-title">{asStr(reviewsToRender?.headline) || 'Customer Reviews'}</h2>
+        <div class="reviews-summary">
+          <div class="reviews-summary-left">
+            <p class="reviews-summary-brand">
+              <img
+                src={mediaUrl(asStr(reviewsToRender?.summary?.googleIconSrc))}
+                alt={asStr(reviewsToRender?.summary?.brandLabel)}
+                class="google-logo"
+              />
+              <span>{asStr(reviewsToRender?.summary?.brandLabel)}</span>
+            </p>
+          </div>
+          <a href={asStr(reviewsToRender?.summary?.ctaHref) || '/reviews/'} class="btn btn-primary reviews-summary-cta">
+            {asStr(reviewsToRender?.summary?.ctaText) || 'See More Reviews'}
+          </a>
+        </div>
+        <div class="testimonials-grid">
+          {(Array.isArray(reviewsToRender?.testimonials) ? reviewsToRender.testimonials : []).slice(0, 4).map((t) => (
+            <blockquote class="testimonial">
+              <div class="review-brand review-brand-top">
+                <img src={mediaUrl(asStr(t.avatarSrc))} alt={asStr(t.author)} class="review-avatar" />
+                <div class="review-meta">
+                  <strong>{asStr(t.author)}</strong>
+                  <span class="review-time">{asStr(t.timeAgo)}</span>
+                </div>
+              </div>
+              <img
+                src={mediaUrl(asStr(reviewsToRender?.summary?.starsImageSrc))}
+                alt={asStr(reviewsToRender?.summary?.starsImageAlt)}
+                class="review-stars"
+              />
+              <p>&quot;{asStr(t.quote)}&quot;</p>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {mapEmbedUrl ? (
+      <section class="section service-area" id="services-map">
+        <div class="container">
+          <div class="map-wrap" style="max-width: none; border-radius: 0; box-shadow: none; margin: 0 -1.5rem;">
+            <iframe
+              src={mapEmbedUrl}
+              width="100%"
+              height="440"
+              style="border:0; display:block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title={`${companyName} service area map`}
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    ) : null}
+  </main>
+
+  <footer class="footer">
+    <section id="contact" class="section contact footer-estimate">
+      <div class="container">
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <h2 class="section-title">{asStr(footerEstimate?.headline) || 'Need Gutter Help in Denver?'}</h2>
+            <p>{asStr(footerEstimate?.intro) || 'Contact us for fast service and straightforward estimates.'}</p>
+            <FooterContactInfo
+              variant="estimate"
+              phoneTel={phoneTel}
+              phoneDisplay={phoneDisplay}
+              email={email}
+              address={address}
+              addressHref={addressHref}
+            />
+          </div>
+          <form
+            class="contact-form"
+            data-lead-form="services-footer"
+            action={universalFormAction}
+            method={universalFormMethod}
+          >
+            <div class="contact-form-grid">
+              <div class="contact-form-field">
+                <label for="services-footer-first-name">
+                  First Name{' '}
+                  <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+                </label>
+                <input id="services-footer-first-name" name="firstName" type="text" required autocomplete="given-name" />
+              </div>
+              <div class="contact-form-field">
+                <label for="services-footer-last-name">
+                  Last Name{' '}
+                  <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+                </label>
+                <input id="services-footer-last-name" name="lastName" type="text" required autocomplete="family-name" />
+              </div>
+              <div class="contact-form-field">
+                <label for="services-footer-email">
+                  {asStr(universalFormFields?.emailLabel) || 'Email'}{' '}
+                  <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+                </label>
+                <input id="services-footer-email" name="email" type="email" required autocomplete="email" />
+              </div>
+              <div class="contact-form-field">
+                <label for="services-footer-phone">
+                  {asStr(universalFormFields?.phoneLabel) || 'Phone'}{' '}
+                  <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+                </label>
+                <input
+                  id="services-footer-phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  autocomplete="tel"
+                  maxlength="12"
+                  inputmode="numeric"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  title="10-digit phone, e.g. 303-762-9841"
+                />
+              </div>
+              <div class="contact-form-field contact-form-field-full">
+                <label for="services-footer-address">Address</label>
+                <input
+                  id="services-footer-address"
+                  name="address"
+                  type="text"
+                  autocomplete="street-address"
+                  spellcheck="false"
+                />
+              </div>
+              <div class="contact-form-field contact-form-field-full">
+                <label for="services-footer-message">{asStr(universalFormFields?.projectDetailsLabel) || 'Project Details'}</label>
+                <textarea id="services-footer-message" name="message" rows="4"></textarea>
+              </div>
+            </div>
+            <LeadFormSmsConsent idPrefix="services-footer" variant="contact" />
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand-block footer-col">
+          {logoWhite ? <img src={mediaUrl(logoWhite)} alt={companyName} class="footer-logo" /> : null}
+          <p class="footer-address">{descriptionShort}</p>
+          <div class="footer-social" aria-label={asStr(footerBrand?.socialAriaLabel)}>
+            {footerBrand?.socialLinks?.map((s) => (
+              <a href={asStr(s.href)} aria-label={asStr(s.ariaLabel)}>
+                <FooterSocialIcon platform={asStr(s.platform)} />
+              </a>
+            ))}
+          </div>
+        </div>
+        {footerColumns?.map((col) => (
+          <div class="footer-col">
+            <p class="footer-heading">{asStr(col.heading)}</p>
+            {col.links?.length ? (
+              <nav class="footer-links" aria-label={asStr(col.ariaLabel)}>
+                {col.links.map((link) => (
+                  <a href={asStr(link.href)}>{asStr(link.label)}</a>
+                ))}
+              </nav>
+            ) : null}
+            {isContactFooterColumnHeading(col.heading) ? (
+              <FooterContactInfo
+                variant="footer-column"
+                phoneTel={phoneTel}
+                phoneDisplay={phoneDisplay}
+                email={email}
+                address={address}
+                addressHref={addressHref}
+              />
+            ) : null}
+            {col.hoursHeading ? <p class="footer-heading footer-hours-heading">{asStr(col.hoursHeading)}</p> : null}
+            {col.hoursText ? <FooterHoursRow hoursText={col.hoursText} /> : null}
+          </div>
+        ))}
+      </div>
+    </div>
+  </footer>
+
+  <FooterSupportBar footerSupport={footerSupport} copyrightHref={copyrightHref} companyName={companyName} />
+</BaseLayout>

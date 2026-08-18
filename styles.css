@@ -1226,6 +1226,82 @@ ul.hero-lead-list strong {
   color: var(--color-dark);
 }
 
+.services-hub {
+  background: var(--color-bg-alt);
+}
+
+.services-hub-body {
+  max-width: 72ch;
+  margin: 0 auto;
+}
+
+.services-hub-lead {
+  margin: 0 0 var(--space-2xl);
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.services-hub-group {
+  margin: 0 0 var(--space-xl);
+}
+
+.services-hub-group .section-title {
+  margin-bottom: var(--space-md);
+}
+
+.services-hub-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: var(--space-lg);
+}
+
+.services-hub-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.services-hub-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius);
+  background: var(--color-dark);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.services-hub-btn:hover {
+  background: #102f6d;
+  color: #fff;
+}
+
+.services-hub-ctas {
+  margin: 0 0 var(--space-2xl);
+}
+
+.services-hub-block {
+  margin: 0 0 var(--space-2xl);
+}
+
+.services-hub-block:last-child {
+  margin-bottom: 0;
+}
+
+.services-hub-block .section-title {
+  margin-bottom: var(--space-md);
+}
+
 /* Dedicated Service Area page only (homepage .service-area keeps column nav) */
 .service-area-page .cities-nav {
   flex-direction: row;
