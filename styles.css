@@ -1329,7 +1329,7 @@ ul.hero-lead-list strong {
   text-align: center;
   padding: 0.55rem 0.95rem;
   border-radius: var(--radius);
-  background: var(--color-accent);
+  background: #527bbd;
   color: #fff;
   font-family: var(--font-heading);
   font-size: 0.875rem;
@@ -1340,12 +1340,24 @@ ul.hero-lead-list strong {
 }
 
 .services-hub-btn:hover {
-  background: var(--color-accent-hover);
+  background: #4369a8;
   color: #fff;
 }
 
 .services-hub-ctas {
   margin: 0 0 var(--space-2xl);
+}
+
+.services-hub .why-choose-actions a.btn-primary {
+  background: #527bbd;
+  border-color: #527bbd;
+  color: #fff;
+}
+
+.services-hub .why-choose-actions a.btn-primary:hover {
+  background: #4369a8;
+  border-color: #4369a8;
+  color: #fff;
 }
 
 .services-hub-block {
@@ -1358,6 +1370,14 @@ ul.hero-lead-list strong {
 
 .services-hub-block .section-title {
   margin-bottom: var(--space-md);
+}
+
+.services-hub-block .about-list li:last-child {
+  margin-bottom: 0;
+}
+
+.services-hub-block .why-choose-actions {
+  margin-top: var(--space-xl);
 }
 
 /* Dedicated Service Area page only (homepage .service-area keeps column nav) */
