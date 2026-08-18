@@ -112,12 +112,13 @@
       {
         "label": "Services",
         "dropdown": [
-          { "label": "Gutter Repair", "href": "/gutter-repair.html" },
-          { "label": "Gutter Installation", "href": "/gutter-installation.html" },
-          { "label": "Gutter Cleaning", "href": "/gutter-cleaning.html" },
-          { "label": "Gutter Guards", "href": "/gutter-guards.html" },
-          { "label": "Heated Gutters", "href": "/heated-gutters.html" },
-          { "label": "Soffit & Fascia", "href": "/soffit-fascia.html" }
+          { "label": "Gutter Cleaning", "href": "/products-services/gutter-cleaning-denver-co/" },
+          { "label": "Gutter Installation", "href": "/products-services/gutter-installation-denver-co/" },
+          { "label": "Gutter Repair", "href": "/products-services/gutter-repair-denver-co/" },
+          { "label": "Seamless Gutters", "href": "/products-services/seamless-gutter-denver-co/" },
+          { "label": "Gutter Guards", "href": "/products-services/denver-gutter-guards-co/" },
+          { "label": "Downspouts", "href": "/products-services/gutter-downspouts-denver-co/" },
+          { "label": "Heat Tape", "href": "/products-services/snow-ice-solutions-heat-tape-denver-co/" }
         ]
       },
       {

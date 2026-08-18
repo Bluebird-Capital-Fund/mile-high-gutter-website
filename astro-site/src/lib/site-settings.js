@@ -41,6 +41,19 @@ function normalizeAboutHref(label, href) {
   return href
 }
 
+const SERVICES_NAV_ITEM = {
+  label: 'Services',
+  dropdown: [
+    { label: 'Gutter Cleaning', href: '/products-services/gutter-cleaning-denver-co/' },
+    { label: 'Gutter Installation', href: '/products-services/gutter-installation-denver-co/' },
+    { label: 'Gutter Repair', href: '/products-services/gutter-repair-denver-co/' },
+    { label: 'Seamless Gutters', href: '/products-services/seamless-gutter-denver-co/' },
+    { label: 'Gutter Guards', href: '/products-services/denver-gutter-guards-co/' },
+    { label: 'Downspouts', href: '/products-services/gutter-downspouts-denver-co/' },
+    { label: 'Heat Tape', href: '/products-services/snow-ice-solutions-heat-tape-denver-co/' },
+  ],
+}
+
 const MATERIALS_NAV_ITEM = {
   label: 'Materials',
   dropdown: [
@@ -50,49 +63,56 @@ const MATERIALS_NAV_ITEM = {
   ],
 }
 
-function ensureMaterialsNav(navItems) {
+function ensureLabeledNavItem(navItems, item, insertAfterLabel) {
   if (!Array.isArray(navItems)) return navItems
-  const materialsIdx = navItems.findIndex(
-    (item) => typeof item?.label === 'string' && item.label.trim().toLowerCase() === 'materials',
+  const label = String(item.label || '').trim().toLowerCase()
+  const existingIdx = navItems.findIndex(
+    (nav) => typeof nav?.label === 'string' && nav.label.trim().toLowerCase() === label,
   )
-  if (materialsIdx >= 0) {
+  if (existingIdx >= 0) {
     const next = navItems.slice()
-    next[materialsIdx] = { ...next[materialsIdx], ...MATERIALS_NAV_ITEM }
+    next[existingIdx] = { ...next[existingIdx], ...item }
     return next
   }
-  const servicesIdx = navItems.findIndex(
-    (item) => typeof item?.label === 'string' && item.label.trim().toLowerCase() === 'services',
-  )
-  const insertAt = servicesIdx >= 0 ? servicesIdx + 1 : Math.min(1, navItems.length)
+  const afterIdx =
+    typeof insertAfterLabel === 'string'
+      ? navItems.findIndex(
+          (nav) =>
+            typeof nav?.label === 'string' &&
+            nav.label.trim().toLowerCase() === insertAfterLabel.trim().toLowerCase(),
+        )
+      : -1
+  const insertAt = afterIdx >= 0 ? afterIdx + 1 : label === 'services' ? 0 : Math.min(1, navItems.length)
   const next = navItems.slice()
-  next.splice(insertAt, 0, MATERIALS_NAV_ITEM)
+  next.splice(insertAt, 0, item)
   return next
 }
 
 function normalizeHeader(header) {
   if (!header || typeof header !== 'object') return header
-  const navItems = Array.isArray(header.navItems)
-    ? ensureMaterialsNav(
-        header.navItems.map((item) => ({
-          ...item,
-          label: normalizeLabel(item?.label),
-          href: normalizeAboutHref(
-            item?.label,
-            normalizeReviewHref(item?.label, normalizeProjectsHref(item?.label, normalizeHref(item?.href)))
-          ),
-          dropdown: Array.isArray(item?.dropdown)
-            ? item.dropdown.map((link) => ({
-                ...link,
-                label: normalizeLabel(link?.label),
-                href: normalizeAboutHref(
-                  link?.label,
-                  normalizeReviewHref(link?.label, normalizeProjectsHref(link?.label, normalizeHref(link?.href)))
-                ),
-              }))
-            : item?.dropdown,
-        })),
-      )
+  const mapped = Array.isArray(header.navItems)
+    ? header.navItems.map((item) => ({
+        ...item,
+        label: normalizeLabel(item?.label),
+        href: normalizeAboutHref(
+          item?.label,
+          normalizeReviewHref(item?.label, normalizeProjectsHref(item?.label, normalizeHref(item?.href)))
+        ),
+        dropdown: Array.isArray(item?.dropdown)
+          ? item.dropdown.map((link) => ({
+              ...link,
+              label: normalizeLabel(link?.label),
+              href: normalizeAboutHref(
+                link?.label,
+                normalizeReviewHref(link?.label, normalizeProjectsHref(link?.label, normalizeHref(link?.href)))
+              ),
+            }))
+          : item?.dropdown,
+      }))
     : header.navItems
+  const navItems = Array.isArray(mapped)
+    ? ensureLabeledNavItem(ensureLabeledNavItem(mapped, SERVICES_NAV_ITEM, null), MATERIALS_NAV_ITEM, 'Services')
+    : mapped
   return { ...header, navItems }
 }
 
