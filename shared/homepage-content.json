@@ -606,9 +606,7 @@
     "licenseNumber": "016436",
     "copyrightTemplate": "© {{year}} — {{companyName}}",
     "links": [
-      { "label": "Privacy Policy", "href": "#" },
-      { "label": "Terms of Use", "href": "#" },
-      { "label": "Brightbeam SEO", "href": "https://brightbeamseo.com/", "target": "_blank", "rel": "noopener noreferrer" }
+      { "label": "Privacy Policy", "href": "/privacy-policy/" }
     ]
   }
 }

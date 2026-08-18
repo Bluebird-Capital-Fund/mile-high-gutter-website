@@ -3837,6 +3837,7 @@ form[data-lead-form] button[type="submit"].is-busy {
 .footer-disclaimers {
   display: grid;
   gap: 0.65rem;
+  padding-top: 0.9rem;
   padding-bottom: 0.9rem;
 }
 
@@ -3846,6 +3847,35 @@ form[data-lead-form] button[type="submit"].is-busy {
   font-size: 0.8rem;
   line-height: 1.45;
   opacity: 0.88;
+}
+
+.footer-legal-extra {
+  display: grid;
+  gap: 0.75rem;
+  padding-bottom: 0.9rem;
+}
+
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.footer-sms-disclosure {
+  display: grid;
+  gap: 0.45rem;
+  max-width: 72ch;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  opacity: 0.88;
+}
+
+.footer-sms-heading {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
 }
 
 .footer-support p {
@@ -3925,7 +3955,8 @@ form[data-lead-form] button[type="submit"].is-busy {
     padding: 0.8rem var(--space-lg);
   }
 
-  .footer-disclaimers {
+  .footer-disclaimers,
+  .footer-legal-extra {
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
   }
@@ -3970,7 +4001,8 @@ form[data-lead-form] button[type="submit"].is-busy {
     padding: 0.8rem var(--space-md);
   }
 
-  .footer-disclaimers {
+  .footer-disclaimers,
+  .footer-legal-extra {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
   }
