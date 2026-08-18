@@ -3848,8 +3848,8 @@ form[data-lead-form] button[type="submit"].is-busy {
 
 .footer-disclaimers {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
   align-items: start;
   padding-top: 0.9rem;
   padding-bottom: 0.9rem;
@@ -3949,7 +3949,6 @@ form[data-lead-form] button[type="submit"].is-busy {
   }
 
   .footer-disclaimers {
-    grid-template-columns: 1fr;
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
   }
