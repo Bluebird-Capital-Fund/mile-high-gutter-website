@@ -20,6 +20,8 @@
   --color-border: #e2e6ee;
   --font-heading: "Poppins", system-ui, sans-serif;
   --font-body: "Merriweather", Georgia, serif;
+  --font-size-copy: 1.125rem;
+  --line-height-copy: 1.6;
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -55,8 +57,9 @@ section[id] {
 body {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: var(--font-size-copy);
+  font-weight: 400;
+  line-height: var(--line-height-copy);
   color: var(--color-text);
   background: var(--color-bg);
 }
@@ -222,6 +225,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: var(--space-xl);
+  font-family: var(--font-heading);
 }
 
 .nav a {
@@ -996,7 +1000,10 @@ ul.hero-lead-list strong {
 
 .result-item p {
   margin: 0;
-  font-size: 0.9375rem;
+  font-family: var(--font-body);
+  font-size: var(--font-size-copy);
+  font-weight: 400;
+  line-height: var(--line-height-copy);
   color: var(--color-text-muted);
 }
 
@@ -1201,8 +1208,10 @@ ul.hero-lead-list strong {
 .faq-list dd {
   margin: 0;
   color: var(--color-text-muted);
-  font-size: 0.9375rem;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: var(--font-size-copy);
+  font-weight: 400;
+  line-height: var(--line-height-copy);
 }
 
 /* Sections — Kitchor-inspired generous spacing */
@@ -1236,7 +1245,10 @@ ul.hero-lead-list strong {
 }
 
 .section-lead {
-  font-size: 1.125rem;
+  font-family: var(--font-body);
+  font-size: var(--font-size-copy);
+  font-weight: 400;
+  line-height: var(--line-height-copy);
   color: var(--color-text-muted);
   margin: 0 0 var(--space-2xl);
   max-width: 540px;
@@ -1244,6 +1256,11 @@ ul.hero-lead-list strong {
 
 .city-service-body {
   max-width: 72ch;
+  font-family: var(--font-body);
+  font-size: var(--font-size-copy);
+  font-weight: 400;
+  line-height: var(--line-height-copy);
+  color: var(--color-text-muted);
 }
 
 .city-service-body p,
@@ -1395,9 +1412,11 @@ ul.hero-lead-list strong {
 
 .service-desc {
   margin: 0;
-  font-size: 0.9375rem;
+  font-family: var(--font-body);
+  font-size: var(--font-size-copy);
+  font-weight: 400;
   color: var(--color-text-muted);
-  line-height: 1.55;
+  line-height: var(--line-height-copy);
   padding: 0;
 }
 
@@ -1434,8 +1453,11 @@ ul.hero-lead-list strong {
   position: relative;
   padding-left: 1.5rem;
   margin-bottom: var(--space-sm);
-  font-size: 0.9375rem;
-  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-copy);
+  font-weight: 400;
+  line-height: var(--line-height-copy);
+  color: var(--color-text-muted);
 }
 
 .about-list li::before {
@@ -1448,6 +1470,10 @@ ul.hero-lead-list strong {
 
 .about-content p {
   margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-copy);
+  font-weight: 400;
+  line-height: var(--line-height-copy);
   color: var(--color-text-muted);
 }
 
@@ -1624,6 +1650,10 @@ ul.hero-lead-list strong {
 
 .contact-info p {
   margin: 0 0 var(--space-xl);
+  font-family: var(--font-body);
+  font-size: var(--font-size-copy);
+  font-weight: 400;
+  line-height: var(--line-height-copy);
   color: var(--color-text-muted);
 }
 
@@ -3023,6 +3053,9 @@ form[data-lead-form] button[type="submit"].is-busy {
   padding-left: 1.1rem;
   color: var(--color-text-muted);
   font-family: var(--font-body);
+  font-size: var(--font-size-copy);
+  font-weight: 400;
+  line-height: var(--line-height-copy);
 }
 
 .why-choose-list li {
@@ -3037,8 +3070,10 @@ form[data-lead-form] button[type="submit"].is-busy {
 .why-choose-note {
   margin: 0 0 var(--space-xl);
   color: var(--color-text-muted);
-  font-size: 1.125rem;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: var(--font-size-copy);
+  font-weight: 400;
+  line-height: var(--line-height-copy);
 }
 
 .split-media { background: var(--color-bg-alt); }
@@ -3263,7 +3298,7 @@ form[data-lead-form] button[type="submit"].is-busy {
 
 .contact-banner-copy .section-lead {
   margin-bottom: 0;
-  font-weight: 300;
+  font-weight: 400;
   max-width: 66ch;
 }
 
@@ -3729,8 +3764,9 @@ form[data-lead-form] button[type="submit"].is-busy {
   border-top: 0;
   color: var(--color-text-muted);
   font-family: var(--font-body);
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: var(--font-size-copy);
+  font-weight: 400;
+  line-height: var(--line-height-copy);
   text-align: left;
 }
 
