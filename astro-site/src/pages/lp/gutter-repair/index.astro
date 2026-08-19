@@ -146,7 +146,7 @@ const formsCfg = settings?.forms ?? {}
 const reviewRating = statLookup(reviewValues, reviewsSummary?.ratingValueKey)
 const reviewCount = statLookup(reviewValues, reviewsSummary?.reviewCountKey)
 const reviewCountDisplay = `${asStr(reviewsSummary?.reviewCountPrefix)}${reviewCount}${asStr(reviewsSummary?.reviewCountSuffix)}`
-const reviewsCtaHref = asStr(reviewsSummary?.ctaHref) || '/reviews/'
+const reviewsCtaHref = '/reviews/'
 const reviewsPerPage = 4
 const reviewPages = []
 for (let i = 0; i < lpGutterRepairReviews.length; i += reviewsPerPage) {

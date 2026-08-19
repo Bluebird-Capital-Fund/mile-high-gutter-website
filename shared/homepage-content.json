@@ -401,7 +401,7 @@
       "reviewCountPrefix": "(",
       "reviewCountSuffix": ")",
       "ctaText": "See More Reviews",
-      "ctaHref": "#"
+      "ctaHref": "/reviews/"
     },
     "reviewValues": {
       "reviewsRating": "4.8",

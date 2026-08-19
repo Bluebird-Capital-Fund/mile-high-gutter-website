@@ -219,6 +219,17 @@ function normalizeStatsValues(statsValues) {
   }
 }
 
+function normalizeReviews(reviews) {
+  if (!reviews || typeof reviews !== 'object') return reviews
+  return {
+    ...reviews,
+    summary: {
+      ...(reviews.summary && typeof reviews.summary === 'object' ? reviews.summary : {}),
+      ctaHref: '/reviews/',
+    },
+  }
+}
+
 function hasUpdatedLinks(doc) {
   const navHref = doc?.header?.navItems?.[1]?.href
   const privacyHref = doc?.footerSupport?.links?.[0]?.href
@@ -289,7 +300,7 @@ export async function getSiteSettings() {
     ...singleton,
     business: normalizeBusiness(singleton?.business ?? linksSource?.business),
     statsValues: normalizeStatsValues(singleton?.statsValues ?? linksSource?.statsValues),
-    reviews: singleton?.reviews ?? linksSource?.reviews,
+    reviews: normalizeReviews(singleton?.reviews ?? linksSource?.reviews),
     header: normalizeHeader(mergedHeader ?? singleton?.header) ?? {},
     footerEstimate: normalizeFooterEstimate(
       linksSource?.footerEstimate ?? singleton?.footerEstimate,
