@@ -35,10 +35,10 @@ export const gutterInspectionServicesDenverCo = {
     },
     {
       heading: 'Our Denver Gutter Inspection Service',
-      body: `<p>A professional inspection helps determine the overall condition of your gutter system and whether any maintenance or repairs are needed.</p>
+      body: `<p>A professional inspection helps determine the overall condition of your gutter system and whether any maintenance or <a href="/products-services/gutter-repair-denver-co/">Denver gutter repairs</a> are needed.</p>
 <p>Our Denver gutter inspection services may include:</p>
 <ul>
-<li>Visual inspection of gutters and downspouts</li>
+<li>Visual inspection of <a href="/products-services/gutter-downspouts-denver-co/">gutters and downspouts in Denver</a></li>
 <li>Evaluation of water flow and drainage</li>
 <li>Inspection of visible fasteners and hangers</li>
 <li>Checking for loose, sagging, or damaged sections</li>
@@ -66,7 +66,7 @@ export const gutterInspectionServicesDenverCo = {
 <p><strong>1. Submit Your Request</strong><br/>Tell us about your property or any gutter concerns you've noticed.</p>
 <p><strong>2. Schedule Your Estimate</strong><br/>Your request is assigned to a knowledgeable estimator who will contact you to coordinate a convenient inspection time.</p>
 <p><strong>3. Receive Your Inspection Results</strong><br/>We evaluate the condition of the gutter system, explain our findings, and recommend practical solutions based on your property's needs. Most estimates are completed within one to two days after the assessment.</p>
-<p><strong>4. Review the Recommendations</strong><br/>We answer your questions and explain any maintenance, repair, or replacement options without sales pressure.</p>
+<p><strong>4. Review the Recommendations</strong><br/>We answer your questions and explain any maintenance, repair, or <a href="/products-services/gutter-replacement-denver-co/">gutter replacement options in Denver</a> without sales pressure.</p>
 <p><strong>5. Schedule the Recommended Work</strong><br/>If you decide to move forward, we'll coordinate the next steps and schedule the appropriate service.</p>
 <p><strong>6. Complete the Work</strong><br/>If maintenance or repairs are approved, our crew completes the work and keeps you informed throughout the process.</p>`,
       imageSrc:
@@ -89,7 +89,7 @@ export const gutterInspectionServicesDenverCo = {
 <li>Lifetime warranty options available*</li>
 <li>Financing available for qualifying projects</li>
 </ul>
-<p>To help keep your gutter system performing year after year, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional maintenance.</p>`,
+<p>To help keep your gutter system performing year after year, we also offer our Gutter Club Plan and Free Flow Plan, which include two <a href="/products-services/gutter-cleaning-denver-co/">expert gutter cleanings in Denver</a> each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional maintenance.</p>`,
       showCta: true,
     },
   ],
