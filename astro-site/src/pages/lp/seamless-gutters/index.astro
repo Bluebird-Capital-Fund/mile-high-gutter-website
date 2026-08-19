@@ -1,0 +1,1136 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import UniquePointIcon from '../../../components/UniquePointIcon.astro'
+import FooterSocialIcon from '../../../components/FooterSocialIcon.astro'
+import FooterContactInfo from '../../../components/FooterContactInfo.astro'
+import FooterHoursRow from '../../../components/FooterHoursRow.astro'
+import LeadFormSmsConsent from '../../../components/LeadFormSmsConsent.astro'
+import OfferBarMessage from '../../../components/OfferBarMessage.astro'
+import FooterSupportBar from '../../../components/FooterSupportBar.astro'
+import LpHeroLead from '../../../components/LpHeroLead.astro'
+import { googleBusinessProfileUrl, isContactFooterColumnHeading } from '../../../lib/footer-contact-heading.js'
+import { GROQ_HOME_PAGE, sanity } from '../../../lib/sanity.js'
+import { getSiteSettings, mergeHeaderFromSettings } from '../../../lib/site-settings.js'
+import {
+  asStr,
+  asStrArray,
+  applyTemplate,
+  escapeHtml,
+  mediaUrl,
+  statLookup,
+} from '../../../lib/sanity-strings.js'
+import { assertSanityHomepage } from '../../../lib/assert-sanity-homepage.js'
+import { sanitizeCmsHtml } from '../../../lib/sanitize-cms-html.js'
+import { buildLpFaqItems } from '../../../lib/lp-faq-items.js'
+import { getLpHeroTypedPhrases } from '../../../lib/lp-hero-typed-phrases.js'
+import { capitalizeHeaderWords } from '../../../lib/capitalize-header-words.js'
+import { lpGutterInstallationReviews } from '../../../lib/lp-gutter-installation-reviews.js'
+import HeaderMobileActions from '../../../components/HeaderMobileActions.astro'
+import Breadcrumbs from '../../../components/Breadcrumbs.astro'
+import FinancingBanner from '../../../components/FinancingBanner.astro'
+
+const [settings, homePage] = await Promise.all([
+  getSiteSettings(),
+  sanity.fetch(GROQ_HOME_PAGE),
+])
+
+assertSanityHomepage(settings, homePage)
+
+const business = settings.business
+const statsValues = settings.statsValues
+const mapEmbedUrl = asStr(settings.mapEmbedUrl)
+
+const companyName = asStr(business?.companyName)
+const phoneDisplay = asStr(business?.phoneDisplay)
+const tel = asStr(business?.phoneTel)
+const email = asStr(business?.email)
+const address = asStr(business?.addressShort)
+const addressHref = googleBusinessProfileUrl(settings)
+const descriptionShort = asStr(business?.descriptionShort)
+const copyrightHref = asStr(business?.copyrightSiteUrl)
+const logoBlack = asStr(business?.logoHorizontalBlack)
+const logoWhite = asStr(business?.logoHorizontalWhite)
+
+const pageTitle = 'Seamless Gutters in Denver | Mile High Gutter'
+const pageDescription =
+  'Trusted seamless gutter services in the Greater Denver Area. Custom-cut systems, fewer leak points, and a free consultation from Mile High Gutter.'
+
+const hp = homePage
+const header = mergeHeaderFromSettings(settings, hp.header)
+const offerBar = header?.offerBar
+const navItems = header?.navItems
+const hero = hp.hero
+const brandsMarquee = hp.brandsMarquee
+const projects = {
+  ...hp.projects,
+  slides: [
+    {
+      imageSrc: 'lp/gutter-installation/project-aurora-brown-roofline.png',
+      imageAlt:
+        'Dark bronze seamless gutters along a multi-level asphalt shingle roofline',
+      location: 'Aurora, CO',
+    },
+    {
+      imageSrc: 'lp/gutter-installation/project-lakewood-red-commercial.png',
+      imageAlt:
+        'Red seamless gutters on a tan commercial building with matching deck trim',
+      location: 'Lakewood, CO',
+    },
+    {
+      imageSrc: 'lp/gutter-installation/project-aurora-white-brick-home.png',
+      imageAlt:
+        'White seamless gutter and downspout on a beige home with brick lower level',
+      location: 'Aurora, CO',
+    },
+  ],
+}
+const whyChoose = {
+  ...hp.whyChoose,
+  imageSrc: 'lp/gutter-installation/why-choose-commercial-roof.png',
+  imageAlt:
+    'Mile High Gutter technician installing seamless commercial gutters on a flat rooftop',
+  stamp: {
+    ...hp.whyChoose?.stamp,
+    homesCountTemplate: 'Over {{count}}',
+    line2: 'Projects Completed',
+    line3: 'Across the Denver Metro.',
+  },
+}
+const whyStamp = whyChoose?.stamp
+const whyCtas = whyChoose?.ctas
+const services = hp.services
+const about = {
+  ...hp.about,
+  video: {
+    ...(hp.about?.video || {}),
+    posterSrc: 'lp/gutter-installation/about-white-gutter-install.png',
+    sourceSrc: 'poster-only',
+  },
+}
+const aboutVideo = about?.video
+const aboutVideoSource = asStr(aboutVideo?.sourceSrc).trim().toLowerCase()
+const aboutVideoPosterOnly =
+  aboutVideoSource === 'poster-only' || aboutVideoSource === 'none'
+const uniquePoints = hp.uniquePoints
+const statsBar = {
+  ...hp.statsBar,
+  items: Array.isArray(hp.statsBar?.items)
+    ? hp.statsBar.items.map((row) =>
+        asStr(row?.valueKey) === 'statsJobsCompleted'
+          ? { ...row, label: 'Projects' }
+          : row,
+      )
+    : hp.statsBar?.items,
+}
+const contactBanner = hp.contactBanner
+const reviews = {
+  ...(settings?.reviews ?? hp.reviews),
+  testimonials: lpGutterInstallationReviews.map((t) => ({
+    author: t.author,
+    timeAgo: t.timeAgo,
+    avatarSrc: t.avatarSrc,
+    quote: t.quoteHtml,
+    quoteHtml: t.quoteHtml,
+  })),
+}
+const reviewsSummary = reviews?.summary
+const reviewValues = reviews?.reviewValues
+const serviceArea = hp.serviceArea
+const footerEstimate = settings?.footerEstimate ?? hp.footerEstimate
+const footerEstimateFields = footerEstimate?.formFields
+const footerBrand = settings?.footerBrand ?? hp.footerBrand
+const footerColumns = settings?.footerColumns ?? hp.footerColumns
+const footerSupport = settings?.footerSupport ?? hp.footerSupport
+const formsCfg = settings?.forms ?? {}
+
+const reviewRating = statLookup(reviewValues, reviewsSummary?.ratingValueKey)
+const reviewCount = statLookup(reviewValues, reviewsSummary?.reviewCountKey)
+const reviewCountDisplay = `${asStr(reviewsSummary?.reviewCountPrefix)}${reviewCount}${asStr(reviewsSummary?.reviewCountSuffix)}`
+const reviewsCtaHref = '/reviews/'
+const reviewsPerPage = 4
+const reviewPages = []
+for (let i = 0; i < lpGutterInstallationReviews.length; i += reviewsPerPage) {
+  reviewPages.push(lpGutterInstallationReviews.slice(i, i + reviewsPerPage))
+}
+
+const callLabelNav = applyTemplate(asStr(header?.callCtaTemplate), {
+  phoneDisplay,
+})
+const callLabelHero = applyTemplate(asStr(hero?.callCtaTemplate), {
+  phoneDisplay,
+})
+const logoAriaLabel = applyTemplate(asStr(header?.logoAriaLabelTemplate), {
+  companyName,
+})
+
+/** Responsive WebPs under Horizontal/responsive/; 1000w PNG fallback. Wrong `sizes` (was 198px) forced a tiny bitmap on retina. */
+const logoHorizontalRespBase =
+  '/Media%20(MHG)/Logo%20Suite%20(MHG)/Mile%20High%20(Denver%20Colorado)/Horizontal/responsive'
+const logoBlackUrl = mediaUrl(logoBlack)
+const logoWhiteUrl = mediaUrl(logoWhite)
+const useDenverHorizontalLogos =
+  logoBlack.includes('Mile High (Denver Colorado)/Horizontal') &&
+  logoBlack.includes('Black Font Transparent')
+const logoBlackSrcSet = useDenverHorizontalLogos
+  ? `${logoHorizontalRespBase}/logo-black-198.webp 198w, ${logoHorizontalRespBase}/logo-black-396.webp 396w, ${logoHorizontalRespBase}/logo-black-960.webp 960w, ${logoBlackUrl} 1000w`
+  : ''
+const logoWhiteSrcSet = useDenverHorizontalLogos
+  ? `${logoHorizontalRespBase}/logo-white-360.webp 360w, ${logoHorizontalRespBase}/logo-white-960.webp 960w, ${logoWhiteUrl} 1000w`
+  : ''
+const logoHeaderSizes =
+  '(max-width: 480px) min(360px, calc(100vw - 96px)), (max-width: 768px) min(420px, calc(100vw - 120px)), 347px'
+const logoFooterSizes = '(max-width: 768px) min(300px, 72vw), 270px'
+
+const telLink = `tel:${tel}`
+
+const homesCountDisplay = applyTemplate(asStr(whyStamp?.homesCountTemplate), {
+  count: statLookup(statsValues, whyStamp?.homesCountKey),
+})
+
+const whyCallLabel = applyTemplate(asStr(whyCtas?.callTemplate), {
+  phoneDisplay,
+})
+const aboutCallLabel = applyTemplate(asStr(about?.ctas?.callTemplate), {
+  phoneDisplay,
+})
+
+const mapIframeTitle = applyTemplate(asStr(serviceArea?.mapIframeTitleTemplate), {
+  companyName,
+})
+
+const heroBgSrc = 'lp/gutter-installation/hero-tile-roof-backyard.png'
+const servicesBgSrc = 'lp/gutter-installation/services-downspout-extension.png'
+const uniquePointsBgSrc = 'lp/gutter-installation/unique-dark-gutter-mount.png'
+
+const heroBgUrl = mediaUrl(heroBgSrc)
+
+const servicesBgStyle = `background-color: #143980; background-image: linear-gradient(135deg, rgba(20, 57, 128, 0.94) 0%, rgba(26, 74, 158, 0.94) 100%), image-set(url("${responsiveSrc(servicesBgSrc, 800)}") 1x, url("${responsiveSrc(servicesBgSrc, 1200)}") 2x); background-size: cover; background-position: center; background-repeat: no-repeat;`
+
+const uniquePointsBgStyle = `background: var(--color-surface); background-image: url("${mediaUrl(uniquePointsBgSrc)}"); background-size: cover; background-position: center;`
+
+const typedPhrases = getLpHeroTypedPhrases('seamless-gutters')
+
+const copyrightTemplate = asStr(footerSupport?.copyrightTemplate)
+const copyrightInnerHtml = sanitizeCmsHtml(
+  copyrightTemplate
+    .replace(/\{\{\s*year\s*\}\}/gi, '<span id="year"></span>')
+    .replace(/\{\{\s*companyName\s*\}\}/gi, escapeHtml(companyName))
+)
+
+const universalFormFields = footerEstimateFields
+const universalFormAction = asStr(formsCfg?.submitPath) || asStr(footerEstimate?.formAction)
+const universalFormMethod = asStr(footerEstimate?.formMethod)
+const universalSubmitLabel = 'Submit'
+const universalFormAriaLabel = asStr(formsCfg?.formAriaLabel) || 'Lead form'
+const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
+
+const serviceHref = (svc) => {
+  const explicit = asStr(svc?.href)
+  if (explicit) return explicit
+  const title = asStr(svc?.title).toLowerCase().trim()
+  if (!title) return '/products-services/'
+  const knownSlugs = {
+    'gutter installation': 'gutter-installation-denver-co',
+    'gutter repair': 'gutter-repair-denver-co',
+    'gutter cleaning': 'gutter-cleaning-denver-co',
+    'gutter guards': 'denver-gutter-guards-co',
+    'heated gutters': 'snow-ice-solutions-heat-tape-denver-co',
+    'soffit & fascia': 'denver-fascia-soffit-repair-co',
+    'soffit and fascia': 'denver-fascia-soffit-repair-co',
+  }
+  if (knownSlugs[title]) return `/products-services/${knownSlugs[title]}/`
+  const slug = title
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+  return `/products-services/${slug}-denver-co/`
+}
+
+const reviewAvatarSrc = (author, fallbackSrc) => {
+  const name = asStr(author).toLowerCase()
+  const local = {
+    'aricia shaffer, mse': '/lp/gutter-installation/reviews/aricia-shaffer.png',
+    'michael mccausey': '/lp/gutter-installation/reviews/michael-mccausey.png',
+    'taggert morrow': '/lp/gutter-installation/reviews/taggert-morrow.png',
+    'karie w': '/lp/gutter-installation/reviews/karie-w.png',
+    'meghan tryon': '/lp/gutter-installation/reviews/meghan-tryon.png',
+    sam: '/lp/gutter-installation/reviews/sam.png',
+    'tom steen': '/lp/gutter-installation/reviews/tom-steen.png',
+    'lisa sorrentino': '/lp/gutter-installation/reviews/lisa-sorrentino.png',
+  }
+  if (local[name]) return local[name]
+  if (name.includes('alex witkowicz')) return '/Media%20(MHG)/Reviews%20(MHG)/responsive/alex-witkowicz-84.webp'
+  if (name.includes('maximilian feeney')) return '/Media%20(MHG)/Reviews%20(MHG)/responsive/maximilian-feeney-84.webp'
+  if (name.includes('michael tinker')) return '/Media%20(MHG)/Reviews%20(MHG)/responsive/michael-tinker-84.webp'
+  return mediaUrl(asStr(fallbackSrc))
+}
+
+function responsiveSet(src) {
+  const raw = asStr(src)
+  if (!raw.endsWith('.webp')) return undefined
+  const base = raw.split('/').pop()?.replace('.webp', '')
+  if (!base) return undefined
+  return `/Media%20(MHG)/Images%20(Mile%20High)/responsive/${base}-320.webp 320w, /Media%20(MHG)/Images%20(Mile%20High)/responsive/${base}-480.webp 480w, /Media%20(MHG)/Images%20(Mile%20High)/responsive/${base}-640.webp 640w, /Media%20(MHG)/Images%20(Mile%20High)/responsive/${base}-800.webp 800w, /Media%20(MHG)/Images%20(Mile%20High)/responsive/${base}-1200.webp 1200w`
+}
+
+function responsiveSrc(src, width = 800) {
+  const raw = asStr(src)
+  if (!raw.endsWith('.webp')) return mediaUrl(raw)
+  const base = raw.split('/').pop()?.replace('.webp', '')
+  if (!base) return mediaUrl(raw)
+  return `/Media%20(MHG)/Images%20(Mile%20High)/responsive/${base}-${width}.webp`
+}
+
+const lpKeyword = 'seamless gutters'
+const lpHeroHeadline = 'Trusted Seamless Gutter Services in the Greater Denver Area'
+const lpProjectsHeadline = capitalizeHeaderWords(`Our ${lpKeyword} Projects`)
+const lpWhyChooseHeadline = capitalizeHeaderWords(
+  `You're #1 choice for ${lpKeyword} in Denver`,
+)
+const lpServicesHeadline = capitalizeHeaderWords(`Our ${lpKeyword} services`)
+const lpUniquePointsHeadline = capitalizeHeaderWords(`A better ${lpKeyword} experience`)
+const lpFreeEstimateHeadline = capitalizeHeaderWords(`Start your free ${lpKeyword} estimate`)
+const lpContactBannerParagraph1 = `Call or use the form—we will reply quickly to schedule your ${lpKeyword} estimate.`
+const universalFormHeading = capitalizeHeaderWords('Book your free consultation')
+const lpEstimateCtaLabel = 'Book a Consultation'
+const lpFaqHeadingId = 'lp-faq-heading'
+const lpFaqHeadline = capitalizeHeaderWords(`Frequently asked questions about ${lpKeyword}`)
+const lpFaqItems = buildLpFaqItems(lpKeyword)
+const universalFormIntro =
+  'Fill out the form to book a consultation for your Denver gutter project. We’ll get back to you promptly with the next steps and scheduling details.'
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  theme={settings.theme}
+  forms={{ submitPath: asStr(settings.forms?.submitPath) }}
+  lcpImageSrc={heroBgUrl}
+  homeRevealAnimations
+  noIndex
+>
+  <header class="header">
+    <div class="offer-bar">
+      <div class="offer-bar-inner">
+        <p class="offer-message">
+          <OfferBarMessage offerBar={offerBar} />
+        </p>
+      </div>
+    </div>
+
+    <div class="header-nav">
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label={logoAriaLabel}>
+          {useDenverHorizontalLogos ? (
+            <img
+              src={logoBlackUrl}
+              srcset={logoBlackSrcSet}
+              sizes={logoHeaderSizes}
+              alt={companyName}
+              class="logo-img"
+              width="1000"
+              height="242"
+              fetchpriority="high"
+              decoding="async"
+            />
+          ) : (
+            <img src={logoBlackUrl} alt={companyName} class="logo-img" width="1000" height="242" fetchpriority="high" decoding="async" />
+          )}
+        </a>
+        <HeaderMobileActions phoneTel={tel} phoneDisplay={phoneDisplay} />
+        <nav class="nav">
+          {navItems?.map((item, i) => {
+            const label = asStr(item.label)
+            const href = asStr(item.href)
+            const dropdown = item.dropdown
+            if (Array.isArray(dropdown) && dropdown.length > 0) {
+              const ddId = `nav-dd-${i}`
+              return (
+                <div class="nav-dropdown" data-nav-dropdown>
+                  <button
+                    type="button"
+                    class="nav-dropdown-toggle"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    aria-controls={ddId}
+                    id={`${ddId}-btn`}
+                  >
+                    {label}
+                    <span class="nav-dropdown-chevron" aria-hidden="true"></span>
+                  </button>
+                  <ul class="nav-dropdown-menu" id={ddId} role="menu">
+                    {dropdown.map((link) => (
+                      <li role="none">
+                        <a href={asStr(link.href)} role="menuitem">
+                          {asStr(link.label)}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            }
+            return <a href={href}>{label}</a>
+          })}
+          <a href={telLink} class="btn btn-primary btn-lg">{callLabelNav}</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div id="header-nav-spacer" class="header-nav-spacer" aria-hidden="true"></div>
+
+  <Breadcrumbs />
+
+  <main>
+    <section class="hero hero-split lp-hero">
+      <div class="hero-bg">
+        <img src={responsiveSrc(heroBgSrc, 1200)} srcset={responsiveSet(heroBgSrc)} sizes="100vw" alt="" class="hero-bg-image" width="1500" height="1000" fetchpriority="high" loading="eager" decoding="async" />
+      </div>
+      <div class="container hero-split-inner">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">Book a Free Consultation Today</div>
+          <h1>{lpHeroHeadline}</h1>
+          <p class="hero-typed" aria-live="polite">
+            <span id="hero-typed-text"></span><span class="hero-caret" aria-hidden="true">|</span>
+          </p>
+          <LpHeroLead />
+          <div class="hero-actions">
+            <a href={telLink} class="btn btn-primary btn-lg cta1-primary-call">{callLabelHero}</a>
+          </div>
+        </div>
+        <form
+          class="hero-form"
+          data-lead-form="hero"
+          action={universalFormAction}
+          method={universalFormMethod}
+          aria-label={universalFormAriaLabel}
+        >
+          <div class="hero-form-heading">
+            <h2>{universalFormHeading}</h2>
+          </div>
+          <p class="hero-form-sub">{universalFormIntro}</p>
+          <div class="hero-form-grid">
+            <div class="hero-form-field">
+              <label for="hero-first-name">
+                First Name{' '}
+                <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+              </label>
+              <input id="hero-first-name" name="firstName" type="text" required autocomplete="given-name" />
+            </div>
+            <div class="hero-form-field">
+              <label for="hero-last-name">
+                Last Name{' '}
+                <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+              </label>
+              <input id="hero-last-name" name="lastName" type="text" required autocomplete="family-name" />
+            </div>
+            <div class="hero-form-field">
+              <label for="hero-email">
+                {asStr(universalFormFields?.emailLabel)}{' '}
+                <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+              </label>
+              <input id="hero-email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="hero-form-field">
+              <label for="hero-phone">
+                {asStr(universalFormFields?.phoneLabel)}{' '}
+                <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+              </label>
+              <input
+                id="hero-phone"
+                name="phone"
+                type="tel"
+                required
+                autocomplete="tel"
+                maxlength="12"
+                inputmode="numeric"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                title="10-digit phone, e.g. 303-762-9841"
+              />
+            </div>
+            <div class="hero-form-field hero-form-field-full">
+              <label for="hero-address">Address</label>
+              <input
+                id="hero-address"
+                name="address"
+                type="text"
+                autocomplete="street-address"
+                spellcheck="false"
+              />
+            </div>
+            <div class="hero-form-field hero-form-field-full">
+              <label for="hero-message">
+                {asStr(universalFormFields?.projectDetailsLabel)}
+              </label>
+              <textarea id="hero-message" name="message" rows="3"></textarea>
+            </div>
+          </div>
+          <LeadFormSmsConsent idPrefix="hero" variant="hero" />
+          <div class="lead-form-honeypot-wrap" aria-hidden="true">
+            <label for="hero-website">Leave blank</label>
+            <input type="text" id="hero-website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <p class="lead-form-status" data-lead-form-status role="status" aria-live="polite"></p>
+          <button type="submit" class="btn btn-primary btn-lg">{universalSubmitLabel}</button>
+        </form>
+      </div>
+      <section class="brands-marquee" aria-label={asStr(brandsMarquee?.ariaLabel)}>
+        <div class="brands-track">
+          <div class="brands-inner">
+            {[0, 1, 2].map((idx) => (
+              <div class="brands-group" aria-hidden={idx > 0 ? 'true' : undefined}>
+                {asStrArray(brandsMarquee?.brands).map((b) => (
+                  <span class="brand-pill">{b}</span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <FinancingBanner />
+
+    <section id="reviews" class="section google-reviews lp-gi-reviews">
+      <div class="container">
+        <h2 class="section-title reviews-title">{asStr(reviews?.headline)}</h2>
+        <div class="reviews-summary">
+          <div class="reviews-summary-left">
+            <p class="reviews-summary-brand">
+              <img
+                src="/Media%20(MHG)/Reviews%20(MHG)/responsive/google-icon-44.webp"
+                alt={asStr(reviewsSummary?.brandLabel)}
+                class="google-logo"
+                width="44"
+                height="44"
+                loading="lazy"
+                decoding="async"
+              />
+              <span>{asStr(reviewsSummary?.brandLabel)}</span>
+            </p>
+            <p class="reviews-summary-rating">
+              <strong>{reviewRating}</strong>
+              <img
+                src="/Media%20(MHG)/Reviews%20(MHG)/responsive/stars-236.webp"
+                alt={asStr(reviewsSummary?.starsImageAlt)}
+                class="review-stars review-stars-inline"
+                width="236"
+                height="59"
+                loading="lazy"
+                decoding="async"
+              />
+              <span>{reviewCountDisplay}</span>
+            </p>
+          </div>
+          <a href={reviewsCtaHref} class="btn btn-primary reviews-summary-cta">
+            {asStr(reviewsSummary?.ctaText)}
+          </a>
+        </div>
+        <div class="lp-gi-reviews-carousel" id="lp-gi-reviews-carousel" data-page="0">
+          <div class="lp-gi-reviews-viewport">
+            <div class="lp-gi-reviews-track" id="lp-gi-reviews-track">
+              {reviewPages.map((page) => (
+                <div class="lp-gi-reviews-page testimonials-grid">
+                  {page.map((t) => (
+                    <blockquote class="testimonial">
+                      <div class="review-brand review-brand-top">
+                        <img
+                          src={reviewAvatarSrc(t.author, t.avatarSrc)}
+                          alt={asStr(t.author)}
+                          class="review-avatar"
+                          width="84"
+                          height="84"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <div class="review-meta">
+                          <strong>{asStr(t.author)}</strong>
+                          {t.timeAgo ? <span class="review-time">{asStr(t.timeAgo)}</span> : null}
+                        </div>
+                      </div>
+                      <img
+                        src="/Media%20(MHG)/Reviews%20(MHG)/responsive/stars-236.webp"
+                        alt={asStr(reviewsSummary?.starsImageAlt)}
+                        class="review-stars"
+                        width="236"
+                        height="59"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <p set:html={`&quot;${sanitizeCmsHtml(t.quoteHtml)}&quot;`} />
+                      <div class="review-posted-on">
+                        <img
+                          src="/Media%20(MHG)/Reviews%20(MHG)/responsive/google-icon-44.webp"
+                          alt={asStr(reviewsSummary?.brandLabel)}
+                          class="google-logo"
+                          width="44"
+                          height="44"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <span>{asStr(reviews?.postedOnLabel)}</span>
+                      </div>
+                    </blockquote>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="lp-gi-reviews-controls" aria-label="Review carousel controls">
+            <button type="button" class="project-nav" id="lp-gi-reviews-prev" aria-label="Previous reviews">
+              {asStr(projects?.prevLabel) || 'Prev'}
+            </button>
+            <button type="button" class="project-nav" id="lp-gi-reviews-next" aria-label="Next reviews">
+              {asStr(projects?.nextLabel) || 'Next'}
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="image-scroller" aria-label={lpProjectsHeadline}>
+      <div class="container projects-head">
+        <h2 class="section-title">{lpProjectsHeadline}</h2>
+      </div>
+      <div class="projects-carousel" id="projects-carousel">
+        {projects?.slides?.map((slide) => {
+          const loc = asStr(slide.location)
+          const label = `${asStr(slide.imageAlt)} — ${loc}`
+          const imgSrc = asStr(slide.imageSrc)
+          const base = imgSrc.split('/').pop()?.replace('.webp', '')
+          const srcset = responsiveSet(imgSrc)
+          const src = base && srcset ? `/Media%20(MHG)/Images%20(Mile%20High)/responsive/${base}-800.webp` : mediaUrl(imgSrc)
+          return (
+            <article class="project-slide" data-location={loc} aria-label={label}>
+              <img src={src} srcset={srcset} sizes="(max-width: 1200px) 92vw, (max-width: 1600px) 377px, 760px" alt={asStr(slide.imageAlt)} width="800" height="560" loading="lazy" decoding="async" />
+              <div class="project-meta">
+                <span class="project-pin" aria-hidden="true">📍</span>{' '}
+                <span class="project-location-label">{loc}</span>
+              </div>
+            </article>
+          )
+        })}
+      </div>
+      <div class="projects-controls projects-controls-bottom" aria-label={asStr(projects?.controlsAriaLabel)}>
+        <button type="button" class="project-nav" id="projects-prev" aria-label={asStr(projects?.prevAriaLabel)}>
+          {asStr(projects?.prevLabel)}
+        </button>
+        <button type="button" class="project-nav" id="projects-next" aria-label={asStr(projects?.nextAriaLabel)}>
+          {asStr(projects?.nextLabel)}
+        </button>
+      </div>
+    </section>
+
+    <section class="section why-simple">
+      <div class="container why-choose-layout">
+        <div class="why-choose-image-wrap">
+          {(() => {
+            const whyImgSrc = asStr(whyChoose?.imageSrc)
+            const base = whyImgSrc.split('/').pop()?.replace('.webp', '')
+            const srcset = responsiveSet(whyImgSrc)
+            const src = base && srcset ? `/Media%20(MHG)/Images%20(Mile%20High)/responsive/${base}-800.webp` : mediaUrl(whyImgSrc)
+            return (
+          <img
+            src={src}
+            srcset={srcset}
+            sizes="(max-width: 900px) 100vw, 420px"
+            alt={asStr(whyChoose?.imageAlt)}
+            class="why-choose-image"
+            width="800"
+            height="923"
+            loading="lazy"
+            decoding="async"
+          />
+            )
+          })()}
+          <div class="why-choose-stamp">
+            <strong>{homesCountDisplay}</strong>
+            {asStr(whyStamp?.line2) ? <span>{asStr(whyStamp?.line2)}</span> : null}
+            {asStr(whyStamp?.line3) ? <span>{asStr(whyStamp?.line3)}</span> : null}
+          </div>
+        </div>
+        <div class="why-choose-content">
+          <div class="why-eyebrow">{asStr(whyChoose?.eyebrow)}</div>
+          <h2 class="section-title section-title-secondary">{lpWhyChooseHeadline}</h2>
+          <p class="section-lead">{asStr(whyChoose?.lead)}</p>
+          <ul class="why-choose-list">
+            {whyChoose?.bullets?.map((b) => (
+              <li>
+                <strong>{asStr(b.title)}</strong> {asStr(b.text)}
+              </li>
+            ))}
+          </ul>
+          <p class="why-choose-note">{asStr(whyChoose?.note)}</p>
+          <div class="why-choose-actions">
+            <a href={telLink} class="btn btn-primary btn-lg">{whyCallLabel}</a>
+            <a href={asStr(whyCtas?.estimateHref)} class="btn btn-outline btn-lg request-estimate">
+              {lpEstimateCtaLabel}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section services" style={servicesBgStyle}>
+      <div class="container">
+        <h2 class="section-title">{lpServicesHeadline}</h2>
+        <div class="services-grid">
+          {services?.items?.map((svc) => (
+            <article class="service-card">
+              <a href={serviceHref(svc)} class="service-image-wrap" style="display:block; color:inherit; text-decoration:none;">
+                <span class="service-number">{asStr(svc.number)}</span>
+                <h3 class="service-title">{asStr(svc.title)}</h3>
+                <p class="service-desc">{asStr(svc.description)}</p>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section about about-video">
+      <div class="container about-grid">
+        <div class="about-content">
+          <div class="about-eyebrow">{asStr(about?.eyebrow)}</div>
+          <h2 class="section-title">{asStr(about?.headline)}</h2>
+          <p class="about-lead">{asStr(about?.lead)}</p>
+          <ul class="about-list">
+            {asStrArray(about?.bullets).map((line) => (
+              <li>{line}</li>
+            ))}
+          </ul>
+          <div class="about-video-actions">
+            <a href={telLink} class="btn btn-primary btn-lg">{aboutCallLabel}</a>
+            <a href={asStr(about?.ctas?.estimateHref)} class="btn btn-outline btn-lg request-estimate">
+              {lpEstimateCtaLabel}
+            </a>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="media-card media-video">
+            {aboutVideoPosterOnly ? (
+              <img
+                src={responsiveSrc(aboutVideo?.posterSrc, 800)}
+                alt=""
+                width="800"
+                height="450"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <video controls playsinline preload="metadata" poster={responsiveSrc(aboutVideo?.posterSrc, 480)} width="800" height="450">
+                <source src={mediaUrl(asStr(aboutVideo?.sourceSrc).replace(/^\/+/, ''))} type={asStr(aboutVideo?.sourceType)} />
+              </video>
+            )}
+          </div>
+          <div class="about-badges" aria-label={asStr(about?.badgesAriaLabel)}>
+            {Array.isArray(about?.badges)
+              ? about.badges.map((b) => {
+                  const src = mediaUrl(asStr(b?.imageSrc).replace(/^\/+/, ''))
+                  const alt = asStr(b?.alt)
+                  return (
+                    <div class="about-badge">
+                      {src ? <img src={src} alt={alt} loading="lazy" decoding="async" /> : null}
+                    </div>
+                  )
+                })
+              : null}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section unique-points" style={uniquePointsBgStyle}>
+      <div class="container">
+        <div class="why-eyebrow">{asStr(uniquePoints?.eyebrow)}</div>
+        <h2 class="section-title section-title-secondary">{lpUniquePointsHeadline}</h2>
+        <div class="unique-grid">
+          {uniquePoints?.items?.map((pt) => (
+            <article class="result-item">
+              <span class="result-value">
+                <span class="result-icon" aria-hidden="true">
+                  <UniquePointIcon iconId={asStr(pt.iconId)} />
+                </span>
+                {asStr(pt.title)}
+              </span>
+              <p>{asStr(pt.description)}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-thin" aria-label={asStr(statsBar?.ariaLabel)}>
+      <div class="container stats-thin-grid">
+        {statsBar?.items?.map((row) => (
+          <div>
+            <strong>{statLookup(statsValues, row.valueKey)}</strong>
+            <span>{asStr(row.label)}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section contact-banner-split">
+      <div class="container contact-banner-grid">
+        <div class="contact-banner-copy">
+          <h2 class="section-title">{lpFreeEstimateHeadline}</h2>
+          <p class="section-lead">{lpContactBannerParagraph1}</p>
+          <p class="section-lead">{asStr(contactBanner?.paragraph2)}</p>
+          <div class="contact-banner-actions">
+            <a href={telLink} class="contact-banner-phone">
+              <img
+                src="/icons/phone-white.png"
+                alt=""
+                aria-hidden="true"
+                width="44"
+                height="44"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="contact-banner-phone-number">{phoneDisplay}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="service-area" class="section service-area">
+      <div class="container">
+        <div class="why-eyebrow">{asStr(serviceArea?.eyebrow)}</div>
+        <h2 class="section-title">{asStr(serviceArea?.headline)}</h2>
+        <p class="section-lead service-area-intro">{asStr(serviceArea?.intro)}</p>
+        <div class="service-area-grid">
+          <div class="map-wrap">
+            <iframe
+              src={mapEmbedUrl}
+              width="600"
+              height="400"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title={mapIframeTitle}
+            ></iframe>
+          </div>
+          <div class="cities-list">
+            <p class="cities-label">{asStr(serviceArea?.citiesLabel)}</p>
+            <nav class="cities-nav" aria-label={asStr(serviceArea?.citiesNavAriaLabel)}>
+              {serviceArea?.cities?.map((c) => (
+                <a href={asStr(c.href)}>{asStr(c.name)}</a>
+              ))}
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section faq-section" aria-labelledby={lpFaqHeadingId}>
+      <div class="container">
+        <div class="faq-panel">
+          <h2 class="section-title section-title-secondary" id={lpFaqHeadingId}>
+            {lpFaqHeadline}
+          </h2>
+          <div class="faq-list" data-faq-accordion>
+            {lpFaqItems.map((item, idx) => {
+              const n = idx + 1
+              const btnId = `faq-btn-${n}`
+              const panelId = `faq-panel-${n}`
+              return (
+                <div class="faq-item">
+                  <button
+                    type="button"
+                    class="faq-summary"
+                    id={btnId}
+                    aria-expanded="false"
+                    aria-controls={panelId}
+                  >
+                    <span class="faq-question">{item.question}</span>
+                    <span class="faq-chevron" aria-hidden="true"></span>
+                  </button>
+                  <div
+                    class="faq-answer-outer"
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={btnId}
+                    aria-hidden="true"
+                  >
+                    <div class="faq-answer" set:html={sanitizeCmsHtml(item.answerHtml)} />
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <section id="contact" class="section contact footer-estimate" aria-labelledby="footer-estimate-heading">
+      <div class="container">
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <h2 class="section-title" id="footer-estimate-heading">{universalFormHeading}</h2>
+            <p>{universalFormIntro}</p>
+            <FooterContactInfo
+              variant="estimate"
+              phoneTel={tel}
+              phoneDisplay={phoneDisplay}
+              email={email}
+              address={address}
+              addressHref={addressHref}
+            />
+          </div>
+          <form
+            class="contact-form"
+            data-lead-form="footer"
+            action={universalFormAction}
+            method={universalFormMethod}
+          >
+            <div class="contact-form-grid">
+              <div class="contact-form-field">
+                <label for="contact-first-name">
+                  First Name{' '}
+                  <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+                </label>
+                <input type="text" id="contact-first-name" name="firstName" required autocomplete="given-name" />
+              </div>
+              <div class="contact-form-field">
+                <label for="contact-last-name">
+                  Last Name{' '}
+                  <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+                </label>
+                <input type="text" id="contact-last-name" name="lastName" required autocomplete="family-name" />
+              </div>
+              <div class="contact-form-field">
+                <label for="contact-email">
+                  {asStr(universalFormFields?.emailLabel)}{' '}
+                  <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+                </label>
+                <input type="email" id="contact-email" name="email" required autocomplete="email" />
+              </div>
+              <div class="contact-form-field">
+                <label for="contact-phone">
+                  {asStr(universalFormFields?.phoneLabel)}{' '}
+                  <span class="required-mark" aria-hidden="true">{universalRequiredIndicator}</span>
+                </label>
+                <input
+                  type="tel"
+                  id="contact-phone"
+                  name="phone"
+                  required
+                  autocomplete="tel"
+                  maxlength="12"
+                  inputmode="numeric"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  title="10-digit phone, e.g. 303-762-9841"
+                />
+              </div>
+              <div class="contact-form-field contact-form-field-full">
+                <label for="contact-address">Address</label>
+                <input
+                  type="text"
+                  id="contact-address"
+                  name="address"
+                  autocomplete="street-address"
+                  spellcheck="false"
+                />
+              </div>
+              <div class="contact-form-field contact-form-field-full">
+                <label for="contact-message">{asStr(universalFormFields?.projectDetailsLabel)}</label>
+                <textarea id="contact-message" name="message" rows="4"></textarea>
+              </div>
+            </div>
+            <LeadFormSmsConsent idPrefix="footer" variant="contact" />
+            <div class="lead-form-honeypot-wrap" aria-hidden="true">
+              <label for="contact-website">Leave blank</label>
+              <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <p class="lead-form-status" data-lead-form-status role="status" aria-live="polite"></p>
+            <button type="submit" class="btn btn-primary btn-lg">{universalSubmitLabel}</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand-block footer-col">
+          {useDenverHorizontalLogos ? (
+            <img
+              src={logoWhiteUrl}
+              srcset={logoWhiteSrcSet}
+              sizes={logoFooterSizes}
+              alt={companyName}
+              class="footer-logo"
+              width="1000"
+              height="242"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <img src={logoWhiteUrl} alt={companyName} class="footer-logo" width="1000" height="242" loading="lazy" decoding="async" />
+          )}
+          <p class="footer-address">{descriptionShort}</p>
+          <div class="footer-social" aria-label={asStr(footerBrand?.socialAriaLabel)}>
+            {footerBrand?.socialLinks?.map((s) => (
+              <a href={asStr(s.href)} aria-label={asStr(s.ariaLabel)}>
+                <FooterSocialIcon platform={asStr(s.platform)} />
+              </a>
+            ))}
+          </div>
+        </div>
+        {footerColumns?.map((col) => (
+          <div class="footer-col">
+            <p class="footer-heading">{asStr(col.heading)}</p>
+            {col.links?.length ? (
+              <nav class="footer-links" aria-label={asStr(col.ariaLabel)}>
+                {col.links.map((link) => (
+                  <a href={asStr(link.href)}>{asStr(link.label)}</a>
+                ))}
+              </nav>
+            ) : null}
+            {isContactFooterColumnHeading(col.heading) ? (
+              <FooterContactInfo
+                variant="footer-column"
+                phoneTel={tel}
+                phoneDisplay={phoneDisplay}
+                email={email}
+                address={address}
+                addressHref={addressHref}
+              />
+            ) : null}
+            {col.hoursHeading ? (
+              <p class="footer-heading footer-hours-heading">{asStr(col.hoursHeading)}</p>
+            ) : null}
+            {col.hoursText ? <FooterHoursRow hoursText={col.hoursText} /> : null}
+          </div>
+        ))}
+      </div>
+    </div>
+  </footer>
+
+  <FooterSupportBar
+    footerSupport={footerSupport}
+    copyrightHref={copyrightHref}
+    companyName={companyName}
+    copyrightInnerHtml={copyrightInnerHtml}
+  />
+  <script
+    type="application/json"
+    id="homepage-typed-phrases"
+    data-fallback-phrase={typedPhrases[0] ? typedPhrases[0] : asStr(hero?.typedFallbackPhrase)}
+    set:html={JSON.stringify(typedPhrases)}
+  />
+  <style is:global>
+    .lp-gi-reviews .testimonial p {
+      font-style: normal;
+      color: var(--color-text);
+    }
+    .lp-gi-reviews .testimonial p strong,
+    .lp-gi-reviews .testimonial p b {
+      color: #000;
+      font-weight: 700;
+      font-style: italic;
+    }
+    .lp-gi-reviews .testimonial p em,
+    .lp-gi-reviews .testimonial p i {
+      color: #000;
+      font-style: italic;
+      font-weight: 700;
+    }
+    .lp-gi-reviews-carousel {
+      margin-top: var(--space-xl);
+    }
+    .lp-gi-reviews-viewport {
+      overflow: hidden;
+      width: 100%;
+    }
+    .lp-gi-reviews-track {
+      display: flex;
+      width: 100%;
+      transition: transform 0.35s ease;
+      will-change: transform;
+    }
+    .lp-gi-reviews-page {
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      margin-top: 0;
+      box-sizing: border-box;
+    }
+    .lp-gi-reviews-controls {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    @media (max-width: 900px) {
+      .lp-gi-reviews .lp-gi-reviews-page.testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .lp-gi-reviews .lp-gi-reviews-page.testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <script is:inline>
+    (function () {
+      var root = document.getElementById('lp-gi-reviews-carousel');
+      var track = document.getElementById('lp-gi-reviews-track');
+      var prev = document.getElementById('lp-gi-reviews-prev');
+      var next = document.getElementById('lp-gi-reviews-next');
+      if (!root || !track || !prev || !next) return;
+      var pages = track.querySelectorAll('.lp-gi-reviews-page');
+      var pageCount = pages.length;
+      if (pageCount < 2) {
+        prev.hidden = true;
+        next.hidden = true;
+        return;
+      }
+      var index = 0;
+      function render() {
+        track.style.transform = 'translateX(-' + index * 100 + '%)';
+        root.setAttribute('data-page', String(index));
+        prev.disabled = index === 0;
+        next.disabled = index >= pageCount - 1;
+      }
+      prev.addEventListener('click', function () {
+        index = Math.max(0, index - 1);
+        render();
+      });
+      next.addEventListener('click', function () {
+        index = Math.min(pageCount - 1, index + 1);
+        render();
+      });
+      var startX = null;
+      track.addEventListener(
+        'touchstart',
+        function (e) {
+          startX = e.changedTouches[0].clientX;
+        },
+        { passive: true },
+      );
+      track.addEventListener(
+        'touchend',
+        function (e) {
+          if (startX == null) return;
+          var dx = e.changedTouches[0].clientX - startX;
+          startX = null;
+          if (dx < -40) {
+            index = Math.min(pageCount - 1, index + 1);
+            render();
+          } else if (dx > 40) {
+            index = Math.max(0, index - 1);
+            render();
+          }
+        },
+        { passive: true },
+      );
+      render();
+    })();
+  </script>
+</BaseLayout>
