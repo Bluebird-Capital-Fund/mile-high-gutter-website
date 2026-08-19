@@ -49,13 +49,13 @@ export const gutterInstallationDenverCo = {
 <li>Gutter system upgrades</li>
 </ul>
 <p>Once your new system is installed, routine <a href="/products-services/gutter-cleaning-denver-co/">Denver gutter cleaning</a> helps keep water flowing properly and reduces debris buildup that can shorten the life of the gutters.</p>
-<p>Many property owners also choose <a href="/products-services/seamless-gutter-denver-co/">seamless gutters in Denver</a> because they reduce the number of joints where leaks commonly develop and provide a cleaner finished appearance.</p>`,
+<p>Many property owners also choose <a href="/products-services/seamless-gutter-denver-co/">seamless gutters in Denver</a>, including <a href="/products-services/steel-gutters-denver-co/">durable Denver steel gutters</a>, because they reduce the number of joints where leaks commonly develop and provide a cleaner, finished appearance.</p>`,
       showCta: true,
     },
     {
       heading: 'Why Hire a Professional Gutter Installation Contractor in Denver',
       body: `<p>A gutter system only performs as well as it is installed.</p>
-<p>Proper slope allows water to move efficiently toward the downspouts without standing inside the gutters. Secure fasteners help support the system through heavy snow, hail, strong winds, and seasonal temperature changes. Downspouts also need to be positioned where water can safely drain away from the foundation.</p>
+<p>Proper slope allows water to move efficiently toward the downspouts without standing inside the gutters. Secure fasteners help support the system through heavy snow, hail, strong winds, and seasonal temperature changes. <a href="/products-services/gutter-downspouts-denver-co/">Gutter downspouts in Denver, CO</a> also need to be positioned where water can safely drain away from the foundation.</p>
 <p>Small installation mistakes can create long-term drainage problems. Gutters that are installed too flat may hold water, while poor downspout placement can leave water pooling around the property.</p>
 <p>Professional installation ensures the entire drainage system works together to help protect your home or commercial building throughout Denver's changing weather.</p>`,
       showCta: false,
@@ -89,7 +89,7 @@ export const gutterInstallationDenverCo = {
 <li>Lifetime warranty options available*</li>
 <li>Financing available for qualifying projects</li>
 </ul>
-<p>To help protect your investment after installation, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional maintenance.</p>`,
+<p>To help protect your investment after installation, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive discounts on <a href="/products-services/gutter-maintenance-denver-co/">additional Denver gutter maintenance</a>.</p>`,
       showCta: true,
     },
   ],
