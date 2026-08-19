@@ -56,7 +56,7 @@ export const copperGuttersDenverCo = {
       heading: 'Why Professional Denver Copper Gutter Installation Matters',
       body: `<p>Copper is a premium material that deserves precise installation.</p>
 <p>Because copper expands and contracts with changing temperatures, every component must be carefully measured, fitted, and secured. Proper slope, downspout placement, and fastening methods all play an important role in how the system performs over time.</p>
-<p>Professional installation also helps preserve the appearance of the finished system. Clean lines, accurate fabrication, and properly aligned sections create a finished look that complements the property's architecture while providing dependable drainage through Denver's changing seasons.</p>
+<p>Professional <a href="/products-services/gutter-installation-denver-co/">gutter installation service in Denver</a> also helps maintain the appearance of the finished gutter system. Clean lines, accurate fabrication, and properly aligned sections create a finished look that complements the property's architecture while providing dependable drainage through Denver's changing seasons.</p>
 <p>The result is a gutter system built for both performance and lasting visual appeal.</p>`,
       showCta: false,
     },
@@ -89,7 +89,7 @@ export const copperGuttersDenverCo = {
 <li>Lifetime warranty options available*</li>
 <li>Financing available for qualifying projects</li>
 </ul>
-<p>To help protect your copper gutters in Denver after installation, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional maintenance.</p>`,
+<p>To help protect your copper gutters in Denver after installation, we also offer our Gutter Club Plan and Free Flow Plan, which include two <a href="/products-services/gutter-cleaning-denver-co/">professional Denver gutter cleaning services</a> each year, annual inspections, tune-ups, priority service, and exclusive discounts on <a href="/products-services/gutter-maintenance-denver-co/">preventative Denver gutter maintenance services</a>.</p>`,
       showCta: true,
     },
   ],
