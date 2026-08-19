@@ -43,19 +43,19 @@ export const gutterCleaningDenverCo = {
 <li>Removal of roof grit and shingle granules</li>
 <li>Cleaning for residential properties</li>
 <li>Cleaning for commercial buildings</li>
-<li>Seasonal gutter maintenance</li>
+<li><a href="/products-services/gutter-maintenance-denver-co/">Seasonal gutter maintenance in Denver</a></li>
 <li>Inspection of visible gutter conditions</li>
 <li>Debris removal from valleys where accessible</li>
 <li>Recommendations for ongoing maintenance</li>
 </ul>
 <p>During the cleaning, we also look for signs of loose fasteners, leaking joints, or damaged sections. If problems are found, we may recommend <a href="/products-services/gutter-repair-denver-co/">Denver gutter repair</a> before minor issues become larger drainage concerns.</p>
-<p>If your existing system is beyond repair or no longer handles runoff effectively, we can also discuss whether <a href="/products-services/gutter-installation-denver-co/">gutter installation in Denver</a> is the better long-term solution.</p>`,
+<p>If your existing system is beyond repair or no longer handles runoff effectively, we can also discuss whether <a href="/products-services/gutter-installation-denver-co/">gutter installation in Denver</a>, including <a href="/products-services/aluminum-gutters-denver-co/">aluminum gutters in Denver, CO</a>, is the better long-term solution for your home.</p>`,
       showCta: true,
     },
     {
       heading: 'Why Hire a Gutter Cleaning Company in Denver',
       body: `<p>Cleaning gutters involves more than removing visible debris.</p>
-<p>A professional service also checks whether water is flowing correctly through the entire drainage system. Downspouts may still be blocked even when the gutters appear clean, and hidden buildup can prevent water from draining properly during heavy storms.</p>
+<p>A professional service also checks whether water is flowing correctly through the entire drainage system. <a href="/products-services/gutter-downspouts-denver-co/">Denver downspouts</a> may still be blocked even when the gutters appear clean, and hidden buildup can prevent water from draining properly during heavy storms.</p>
 <p>Routine cleaning also allows small problems to be identified early. Loose hangers, separated joints, and minor leaks are much easier to address before they develop into more expensive repairs.</p>
 <p>Regular maintenance helps your gutters continue protecting your property through Denver's heavy spring rains, summer storms, fall debris, and winter snowmelt.</p>`,
       showCta: false,
