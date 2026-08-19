@@ -35,7 +35,7 @@ export const denverGutterGuardsCo = {
     },
     {
       heading: 'Denver Leaf Gutter Guard Services We Offer',
-      body: `<p>Choosing the right gutter protection in Denver depends on your roof, surrounding trees, and the type of debris your property collects. We recommend solutions that fit your gutter system instead of using a one-size-fits-all approach.</p>
+      body: `<p>Choosing the right gutter protection in Denver depends on your roof, surrounding trees, and the type of debris your property collects. We recommend <a href="/products-services/custom-gutters-denver-co/">Denver custom gutter solutions</a> that fit your system instead of using a one-size-fits-all approach.</p>
 <p>Our Denver gutter guard services may include:</p>
 <ul>
 <li>Residential gutter guard installation</li>
@@ -87,7 +87,7 @@ export const denverGutterGuardsCo = {
 <li>Lifetime warranty options available*</li>
 <li>Financing available for qualifying projects</li>
 </ul>
-<p>To help maximize the performance of your gutter guards, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional maintenance.</p>`,
+<p>To help maximize the performance of your gutter guards, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive discounts on <a href="/products-services/gutter-maintenance-denver-co/">preventative gutter maintenance in Denver</a>.</p>`,
       showCta: true,
     },
   ],
