@@ -54,7 +54,7 @@ export const steelGuttersDenverCo = {
     {
       heading: 'Why Professional Denver Steel Gutter Installation Matters',
       body: `<p>Steel gutters are known for their strength, but proper installation is just as important as the material itself. The gutter size, slope, fastening system, and downspout placement all work together to manage roof runoff efficiently. A poorly installed steel gutter system can still experience standing water, overflow, or unnecessary stress on the roof edge.</p>
-<p>Professional installation ensures every component is properly fitted to your property and designed to perform through Denver's heavy rain, spring snowmelt, hail, and winter weather.</p>
+<p>Professional installation ensures every component is properly fitted to your property and designed to perform through Denver's heavy rain, spring snowmelt, hail, and winter weather. Steel gutters are built to withstand demanding weather conditions, and many homeowners also choose <a href="/products-services/denver-gutter-guards-co/">Denver gutter covers</a> to help keep leaves, pine needles, and debris out of the system while reducing the need for frequent gutter cleaning.</p>
 <p>The result is a durable gutter system built to provide reliable drainage for years to come.</p>`,
       showCta: false,
     },
@@ -63,7 +63,7 @@ export const steelGuttersDenverCo = {
       body: `<p>Installing steel gutters should be straightforward from beginning to end.</p>
 <p><strong>1. Submit Your Request</strong><br/>Tell us about your property, drainage concerns, or the gutter system you're considering.</p>
 <p><strong>2. Schedule Your Estimate</strong><br/>Your request is assigned to a knowledgeable estimator who will contact you to coordinate a convenient time to assess the property.</p>
-<p><strong>3. Receive Your Estimate</strong><br/>We evaluate your roofline, drainage requirements, and project goals before recommending the right steel gutter solution. Most estimates are completed within one to two days after the assessment.</p>
+<p><strong>3. Receive Your Estimate</strong><br/>We evaluate your roofline, drainage requirements, and project goals before recommending the right steel gutter solution. If we find signs of rot or deterioration, we can recommend <a href="/products-services/denver-fascia-soffit-repair-co/">fascia and soffit repair in Denver, CO</a> before installing your new steel gutters. Most estimates are completed within one to two days after the assessment.</p>
 <p><strong>4. Approve the Work</strong><br/>Review the proposal and sign the contract whenever you're ready to move forward.</p>
 <p><strong>5. Order &amp; Schedule</strong><br/>We prepare the materials and schedule your installation.</p>
 <p><strong>6. Complete the Work</strong><br/>Our crew installs the steel gutter system, confirms proper drainage, and keeps you informed throughout the project.</p>`,
@@ -87,7 +87,8 @@ export const steelGuttersDenverCo = {
 <li>Lifetime warranty options available*</li>
 <li>Financing available for qualifying projects</li>
 </ul>
-<p>To help protect your investment after installation, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional maintenance.</p>`,
+<p>To help protect your investment after installation, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional maintenance.</p>
+<p>For properties with persistent drainage problems, we can also recommend a <a href="/products-services/french-drain-denver-co/">French drain in Denver, CO</a> to help move excess water farther away from the foundation and improve overall water management around your property.</p>`,
       showCta: true,
     },
   ],
