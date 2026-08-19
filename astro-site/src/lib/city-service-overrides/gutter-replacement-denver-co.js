@@ -48,14 +48,14 @@ export const gutterReplacementDenverCo = {
 <li>Custom color options to match your property</li>
 </ul>
 <p>If only one section has been damaged, we may recommend <a href="/products-services/gutter-repair-denver-co/">gutter repair in Denver, CO</a> instead of replacing the entire system. Our estimators explain your options honestly so you can make the decision that makes the most sense for your property.</p>
-<p>If winter ice buildup has contributed to repeated gutter damage, we can also discuss <a href="/products-services/snow-ice-solutions-heat-tape-denver-co/">Denver gutter heating systems</a>, where appropriate, to help reduce ice-related problems. If you're considering upgrading your gutter system instead of repairing it, we can also discuss whether <a href="/products-services/steel-gutters-denver-co/">Denver steel gutters</a> are the right fit for your property.</p>`,
+<p>If winter ice buildup has contributed to repeated gutter damage, we can also discuss <a href="/products-services/snow-ice-solutions-heat-tape-denver-co/">Denver gutter heating systems</a>, where appropriate, to help reduce ice-related problems. If you're considering upgrading your gutter system instead of repairing it, we can also discuss whether <a href="/products-services/steel-gutters-denver-co/">Denver steel gutters</a> or <a href="/products-services/copper-gutters-denver-co/">copper gutters in Denver, CO</a> are the right fit for your property.</p>`,
       showCta: true,
     },
     {
       heading: 'Why Hire a Gutter Replacement Contractor in Denver',
       body: `<p>Replacing gutters involves much more than installing new sections along the roof edge.</p>
-<p>The slope has to be correct so water flows efficiently toward the downspouts. Fasteners must securely support the system through heavy snow, strong winds, and sudden runoff. Downspouts also need to be properly placed so water moves away from the foundation instead of collecting near the building.</p>
-<p>DIY replacements or quick patch jobs often overlook these details. A gutter may appear straight but still hold water, overflow during storms, or place unnecessary stress on the fascia. Professional installation allows us to evaluate the entire drainage system instead of focusing on one visible problem. Our goal is to install a system that manages water efficiently and helps protect your property for years to come.</p>`,
+<p>The slope has to be correct so water flows efficiently toward the downspouts. Fasteners must securely support the system through heavy snow, strong winds, and sudden runoff. <a href="/products-services/gutter-downspouts-denver-co/">Downspouts in Denver</a> also need to be properly placed so water moves away from the foundation instead of collecting near the building.</p>
+<p>DIY replacements or quick patch jobs often overlook these details. A gutter may appear straight but still hold water, overflow during storms, or place unnecessary stress on the fascia. <a href="/products-services/gutter-installation-denver-co/">Professional gutter installation in Denver</a> allows us to evaluate the entire drainage system instead of focusing on one visible problem. Our goal is to install a system that manages water efficiently and helps protect your property for years to come.</p>`,
       showCta: false,
     },
     {

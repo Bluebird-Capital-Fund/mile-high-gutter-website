@@ -49,13 +49,13 @@ export const gutterRepairDenverCo = {
 <li>Commercial and residential gutter repairs</li>
 </ul>
 <p>If we find that the gutter system has widespread deterioration or multiple failing sections, we may recommend <a href="/products-services/gutter-replacement-denver-co/">Denver gutter replacement</a> as the better long-term solution. Our goal is always to recommend the repair that makes the most sense for your property.</p>
-<p>Keeping your gutters maintained after repairs is just as important. Regular <a href="/products-services/gutter-cleaning-denver-co/">gutter cleaning in Denver</a> helps prevent debris buildup that can lead to future leaks, overflow, and unnecessary strain on the system.</p>`,
+<p><a href="/products-services/gutter-maintenance-denver-co/">Routine gutter maintenance in Denver</a> after repairs is just as important. Regular <a href="/products-services/gutter-cleaning-denver-co/">gutter cleaning in Denver</a> helps prevent debris buildup that can lead to future leaks, overflow, and unnecessary strain on the system.</p>`,
       showCta: true,
     },
     {
       heading: 'Why Hire a Gutter Repair Company in Denver',
       body: `<p>A leaking gutter is often only part of the problem.</p>
-<p>Water may be escaping because the gutter has shifted, the slope has changed, the fasteners have loosened, or a downspout is no longer carrying water away efficiently. Simply sealing a leak without correcting the underlying issue usually provides only temporary results.</p>
+<p>Water may be escaping because the gutter has shifted, the slope has changed, the fasteners have loosened, or a <a href="/products-services/gutter-downspouts-denver-co/">Denver downspout</a> is no longer carrying water away efficiently. Simply sealing a leak without correcting the underlying issue usually provides only temporary results.</p>
 <p>Professional repairs focus on how the entire drainage system works together. We inspect the gutters, downspouts, attachment points, and water flow before recommending repairs.</p>
 <p>By correcting the cause instead of just the symptom, your gutter system can continue protecting your property through Denver's changing weather.</p>`,
       showCta: false,
