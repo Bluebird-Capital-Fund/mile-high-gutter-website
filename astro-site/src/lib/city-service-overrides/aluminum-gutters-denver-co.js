@@ -48,7 +48,7 @@ export const aluminumGuttersDenverCo = {
 <li>On-site measuring and fabrication</li>
 <li>A variety of color options to complement your property</li>
 </ul>
-<p>For homeowners or businesses looking for a premium architectural finish, we also install <a href="/products-services/copper-gutters-denver-co/">Denver copper gutters</a> designed to provide long-lasting performance and timeless curb appeal.</p>
+<p>For homeowners or businesses looking for a premium architectural finish, we also install <a href="/products-services/copper-gutters-denver-co/">Denver copper gutters</a> designed to provide long-lasting performance and timeless curb appeal. Many customers choose <a href="/products-services/seamless-gutter-denver-co/">seamless gutters in Denver, CO</a> because they create a cleaner appearance while reducing the number of joints where leaks can develop.</p>
 <p>If your property requires a heavier-duty material for specific applications, we also offer <a href="/products-services/steel-gutters-denver-co/">steel gutters in Denver</a> as another durable gutter solution.</p>`,
       showCta: true,
     },
@@ -56,7 +56,7 @@ export const aluminumGuttersDenverCo = {
       heading: 'Why Professional Denver Aluminum Gutter Installation Matters',
       body: `<p>Aluminum gutters perform best when they are properly sized and professionally installed.</p>
 <p>The correct slope, secure fasteners, and properly positioned downspouts all contribute to how efficiently the system moves water away from your property. Even high-quality gutters can experience drainage problems if they are not installed correctly.</p>
-<p>Professional installation also ensures each gutter section is custom measured for your roofline, creating a cleaner appearance and reducing unnecessary joints where leaks may eventually develop.</p>
+<p>Whether you need <a href="/products-services/residential-gutters-denver-co/">residential gutters in Denver</a> or <a href="/products-services/commercial-gutters-denver-co/">commercial gutters in Denver, CO</a>, professional installation ensures each gutter section is custom measured for your roofline, creating a cleaner appearance and reducing unnecessary joints where leaks may eventually develop.</p>
 <p>The result is a dependable gutter system designed to perform through Denver's heavy rain, snowmelt, hail, and changing seasons.</p>`,
       showCta: false,
     },
