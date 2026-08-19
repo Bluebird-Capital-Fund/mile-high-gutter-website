@@ -88,7 +88,7 @@ export const gutterDownspoutsDenverCo = {
 <li>Lifetime warranty options available*</li>
 <li>Financing available for qualifying projects</li>
 </ul>
-<p>To help keep your entire drainage system performing properly, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional maintenance.</p>`,
+<p>To help keep your entire drainage system performing properly, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional <a href="/products-services/gutter-cleaning-denver-co/">Denver gutter cleanings</a> each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional <a href="/products-services/gutter-maintenance-denver-co/">gutter maintenance services in Denver</a>.</p>`,
       showCta: true,
     },
   ],
