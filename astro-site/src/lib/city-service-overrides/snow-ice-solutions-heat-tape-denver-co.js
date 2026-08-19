@@ -87,7 +87,7 @@ export const snowIceSolutionsHeatTapeDenverCo = {
 <li>Lifetime warranty options available*</li>
 <li>Financing available for qualifying projects</li>
 </ul>
-<p>To help your gutter system perform year-round, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional maintenance.</p>`,
+<p>To help your gutter system perform year-round, we also offer our Gutter Club Plan and Free Flow Plan, which include two <a href="/products-services/gutter-cleaning-denver-co/">professional gutter cleaning services in Denver</a> each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional <a href="/products-services/gutter-maintenance-denver-co/">gutter maintenance services in Denver, CO</a>.</p>`,
       showCta: true,
     },
   ],
