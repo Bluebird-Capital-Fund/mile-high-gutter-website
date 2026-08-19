@@ -44,9 +44,9 @@ export const residentialGuttersDenverCo = {
 <li>Residential Gutter Replacement</li>
 <li>Residential Gutter Guard Installation</li>
 <li>Downspout Installation &amp; Repair</li>
-<li>Fascia &amp; Soffit Repair</li>
-<li>Snow Guard Installation</li>
-<li>Heat Tape Installation</li>
+<li><a href="/products-services/denver-fascia-soffit-repair-co/">Denver Fascia &amp; Soffit Repair</a></li>
+<li><a href="/products-services/gutter-snow-guard-denver-co/">Denver Snow Guard Installation</a></li>
+<li><a href="/products-services/snow-ice-solutions-heat-tape-denver-co/">Denver Heat Tape Installation</a></li>
 <li>Residential Drainage Improvements</li>
 </ul>
 <p>Some homes also benefit from a <a href="/products-services/french-drain-denver-co/">Denver French drain</a> when roof runoff continues to collect near the foundation after leaving the gutter system.</p>
