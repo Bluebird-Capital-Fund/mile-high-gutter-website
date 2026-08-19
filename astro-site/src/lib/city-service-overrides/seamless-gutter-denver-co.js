@@ -43,7 +43,7 @@ export const seamlessGutterDenverCo = {
 <li>Custom on-site fabrication</li>
 <li>Seamless gutter replacement</li>
 <li>Downspout installation</li>
-<li>Custom color options</li>
+<li><a href="/products-services/custom-gutters-denver-co/">Denver custom gutter options</a></li>
 <li>Gutter sizing recommendations</li>
 <li>Drainage improvements</li>
 <li>Removal of existing sectional gutters</li>
@@ -89,7 +89,7 @@ export const seamlessGutterDenverCo = {
 <li>Lifetime warranty options available*</li>
 <li>Financing available for qualifying projects</li>
 </ul>
-<p>To help protect your investment after installation, we also offer our Gutter Club Plan and Free Flow Plan, which include two professional cleanings each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional maintenance.</p>`,
+<p>To help protect your investment after installation, we also offer our Gutter Club Plan and Free Flow Plan, which include two <a href="/products-services/gutter-cleaning-denver-co/">professional Denver gutter cleanings</a> each year, annual inspections, tune-ups, priority service, and exclusive discounts on additional maintenance.</p>`,
       showCta: true,
     },
   ],

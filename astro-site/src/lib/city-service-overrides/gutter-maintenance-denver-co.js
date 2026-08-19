@@ -38,7 +38,7 @@ export const gutterMaintenanceDenverCo = {
       body: `<p>Routine maintenance is one of the best ways to extend the life of your gutter system and help it perform reliably through every season.</p>
 <p>Our Denver gutter maintenance services may include:</p>
 <ul>
-<li>Gutter cleaning and debris removal</li>
+<li><a href="/products-services/gutter-cleaning-denver-co/">Thorough Denver gutter cleaning</a> and debris removal</li>
 <li>Downspout flushing</li>
 <li>Inspection of visible gutter components</li>
 <li>Tightening loose fasteners where needed</li>
@@ -126,7 +126,7 @@ export const gutterMaintenanceDenverCo = {
   },
   midCta: {
     headline: 'Book a Free Consultation in Denver, Colorado',
-    body: `<p>Routine maintenance is one of the simplest ways to help prevent overflowing gutters, drainage problems, fascia damage, and unnecessary repairs. Waiting until problems become visible often means more work is needed to restore the system.</p>
+    body: `<p>Routine maintenance is one of the simplest ways to help prevent overflowing gutters, drainage problems, fascia damage, and unnecessary <a href="/products-services/gutter-repair-denver-co/">gutter repairs in Denver, CO</a>. Waiting until problems become visible often means more work is needed to restore the system.</p>
 <p>As a <a href="/">Denver gutter company</a>, Mile High Gutter provides professional gutter maintenance in Denver with honest recommendations and dependable service built for Colorado's changing weather.</p>`,
   },
   reviewsHeadline: 'What Our Denver Customers Say',
