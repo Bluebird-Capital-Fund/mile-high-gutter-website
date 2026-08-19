@@ -56,16 +56,6 @@
       "permanent": true
     },
     {
-      "source": "/lp/gutter-replacement",
-      "destination": "/lp/gutters/",
-      "permanent": true
-    },
-    {
-      "source": "/lp/gutter-replacement/",
-      "destination": "/lp/gutters/",
-      "permanent": true
-    },
-    {
       "source": "/products-services/seamless-gutters-denver-co",
       "destination": "/products-services/seamless-gutter-denver-co/",
       "permanent": true
