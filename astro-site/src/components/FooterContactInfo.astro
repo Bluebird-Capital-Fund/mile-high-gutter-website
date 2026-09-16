@@ -1,6 +1,6 @@
 ---
 /**
- * Phone / email / address rows with small cyan icons (matches .footer-social accent).
+ * Phone / address rows with small cyan icons (matches .footer-social accent).
  * - estimate: light “Get estimate” column above the form
  * - footer-column: dark footer “Contact Info” column (matches root index.html)
  */
@@ -8,13 +8,13 @@ interface Props {
   variant: 'estimate' | 'footer-column'
   phoneTel: string
   phoneDisplay: string
-  email: string
+  email?: string
   address: string
   /** Site settings → Business listings → Google Maps (opens in new tab for address) */
   addressHref?: string
 }
 
-const { variant, phoneTel, phoneDisplay, email, address, addressHref: addressHrefProp } = Astro.props
+const { variant, phoneTel, phoneDisplay, address, addressHref: addressHrefProp } = Astro.props
 const tel = String(phoneTel || '').replace(/\s/g, '')
 const addressHref = typeof addressHrefProp === 'string' && addressHrefProp.trim() ? addressHrefProp.trim() : ''
 const addressLinkLabel = 'Open address in Google Maps (opens in a new tab)'
@@ -32,17 +32,6 @@ const addressLinkLabel = 'Open address in Google Maps (opens in a new tab)'
         </svg>
       </span>
       <span>{phoneDisplay}</span>
-    </a>
-    <a class="contact-detail-line" href={`mailto:${email}`}>
-      <span class="footer-item-icon" aria-hidden="true">
-        <svg class="footer-item-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
-            fill="currentColor"
-          />
-        </svg>
-      </span>
-      <span>{email}</span>
     </a>
     {addressHref ? (
       <a
@@ -88,17 +77,6 @@ const addressLinkLabel = 'Open address in Google Maps (opens in a new tab)'
         </svg>
       </span>
       <span>{phoneDisplay}</span>
-    </a>
-    <a href={`mailto:${email}`} class="footer-contact-item">
-      <span class="footer-item-icon" aria-hidden="true">
-        <svg class="footer-item-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
-            fill="currentColor"
-          />
-        </svg>
-      </span>
-      <span>{email}</span>
     </a>
     {addressHref ? (
       <a

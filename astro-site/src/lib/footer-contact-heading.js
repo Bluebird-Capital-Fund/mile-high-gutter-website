@@ -1,4 +1,4 @@
-/** True when a Sanity footer column heading should show phone / email / address rows. */
+/** True when a Sanity footer column heading should show phone / address rows. */
 export function isContactFooterColumnHeading(heading) {
   const h = String(heading || '').toLowerCase()
   return h.includes('contact') || h.includes('get in touch') || /\breach us\b/.test(h)
