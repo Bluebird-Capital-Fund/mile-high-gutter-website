@@ -94,10 +94,10 @@
   "businessListings": {
     "googleMaps": "https://maps.app.goo.gl/bbaPvDTVzQnZ1FEy9",
     "bingPlaces": "https://www.bing.com/maps/search?style=r&q=Mile+High+Gutter+LLC%2C+3300+S+Federal+Blvd%2C+Englewood%2C+CO+80110%2C+United+States&ss=id.local_ypid%3A%22YN3F6C0898A0D904F8%22&st=Mile+High+Gutter+LLC&sfa=3300+S+Federal+Blvd%2C+Englewood%2C+CO+80110%2C+United+States&cp=39.656628%7E-105.024681&lvl=16",
-    "facebook": "https://www.facebook.com/milehighgutter/",
-    "instagram": "https://www.instagram.com/milehighgutterllc/",
+    "facebook": "https://www.facebook.com/milehighgutterdenver/",
+    "instagram": "https://www.instagram.com/milehighgutterdenver/",
     "twitter": "https://x.com/milehighgutter1",
-    "linkedin": "https://www.linkedin.com/in/mile-high-gutter-620475222",
+    "linkedin": "https://www.linkedin.com/company/mile-high-gutter-roofing/",
     "yelp": "https://www.yelp.com/biz/mile-high-gutter-englewood-2"
   },
   "header": {
@@ -539,12 +539,12 @@
     "socialLinks": [
       {
         "platform": "Facebook",
-        "href": "https://www.facebook.com/milehighgutter/",
+        "href": "https://www.facebook.com/milehighgutterdenver/",
         "ariaLabel": "Mile High Gutter Denver on Facebook"
       },
       {
         "platform": "Instagram",
-        "href": "https://www.instagram.com/milehighgutterllc/",
+        "href": "https://www.instagram.com/milehighgutterdenver/",
         "ariaLabel": "Mile High Gutter Denver on Instagram"
       },
       {
@@ -559,7 +559,7 @@
       },
       {
         "platform": "LinkedIn",
-        "href": "https://www.linkedin.com/in/mile-high-gutter-620475222",
+        "href": "https://www.linkedin.com/company/mile-high-gutter-roofing/",
         "ariaLabel": "Mile High Gutter Denver on LinkedIn"
       },
       {
