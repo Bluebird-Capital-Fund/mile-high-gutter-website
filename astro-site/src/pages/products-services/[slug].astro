@@ -522,7 +522,9 @@ const serviceHref = (svc) => {
       <ServiceAreaBlock
         id="city-map"
         eyebrow={asStr(serviceArea?.eyebrow) || 'Service Area'}
-        headline="Rain Gutters in the Denver Metro Area"
+        headline={asStr(pageOverride?.serviceAreaHeadline) || 'Rain Gutters in the Denver Metro Area'}
+        intro={asStr(pageOverride?.serviceAreaIntro) || undefined}
+        citiesAriaLabel={asStr(pageOverride?.serviceAreaCitiesAriaLabel) || undefined}
         mapEmbedUrl={mapEmbedUrl}
         mapTitle={`${companyName} service area map`}
         citiesLabel={asStr(serviceArea?.citiesLabel) || 'Cities We Serve'}

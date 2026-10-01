@@ -12,7 +12,11 @@ export const roofingReplacementDenverCo = {
   heroImageSrc:
     'Media (MHG)/Images (Mile High)/mile-high-gutters-denver-co-aerial-drone-view-complete-roof-gutter-system-installation.webp',
   hideServicesGrid: true,
-  showServiceAreaCities: false,
+  showServiceAreaCities: true,
+  serviceAreaHeadline: 'Roofing in the Denver Metro Area',
+  serviceAreaIntro:
+    'We serve residential and commercial properties throughout the Denver metro, including roofing in Colorado Springs, Fort Collins, Boulder, Centennial, Thornton, Littleton, Arvada, Highlands Ranch, Castle Rock, Broomfield, Lafayette, Brighton, Westminster, Englewood, Aurora, and Lakewood.',
+  serviceAreaCitiesAriaLabel: 'Service areas by city',
   contentSections: [
     {
       heading: 'Signs You Need Roofing Replacement in Denver',
