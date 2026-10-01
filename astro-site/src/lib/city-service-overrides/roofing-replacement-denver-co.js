@@ -82,7 +82,7 @@ export const roofingReplacementDenverCo = {
     },
     {
       heading: 'Why Choose Mile High Gutter?',
-      body: `<p>With decades of experience serving the Denver metro, Mile High Gutters combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
+      body: `<p>With decades of experience serving the Denver metro, Mile High Gutter combines honest recommendations, knowledgeable service, and quality workmanship to help protect your property for the long term.</p>
 <ul>
 <li>Over 10,000 completed exterior improvement projects</li>
 <li>4.8-star rating from more than 200 Google reviews</li>

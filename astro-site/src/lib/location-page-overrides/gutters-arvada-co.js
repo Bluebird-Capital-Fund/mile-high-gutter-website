@@ -2,7 +2,7 @@
 
 export const guttersArvadaCo = {
   slug: 'gutters-arvada-co',
-  pageTitle: 'Gutters in Arvada | Book a Free Consultation | Mile High Gutters',
+  pageTitle: 'Gutters in Arvada | Book a Free Consultation | Mile High Gutter',
   pageDescription:
     'Looking for gutters in Arvada? We install custom-fit gutter systems built for Colorado weather. Book a free consultation today.',
   eyebrow: 'Gutters in Arvada',

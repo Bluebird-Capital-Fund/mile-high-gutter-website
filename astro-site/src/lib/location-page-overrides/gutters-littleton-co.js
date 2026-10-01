@@ -2,7 +2,7 @@
 
 export const guttersLittletonCo = {
   slug: 'gutters-littleton-co',
-  pageTitle: 'Gutters in Littleton | Book Free Consultation | Mile High Gutters',
+  pageTitle: 'Gutters in Littleton | Book Free Consultation | Mile High Gutter',
   pageDescription:
     'Looking for gutters in Littleton? We install custom-fit gutter systems built for Colorado weather. Book a free consultation today.',
   eyebrow: 'Gutters in Littleton',

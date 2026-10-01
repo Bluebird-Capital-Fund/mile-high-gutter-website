@@ -2,7 +2,7 @@
 
 export const guttersThorntonCo = {
   slug: 'gutters-thornton-co',
-  pageTitle: 'Gutters in Thornton, CO | Book Consultation | Mile High Gutters',
+  pageTitle: 'Gutters in Thornton, CO | Book Consultation | Mile High Gutter',
   pageDescription:
     'Looking for gutters in Thornton, CO? We install custom-fit gutter systems built for Colorado weather. Book a free consultation.',
   eyebrow: 'Gutters in Thornton, CO',
