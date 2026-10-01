@@ -77,9 +77,9 @@ const FOOTER_SERVICE_LINKS = [
 const ROOFING_NAV_ITEM = {
   label: 'Roofing',
   dropdown: [
-    { label: 'Roofing Replacement', href: '/products-services/roofing-replacement-denver-co/' },
+    { label: 'Roof Replacement', href: '/products-services/roofing-replacement-denver-co/' },
     { label: 'Roof Repair', href: '/products-services/denver-roof-repair-co/' },
-    { label: 'Roofing Installation', href: '/products-services/roofing-installation-denver-co/' },
+    { label: 'Roof Installation', href: '/products-services/roofing-installation-denver-co/' },
   ],
 }
 
