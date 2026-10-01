@@ -54,8 +54,8 @@ export const roofingReplacementDenverCo = {
 <li>Roof replacement for aging systems</li>
 <li>Complete roof system upgrades</li>
 </ul>
-<p>If your roof damage is isolated to one area, we may recommend Denver roof repair instead of replacing the entire roof. Our estimators explain your options honestly so you can choose the solution that makes the most sense for your property.</p>
-<p>If your roof has reached the end of its service life or you're building a new structure, we also provide roofing installation Denver, CO with systems designed for Colorado's climate.</p>`,
+<p>If your roof damage is isolated to one area, we may recommend <a href="/products-services/denver-roof-repair-co/">Denver roof repair</a> instead of replacing the entire roof. Our estimators explain your options honestly so you can choose the solution that makes the most sense for your property.</p>
+<p>If your roof has reached the end of its service life or you're building a new structure, we also provide <a href="/products-services/roofing-installation-denver-co/">roofing in installation Denver, CO</a> with systems designed for Colorado's climate.</p>`,
       showCta: true,
     },
     {
