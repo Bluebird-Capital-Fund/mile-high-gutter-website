@@ -97,7 +97,10 @@ const universalFormAriaLabel = asStr(formsCfg?.formAriaLabel) || 'City service l
 const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
 const universalFormHeading = asStr(footerEstimate?.headline) || 'Get Started Today'
 const universalFormIntro = asStr(footerEstimate?.intro) || 'Short placeholder form for layout testing.'
-const heroBgSrc = asStr(cityPage?.layoutBackgrounds?.hero?.imageSrc) || heroBackgroundFor(`service-${slug}`)
+const heroBgSrc =
+  asStr(pageOverride?.heroImageSrc) ||
+  asStr(cityPage?.layoutBackgrounds?.hero?.imageSrc) ||
+  heroBackgroundFor(`service-${slug}`)
 const servicesBgSrc = asStr(cityPage?.layoutBackgrounds?.services?.imageSrc)
 const heroBgStyle = heroBgSrc
   ? `background-image: linear-gradient(135deg, rgba(56, 69, 85, 0.88) 0%, rgba(56, 69, 85, 0.84) 50%, rgba(56, 69, 85, 0.88) 100%), url("${mediaUrl(heroBgSrc)}"); background-size: cover; background-position: center; background-repeat: no-repeat;`
