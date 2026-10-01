@@ -91,7 +91,7 @@ export const denverRoofRepairCo = {
 <li>Residential and commercial roofing expertise</li>
 <li>Clear communication from estimate through completion</li>
 <li>Lifetime warranty options available*</li>
-<li>Flexible financing available**</li>
+<li>Flexible financing available</li>
 </ul>
 <p>We believe in repairing roofs whenever it's the practical long-term solution, helping homeowners and businesses protect their investment without recommending unnecessary work.</p>`,
       showCta: true,

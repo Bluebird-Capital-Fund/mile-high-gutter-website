@@ -93,7 +93,7 @@ export const roofingReplacementDenverCo = {
 <li>Residential and commercial roofing expertise</li>
 <li>Clear communication from estimate through completion</li>
 <li>Lifetime warranty options available*</li>
-<li>Flexible financing available**</li>
+<li>Flexible financing available</li>
 </ul>
 <p>We also provide ongoing exterior maintenance recommendations to help homeowners and businesses protect their investment and extend the life of their roofing system.</p>`,
       showCta: true,

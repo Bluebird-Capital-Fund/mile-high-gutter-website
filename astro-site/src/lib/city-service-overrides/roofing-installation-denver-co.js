@@ -90,7 +90,7 @@ export const roofingInstallationDenverCo = {
 <li>Residential and commercial roofing expertise</li>
 <li>Clear communication from estimate through completion</li>
 <li>Lifetime warranty options available*</li>
-<li>Flexible financing available**</li>
+<li>Flexible financing available</li>
 </ul>
 <p>Our goal is to install roofing systems that provide dependable protection, long-term value, and lasting performance for homes and commercial properties throughout the Denver metro area.</p>`,
       showCta: true,
