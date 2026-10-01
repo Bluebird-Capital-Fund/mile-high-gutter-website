@@ -1,29 +1,29 @@
 export const SERVICES_PAGE_H1 = 'Mile High Gutter'
 
 export const SERVICES_PAGE_HERO_LEAD =
-  'Mile High Gutter provides professional gutter services for residential and commercial properties throughout the Denver metro area. Since 1984, our family-owned company has specialized in seamless gutter installation, repair, replacement, cleaning, maintenance, gutter guards, and downspouts. Every system is tailored to your property with quality materials, skilled workmanship, and honest recommendations to provide reliable, long-lasting protection.'
+  'Mile High Gutter provides professional gutter and roofing services for residential and commercial properties throughout the Denver metro area. Since 1984, our family-owned company has specialized in seamless gutter installation, repair, replacement, cleaning, maintenance, gutter guards, and downspouts, along with roof replacement, roof repair, and roof installation. Every project is tailored to your property with quality materials, skilled workmanship, and honest recommendations to provide reliable, long-lasting protection.'
 
 export const SERVICES_PAGE_BODY =
-  "Colorado's changing weather can put any gutter system to the test. At Mile High Gutter, we provide solutions designed to handle heavy rain, snow, ice, and seasonal debris while helping protect your property from water damage. With honest recommendations, quality workmanship, and clear communication, we've been a trusted choice across the Denver metro area since 1984."
+  "Colorado's changing weather can put any roof and gutter system to the test. At Mile High Gutter, we provide gutter and roofing solutions designed to handle heavy rain, hail, snow, ice, and seasonal debris while helping protect your property from water damage. With honest recommendations, quality workmanship, and clear communication, we've been a trusted choice across the Denver metro area since 1984."
 
 export const SERVICES_PAGE_NOT_SURE_HEADING = 'Not Sure Which Service You Need?'
 
 export const SERVICES_PAGE_NOT_SURE_BODY =
-  "Every property is different, and the right solution depends on your gutter system, roof, drainage, and the condition of your home. Our experienced estimators take the time to inspect your property, answer your questions, and recommend only the services that make sense for your needs. If you're not sure where to start, contact Mile High Gutter to book your consultation."
+  "Every property is different, and the right solution depends on your roof, gutter system, drainage, and the condition of your home. Our experienced estimators take the time to inspect your property, answer your questions, and recommend only the gutter or roofing services that make sense for your needs. If you're not sure where to start, contact Mile High Gutter to book your consultation."
 
 export const SERVICES_PAGE_WHY_HEADING = 'Why Choose Mile High Gutter'
 
 export const SERVICES_PAGE_WHY_INTRO =
-  'Since 1984, Mile High Gutter has helped homeowners and businesses across the Denver metro area protect their properties with quality gutter solutions built to last.'
+  'Since 1984, Mile High Gutter has helped homeowners and businesses across the Denver metro area protect their properties with quality gutter and roofing solutions built to last.'
 
 export const SERVICES_PAGE_WHY_POINTS = [
-  'Over 10,000 completed gutter projects',
+  'Over 10,000 completed projects',
   '4.8-star rating from more than 200 Google reviews',
   'More than 42 years serving the Denver Metro Area',
   'Honest recommendations without sales pressure',
   'Experienced estimators who focus on education first',
   'Professional workmanship built for Colorado weather',
-  'Residential and commercial gutter expertise',
+  'Residential and commercial gutter and roofing expertise',
   'Clear communication from estimate through completion',
   'Lifetime warranty options available*',
   'Financing available for qualifying projects',
@@ -72,6 +72,14 @@ export const SERVICES_HUB_GROUPS = [
     links: [
       { label: 'Downspouts', href: '/products-services/gutter-downspouts-denver-co/' },
       { label: 'French Drain', href: '/products-services/french-drain-denver-co/' },
+    ],
+  },
+  {
+    title: 'Roofing Services',
+    links: [
+      { label: 'Roof Replacement', href: '/products-services/roofing-replacement-denver-co/' },
+      { label: 'Roof Repair', href: '/products-services/denver-roof-repair-co/' },
+      { label: 'Roof Installation', href: '/products-services/roofing-installation-denver-co/' },
     ],
   },
 ]

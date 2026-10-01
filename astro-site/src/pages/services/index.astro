@@ -47,7 +47,7 @@ const footerColumns = settings?.footerColumns ?? homePage?.footerColumns ?? []
 const footerSupport = settings?.footerSupport ?? homePage?.footerSupport ?? {}
 const serviceArea = {
   ...(homePage?.serviceArea ?? {}),
-  headline: 'Rain Gutters in the Denver Metro Area',
+  headline: 'Gutters and Roofing in the Denver Metro Area',
 }
 
 const companyName = asStr(business.companyName) || 'Mile High Gutter'
@@ -83,7 +83,7 @@ const mapIframeTitle =
   applyTemplate(asStr(serviceArea?.mapIframeTitleTemplate), { companyName }) || `${companyName} service area map`
 const estimateCtaText = 'Book a Consultation'
 const estimateCtaHref = '#contact'
-const pageTitle = 'Gutter Services in Denver | Mile High Gutter'
+const pageTitle = 'Gutter & Roofing Services in Denver | Mile High Gutter'
 const pageDescription = SERVICES_PAGE_HERO_LEAD
 const canonicalHref = 'https://www.milehighgutter.com/services/'
 ---
@@ -167,7 +167,7 @@ const canonicalHref = 'https://www.milehighgutter.com/services/'
       <div class="hero-bg" style={heroBgStyle}></div>
       <div class="container hero-split-inner">
         <div class="hero-copy">
-          <div class="hero-eyebrow">Gutter Services</div>
+          <div class="hero-eyebrow">Gutter & Roofing Services</div>
           <h1>{SERVICES_PAGE_H1}</h1>
           <p class="hero-lead">{SERVICES_PAGE_HERO_LEAD}</p>
           <div class="hero-actions">
@@ -268,7 +268,7 @@ const canonicalHref = 'https://www.milehighgutter.com/services/'
                   </div>
                 </div>
               </section>
-              {idx === 0 ? (
+              {idx === 0 || group.title === 'Gutter Materials' ? (
                 <div class="why-choose-actions services-hub-ctas">
                   <a href={`tel:${phoneTel}`} class="btn btn-primary btn-lg">{heroCallLabel}</a>
                   <a href={estimateCtaHref} class="btn btn-outline btn-lg request-estimate">{estimateCtaText}</a>
