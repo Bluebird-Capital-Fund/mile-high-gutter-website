@@ -54,7 +54,7 @@ export const denverRoofRepairCo = {
 <li>Commercial roof repair</li>
 </ul>
 <p>If your roof has extensive damage or has reached the end of its service life, we may recommend <a href="/products-services/roofing-replacement-denver-co/">roofing replacement in Denver</a> instead of continued repairs. Our estimators explain your options so you can make an informed decision.</p>
-<p>If you're building a new home or commercial property, we also provide Denver roofing installation with roofing systems designed for Colorado's climate and your property's specific needs.</p>`,
+<p>If you're building a new home or commercial property, we also provide <a href="/products-services/roofing-installation-denver-co/">Denver roofing installation</a> with roofing systems designed for Colorado's climate and your property's specific needs.</p>`,
       showCta: true,
     },
     {
