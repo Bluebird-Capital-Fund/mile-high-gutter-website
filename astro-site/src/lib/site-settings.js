@@ -53,7 +53,7 @@ function normalizeAboutHref(label, href) {
 }
 
 const SERVICES_NAV_ITEM = {
-  label: 'Services',
+  label: 'Gutters',
   dropdown: [
     { label: 'Gutter Cleaning', href: '/products-services/gutter-cleaning-denver-co/' },
     { label: 'Gutter Installation', href: '/products-services/gutter-installation-denver-co/' },
@@ -73,6 +73,15 @@ const FOOTER_SERVICE_LINKS = [
   { label: 'Downspouts', href: '/products-services/gutter-downspouts-denver-co/' },
   { label: 'Heat Tape', href: '/products-services/snow-ice-solutions-heat-tape-denver-co/' },
 ]
+
+const ROOFING_NAV_ITEM = {
+  label: 'Roofing',
+  dropdown: [
+    { label: 'Roofing Replacement', href: '/products-services/roofing-replacement-denver-co/' },
+    { label: 'Roof Repair', href: '/products-services/denver-roof-repair-co/' },
+    { label: 'Roofing Installation', href: '/products-services/roofing-installation-denver-co/' },
+  ],
+}
 
 const MATERIALS_NAV_ITEM = {
   label: 'Materials',
@@ -102,9 +111,28 @@ function ensureLabeledNavItem(navItems, item, insertAfterLabel) {
             nav.label.trim().toLowerCase() === insertAfterLabel.trim().toLowerCase(),
         )
       : -1
-  const insertAt = afterIdx >= 0 ? afterIdx + 1 : label === 'services' ? 0 : Math.min(1, navItems.length)
+  const insertAt = afterIdx >= 0 ? afterIdx + 1 : label === 'gutters' ? 0 : Math.min(1, navItems.length)
   const next = navItems.slice()
   next.splice(insertAt, 0, item)
+  return next
+}
+
+const isLabel = (item, label) =>
+  typeof item?.label === 'string' && item.label.trim().toLowerCase() === label
+
+function moveReviewsIntoAbout(navItems) {
+  const reviewsIdx = navItems.findIndex((nav) => isLabel(nav, 'reviews') && !Array.isArray(nav?.dropdown))
+  const aboutIdx = navItems.findIndex((nav) => isLabel(nav, 'about us') && Array.isArray(nav?.dropdown))
+  if (reviewsIdx < 0 || aboutIdx < 0) return navItems
+  const reviews = { label: 'Reviews', href: '/reviews/' }
+  const next = navItems.map((nav, i) => {
+    if (i !== aboutIdx || nav.dropdown.some((link) => isLabel(link, 'reviews'))) return nav
+    const dropdown = nav.dropdown.slice()
+    const afterAbout = dropdown.findIndex((link) => isLabel(link, 'about us'))
+    dropdown.splice(afterAbout + 1, 0, reviews)
+    return { ...nav, dropdown }
+  })
+  next.splice(reviewsIdx, 1)
   return next
 }
 
@@ -130,9 +158,14 @@ function normalizeHeader(header) {
           : item?.dropdown,
       }))
     : header.navItems
-  const navItems = Array.isArray(mapped)
-    ? ensureLabeledNavItem(ensureLabeledNavItem(mapped, SERVICES_NAV_ITEM, null), MATERIALS_NAV_ITEM, 'Services')
-    : mapped
+  let navItems = mapped
+  if (Array.isArray(navItems)) {
+    navItems = navItems.map((nav) => (isLabel(nav, 'services') ? { ...nav, label: 'Gutters' } : nav))
+    navItems = ensureLabeledNavItem(navItems, SERVICES_NAV_ITEM, null)
+    navItems = ensureLabeledNavItem(navItems, ROOFING_NAV_ITEM, 'Gutters')
+    navItems = ensureLabeledNavItem(navItems, MATERIALS_NAV_ITEM, 'Roofing')
+    navItems = moveReviewsIntoAbout(navItems)
+  }
   return { ...header, navItems }
 }
 
