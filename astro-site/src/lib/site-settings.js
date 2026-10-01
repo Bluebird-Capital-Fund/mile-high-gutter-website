@@ -69,9 +69,9 @@ const FOOTER_SERVICE_LINKS = [
   { label: 'Gutter Installation', href: '/products-services/gutter-installation-denver-co/' },
   { label: 'Gutter Repair', href: '/products-services/gutter-repair-denver-co/' },
   { label: 'Seamless Gutters', href: '/products-services/seamless-gutter-denver-co/' },
-  { label: 'Gutter Guards', href: '/products-services/denver-gutter-guards-co/' },
-  { label: 'Downspouts', href: '/products-services/gutter-downspouts-denver-co/' },
-  { label: 'Heat Tape', href: '/products-services/snow-ice-solutions-heat-tape-denver-co/' },
+  { label: 'Roofing Replacement', href: '/products-services/roofing-replacement-denver-co/' },
+  { label: 'Roof Repair', href: '/products-services/denver-roof-repair-co/' },
+  { label: 'Roofing Installation', href: '/products-services/roofing-installation-denver-co/' },
 ]
 
 const ROOFING_NAV_ITEM = {
