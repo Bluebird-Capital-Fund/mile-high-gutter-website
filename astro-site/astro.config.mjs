@@ -15,7 +15,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/lp/'),
+      filter: (page) => !page.includes('/lp/') && !page.includes('/thank-you/'),
     }),
   ],
   build: {

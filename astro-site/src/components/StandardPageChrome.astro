@@ -13,7 +13,7 @@ import { asStr, applyTemplate, mediaUrl } from '../lib/sanity-strings.js'
 import HeaderMobileActions from './HeaderMobileActions.astro'
 import Breadcrumbs from './Breadcrumbs.astro'
 
-const { title, description, navDdPrefix = 'page' } = Astro.props
+const { title, description, navDdPrefix = 'page', noIndex = false } = Astro.props
 
 let settings = {}
 let homePage = {}
@@ -52,7 +52,7 @@ const universalRequiredIndicator = asStr(formsCfg?.requiredIndicator) || '*'
 const pageIdPrefix = `std-${String(navDdPrefix).replace(/[^a-z0-9-]/gi, '_')}`
 ---
 
-<BaseLayout title={title} description={description} theme={settings?.theme} forms={{ submitPath: asStr(settings?.forms?.submitPath) || '/api/lead' }}>
+<BaseLayout title={title} description={description} theme={settings?.theme} forms={{ submitPath: asStr(settings?.forms?.submitPath) || '/api/lead' }} noIndex={noIndex}>
   <header class="header">
     <div class="offer-bar"><div class="offer-bar-inner"><p class="offer-message"><OfferBarMessage offerBar={header?.offerBar} /></p></div></div>
     <div class="header-nav">
