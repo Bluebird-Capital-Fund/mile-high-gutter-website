@@ -280,6 +280,9 @@ export default {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return jsonResponse({ ok: false, error: 'invalid_email' }, 400);
     }
+    if (!/^\d{3}-\d{3}-\d{4}$/.test(phone)) {
+      return jsonResponse({ ok: false, error: 'invalid_phone' }, 400);
+    }
 
     const payload = {
       formSource,

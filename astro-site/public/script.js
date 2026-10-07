@@ -493,15 +493,25 @@
     return String(value || '').trim();
   }
 
-  /** As user types / pastes: US digits only, max 10 → NNN-NNN-NNNN (partial while typing). */
-  function formatPhoneInputLive(el) {
-    var d = el.value.replace(/\D/g, '');
-    if (d.length >= 11 && d.charAt(0) === '1') {
+  /** US digits with a leading +1 country code dropped; US area codes never start with 1. */
+  function phoneDigits(value) {
+    var d = String(value || '').replace(/\D/g, '');
+    if (d.length === 11 && d.charAt(0) === '1') {
       d = d.slice(1);
     }
-    d = d.slice(0, 10);
+    return d;
+  }
+
+  /**
+   * As user types / pastes: NNN-NNN-NNNN (partial while typing).
+   * More than 10 digits are left as raw digits rather than truncated, so validation can flag them.
+   */
+  function formatPhoneInputLive(el) {
+    var d = phoneDigits(el.value);
     var out = '';
-    if (d.length <= 3) {
+    if (d.length > 10) {
+      out = d;
+    } else if (d.length <= 3) {
       out = d;
     } else if (d.length <= 6) {
       out = d.slice(0, 3) + '-' + d.slice(3);
@@ -509,6 +519,14 @@
       out = d.slice(0, 3) + '-' + d.slice(3, 6) + '-' + d.slice(6);
     }
     el.value = out;
+  }
+
+  var PHONE_LENGTH_MESSAGE = 'Please enter a 10-digit phone number (e.g. 303-762-9841).';
+
+  /** Empty is left to the native `required` message. */
+  function validatePhoneInput(el) {
+    var count = phoneDigits(el.value).length;
+    el.setCustomValidity(count === 0 || count === 10 ? '' : PHONE_LENGTH_MESSAGE);
   }
 
   // Lead forms → POST /api/lead (Zapier on server)
@@ -968,13 +986,31 @@
       attachUsAddressLookup(form, mapboxToken);
       var phoneInput = form.querySelector('input[name="phone"]');
       if (phoneInput) {
-        phoneInput.setAttribute('maxlength', '12');
+        // Without a length cap, extra digits stay visible and trigger the 10-digit message.
+        phoneInput.removeAttribute('maxlength');
+        phoneInput.removeAttribute('pattern');
         phoneInput.setAttribute('autocomplete', 'tel');
         phoneInput.addEventListener('input', function () {
           formatPhoneInputLive(phoneInput);
+          validatePhoneInput(phoneInput);
         });
         phoneInput.addEventListener('blur', function () {
           formatPhoneInputLive(phoneInput);
+          validatePhoneInput(phoneInput);
+        });
+        // Autofill can change the value without an input event, leaving a stale 10-digit message
+        // that blocks native validation before the submit handler runs; re-check and retry once.
+        phoneInput.addEventListener('invalid', function () {
+          if (!phoneInput.validity.customError) return;
+          formatPhoneInputLive(phoneInput);
+          validatePhoneInput(phoneInput);
+          if (phoneInput.validity.valid && form.checkValidity()) {
+            setTimeout(function () {
+              var btn = form.querySelector('button[type="submit"]');
+              if (typeof form.requestSubmit === 'function') form.requestSubmit();
+              else if (btn) btn.click();
+            }, 0);
+          }
         });
       }
 
@@ -984,6 +1020,7 @@
         var submitPhoneInput = form.querySelector('input[name="phone"]');
         if (submitPhoneInput) {
           formatPhoneInputLive(submitPhoneInput);
+          validatePhoneInput(submitPhoneInput);
         }
         if (!form.checkValidity()) {
           form.reportValidity();
@@ -1132,6 +1169,8 @@
                                 ? 'Please fill in all required fields.'
                                 : err === 'invalid_email'
                                 ? 'Please enter a valid email address.'
+                                : err === 'invalid_phone'
+                                ? PHONE_LENGTH_MESSAGE
                                 : err === 'upstream_unreachable'
                                   ? 'Could not reach the form service. Please try again or call us.'
                                   : err === 'upstream_error'
