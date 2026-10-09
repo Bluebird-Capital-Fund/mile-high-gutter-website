@@ -85,15 +85,6 @@ const ROOFING_NAV_ITEM = {
   ],
 }
 
-const MATERIALS_NAV_ITEM = {
-  label: 'Materials',
-  dropdown: [
-    { label: 'Copper Gutters', href: '/products-services/copper-gutters-denver-co/' },
-    { label: 'Aluminum Gutters', href: '/products-services/aluminum-gutters-denver-co/' },
-    { label: 'Steel Gutters', href: '/products-services/steel-gutters-denver-co/' },
-  ],
-}
-
 function ensureLabeledNavItem(navItems, item, insertAfterLabel) {
   if (!Array.isArray(navItems)) return navItems
   const label = String(item.label || '').trim().toLowerCase()
@@ -122,19 +113,17 @@ function ensureLabeledNavItem(navItems, item, insertAfterLabel) {
 const isLabel = (item, label) =>
   typeof item?.label === 'string' && item.label.trim().toLowerCase() === label
 
-function moveReviewsIntoAbout(navItems) {
-  const reviewsIdx = navItems.findIndex((nav) => isLabel(nav, 'reviews') && !Array.isArray(nav?.dropdown))
-  const aboutIdx = navItems.findIndex((nav) => isLabel(nav, 'about us') && Array.isArray(nav?.dropdown))
-  if (reviewsIdx < 0 || aboutIdx < 0) return navItems
-  const reviews = { label: 'Reviews', href: '/reviews/' }
-  const next = navItems.map((nav, i) => {
-    if (i !== aboutIdx || nav.dropdown.some((link) => isLabel(link, 'reviews'))) return nav
-    const dropdown = nav.dropdown.slice()
-    const afterAbout = dropdown.findIndex((link) => isLabel(link, 'about us'))
-    dropdown.splice(afterAbout + 1, 0, reviews)
-    return { ...nav, dropdown }
-  })
-  next.splice(reviewsIdx, 1)
+/** Reviews is a top-level link right after Roofing, in place of the old Materials dropdown. */
+function placeReviewsAfterRoofing(navItems) {
+  const next = navItems
+    .filter((nav) => !isLabel(nav, 'materials') && !isLabel(nav, 'reviews'))
+    .map((nav) =>
+      Array.isArray(nav?.dropdown) && nav.dropdown.some((link) => isLabel(link, 'reviews'))
+        ? { ...nav, dropdown: nav.dropdown.filter((link) => !isLabel(link, 'reviews')) }
+        : nav,
+    )
+  const roofingIdx = next.findIndex((nav) => isLabel(nav, 'roofing'))
+  next.splice(roofingIdx + 1, 0, { label: 'Reviews', href: '/reviews/' })
   return next
 }
 
@@ -165,8 +154,7 @@ function normalizeHeader(header) {
     navItems = navItems.map((nav) => (isLabel(nav, 'services') ? { ...nav, label: 'Gutters' } : nav))
     navItems = ensureLabeledNavItem(navItems, SERVICES_NAV_ITEM, null)
     navItems = ensureLabeledNavItem(navItems, ROOFING_NAV_ITEM, 'Gutters')
-    navItems = ensureLabeledNavItem(navItems, MATERIALS_NAV_ITEM, 'Roofing')
-    navItems = moveReviewsIntoAbout(navItems)
+    navItems = placeReviewsAfterRoofing(navItems)
   }
   return { ...header, navItems }
 }
