@@ -705,6 +705,50 @@ a.btn-primary[href^="tel:"]:hover {
   font-size: 1rem;
 }
 
+/* Primary CTA shimmer: filled primary buttons only (never .btn-outline / secondary) */
+.btn-shimmer,
+.btn-primary,
+.header-call-btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  isolation: isolate;
+}
+
+.btn-shimmer::after,
+.btn-primary::after,
+.header-call-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.14) 35%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.14) 65%,
+    transparent 80%
+  );
+  transform: translateX(-120%);
+  animation: btn-shimmer-sweep 4.8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes btn-shimmer-sweep {
+  0%, 42% { transform: translateX(-120%); }
+  62%, 100% { transform: translateX(120%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-shimmer::after,
+  .btn-primary::after,
+  .header-call-btn::after {
+    animation: none;
+    display: none;
+  }
+}
+
 /* Hero */
 .hero {
   position: relative;
