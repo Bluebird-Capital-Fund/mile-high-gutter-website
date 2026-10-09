@@ -21,6 +21,7 @@ import { roofingReplacementDenverCo } from './roofing-replacement-denver-co.js'
 import { denverRoofRepairCo } from './denver-roof-repair-co.js'
 import { roofingInstallationDenverCo } from './roofing-installation-denver-co.js'
 import { guttersDenverCo } from './gutters-denver-co.js'
+import { roofingDenverCo } from './roofing-denver-co.js'
 import { asStr } from '../sanity-strings.js'
 
 const BY_SLUG = {
@@ -47,6 +48,7 @@ const BY_SLUG = {
   [denverRoofRepairCo.slug]: denverRoofRepairCo,
   [roofingInstallationDenverCo.slug]: roofingInstallationDenverCo,
   [guttersDenverCo.slug]: guttersDenverCo,
+  [roofingDenverCo.slug]: roofingDenverCo,
 }
 
 /** Slugs that should always be available even if missing/renamed in Sanity. */

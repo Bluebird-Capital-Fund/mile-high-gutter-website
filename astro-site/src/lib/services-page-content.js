@@ -78,6 +78,7 @@ export const SERVICES_HUB_GROUPS = [
   {
     title: 'Roofing Services',
     links: [
+      { label: 'Roofing', href: '/products-services/roofing-denver-co/' },
       { label: 'Roof Replacement', href: '/products-services/roofing-replacement-denver-co/' },
       { label: 'Roof Repair', href: '/products-services/denver-roof-repair-co/' },
       { label: 'Roof Installation', href: '/products-services/roofing-installation-denver-co/' },

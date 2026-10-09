@@ -77,6 +77,7 @@ const FOOTER_SERVICE_LINKS = [
 
 const ROOFING_NAV_ITEM = {
   label: 'Roofing',
+  parentHref: '/products-services/roofing-denver-co/',
   dropdown: [
     { label: 'Roof Replacement', href: '/products-services/roofing-replacement-denver-co/' },
     { label: 'Roof Repair', href: '/products-services/denver-roof-repair-co/' },
