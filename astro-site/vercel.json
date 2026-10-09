@@ -306,6 +306,26 @@
       "permanent": true
     },
     {
+      "source": "/gutters",
+      "destination": "/products-services/gutters-denver-co/",
+      "statusCode": 301
+    },
+    {
+      "source": "/gutters/",
+      "destination": "/products-services/gutters-denver-co/",
+      "statusCode": 301
+    },
+    {
+      "source": "/roofing",
+      "destination": "/products-services/roofing-denver-co/",
+      "statusCode": 301
+    },
+    {
+      "source": "/roofing/",
+      "destination": "/products-services/roofing-denver-co/",
+      "statusCode": 301
+    },
+    {
       "source": "/:path((?!api/)(?!.*\\.).*[^/])",
       "destination": "/:path/",
       "permanent": true
