@@ -54,6 +54,7 @@ function normalizeAboutHref(label, href) {
 
 const SERVICES_NAV_ITEM = {
   label: 'Gutters',
+  parentHref: '/products-services/gutters-denver-co/',
   dropdown: [
     { label: 'Gutter Cleaning', href: '/products-services/gutter-cleaning-denver-co/' },
     { label: 'Gutter Installation', href: '/products-services/gutter-installation-denver-co/' },

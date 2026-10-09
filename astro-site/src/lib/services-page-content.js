@@ -33,6 +33,7 @@ export const SERVICES_HUB_GROUPS = [
   {
     title: 'Gutter Services',
     links: [
+      { label: 'Gutters', href: '/products-services/gutters-denver-co/' },
       { label: 'Gutter Installation', href: '/products-services/gutter-installation-denver-co/' },
       { label: 'Gutter Replacement', href: '/products-services/gutter-replacement-denver-co/' },
       { label: 'Gutter Repair', href: '/products-services/gutter-repair-denver-co/' },

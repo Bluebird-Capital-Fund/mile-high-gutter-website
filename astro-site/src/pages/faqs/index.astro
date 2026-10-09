@@ -105,17 +105,34 @@ let faqItemIndex = 0
                 const ddId = `faq-nav-dd-${i}`
                 return (
                   <div class="nav-dropdown" data-nav-dropdown>
-                    <button
-                      type="button"
-                      class="nav-dropdown-toggle"
-                      aria-expanded="false"
-                      aria-haspopup="true"
-                      aria-controls={ddId}
-                      id={`${ddId}-btn`}
-                    >
-                      {label}
-                      <span class="nav-dropdown-chevron" aria-hidden="true"></span>
-                    </button>
+                    {item.parentHref ? (
+                      <span class="nav-dropdown-head">
+                        <a href={item.parentHref} class="nav-dropdown-link">{label}</a>
+                        <button
+                          type="button"
+                          class="nav-dropdown-toggle nav-dropdown-toggle-icon"
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          aria-controls={ddId}
+                          id={`${ddId}-btn`}
+                          aria-label={`${label} menu`}
+                        >
+                          <span class="nav-dropdown-chevron" aria-hidden="true"></span>
+                        </button>
+                      </span>
+                    ) : (
+                      <button
+                        type="button"
+                        class="nav-dropdown-toggle"
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-controls={ddId}
+                        id={`${ddId}-btn`}
+                      >
+                        {label}
+                        <span class="nav-dropdown-chevron" aria-hidden="true"></span>
+                      </button>
+                    )}
                     <ul class="nav-dropdown-menu" id={ddId} role="menu">
                       {dropdown.map((link) => (
                         <li role="none">

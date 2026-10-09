@@ -344,6 +344,17 @@ a:hover {
   color: var(--color-accent);
 }
 
+/* Dropdown whose label is also a page link: the label navigates, the chevron button opens the menu */
+.nav-dropdown-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-dropdown-toggle-icon {
+  padding: 0.25rem 0;
+}
+
 .nav-dropdown-chevron {
   display: inline-block;
   width: 0;
@@ -517,6 +528,20 @@ a:hover {
     justify-content: flex-start;
     gap: 0.35rem;
     padding: 0.5rem 0;
+  }
+
+  .nav.is-open .nav-dropdown-head {
+    display: flex;
+    width: 100%;
+  }
+
+  .nav.is-open .nav-dropdown-head .nav-dropdown-link {
+    padding: 0.5rem 0;
+  }
+
+  .nav.is-open .nav-dropdown-head .nav-dropdown-toggle {
+    width: auto;
+    padding: 0.5rem 0.75rem;
   }
 
   .nav.is-open .nav-dropdown-menu {
