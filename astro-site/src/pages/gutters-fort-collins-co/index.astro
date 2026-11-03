@@ -208,7 +208,6 @@ const canonicalHref = `https://www.milehighgutter.com/${slug}/`
             <div class="hero-form-kicker">{universalFormKicker}</div>
             <h2>{universalFormHeading}</h2>
           </div>
-          <p class="hero-form-sub">{universalFormIntro}</p>
           <div class="hero-form-grid">
             <div class="hero-form-field">
               <label for="location-hero-first-name">
@@ -260,7 +259,7 @@ const canonicalHref = `https://www.milehighgutter.com/${slug}/`
             </div>
             <div class="hero-form-field hero-form-field-full">
               <label for="location-hero-message">{asStr(universalFormFields?.projectDetailsLabel) || 'Project Details'}</label>
-              <textarea id="location-hero-message" name="message" rows="3"></textarea>
+              <textarea id="location-hero-message" name="message" rows="2"></textarea>
             </div>
           </div>
           <LeadFormSmsConsent idPrefix="location-hero" variant="hero" />

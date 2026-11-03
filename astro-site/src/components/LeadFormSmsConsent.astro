@@ -8,10 +8,10 @@ import LeadFormAttributionFields from './LeadFormAttributionFields.astro'
 interface Props {
   idPrefix: string
   variant?: 'hero' | 'contact'
-  /** Shorter consent line (homepage hero). */
+  /** Shorter consent line. Defaults on for hero forms; keep long copy on contact/footer forms. */
   shortCopy?: boolean
 }
-const { idPrefix, variant = 'hero', shortCopy = false } = Astro.props
+const { idPrefix, variant = 'hero', shortCopy = variant === 'hero' } = Astro.props
 const wrapClass =
   variant === 'contact'
     ? 'contact-form-field contact-form-field-full lead-form-sms-consent'
