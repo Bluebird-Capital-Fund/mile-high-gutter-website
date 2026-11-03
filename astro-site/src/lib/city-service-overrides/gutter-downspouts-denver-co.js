@@ -49,7 +49,8 @@ export const gutterDownspoutsDenverCo = {
 </ul>
 <p>We also inspect how your downspouts work with the rest of your <a href="/">gutters in Denver</a> to make sure the entire drainage system performs efficiently during heavy rain and snowmelt.</p>
 <p>If prolonged overflow has caused damage around the roof edge, we may recommend <a href="/products-services/denver-fascia-soffit-repair-co/">Denver fascia and soffit repair</a> to address any moisture-related deterioration.</p>
-<p>For properties where water continues collecting near the foundation, we may also recommend a <a href="/products-services/french-drain-denver-co/">French drain in Denver</a> as part of a more comprehensive drainage solution.</p>`,
+<p>For properties where water continues collecting near the foundation, we may also recommend a <a href="/products-services/french-drain-denver-co/">French drain in Denver</a> as part of a more comprehensive drainage solution.</p>
+<p>When exposed extensions are impractical, <a href="/products-services/underground-drainage-denver-co/">Denver underground drainage</a> can bury the runoff path and move water farther from the foundation.</p>`,
       showCta: true,
     },
     {
