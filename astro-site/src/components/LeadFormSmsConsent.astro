@@ -8,8 +8,10 @@ import LeadFormAttributionFields from './LeadFormAttributionFields.astro'
 interface Props {
   idPrefix: string
   variant?: 'hero' | 'contact'
+  /** Shorter consent line (homepage hero). */
+  shortCopy?: boolean
 }
-const { idPrefix, variant = 'hero' } = Astro.props
+const { idPrefix, variant = 'hero', shortCopy = false } = Astro.props
 const wrapClass =
   variant === 'contact'
     ? 'contact-form-field contact-form-field-full lead-form-sms-consent'
@@ -30,9 +32,20 @@ const cbId = `${idPrefix}-sms-marketing-opt-in`
     />
     <span class="lead-form-sms-consent-copy">
       <span class="lead-form-sms-consent-text">
-        <span class="required-mark" aria-hidden="true">*</span> I agree to recurring texts from{' '}
-        <strong>Mile High Gutter</strong> at my number. Msg/data rates may apply. Reply <strong>STOP</strong> to opt out,
-        <strong>HELP</strong> for help.
+        {
+          shortCopy ? (
+            <>
+              <span class="required-mark" aria-hidden="true">*</span> I agree to recurring texts from{' '}
+              <strong>Mile High Gutter</strong> at my number.
+            </>
+          ) : (
+            <>
+              <span class="required-mark" aria-hidden="true">*</span> I agree to recurring texts from{' '}
+              <strong>Mile High Gutter</strong> at my number. Msg/data rates may apply. Reply <strong>STOP</strong> to
+              opt out, <strong>HELP</strong> for help.
+            </>
+          )
+        }
       </span>
     </span>
   </label>

@@ -362,7 +362,6 @@ const universalFormFields = footerEstimateFields
 const universalFormAction = asStr(formsCfg?.submitPath) || asStr(footerEstimate?.formAction)
 const universalFormMethod = asStr(footerEstimate?.formMethod)
 const universalFormHeading = asStr(footerEstimate?.headline)
-const universalFormIntro = asStr(footerEstimate?.intro)
 const universalSubmitLabel = 'Submit'
 const universalFormKicker = asStr(formsCfg?.formKicker) || 'Free Estimate'
 const universalFormAriaLabel = asStr(formsCfg?.formAriaLabel) || 'Lead form'
@@ -560,7 +559,6 @@ function responsiveSrc(src, width = 800) {
             <div class="hero-form-kicker">{universalFormKicker}</div>
             <h2>{universalFormHeading}</h2>
           </div>
-          <p class="hero-form-sub">{universalFormIntro}</p>
           <div class="hero-form-grid">
             <div class="hero-form-field">
               <label for="hero-first-name">
@@ -614,10 +612,10 @@ function responsiveSrc(src, width = 800) {
               <label for="hero-message">
                 {asStr(universalFormFields?.projectDetailsLabel)}
               </label>
-              <textarea id="hero-message" name="message" rows="3"></textarea>
+              <textarea id="hero-message" name="message" rows="2"></textarea>
             </div>
           </div>
-          <LeadFormSmsConsent idPrefix="hero" variant="hero" />
+          <LeadFormSmsConsent idPrefix="hero" variant="hero" shortCopy />
           <div class="lead-form-honeypot-wrap" aria-hidden="true">
             <label for="hero-website">Leave blank</label>
             <input type="text" id="hero-website" name="website" tabindex="-1" autocomplete="off" />
