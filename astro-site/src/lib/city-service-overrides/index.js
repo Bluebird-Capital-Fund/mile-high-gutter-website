@@ -7,6 +7,7 @@ import { denverGutterGuardsCo } from './denver-gutter-guards-co.js'
 import { denverFasciaSoffitRepairCo } from './denver-fascia-soffit-repair-co.js'
 import { gutterDownspoutsDenverCo } from './gutter-downspouts-denver-co.js'
 import { frenchDrainDenverCo } from './french-drain-denver-co.js'
+import { undergroundDrainageDenverCo } from './underground-drainage-denver-co.js'
 import { residentialGuttersDenverCo } from './residential-gutters-denver-co.js'
 import { commercialGuttersDenverCo } from './commercial-gutters-denver-co.js'
 import { customGuttersDenverCo } from './custom-gutters-denver-co.js'
@@ -34,6 +35,7 @@ const BY_SLUG = {
   [denverFasciaSoffitRepairCo.slug]: denverFasciaSoffitRepairCo,
   [gutterDownspoutsDenverCo.slug]: gutterDownspoutsDenverCo,
   [frenchDrainDenverCo.slug]: frenchDrainDenverCo,
+  [undergroundDrainageDenverCo.slug]: undergroundDrainageDenverCo,
   [residentialGuttersDenverCo.slug]: residentialGuttersDenverCo,
   [commercialGuttersDenverCo.slug]: commercialGuttersDenverCo,
   [customGuttersDenverCo.slug]: customGuttersDenverCo,
