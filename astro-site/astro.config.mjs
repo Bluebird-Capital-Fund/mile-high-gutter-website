@@ -15,7 +15,11 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/lp/') && !page.includes('/thank-you/'),
+      filter: (page) =>
+        !page.includes('/lp/') &&
+        !/\/thank-you(-booked)?\/?$/.test(page) &&
+        !/\/booking-confirmation\/?$/.test(page) &&
+        !/\/book\/?$/.test(page),
     }),
   ],
   build: {

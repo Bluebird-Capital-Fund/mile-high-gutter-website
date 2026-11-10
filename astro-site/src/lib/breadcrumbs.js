@@ -26,6 +26,9 @@ const KNOWN_ROOT_SEGMENTS = new Set([
   'services',
   'terms-of-service',
   'thank-you',
+  'thank-you-booked',
+  'book',
+  'booking-confirmation',
 ])
 
 const SEGMENT_LABELS = {

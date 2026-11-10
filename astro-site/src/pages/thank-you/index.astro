@@ -1,19 +1,79 @@
 ---
 import StandardPageChrome from '../../components/StandardPageChrome.astro'
+import BookingEmbed from '../../components/BookingEmbed.astro'
+import ThankYouReviews from '../../components/ThankYouReviews.astro'
+import { GROQ_HOME_PAGE, sanity } from '../../lib/sanity.js'
+import { getSiteSettings } from '../../lib/site-settings.js'
+import { CANONICAL_REVIEW_RATING_DISPLAY, reviewCountDisplay } from '../../lib/review-count.js'
+
+let settings = {}
+let homePage = {}
+try {
+  ;[settings, homePage] = await Promise.all([getSiteSettings(), sanity.fetch(GROQ_HOME_PAGE)])
+} catch (err) {
+  console.warn('[thank-you] Sanity fetch failed.', err)
+}
+
+const visitPoints = [
+  'Inspect gutters, roof lines, and drainage around the home',
+  'Measure what needs repair, replacement, or protection',
+  'Walk through clear options that fit your house and budget',
+  'Provide a realistic written estimate',
+]
 ---
 
 <StandardPageChrome
   title="Thank You | Mile High Gutter"
-  description="Thank you for contacting Mile High Gutter."
+  description="Thanks for reaching out. Schedule your free on-site estimate and get clear answers on gutters and roofing."
   navDdPrefix="thank-you"
   noIndex
+  minimalChrome
+  hideHeader
 >
-  <main class="section">
-    <div class="container" style="max-width: 70ch;">
-      <h1 class="section-title section-title-secondary">Thank You</h1>
-      <p class="section-lead">
-        Thanks! We're excited to help you out. We'll get back to you as soon as possible.
-      </p>
+  <main class="thank-you-schedule">
+    <div class="container thank-you-schedule-inner">
+      <div class="thank-you-schedule-grid">
+        <div class="thank-you-schedule-copy">
+          <p class="thank-you-schedule-proof">
+            <span class="thank-you-schedule-stars" aria-hidden="true">★★★★★</span>
+            <span>{reviewCountDisplay()} Google reviews · {CANONICAL_REVIEW_RATING_DISPLAY} stars</span>
+          </p>
+          <h1 class="thank-you-schedule-title">Schedule a Free On-Site Estimate</h1>
+          <p class="thank-you-schedule-lead">
+            Thanks for contacting us. You are almost done. Choose a time for a quick, no-pressure
+            visit so we can look at the job in person and give you accurate pricing.
+          </p>
+          <h2 class="thank-you-schedule-list-title">During your on-site estimate, we will:</h2>
+          <ul class="thank-you-schedule-list">
+            {
+              visitPoints.map((point) => (
+                <li>
+                  <span class="thank-you-schedule-check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+                      <path
+                        d="M5 12.5l4.5 4.5L19 7.5"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span>{point}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="thank-you-schedule-closer">No guessing. No pressure. Just clear answers.</p>
+        </div>
+        <div class="thank-you-schedule-calendar">
+          <BookingEmbed />
+        </div>
+      </div>
+    </div>
+
+    <div class="thank-you-reviews">
+      <ThankYouReviews settings={settings} homePage={homePage} limit={8} />
     </div>
   </main>
 </StandardPageChrome>

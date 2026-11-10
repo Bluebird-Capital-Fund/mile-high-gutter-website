@@ -51,6 +51,16 @@
       "permanent": true
     },
     {
+      "source": "/thank-you-booked",
+      "destination": "/thank-you/",
+      "permanent": true
+    },
+    {
+      "source": "/thank-you-booked/",
+      "destination": "/thank-you/",
+      "permanent": true
+    },
+    {
       "source": "/city-service-base/",
       "destination": "/products-services/gutter-repair-denver-co/",
       "permanent": true

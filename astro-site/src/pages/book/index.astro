@@ -1,0 +1,23 @@
+---
+import StandardPageChrome from '../../components/StandardPageChrome.astro'
+import BookingEmbed from '../../components/BookingEmbed.astro'
+---
+
+<StandardPageChrome
+  title="Book an Estimate | Mile High Gutter"
+  description="Schedule your free on-site estimate online. Pick a time that works for you."
+  navDdPrefix="book"
+  noIndex
+  minimalChrome
+>
+  <main class="section book-page">
+    <div class="container book-page-inner">
+      <p class="hero-eyebrow">Schedule Online</p>
+      <h1 class="section-title section-title-secondary">Book an Estimate</h1>
+      <p class="section-lead">
+        Choose a time that works for you. We will follow up to confirm your appointment.
+      </p>
+      <BookingEmbed />
+    </div>
+  </main>
+</StandardPageChrome>

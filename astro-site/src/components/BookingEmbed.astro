@@ -1,0 +1,14 @@
+---
+import { BOOKING_WIDGET_ID, BOOKING_WIDGET_SRC } from '../lib/booking-widget.js'
+---
+
+<div class="booking-embed">
+  <iframe
+    src={BOOKING_WIDGET_SRC}
+    allow="payment"
+    id={BOOKING_WIDGET_ID}
+    title="Schedule a free on-site estimate"
+    style="width: 100%; border: none; overflow: hidden;"
+    scrolling="no"></iframe>
+</div>
+<script is:inline src="https://link.msgsndr.com/js/form_embed.js"></script>

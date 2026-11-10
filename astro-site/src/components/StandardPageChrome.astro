@@ -13,7 +13,18 @@ import { asStr, applyTemplate, mediaUrl } from '../lib/sanity-strings.js'
 import HeaderMobileActions from './HeaderMobileActions.astro'
 import Breadcrumbs from './Breadcrumbs.astro'
 
-const { title, description, navDdPrefix = 'page', noIndex = false } = Astro.props
+const {
+  title,
+  description,
+  navDdPrefix = 'page',
+  noIndex = false,
+  /** Logo-only header, no offer bar/nav, and no marketing footer. */
+  minimalChrome = false,
+  /** Hide the entire top header (used on the thank-you schedule page). */
+  hideHeader = false,
+} = Astro.props
+const useMinimalChrome = Boolean(minimalChrome)
+const hideTopHeader = Boolean(hideHeader)
 
 let settings = {}
 let homePage = {}
@@ -53,6 +64,21 @@ const pageIdPrefix = `std-${String(navDdPrefix).replace(/[^a-z0-9-]/gi, '_')}`
 ---
 
 <BaseLayout title={title} description={description} theme={settings?.theme} forms={{ submitPath: asStr(settings?.forms?.submitPath) || '/api/lead' }} noIndex={noIndex}>
+  {hideTopHeader ? null : useMinimalChrome ? (
+    <header class="header header-minimal">
+      <div class="header-nav">
+        <div class="header-inner header-inner-minimal">
+          <a href="/" class="logo" aria-label={logoAriaLabel}>
+            {logoBlack ? (
+              <img src={mediaUrl(logoBlack)} alt={companyName} class="logo-img" />
+            ) : (
+              <span class="section-title" style="margin:0; font-size: 1.25rem;">{companyName}</span>
+            )}
+          </a>
+        </div>
+      </div>
+    </header>
+  ) : (
   <header class="header">
     <div class="offer-bar"><div class="offer-bar-inner"><p class="offer-message"><OfferBarMessage offerBar={header?.offerBar} /></p></div></div>
     <div class="header-nav">
@@ -122,11 +148,28 @@ const pageIdPrefix = `std-${String(navDdPrefix).replace(/[^a-z0-9-]/gi, '_')}`
       </div>
     </div>
   </header>
+  )}
 
-  <Breadcrumbs />
+  {hideTopHeader || useMinimalChrome ? null : <Breadcrumbs />}
 
   <slot />
 
+  {useMinimalChrome ? (
+    <footer class="footer footer-minimal">
+      <div class="container footer-minimal-inner">
+        <a href="/" class="footer-minimal-brand">
+          {logoBlack ? (
+            <img src={mediaUrl(logoBlack)} alt={companyName} class="footer-minimal-logo" />
+          ) : (
+            companyName
+          )}
+        </a>
+        <p class="footer-minimal-meta">
+          <a href={copyrightHref}>© <span id="year"></span> {companyName}</a>
+        </p>
+      </div>
+    </footer>
+  ) : (
   <footer class="footer">
     <section id="contact" class="section contact footer-estimate">
       <div class="container">
@@ -171,4 +214,5 @@ const pageIdPrefix = `std-${String(navDdPrefix).replace(/[^a-z0-9-]/gi, '_')}`
   </footer>
 
   <FooterSupportBar footerSupport={footerSupport} copyrightHref={copyrightHref} companyName={companyName} />
+  )}
 </BaseLayout>

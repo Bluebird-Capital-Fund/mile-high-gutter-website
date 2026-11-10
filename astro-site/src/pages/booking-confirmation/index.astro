@@ -1,0 +1,112 @@
+---
+import StandardPageChrome from '../../components/StandardPageChrome.astro'
+
+const processPoints = [
+  'We arrive at the scheduled time and walk the areas you want reviewed.',
+  'We measure, inspect, and explain what we are seeing in plain language.',
+  'You get clear options and a realistic written estimate before we leave.',
+]
+
+const faqs = [
+  {
+    question: 'How long does the visit typically take?',
+    answer:
+      'Most estimates take about 30 to 60 minutes. Complex roofs or larger homes may take a little longer so we can measure carefully.',
+  },
+  {
+    question: 'What should I have ready before we arrive?',
+    answer:
+      'Know the main issue you want help with. Keep photos, prior estimates, or HOA rules handy if you have them, and make sure we can access the areas that need review.',
+  },
+  {
+    question: 'Do I need to be home for the whole appointment?',
+    answer:
+      'Yes. Someone 18 or older should be on site so we can ask questions, review findings, and go over next steps before we leave.',
+  },
+  {
+    question: 'What if the weather is bad?',
+    answer:
+      'Light weather is usually fine. If conditions are unsafe, we will message you to reschedule. You can also use your confirmation email or text if you would rather move the appointment.',
+  },
+  {
+    question: 'How do I reschedule or cancel?',
+    answer:
+      'Use the link in your booking confirmation email or text message to pick a new time. The sooner you update it, the easier it is to adjust the schedule.',
+  },
+  {
+    question: 'Will I get pricing the same day?',
+    answer:
+      'In most cases, yes. We aim to leave a clear written estimate after we measure and review the work. More complex jobs may need a short follow-up.',
+  },
+]
+---
+
+<StandardPageChrome
+  title="Your Estimate Is Confirmed | Mile High Gutter"
+  description="Your on-site estimate is confirmed. Here is what to expect and how to get ready for your visit."
+  navDdPrefix="booking-confirmation"
+  noIndex
+  minimalChrome
+>
+  <main class="confirm-flow">
+    <section class="confirm-hero" aria-labelledby="confirm-hero-title">
+      <div class="container confirm-hero-inner">
+        <h1 id="confirm-hero-title" class="confirm-title">Your On-Site Estimate Is Confirmed</h1>
+        <p class="confirm-lead">
+          We will send more info before your visit to help you get ready. Here is a quick look at
+          our process from start to finish.
+        </p>
+
+        <div class="confirm-process-card">
+          <h2 class="confirm-process-title">What to expect during your visit</h2>
+          <ul class="confirm-process-list">
+            {
+              processPoints.map((point) => (
+                <li>
+                  <span class="confirm-check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+                      <path
+                        d="M5 12.5l4.5 4.5L19 7.5"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span>{point}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="confirm-reference" aria-labelledby="confirm-reference-title">
+      <div class="container confirm-reference-inner">
+        <div class="confirm-reference-panel">
+          <p class="confirm-eyebrow">For your reference</p>
+          <h2 id="confirm-reference-title" class="confirm-reference-title">
+            Helpful Information Before Your Visit
+          </h2>
+          <p class="confirm-reference-intro">
+            These short answers cover common questions so you can feel confident going into your
+            on-site estimate.
+          </p>
+
+          <div class="confirm-faq-list">
+            {
+              faqs.map((item) => (
+                <article class="confirm-faq-item">
+                  <h3 class="confirm-faq-question">{item.question}</h3>
+                  <p class="confirm-faq-answer">{item.answer}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</StandardPageChrome>

@@ -21,6 +21,7 @@ import {
 } from '../../../lib/sanity-strings.js'
 import { assertSanityHomepage } from '../../../lib/assert-sanity-homepage.js'
 import { sanitizeCmsHtml } from '../../../lib/sanitize-cms-html.js'
+import { reviewCountDisplay as canonicalReviewCountDisplay } from '../../../lib/review-count.js'
 import { buildLpFaqItems } from '../../../lib/lp-faq-items.js'
 import { getLpHeroTypedPhrases } from '../../../lib/lp-hero-typed-phrases.js'
 import { capitalizeHeaderWords } from '../../../lib/capitalize-header-words.js'
@@ -148,8 +149,7 @@ const footerSupport = settings?.footerSupport ?? hp.footerSupport
 const formsCfg = settings?.forms ?? {}
 
 const reviewRating = statLookup(reviewValues, reviewsSummary?.ratingValueKey)
-const reviewCount = statLookup(reviewValues, reviewsSummary?.reviewCountKey)
-const reviewCountDisplay = `${asStr(reviewsSummary?.reviewCountPrefix)}${reviewCount}${asStr(reviewsSummary?.reviewCountSuffix)}`
+const reviewCountDisplay = canonicalReviewCountDisplay()
 const reviewsCtaHref = '/reviews/'
 const reviewsPerPage = 4
 const reviewPages = []

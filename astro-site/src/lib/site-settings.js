@@ -246,6 +246,10 @@ function normalizeReviews(reviews) {
   if (!reviews || typeof reviews !== 'object') return reviews
   return {
     ...reviews,
+    reviewValues: {
+      ...(reviews.reviewValues && typeof reviews.reviewValues === 'object' ? reviews.reviewValues : {}),
+      reviewsCount: '200+',
+    },
     summary: {
       ...(reviews.summary && typeof reviews.summary === 'object' ? reviews.summary : {}),
       ctaHref: '/reviews/',
