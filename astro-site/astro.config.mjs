@@ -18,8 +18,7 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/lp/') &&
         !/\/thank-you(-booked)?\/?$/.test(page) &&
-        !/\/booking-confirmation\/?$/.test(page) &&
-        !/\/book\/?$/.test(page),
+        !/\/booking-confirmation\/?$/.test(page),
     }),
   ],
   build: {

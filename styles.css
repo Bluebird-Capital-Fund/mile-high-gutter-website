@@ -5145,28 +5145,6 @@ form[data-lead-form] button[type="submit"].is-busy {
   }
 }
 
-.book-page {
-  padding-top: var(--space-3xl);
-  padding-bottom: var(--space-4xl);
-}
-
-.book-page-inner {
-  max-width: 56rem;
-}
-
-.book-page .hero-eyebrow,
-.book-page .hero-eyebrow::before {
-  color: var(--color-dark);
-}
-
-.book-page .hero-eyebrow::before {
-  background: var(--color-accent);
-}
-
-.book-page .section-lead {
-  margin-bottom: var(--space-xl);
-}
-
 .booking-embed {
   width: 100%;
   min-height: 52rem;
